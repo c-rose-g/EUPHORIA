@@ -1,3 +1,8 @@
-from .db import db
+from .db import db, environment, SCHEMA
 from .user import User
-from .db import environment, SCHEMA
+from .product import Product
+from .product_photo import ProductPhoto
+from .shopping_cart import ShoppingCart
+from .shopping_cart_items import ShoppingCartItem
+from .purchase_history import PurchaseHistory
+from .review import Review
