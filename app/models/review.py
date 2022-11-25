@@ -1,7 +1,7 @@
 from .db import db, SCHEMA, environment, add_prefix_for_prod
 from sqlalchemy.sql import func
 from sqlalchemy import ForeignKey
-# REVIEW What relationships do I need?
+
 class Review(db.Model):
   __tablename__ = 'reviews'
   if environment == 'production':

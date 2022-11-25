@@ -10,10 +10,11 @@ class Product(db.Model):
         __table_args__ = {'schema': SCHEMA}
   id = db.Column(db.Integer, primary_key=True)
   product_name = db.Column(db.String(255))
-  product_price = db.Column(db.Numeric(precision=10, scale=2), nullable=False)
+  product_brand = db.Column(db.String(255))
+  product_price = db.Column(db.Numeric(precision=10, scale=2))
   product_quantity = db.Column(db.Integer)
-  product_description = db.Column(db.String(255))
-
+  product_description = db.Column(db.String)
+  # product_color = db.Column(db.String(255))
   # prod_photo_id = db.Column(db.String, ForeignKey(add_prefix_for_prod('product_photos.id')))
   # review_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('reviews.id')))
   # prod_photo = relationship('Product', foreign_keys=[prod_photo_id])
@@ -33,9 +34,11 @@ class Product(db.Model):
     return{
       'id':self.id,
       'product_name':self.product_name,
+      'product_brand':self.product_brand,
       'product_price':str(self.product_price),
       'product_quantity':self.product_quantity,
-      'product_description':self.product_description,
+      'product_short_description':self.product_short_description,
+      'product_long_description':self.product_long_description,
       'department_name': self.department_name,
       'photo_p':self.photo_p,
       'review_id':[review.to_dict() for review in self.reviews_p]

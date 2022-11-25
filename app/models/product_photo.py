@@ -9,6 +9,8 @@ class ProductPhoto(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   product_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
   prod_photo = db.Column(db.String)
+  prod_color_name = db.Column(db.String)
+  # prod_color_photo = db.Column(db.String)
   created_at = db.Column(db.DateTime(), nullable=False,server_default=func.now())
   updated_at = db.Column(db.DateTime(), nullable=False,onupdate=func.now(), default=func.now())
   # relationships - products
@@ -20,4 +22,6 @@ class ProductPhoto(db.Model):
       'id':self.id,
       'product_id':self.product_id,
       'prod_photo':self.prod_photo,
+      'prod_color_name':self.prod_color_name,
+      'prod_color_photo':self.prod_color_photo,
       }

@@ -1,8 +1,8 @@
 from flask import Blueprint, request
-from flask_login import login_required, current_user
+# from flask_login import login_required, current_user
 from app.models import Product, db
 # from app.forms import New_product
-from .auth_routes import validation_errors_to_error_messages
+# from .auth_routes import validation_errors_to_error_messages
 
 products_routes = Blueprint('products', __name__)
 
@@ -10,8 +10,8 @@ products_routes = Blueprint('products', __name__)
 # /api/products
 
 
-@products_routes.route('/products')
-@login_required
+@products_routes.route('/allProducts')
+# @login_required
 def get_products():
     products = Product.query.all()
 
@@ -28,7 +28,7 @@ def get_products():
 
 
 @products_routes.route('/<int:prod_id>')
-@login_required
+# @login_required
 def get_one_product(prod_id):
     products = Product.query.filter_by(id=int(prod_id))
     # products = Product.query.filter_by(prod_id=int(prod_id))

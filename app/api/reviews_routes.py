@@ -2,16 +2,16 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 
 from app.models import Review, db
-from app.forms import New_review
+from ..forms.review_form import New_review
 from .auth_routes import validation_errors_to_error_messages
 
 reviews_routes = Blueprint('reviews', __name__)
 # ****************** GET ALL REVIEWS ***************************
-# /api/reviews
+# /api/reviews - no login required to view reviews
 
 
-@reviews_routes.route('/reviews')
-# @login_required
+@reviews_routes.route('/all')
+
 def get_reviews():
     reviews = Review.query.all()
     if reviews:
@@ -22,13 +22,14 @@ def get_reviews():
         'status code': 404
     }, 404
 
+
 # ****************** GET ALL REVIEWS BY PRODUCT ID ***************************
 # /api/reviews/:productId
 
 
 @reviews_routes.route('/<int:prod_id>')
-@login_required
-def get_one_review(prod_id):
+# @login_required
+def get_prod_reviews(prod_id):
     reviews = Review.query.filter_by(prod_id=int(prod_id))
     # reviews = Review.query.filter_by(prod_id=int(prod_id))
     if reviews:
@@ -43,7 +44,7 @@ def get_one_review(prod_id):
 # /api/reviews/:userId/:reviewId
 
 
-@reviews_routes.route('/<int:prod_id>')
+@reviews_routes.route('/<int:user_id>/reviews')
 @login_required
 def get_review_by_user(user_id):
     reviews = Review.query.filter_by(id=int(user_id))
@@ -61,7 +62,7 @@ def get_review_by_user(user_id):
 # /api/:productId/new
 
 
-@reviews_routes.route('/</int:prod_id>/new', methods=['POST'])
+@reviews_routes.route('/<int:prod_id>/new', methods=['POST'])
 @login_required
 def create_review(prod_id):
     form = New_review()
