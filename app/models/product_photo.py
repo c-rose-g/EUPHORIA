@@ -23,5 +23,4 @@ class ProductPhoto(db.Model):
       'product_id':self.product_id,
       'prod_photo':self.prod_photo,
       'prod_color_name':self.prod_color_name,
-      'prod_color_photo':self.prod_color_photo,
       }

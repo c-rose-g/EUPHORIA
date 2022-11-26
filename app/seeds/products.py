@@ -243,8 +243,8 @@ def seed_products():
         # skuId = '2307536',
     )
     prod2 = Product(
-        product_name="Rare Beauty by Selena Gomez",
-        product_brand='Soft Pinch Liquid Blush',
+        product_name="Soft Pinch Liquid Blush",
+        product_brand='Rare Beauty by Selena Gomez',
         product_price=20.00,
         product_quantity=100,
         product_description="A weightless, long-lasting liquid blush that blends and builds beautifully for a soft, healthy flush. Available in matte and dewy finishes.",
@@ -253,8 +253,8 @@ def seed_products():
         # skuId = '2518959',
     )
     prod3 = Product(
-        product_name="Dior",
-        product_brand='Lip Glow Oil',
+        product_name="Lip Glow Oil",
+        product_brand='Dior',
         product_price=38.00,
         product_quantity=100,
         product_description="A nurturing, glossy lip oil that protects and enhances the lips, bringing out their natural color.",

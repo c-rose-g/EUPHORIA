@@ -37,9 +37,7 @@ class Product(db.Model):
       'product_brand':self.product_brand,
       'product_price':str(self.product_price),
       'product_quantity':self.product_quantity,
-      'product_short_description':self.product_short_description,
-      'product_long_description':self.product_long_description,
-      'department_name': self.department_name,
-      'photo_p':self.photo_p,
-      'review_id':[review.to_dict() for review in self.reviews_p]
+      'product_description':self.product_description,
+      'product_photos':[photo.to_dict() for photo in self.product_photos_p]
+      # 'review_id':[review.to_dict() for review in self.reviews_p]
       }

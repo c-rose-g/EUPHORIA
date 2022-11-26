@@ -24,7 +24,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +40,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -82,7 +82,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -97,7 +97,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 }
 
-export default function reducer(state = initialState, action) {
+export default function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }

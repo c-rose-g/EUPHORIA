@@ -14,14 +14,16 @@ const loadProductDetailsAction = (product) =>({
 })
 /*********************THUNKS********************** */
 
-export const allProducts = (products) => async dispatch =>{
-  const response = await fetch('/api/products', {
+export const allProducts = () => async dispatch =>{
+  // console.log('all products was hit')
+  const response = await fetch('/api/products/allProducts', {
     headers:{'Content-Type': 'application/json'}
   })
 
   if (response.ok){
     const loadAllProducts = await response.json()
-    dispatch(loadProductsAction(products))
+    // console.log('load all products', loadAllProducts)
+    dispatch(loadProductsAction(loadAllProducts))
     return loadAllProducts
   }
 }
@@ -33,21 +35,23 @@ export const productDetails = (product) => async dispatch =>{
 
   if (response.ok){
     const loadProductDetails = await response.json()
-    dispatch(loadProductDetails(loadProductDetails))
+    dispatch(loadProductDetailsAction(loadProductDetails))
     return loadProductDetails
   }
 }
 /************************REDUCER************************** */
 const initialState = {allProducts:{}, oneProduct:{}}
 
-const productReducer = (state = initialState, action) =>{
+export const productsReducer = (state = initialState, action) =>{
   let newState = {}
 
   switch (action.type) {
     case LOAD_PRODUCTS :
       newState = {... state}
-      newState. allProducts = {}
-      action.allProducts.forEach(product => {
+      newState.allProducts = {}
+      // console.log('action in load products', action)
+
+      action.products.retrieve_products.forEach(product => {
         newState.allProducts[product.id] = product
       });
       return newState
