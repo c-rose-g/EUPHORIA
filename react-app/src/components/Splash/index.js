@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { allProducts } from '../../store/products';
+import { NavLink, useParams } from 'react-router-dom';
+import { allProducts, productDetails } from '../../store/products';
 import './Splash.css';
 function Splash() {
 	const dispatch = useDispatch();
+	// const {prodId} = useParams()
 	const [firstIdx, setFirstIdx] = useState(0);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const products = useSelector((state) =>
@@ -14,8 +15,9 @@ function Splash() {
 	console.log('products use selector', products);
 
 	useEffect(() => {
-		setIsLoaded(true);
-		dispatch(allProducts());
+		// setIsLoaded(true);
+		dispatch(allProducts()).then(() => setIsLoaded(true))
+		// dispatch(productDetails(prodId))
 	}, [dispatch]);
 
 	return (
@@ -60,6 +62,7 @@ function Splash() {
 							</NavLink>
 						</button>
 						<div className='splash-product-cards-container'>
+						<NavLink to={`/products/0`} >
 							<div className='upper-half-product-card'>
 								<img
 									className='splash-product-img'
@@ -71,6 +74,7 @@ function Splash() {
 								{products[firstIdx].product_brand}
 								{products[firstIdx].product_name}
 							</div>
+						</NavLink>
 						</div>
 						<div className='splash-product-cards-container'>
 							<div className='upper-half-product-card'>

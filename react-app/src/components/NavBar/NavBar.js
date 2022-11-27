@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 // import LogoutButton from '../auth/LogoutButton';
-import SignUpModal from '../SignUpModal';
+// import SignUpModal from '../SignUpModal';
 import ProfileButton from '../ProfileButton/ProfileButton';
 import deals_banner from '../../Images/euphoria-splash-deals-banner.png';
 import user from '../../Images/euphora-sign-in.png';
 import './NavBar.css';
 import { useSelector } from 'react-redux';
-const NavBar = ({loaded}) => {
+const NavBar = () => {
 	const [openMenu, setOpenMenu] = useState(false);
+	// const [loaded, isLoaded] = useState(true)
 	const sessionUser = useSelector(state => state.session)
-	console.log('session user', sessionUser)
+	// console.log('session user', sessionUser)
 	let sessionLinks;
 	if (sessionUser) {
 		sessionLinks = <ProfileButton user={sessionUser} />;
@@ -95,7 +96,7 @@ const NavBar = ({loaded}) => {
 								<p /> for FREE Shipping 🚚
 							</div>
 						</button> */}
-						{loaded && sessionLinks}
+						{sessionLinks}
 						<div>
 							<NavLink
 								className='emoji-button'

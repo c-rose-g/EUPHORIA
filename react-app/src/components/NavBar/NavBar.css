@@ -42,6 +42,8 @@
   /* margin-right: -16px; */
   height: 80px;
   gap: 80px;
+  justify-content: space-between;
+  padding-right: 16px;
 }
 
 .nav-logo {
@@ -56,6 +58,7 @@
   width: 510px;
   /* border: 1px solid black; */
 }
+
 /* *********************** USER **********************/
 .acct-buttons {
   /* height: 80px; */
@@ -74,10 +77,17 @@
   /* height: 20px; */
   width: 38px;
 }
-#user-space-text{
+
+.nav-acct-img img :hover {
+  width: 32px;
+  object-fit: cover;
+}
+
+#user-space-text {
   display: flex;
   background-color: white;
 }
+
 .nav-sign-text {
   /* border: 1px solid red; */
   width: 120px;
@@ -85,13 +95,15 @@
   flex-direction: column;
 
 }
+
 .emoji-button {
   /* background-color: purple; */
   font-size: 30px;
   color: black;
 }
+
 /* ********************* DROP DOWN ********************** */
-.profile-dropdown-signin{
+.profile-dropdown-signin {
   z-index: 1;
   border-radius: 5px;
   background-color: white;
@@ -99,7 +111,7 @@
   padding-top: 3px;
   padding-bottom: 3px;
   position: absolute;
-  font-weight:normal;
+  font-weight: normal;
   font-style: normal;
   font-size: smaller;
   white-space: nowrap;

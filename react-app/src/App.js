@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+// import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Splash from './components/Splash';
+import ProductDetails from './components/ProductDetails';
 import { authenticate } from './store/session';
 
 function App() {
@@ -27,15 +28,15 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<NavBar loaded={loaded} />
-			{loaded && (
+			<NavBar />
+			{/* {loaded && ( */}
 			<Switch>
 				<Route path='/login' exact={true}>
 					<LoginForm />
 				</Route>
-				<Route path='/sign-up' exact={true}>
+				{/* <Route path='/sign-up' exact={true}>
 					<SignUpForm />
-				</Route>
+				</Route> */}
 				<ProtectedRoute path='/users' exact={true}>
 					<UsersList />
 				</ProtectedRoute>
@@ -45,11 +46,14 @@ function App() {
         <Route path='/products'>
           <Splash/>
         </Route>
+				<Route path='/products/:productId' exact={true}>
+				<ProductDetails />
+				</Route>
 				<Route path='/' exact={true}>
 					<Splash />
 				</Route>
 			</Switch>
-			)}
+			{/* )} */}
 		</BrowserRouter>
 	);
 }
