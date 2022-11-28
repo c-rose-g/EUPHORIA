@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
-import { Modal } from '../../context/Modal';
+import React, { useEffect, useState } from 'react';
+// import { useDispatch } from 'react-redux';
+// import * as sessionActions from '../../store/session';
+// import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import user from '../../Images/euphora-sign-in.png';
 import activeUser from '../../Images/euphoria-user-active.png';

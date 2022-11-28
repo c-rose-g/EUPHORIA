@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import '../../context/Modal.css';
 
 const SignUpModal = ({ setShowSignUpModal }) => {
-	const [errors, setErrors] = useState([]);
+	// const [errors, setErrors] = useState([]);
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 
@@ -15,19 +15,26 @@ const SignUpModal = ({ setShowSignUpModal }) => {
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   let errors = {}
-  //   if(!firstName){
+	// useEffect(() => {
+	//   let errors = {}
+	//   if(!firstName){
 
-  //   }
-  // })
+	//   }
+	// })
 	const onSignUp = async (e) => {
 		e.preventDefault();
 		if (password === repeatPassword) {
-			console.log('this is first name ',firstName)
-			console.log('this is last name ',lastName)
+			console.log('this is first name ', firstName);
+			console.log('this is last name ', lastName);
 
-			const data = await dispatch(signUp({first_name:firstName, last_name:lastName, email:email, password:password}));
+			const data = await dispatch(
+				signUp({
+					first_name: firstName,
+					last_name: lastName,
+					email: email,
+					password: password,
+				})
+			);
 			setShowSignUpModal(false);
 			// if (data) {
 			// 	setErrors(data);
@@ -70,21 +77,18 @@ const SignUpModal = ({ setShowSignUpModal }) => {
 						className='modal-inp-row'
 						onChange={updateFirstName}
 						value={firstName}
-
 					/>
-          <label className='fn-label-transition font-14'>First Name</label>
-          <div className='label-inp-div'>
-
-					<input
-						type='text'
-						className='modal-inp-row'
-						onChange={updateLastName}
-						value={lastName}
-						// placeholder={'Last Name'}
-					/>
-          <label className='ln-label-transition font-14'>Last Name</label>
-
-          </div>
+					<label className='fn-label-transition font-14'>First Name</label>
+					<div className='label-inp-div'>
+						<input
+							type='text'
+							className='modal-inp-row'
+							onChange={updateLastName}
+							value={lastName}
+							// placeholder={'Last Name'}
+						/>
+						<label className={ firstName? 'ln-label-transition font-14':'ln-label-nontransition font-14'}>Last Name</label>
+					</div>
 				</div>
 				<div className='inputs-columns-div'>
 					<input
@@ -92,26 +96,30 @@ const SignUpModal = ({ setShowSignUpModal }) => {
 						className='modal-inp'
 						onChange={updateEmail}
 						value={email}
-
 					/>
-          <label className='ea-label-transition font-14'>Email Address</label>
+					<label className='ea-label-transition font-14'>Email Address</label>
 					<input
 						type='text'
 						className='modal-inp'
 						onChange={updatePassword}
 						value={password}
 					/>
-          <label className='p-label-transition font-14'>Password (6 to 12 characters)</label>
+					<label className='p-label-transition font-14'>
+						Password (6 to 12 characters)
+					</label>
 					<input
 						type='text'
 						className='modal-inp'
 						onChange={updateRepeatPassword}
 						value={repeatPassword}
-
 					/>
-          <label className='cp-label-transition font-14'>Confirm Password</label>
+					<label className='cp-label-transition font-14'>
+						Confirm Password
+					</label>
 					<div className='join-now-button-div'>
-						<button id='join-now' className='font-14' type='submit'>Join Now</button>
+						<button id='join-now' className='font-14' type='submit'>
+							Join Now
+						</button>
 					</div>
 				</div>
 			</form>

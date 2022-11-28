@@ -14,9 +14,10 @@ reviews_routes = Blueprint('reviews', __name__)
 
 def get_reviews():
     reviews = Review.query.all()
+    # print('this is review >>>>>', reviews)
     if reviews:
 
-        return [review.to_dict() for review in reviews], 200
+        return {'retrieve_all_reviews':[review.to_dict() for review in reviews]}, 200
     return {
         'errors': "review not found",
         'status code': 404
@@ -34,7 +35,7 @@ def get_prod_reviews(prod_id):
     # reviews = Review.query.filter_by(prod_id=int(prod_id))
     if reviews:
 
-        return [review.to_dict() for review in reviews], 200
+        return {'retrieve_prod_reviews':[review.to_dict() for review in reviews]}, 200
     return {
         'errors': "review not found",
         'status code': 404
