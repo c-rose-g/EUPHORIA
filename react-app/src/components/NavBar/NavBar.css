@@ -1,0 +1,122 @@
+.navBar-container {
+  /* border: 1px solid blue; */
+  /* height: 100vh; */
+}
+
+/* ******************* DEALS HEADER *********************** */
+.nav-deals {
+  /* border: 1px solid red; */
+  background-color: rgb(201, 156, 79);
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding-left: 16px;
+}
+
+.nav-deals-text {
+  /* border:1px solid blue; */
+  width: 500px;
+  justify-content: center;
+}
+
+.deals-img {
+  height: 41px;
+  width: 50px;
+}
+
+/* ********************* NAVBAR **************************** */
+.nav-box {
+  /* border: 1px solid purple; */
+  border-bottom: 1px solid rgb(238, 238, 238);
+  ;
+  /* display: flex;
+  height: 80px;
+  padding: 0 16px; */
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  /* margin-left: -16px; */
+  /* padding-right: 16px; */
+  /* margin-right: -16px; */
+  height: 80px;
+  gap: 80px;
+  justify-content: space-between;
+  padding-right: 16px;
+}
+
+.nav-logo {
+  /* padding-top: 16px;
+  padding-bottom: 16px; */
+  width: 125px;
+  text-decoration: none;
+
+}
+
+.nav-search {
+  width: 510px;
+  /* border: 1px solid black; */
+}
+
+/* *********************** USER **********************/
+.acct-buttons {
+  /* height: 80px; */
+  display: flex;
+  width: 219px;
+  /* border: 1px solid blue; */
+  /* grid-gap: 26px; */
+  gap: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-acct-img {
+  /* border: 1px solid purple; */
+  /* height: 20px; */
+  width: 38px;
+}
+
+.nav-acct-img img :hover {
+  width: 32px;
+  object-fit: cover;
+}
+
+#user-space-text {
+  display: flex;
+  background-color: white;
+}
+
+.nav-sign-text {
+  /* border: 1px solid red; */
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.emoji-button {
+  /* background-color: purple; */
+  font-size: 30px;
+  color: black;
+}
+
+/* ********************* DROP DOWN ********************** */
+.profile-dropdown-signin {
+  z-index: 1;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid grey;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  position: absolute;
+  font-weight: normal;
+  font-style: normal;
+  font-size: smaller;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+  height: 300px;
+}

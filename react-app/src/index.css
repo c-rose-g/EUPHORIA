@@ -1,1 +1,53 @@
 /* TODO Add site wide styles */
+*{
+  margin:0;
+  border: border-box;
+  border-width: 0;
+}
+.font{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  color:black;
+  text-decoration: none;
+
+}
+.font-11{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size: 11px;
+  color:black;
+  text-decoration: none;
+}
+.font-12{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size: 12px;
+  color:black;
+  text-decoration: none;
+
+}
+.font-14{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size:14px;
+  color:black;
+  text-decoration: none;
+
+}
+
+.font-16{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size:16px;
+  color:black;
+  text-decoration: none;
+
+}
+.font-18{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size:18px;
+  color:black;
+  text-decoration: none;
+
+}
+.font-20{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size:20px;
+  color:black;
+  text-decoration: none;
+}

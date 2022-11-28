@@ -24,7 +24,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -40,8 +40,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -70,25 +70,30 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password) => async (dispatch) => {
+export const signUp = (payload) => async (dispatch) => {
+
+  const {first_name, last_name, email, password} = payload
+  // console.log('payload ', payload)
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username,
+      first_name,
+      last_name,
       email,
       password,
     }),
   });
-  
+  // console.log('response from signup thunk', response)
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
+    // console.log('this is data from sign up thunk', data)
     if (data.errors) {
       return data.errors;
     }
@@ -97,7 +102,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
   }
 }
 
-export default function reducer(state = initialState, action) {
+export default function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }

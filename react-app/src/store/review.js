@@ -1,4 +1,4 @@
-import { loadReviewsBySpotThunk } from "../../../../Airbnb-API/Bnbaire/frontend/src/store/reviews"
+
 
 /********************TYPES******************************* */
 const CREATE_REVIEW = 'reviews/CREATE'
@@ -87,7 +87,7 @@ export const deleteReview = review => async dispatch => {
 /************************REDUCER************************** */
 const initialState = {reviews:{}}
 
-const reviewReducer = (state = initialState, action) => {
+export const reviewsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case CREATE_REVIEW:

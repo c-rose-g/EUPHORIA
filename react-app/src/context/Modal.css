@@ -1,0 +1,229 @@
+#modal {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border:1px solid blue */
+}
+
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #0a0a0b;
+  opacity: 80%;
+}
+
+.modal-content {
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  height: 488px;
+  width: 472px;
+  object-fit: contain;
+  /* border: 10px solid blue; */
+}
+
+/* ******************* SIGN UP MODAL *********************** */
+.modal-form-container {
+  /* border: 10px solid blue; */
+  padding: 16px 16px 32px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+
+}
+
+#signup-title-div {
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  min-height: 30px;
+  text-align: center;
+  padding: 16px 37px;
+  display: block;
+}
+
+/* .first-last-names{
+  border:1px solid pink;
+  display: flex;
+  gap:20px;
+} */
+
+.modal-form {
+  /* border: 1px solid black; */
+  height: 452px;
+}
+
+.inputs-row-div {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  margin-top: 10px;
+  justify-content: space-around;
+  /* border:1px solid green; */
+  /* border-color: rgb(238, 238, 238, 238); */
+}
+
+.inputs-columns-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  margin-top: 10px;
+  justify-content: space-around;
+  /* border: 1px solid blue; */
+  height: 260px;
+  /* grid-gap: 20px; */
+  gap: 20px;
+  /* padding-top: 12px; */
+}
+
+.label-inp-div {
+  position: relative;
+  display: flex;
+  flex: 1;
+  margin: -1;
+}
+
+.fn-label-transition {
+  position: absolute;
+  color: rgb(102, 102, 102);
+  top: 103px;
+  left: 33px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  transition-duration: 0.2s;
+  line-height: 1.5;
+}
+
+.ln-label-transition {
+  position: absolute;
+  color: rgb(102, 102, 102);
+  top: 13px;
+  left: 16px;
+  right: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  transition-duration: 0.2s;
+  line-height: 1.5;
+}
+
+.ea-label-transition {
+  position: absolute;
+  color: rgb(102, 102, 102);
+  top: 174px;
+  left: 35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  transition-duration: 0.2s;
+  line-height: 1.5;
+}
+
+.p-label-transition {
+  position: absolute;
+  color: rgb(102, 102, 102);
+  top: 245px;
+  left: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  transition-duration: 0.2s;
+  line-height: 1.5;
+}
+
+.cp-label-transition {
+  position: absolute;
+  color: rgb(102, 102, 102);
+  top: 315px;
+  left: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  transition-duration: 0.2s;
+  line-height: 1.5;
+}
+
+/* .label-transition:focus{
+  outline: 0;
+  transition-duration: 0.2s;
+  line-height: .5;
+  border: 1px solid green;
+} */
+.modal-inp-row{
+  display: flex;
+  align-items: center;
+  flex: 1 1 0%;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 1px;
+  padding-left: 16px;
+  padding-right: 12px;
+  color: rgb(0, 0, 0);
+  border-width: .1px;
+  border-color: rgb(239, 239, 239);
+  /* border-color: rgb(204, 204, 204); */
+  box-shadow: none;
+  border-radius: 4px;
+  height: 44px;
+}
+.modal-inp {
+  display: flex;
+  align-items: center;
+  flex: 1 1 0%;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 1px;
+  padding-left: 16px;
+  padding-right: 12px;
+  color: rgb(0, 0, 0);
+  border-width: .1px;
+  border-color: rgb(239, 239, 239);
+  /* border-color: rgb(204, 204, 204); */
+  box-shadow: none;
+  border-radius: 4px;
+  height: 44px;
+
+}
+.join-now-button-div{
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+}
+#join-now {
+  height: 44px;
+  width:158px;
+  padding: 0.25em 1.125em;
+  border-width: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border-color: transparent;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 99999px;
+  appearance: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  transition: background-color 0.2s ease 0s;
+}
