@@ -70,28 +70,30 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (firstName, lastName, email, password) => async (dispatch) => {
-  console.log('ijthoaeitjio',firstName,lastName,email,password)
+export const signUp = (payload) => async (dispatch) => {
+
+  const {first_name, last_name, email, password} = payload
+  // console.log('payload ', payload)
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       email,
       password,
     }),
   });
-  console.log('response from signup thunk', response)
+  // console.log('response from signup thunk', response)
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    console.log('this is data from sign up thunk', data)
+    // console.log('this is data from sign up thunk', data)
     if (data.errors) {
       return data.errors;
     }

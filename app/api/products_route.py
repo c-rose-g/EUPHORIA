@@ -34,12 +34,24 @@ def get_products():
 @products_routes.route('/<int:prod_id>')
 # @login_required
 def get_one_product(prod_id):
-    products = Product.query.filter_by(id=int(prod_id))
+    # products = Product.query.filter_by(id=int(prod_id))
+    product = Product.query.get(prod_id)
+    # print('this is product', product)
     # products = Product.query.filter_by(prod_id=int(prod_id))
-    if products:
-
-        return [product.to_dict() for product in products], 200
+    if product:
+        # one_product = [product.to_dict() for product in products]
+        # return one_product
+        # return json.dumps({'retrieve_product':one_product})
+        return product.to_dict(), 200
     return {
         'errors': "product not found",
         'status code': 404
     }, 404
+
+# ****************** GET ALL PRODUCTS BY CATEGORY ***************************
+
+@products_routes.route('/<int:prod_category>')
+def get_prod_category(prod_category):
+    category = Product.query.get(prod_category)
+    if category:
+        return 

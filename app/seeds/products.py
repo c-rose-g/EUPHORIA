@@ -245,6 +245,7 @@ def seed_products():
     prod2 = Product(
         product_name="Soft Pinch Liquid Blush",
         product_brand='Rare Beauty by Selena Gomez',
+        product_category='makeup',
         product_price=20.00,
         product_quantity=100,
         product_description="A weightless, long-lasting liquid blush that blends and builds beautifully for a soft, healthy flush. Available in matte and dewy finishes.",
@@ -255,6 +256,7 @@ def seed_products():
     prod3 = Product(
         product_name="Lip Glow Oil",
         product_brand='Dior',
+        product_category='makeup',
         product_price=38.00,
         product_quantity=100,
         product_description="A nurturing, glossy lip oil that protects and enhances the lips, bringing out their natural color.",
@@ -265,6 +267,7 @@ def seed_products():
     prod4 = Product(
         product_brand='MAKEUP BY MARIO',
         product_name="Ethereal Eyes Eyeshadow Palette",
+        product_category='makeup',
         product_price=68.00,
         product_quantity=100,
         product_description="A multi-finish eyeshadow palette with 12 neutral, translucent shades in sueded matte, natural metallic, and glossy shimmer finishes",
@@ -277,6 +280,7 @@ def seed_products():
     prod5 = Product(
         product_brand='Sol de Janeiro',
         product_name="Brazilian Crush Cheirosa '62 Bum Bum Hair & Body Fragrance Mist",
+        product_category='skincare',
         product_price=35.00,
         product_quantity=100,
         product_description="A body fragrance mist, bursting with an alluring pistachio and salted caramel scent, to be used on body, hair, and lingerie.",
@@ -287,6 +291,7 @@ def seed_products():
     prod6 = Product(
         product_brand='Tatcha',
         product_name="The Dewy Skin Cream Plumping & Hydrating Moisturizer",
+        product_category='skincare',
         product_price=82.00,
         product_quantity=100,
         product_description="A rich cream that feeds skin with plumping hydration and antioxidant-packed Japanese purple rice for a dewy, healthy glow.",
@@ -297,6 +302,7 @@ def seed_products():
     prod7 = Product(
         product_brand='The Ordinary',
         product_name="Niacinamide 10% + Zinc 1% Oil Control Serum",
+        product_category='skincare',
         product_price=11.70,
         product_quantity=100,
         product_description="A high-strength vitamin-and-mineral blemish formula with 10 percent pure niacinamide and one percent zinc PCA.",
@@ -307,6 +313,7 @@ def seed_products():
     prod8 = Product(
         product_brand="Paula's Choice",
         product_name="Skin Perfecting 2% BHA Liquid Exfoliant",
+        product_category='skincare',
         product_price=49.00,
         product_quantity=100,
         product_description="A daily leave-on exfoliant with two percent salicylic acid to sweep away dead skin cells, unclog pores, and visibly smooth wrinkles&mdash;practically overnight.",
@@ -318,6 +325,7 @@ def seed_products():
     prod9 = Product(
         product_brand="Dyson",
         product_name="Airwrap™ Multi-Styler Complete Long",
+        product_category='hair',
         product_price=599.00,
         product_quantity=100,
         product_description="A multi-styler curl, shape, smooth, and hide flyaways with no extreme heat&mdash;re-engineered barrels that now curl in both directions, brushes for straighter styles, and a new Coanda Smoothing dryer harness enhanced Coanda airflow for faster, better, easier styling.",
@@ -328,6 +336,7 @@ def seed_products():
     prod10 = Product(
         product_brand="Kiehl's Since 1851",
         product_name="Powerful-Strength Vitamin C Serum",
+        product_category='hair',
         product_price=110.00,
         product_quantity=100,
         product_description="A potent vitamin C serum formulated with 12.5 percent vitamin C and hyaluronic acid.",
@@ -338,6 +347,7 @@ def seed_products():
     prod11 = Product(
         product_brand="T3",
         product_name="Twirl Trio Interchangeable Clip Curling Iron Set: 1”, 1.25”, 1.5",
+        product_category='hair',
         product_price=335.00,
         product_quantity=100,
         product_description="A curling iron set to create beautiful waves. ",
@@ -348,6 +358,7 @@ def seed_products():
     prod12 = Product(
         product_brand="Olaplex",
         product_name="No. 5 Bond Maintenance™ Conditioner",
+        product_category='hair',
         product_price=30.00,
         product_quantity=100,
         product_description="A nourishing and reparative hydrating conditioner for soft, shiny hair with perfect slip to prevent tangles. Patented OLAPLEX Bond Building Technology™ supports bond repair to protect from daily damage, frizz, and split ends.",
@@ -359,6 +370,7 @@ def seed_products():
     prod13 = Product(
         product_brand="Carolina Herrera",
         product_name="Good Girl Eau de Parfum",
+        product_category='fragrance',
         product_price=175.00,
         product_quantity=100,
         product_description="A sensual and evocative fragrance with notes of tuberose, jasmine, and tonka bean.",
@@ -369,6 +381,7 @@ def seed_products():
     prod14 = Product(
         product_brand="TOM FORD",
         product_name="Ombré Leather Eau de Parfum",
+        product_category='fragrance',
         product_price=210.00,
         product_quantity=100,
         product_description="A warm, spicy fragrance with notes of leather, patchouli, and vetiver.",
@@ -379,6 +392,7 @@ def seed_products():
     prod15 = Product(
         product_brand="CHANEL",
         product_name="COCO MADEMOISELLE Eau de Parfum",
+        product_category='fragrance',
         product_price=146.00,
         product_quantity=100,
         product_description="Irresistibly sexy, irrepressibly spirited. A sparkling Oriental fragrance that recalls a daring young Coco Chanel. An absolutely modern composition with a strong yet surprisingly fresh character.",
@@ -390,6 +404,7 @@ def seed_products():
     prod16 = Product(
         product_brand="Viktor&Rolf",
         product_name="Flowerbomb",
+        product_category='fragrance',
         product_price=220.00,
         product_quantity=100,
         product_description="A warm floral fragrance with intoxicating notes of cattleya, jasmine, and rose.",

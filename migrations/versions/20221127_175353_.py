@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: aee74e2420bd
+Revision ID: 7385e1a78bf8
 Revises: 
-Create Date: 2022-11-25 20:19:17.241408
+Create Date: 2022-11-27 17:53:53.859728
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'aee74e2420bd'
+revision = '7385e1a78bf8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,6 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('product_name', sa.String(length=255), nullable=True),
     sa.Column('product_brand', sa.String(length=255), nullable=True),
+    sa.Column('product_category', sa.String(length=255), nullable=True),
     sa.Column('product_price', sa.Numeric(precision=10, scale=2), nullable=True),
     sa.Column('product_quantity', sa.Integer(), nullable=True),
     sa.Column('product_description', sa.String(), nullable=True),
@@ -33,14 +34,12 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('first_name', sa.String(length=10), nullable=False),
     sa.Column('last_name', sa.String(length=10), nullable=False),
-    sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('email'),
-    sa.UniqueConstraint('username')
+    sa.UniqueConstraint('email')
     )
     op.create_table('product_photos',
     sa.Column('id', sa.Integer(), nullable=False),

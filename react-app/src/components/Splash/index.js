@@ -12,12 +12,13 @@ function Splash() {
 		Object.values(state.products.allProducts)
 	);
 
-	console.log('products use selector', products);
+	// console.log('products use selector', products);
 
 	useEffect(() => {
 		// setIsLoaded(true);
-		dispatch(allProducts()).then(() => setIsLoaded(true))
-		// dispatch(productDetails(prodId))
+		dispatch(allProducts())
+		.then(() => setIsLoaded(true))
+		dispatch(productDetails(1))
 	}, [dispatch]);
 
 	return (
@@ -62,19 +63,19 @@ function Splash() {
 							</NavLink>
 						</button>
 						<div className='splash-product-cards-container'>
-						<NavLink to={`/products/0`} >
-							<div className='upper-half-product-card'>
-								<img
-									className='splash-product-img'
-									src={products[firstIdx].product_photos[0].prod_photo}
-									alt='prod 1'
-								/>
-							</div>
-							<div className='lower-half-product-text-div'>
-								{products[firstIdx].product_brand}
-								{products[firstIdx].product_name}
-							</div>
-						</NavLink>
+							<NavLink to={`/products/${1}`}>
+								<div className='upper-half-product-card'>
+									<img
+										className='splash-product-img'
+										src={products[firstIdx].product_photos[0].prod_photo}
+										alt='prod 1'
+									/>
+								</div>
+								<div className='lower-half-product-text-div'>
+									{products[firstIdx].product_brand}
+									{products[firstIdx].product_name}
+								</div>
+							</NavLink>
 						</div>
 						<div className='splash-product-cards-container'>
 							<div className='upper-half-product-card'>

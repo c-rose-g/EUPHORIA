@@ -28,13 +28,15 @@ export const allProducts = () => async dispatch =>{
   }
 }
 
-export const productDetails = (product) => async dispatch =>{
-  const response = await fetch(`/api/products/${product.id}`, {
+export const productDetails = (prod_id) => async dispatch =>{
+  // console.log('product in thunk', product)
+  const response = await fetch(`/api/products/${prod_id}`, {
     headers:{'Content-Type': 'application/json'}
   })
-
+  console.log('response in product details thunk', response)
   if (response.ok){
     const loadProductDetails = await response.json()
+    console.log('load product details', loadProductDetails)
     dispatch(loadProductDetailsAction(loadProductDetails))
     return loadProductDetails
   }
@@ -49,14 +51,23 @@ export const productsReducer = (state = initialState, action) =>{
     case LOAD_PRODUCTS :
       newState = {... state}
       newState.allProducts = {}
-      // console.log('action in load products', action)
 
       action.products.retrieve_products.forEach(product => {
         newState.allProducts[product.id] = product
       });
       return newState
     case LOAD_PRODUCT_DETAILS:
-      newState.allProducts = {...state.allProducts, [action.oneProduct.id]:action.oneProduct}
+      // newState = {...state.allProducts, [action.product.id]:action.product}
+
+      // console.log('new state in products reducer', newState)
+      // console.log('action on reducer', action)
+      newState = {...state}
+      newState.oneProduct = {...action.product}
+
+      // action.product.retrieve_product.forEach(product => {
+      //   newState.oneProduct[product.id] = product
+      // })
+      // newState.oneProduct[product.id] = {...action.product}
       return newState;
     default:
       return state
