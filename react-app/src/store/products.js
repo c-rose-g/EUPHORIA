@@ -1,7 +1,7 @@
 /********************TYPES******************* */
 const LOAD_PRODUCTS = 'products/LOADALL'
 const LOAD_PRODUCT_DETAILS = 'products/LOADPRODUCTDETAILS'
-
+const LOAD_PRODUCT_CATEGORIES = 'products/LOADPRODUCTCATEGORIES'
 /*******************ACTION CREATORS*********** */
 const loadProductsAction = (products) =>({
   type:LOAD_PRODUCTS,
@@ -11,6 +11,11 @@ const loadProductsAction = (products) =>({
 const loadProductDetailsAction = (product) =>({
   type: LOAD_PRODUCT_DETAILS,
   product
+})
+
+const loadProductCategoriesAction = (category) =>({
+  type:LOAD_PRODUCT_CATEGORIES,
+  category
 })
 /*********************THUNKS********************** */
 
@@ -33,12 +38,24 @@ export const productDetails = (prod_id) => async dispatch =>{
   const response = await fetch(`/api/products/${prod_id}`, {
     headers:{'Content-Type': 'application/json'}
   })
-  console.log('response in product details thunk', response)
+  // console.log('response in product details thunk', response)
   if (response.ok){
     const loadProductDetails = await response.json()
-    console.log('load product details', loadProductDetails)
+    // console.log('load product details', loadProductDetails)
     dispatch(loadProductDetailsAction(loadProductDetails))
     return loadProductDetails
+  }
+}
+
+export const productCategories = (prod_category) => async dispatch =>{
+  const response = await fetch(`/api/products/categories/${prod_category}`, {
+    headers:{'Content-Type': 'application/json'}
+  })
+
+  if (response.ok){
+    const prodCategories = await response.json()
+    dispatch(loadProductCategoriesAction(prodCategories))
+    return prodCategories
   }
 }
 /************************REDUCER************************** */
@@ -69,6 +86,15 @@ export const productsReducer = (state = initialState, action) =>{
       // })
       // newState.oneProduct[product.id] = {...action.product}
       return newState;
+    case LOAD_PRODUCT_CATEGORIES:
+
+      newState = {... state}
+      newState.allProducts = {}
+      console.log('action from the products reducer >>>>>', action.category)
+      action.category.retrieve_categories.forEach(cat => {
+        newState.allProducts[cat.id] = cat
+      })
+      return newState
     default:
       return state
   }

@@ -19,7 +19,7 @@ def get_products():
     if products:
         # return [product.to_dict() for product in products], 200
         product = [product.to_dict() for product in products]
-        return json.dumps({'retrieve_products':product})
+        return json.dumps({'retrieve_products': product})
         # return json.dumps(product)
         # return
     return {
@@ -48,10 +48,20 @@ def get_one_product(prod_id):
         'status code': 404
     }, 404
 
-# ****************** GET ALL PRODUCTS BY CATEGORY ***************************
+# # ****************** GET ALL PRODUCTS BY CATEGORY NAME ***************************
 
-@products_routes.route('/<int:prod_category>')
+# # /api/products/categories/makeup
+@products_routes.route('/categories/<prod_category>')
 def get_prod_category(prod_category):
-    category = Product.query.get(prod_category)
+    # filter_by(model column name, <name thingy>)
+    category = Product.query.filter_by(product_category=prod_category).all()
+    # print('category >>>>>>.', category)
+
     if category:
-        return 
+        # return json.dumps({'prod_category':category})
+        return {'retrieve_categories':[cat.to_dict() for cat in category]}, 200
+        # return 'hello'
+    return {
+        'errors': 'category not found',
+        'status code': 404
+    }, 404

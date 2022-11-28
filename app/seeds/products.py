@@ -234,6 +234,7 @@ from app.models import db, Product, environment, SCHEMA
 def seed_products():
     prod1 = Product(
         product_name="Born This Way The Natural Nudes Eyeshadow Palette",
+        product_category='makeup',
         product_brand='Too Faced',
         product_price=52.00,
         product_quantity=100,

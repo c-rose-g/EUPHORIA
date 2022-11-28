@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Splash from './components/Splash';
 import ProductDetails from './components/ProductDetails';
+import ProductCategory from './components/ProductCategory';
 import { authenticate } from './store/session';
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
         <Route path='/products' exact={true}>
           <Splash/>
         </Route>
+				<Route path='/products/categories/:prod_category' exact={true}>
+					<ProductCategory/>
+				</Route>
 				<Route path='/products/:productId' exact={true}>
 				<ProductDetails />
 				</Route>
