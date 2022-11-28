@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 // import SignUpModal from '../SignUpModal';
 import ProfileButton from '../ProfileButton/ProfileButton';
 import deals_banner from '../../Images/euphoria-splash-deals-banner.png';
-import user from '../../Images/euphora-sign-in.png';
+// import user from '../../Images/euphora-sign-in.png';
 import './NavBar.css';
 import { useSelector } from 'react-redux';
 const NavBar = () => {
-	const [openMenu, setOpenMenu] = useState(false);
+	// const [openMenu, setOpenMenu] = useState(false);
 	// const [loaded, isLoaded] = useState(true)
 	const sessionUser = useSelector(state => state.session)
 	// console.log('session user', sessionUser)

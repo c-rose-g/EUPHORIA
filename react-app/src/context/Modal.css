@@ -110,7 +110,23 @@
   line-height: 1.5;
 }
 
-.ln-label-transition {
+.ln-label-transition{
+  display: flex;
+    align-items: center;
+    flex: 1 1 0%;
+    font-family: inherit;
+    font-size: 14px;
+    margin: 1px;
+    padding-left: 16px;
+    padding-right: 12px;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    border-width: 0px;
+    box-shadow: none;
+    appearance: none;
+    padding-top: 14px;
+}
+.ln-label-nontransition {
   position: absolute;
   color: rgb(102, 102, 102);
   top: 13px;
@@ -123,6 +139,19 @@
   transition-duration: 0.2s;
   line-height: 1.5;
 }
+/* display: flex;
+    align-items: center;
+    flex: 1 1 0%;
+    font-family: inherit;
+    font-size: 14px;
+    margin: 1px;
+    padding-left: 16px;
+    padding-right: 12px;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    border-width: 0px;
+    box-shadow: none;
+    appearance: none; */
 
 .ea-label-transition {
   position: absolute;

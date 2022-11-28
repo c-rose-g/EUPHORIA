@@ -1,10 +1,10 @@
 
 
 /********************TYPES******************************* */
-const CREATE_REVIEW = 'reviews/CREATE'
 // not logged in
 const LOAD_REVIEWS = 'reviews/LOAD'
 // logged in
+const CREATE_REVIEW = 'reviews/CREATE'
 const UPDATE_REVIEW = 'reviews/UPDATE'
 const DELETE_REVIEW = 'reviews/DELETE'
 
@@ -19,6 +19,8 @@ const loadReviewsAction = (reviews) =>({
   type: LOAD_REVIEWS,
   reviews
 })
+
+
 
 const updateReviewAction = (review) =>({
   type:UPDATE_REVIEW,
@@ -45,9 +47,9 @@ export const createReview = (payload) => async dispatch =>{
   }
 }
 // am I using the right url?
-export const loadReviews = (reviews) => async dispatch => {
+export const loadReviews = (prod_id) => async dispatch => {
   // const {productId, review_msg} = payload
-  const response = await fetch(`/api/reviews/${reviews.prodId}`)
+  const response = await fetch(`/api/reviews/${prod_id}`)
   if (response.ok){
     const review = await response.json()
     dispatch(loadReviewsAction(review))
@@ -96,7 +98,7 @@ export const reviewsReducer = (state = initialState, action) => {
 
     case LOAD_REVIEWS:{
       newState = {...state, reviews:{}}
-      action.reviews.forEach(review => {
+      action.reviews.retrieve_prod_reviews.forEach(review => {
         newState.reviews[review.id] = review
       });
       return newState
