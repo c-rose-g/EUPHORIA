@@ -24,5 +24,10 @@ class Review(db.Model):
       'id':self.id,
       'review_msg':self.review_msg,
       'prod_id':self.prod_id,
-      'user_id':self.user_id,
+      'user_id':self.users_r.to_dict()
+      }
+
+  def user_review_info_to_dict(self):
+    return{
+      'user_id':self.users_r.to_dict(),
       }

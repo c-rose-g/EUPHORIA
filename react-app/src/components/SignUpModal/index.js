@@ -24,8 +24,8 @@ const SignUpModal = ({ setShowSignUpModal }) => {
 	const onSignUp = async (e) => {
 		e.preventDefault();
 		if (password === repeatPassword) {
-			console.log('this is first name ', firstName);
-			console.log('this is last name ', lastName);
+			// console.log('this is first name ', firstName);
+			// console.log('this is last name ', lastName);
 
 			const data = await dispatch(
 				signUp({

@@ -54,7 +54,7 @@ def get_one_product(prod_id):
 @products_routes.route('/categories/<prod_category>')
 def get_prod_category(prod_category):
     # filter_by(model column name, <name thingy>)
-    category = Product.query.filter_by(product_category=prod_category).all()
+    category = Product.query.filter_by(product_category=prod_category).all() 
     # print('category >>>>>>.', category)
 
     if category:

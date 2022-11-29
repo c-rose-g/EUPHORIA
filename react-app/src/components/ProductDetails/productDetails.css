@@ -1,0 +1,15 @@
+.product-details-container{
+  display: flex;
+  justify-content: space-evenly;
+  /* padding-top: 40px; */
+}
+.product-details-img{
+  margin-top:50px;
+}
+.product-details-info-container{
+  margin-top: 55px;
+
+}
+.product-details{
+
+}

@@ -10,6 +10,7 @@ import User from './components/User';
 import Splash from './components/Splash';
 import ProductDetails from './components/ProductDetails';
 import ProductCategory from './components/ProductCategory';
+import CreateReviewForm from './components/CreateReviewForm';
 import { authenticate } from './store/session';
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 
 	if (!loaded) {
 		return null;
-	} 
+	}
 
 	return (
 		<BrowserRouter>
@@ -56,6 +57,9 @@ function App() {
 				<Route path='/' exact={true}>
 					<Splash />
 				</Route>
+				<ProtectedRoute path='/reviews/:product_id/new' exact={true}>
+				<CreateReviewForm/>
+				</ProtectedRoute>
 			</Switch>
 			{/* )} */}
 		</BrowserRouter>
