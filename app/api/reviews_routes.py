@@ -2,7 +2,8 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 
 from app.models import Review, db
-from ..forms.review_form import New_review
+# from ..forms.review_form import NewReview
+from ..forms.review_form import NewReview
 from .auth_routes import validation_errors_to_error_messages
 
 reviews_routes = Blueprint('reviews', __name__)
@@ -23,6 +24,22 @@ def get_reviews():
         'status code': 404
     }, 404
 
+# ****************** GET ALL REVIEWS BY USERS BY PRODUCT ID ***************************
+# /api/reviews/:userId/:reviewId
+
+
+@reviews_routes.route('/<int:prod_id>/users')
+@login_required
+def get_review_by_user(prod_id):
+    reviews = Review.query.filter_by(id=int(prod_id))
+
+    if reviews:
+
+        return {'retrieve_user_reviews':[review.user_review_info_to_dict() for review in reviews]}, 200
+    return {
+        'errors': "user reviews not found",
+        'status code': 404
+    }, 404
 
 # ****************** GET ALL REVIEWS BY PRODUCT ID ***************************
 # /api/reviews/:productId
@@ -41,22 +58,7 @@ def get_prod_reviews(prod_id):
         'status code': 404
     }, 404
 
-# ****************** GET ALL REVIEWS BY USER ID *************************** (MOVE TO USERS_ROUTES)
-# /api/reviews/:userId/:reviewId
 
-
-@reviews_routes.route('/<int:user_id>/reviews')
-@login_required
-def get_review_by_user(user_id):
-    reviews = Review.query.filter_by(id=int(user_id))
-
-    if reviews:
-
-        return [review.to_dict() for review in reviews], 200
-    return {
-        'errors': "review not found",
-        'status code': 404
-    }, 404
 
 
 # ****************** CREATE A REVIEW ***********************************
@@ -66,19 +68,23 @@ def get_review_by_user(user_id):
 @reviews_routes.route('/<int:prod_id>/new', methods=['POST'])
 @login_required
 def create_review(prod_id):
-    form = New_review()
+    form = NewReview()
+    data = form.data
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('data in backend route', data)
 
     if form.validate_on_submit():
         review = Review()
+        # print('review in backend route >>>>>>', review)
         form.populate_obj(review)
+        # review.review_msg = form.data['review_msg']
         review.prod_id = int(prod_id)
         review.user_id = int(current_user.id)
         db.session.add(review)
         db.session.commit()
-        return review.to_dict()
+    return review.to_dict()
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 # ****************** UPDATE A REVIEW BY REVIEW ID ***************************
 # /api/reviews/:reviewId

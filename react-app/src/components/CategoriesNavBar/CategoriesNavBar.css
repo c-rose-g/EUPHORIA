@@ -1,0 +1,31 @@
+.categories-navbar-container{
+  border-bottom: 1px solid rgb(238, 238, 238);
+  display: flex;
+  justify-content: center;
+  padding: 8px 8px 8px 0px;
+  text-align: center;
+}
+.categories-map-container{
+
+}
+
+.category-name{
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 6px 0px;
+  transition: color 0.2s ease 0s;
+  font-size: 12px;
+  min-height: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+  line-height: 1.25;
+  border-radius: 4px;
+  margin-left: 8px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.remove-underline{
+  text-decoration: none;
+}
