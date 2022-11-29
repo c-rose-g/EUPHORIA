@@ -10,14 +10,16 @@ import './productDetails.css';
 const ProductDetails = () => {
 	const dispatch = useDispatch();
 	const { productId } = useParams();
+	const user = useSelector(state => state.session.user)
+	console.log('this is user >>>>.', user)
 	const prodReviews = useSelector((state) =>
 		Object.values(state.reviews.reviews)
 	);
-	// console.log('product reviews', prodReviews)
+	console.log('product reviews', prodReviews)
 	const userReviews = useSelector((state) =>
 		Object.values(state.reviews.userReviews)
 	);
-	console.log('user reviews', userReviews);
+	// console.log('user reviews', userReviews);
 	const oneProd = useSelector((state) => state.products.oneProduct);
 	const [loaded, isLoaded] = useState(false);
 	// const productInfo = Object.values(oneProd);
@@ -90,7 +92,17 @@ const ProductDetails = () => {
 								</div>
 								<div className='product-details-column-mid'>
 									{prodReviews.map((obj) => {
-										return <div key={obj.id}> {obj.review_msg}</div>;
+										return (<div key={obj.id}>
+
+										<div>
+										{obj.review_msg}
+										</div>
+										<div>
+											{user && user.id === obj.user_id.id ? (
+												<button> update your review</button>
+											) : null }
+										</div>
+										</div>);
 									})}
 								</div>
 								<div className='product-details-column-right'>

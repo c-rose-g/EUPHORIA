@@ -12,8 +12,8 @@ class PurchaseHistory(db.Model):
   prod_quantity = db.Column(db.Integer)
   date_purchased = db.Column(db.Integer)
 
-  prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')), primary_key=True)
-  user_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('users.id')), primary_key=True)
+  prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
+  user_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('users.id')))
 
   created_at = db.Column(db.DateTime(), nullable=False,server_default=func.now())
   updated_at = db.Column(db.DateTime(), nullable=False,onupdate=func.now(), default=func.now())
@@ -21,7 +21,7 @@ class PurchaseHistory(db.Model):
   products_ph = db.relationship('Product', back_populates='purchase_history_p')
   # users
   users_ph = db.relationship('User', back_populates='purchase_history_u')
-  
+
   def to_dict(self):
     return{
       'id':self.id,
