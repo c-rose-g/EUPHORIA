@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8061465f88ad
+Revision ID: 94f5d8f80074
 Revises:
-Create Date: 2022-11-27 20:39:34.990620
+Create Date: 2022-11-29 00:30:05.487776
 
 """
 from alembic import op
@@ -12,7 +12,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '8061465f88ad'
+revision = '94f5d8f80074'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -115,13 +115,13 @@ def upgrade():
     op.create_table('shopping_cart_items',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('shopping_cart_id', sa.Integer(), nullable=True),
-    sa.Column('prod_id', sa.Integer(), nullable=False),
+    sa.Column('prod_id', sa.Integer(), nullable=True),
     sa.Column('prod_quantity', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['prod_id'], ['products.id'], ),
     sa.ForeignKeyConstraint(['shopping_cart_id'], ['shopping_carts.id'], ),
-    sa.PrimaryKeyConstraint('id', 'prod_id')
+    sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
         op.execute(f"ALTER TABLE shopping_cart_items SET SCHEMA {SCHEMA};")
