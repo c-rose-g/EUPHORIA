@@ -91,10 +91,12 @@ def create_review(prod_id):
 
 
 @reviews_routes.route('/<int:review_id>', methods=['PUT'])
+@login_required
 def update_review(review_id):
     review = Review.query.get(review_id)
+    print('ths is review query from backend >>>>>>>>>>>>>>>>>>>>>>>', review)
     if review:
-        form = New_review()
+        form = NewReview()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             form.populate_obj(review)
