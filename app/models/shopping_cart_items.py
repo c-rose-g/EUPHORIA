@@ -8,7 +8,7 @@ class ShoppingCartItem(db.Model):
         __table_args__ = {'schema': SCHEMA}
   id = db.Column(db.Integer, primary_key=True)
   shopping_cart_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('shopping_carts.id')))
-  prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')), primary_key=True)
+  prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
   prod_quantity = db.Column(db.Integer)
 
   created_at = db.Column(db.DateTime(), nullable=False,server_default=func.now())
