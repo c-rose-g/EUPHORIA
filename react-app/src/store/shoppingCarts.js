@@ -16,7 +16,7 @@ const loadUserShoppingCartAction = (shoppingCart) =>({
   shoppingCart
 })
 
-const loadShoppingCartItemsAction = (items) =>({
+const loadItemsAction = (items) =>({
   type: LOAD_ALL_ITEMS,
   items
 })
@@ -45,7 +45,7 @@ export const loadShoppingCarts = () => async dispatch => {
 }
 
 export const loadUserCart = (user_id) => async dispatch =>{
-  const response = await fetch(`/api/backet/${user_id}`,{
+  const response = await fetch(`/api/basket/${user_id}`,{
     headers:{'Content-Type': 'application/json'}
   })
 
@@ -56,7 +56,22 @@ export const loadUserCart = (user_id) => async dispatch =>{
   }
 }
 
-// export const 
+export const loadItems = () => async dispatch =>{
+  const response = await fetch(`/api/items/all`, {
+    headers:{'Content-Type': 'application/json'}
+  })
+
+  if(response.ok){
+    const items = await response.json()
+    dispatch(loadItemsAction(items))
+    return items
+  }
+}
+
+export const addToCart = () => async dispatch =>{
+
+  const response = await fetch(`/api/`)
+}
 /************************REDUCER************************** */
 const initialState = {baskets:{}, basket:{}}
 export const basketReducer = (state = initialState, action) =>{

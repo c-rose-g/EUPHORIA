@@ -17,6 +17,7 @@ class ShoppingCartItem(db.Model):
   shopping_cart_sci = db.relationship('ShoppingCart', back_populates='shopping_cart_items_s')
   # products
   products_sci = db.relationship('Product', back_populates='shopping_cart_items_p')
+
   def to_dict(self):
     return{
       'id':self.id,
@@ -28,12 +29,13 @@ class ShoppingCartItem(db.Model):
   def add_item(self):
     # self.prod_id = self.products_sci.id
     self.prod_quantity = 1
+    db.session.add(self.shopping_cart_id)
     db.session.add(self.prod_id)
     db.session.add(self.prod_quantity)
     db.session.commit()
     return{
       'id':self.id,
-      # 'shopping_cart_id':self.shopping_cart_id,
+      'shopping_cart_id':self.shopping_cart_id,
       'prod_id':self.prod_id,
       'prod_quantity':self.prod_quantity
       }
