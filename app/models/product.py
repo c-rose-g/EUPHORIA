@@ -54,3 +54,5 @@ class Product(db.Model):
             'product_photos': [photo.to_dict() for photo in self.product_photos_p]
             # 'review_id':[review.to_dict() for review in self.reviews_p]
         }
+    def prod_id(self):
+        return self.id 

@@ -26,20 +26,20 @@ class ShoppingCartItem(db.Model):
       'prod_quantity':self.prod_quantity
       }
   def add_item(self):
-
-    self.prod_id = self.products_sci.id
+    # self.prod_id = self.products_sci.id
     self.prod_quantity = 1
     db.session.add(self.prod_id)
     db.session.add(self.prod_quantity)
     db.session.commit()
     return{
       'id':self.id,
-      'shopping_cart_id':self.shopping_cart_id,
+      # 'shopping_cart_id':self.shopping_cart_id,
       'prod_id':self.prod_id,
       'prod_quantity':self.prod_quantity
       }
   def increase_quantity(self):
     # self.prod_quantity = self.prod_quantity + 1
+
     if self.prod_quantity <= 1:
 
       self.prod_quantity = self.prod_quantity + 1
