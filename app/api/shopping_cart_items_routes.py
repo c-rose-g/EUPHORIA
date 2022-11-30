@@ -31,11 +31,11 @@ from product details page, user wants to add item in shopping cart, but shopping
 you need the product id from the params, and you search for the shopping cart
 by using get_empty_shopping_cart. do i decorate the function or save it inside?
 """
-@shopping_cart_items_routes.route('/<int:shopping_cart_item_id>', methods=['POST'])
+@shopping_cart_items_routes.route('/<int:prod_id>', methods=['POST'])
 @login_required
 def add_item(prod_id):
   if current_user.is_authenticated:
-    user_id = current_user.user_id
+    user_id = current_user.id
     user_cart = ShoppingCart.query.filter_by(user_id=user_id).first()
     user_cart_list = [user_cart.to_dict()
                       for user_cart in user_cart.shopping_cart_items_s]
