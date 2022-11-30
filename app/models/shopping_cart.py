@@ -17,5 +17,7 @@ class ShoppingCart(db.Model):
   def to_dict(self):
     return{
       'id':self.id,
-      'prod_id':[item.to_dict() for item in self.shopping_cart_items_s]
+      'user_id':self.user_id,
+      # 'prod_id':{'item':[item.to_dict() for item in self.shopping_cart_items_s]}
+      
       }

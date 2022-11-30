@@ -9,13 +9,14 @@ import './productDetails.css';
 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
-	const { productId } = useParams();
+	// const { productId } = useParams();
+	const {productId} = useParams()
 	const user = useSelector(state => state.session.user)
-	console.log('this is user >>>>.', user)
+	// console.log('this is user >>>>.', user)
 	const prodReviews = useSelector((state) =>
 		Object.values(state.reviews.reviews)
 	);
-	console.log('product reviews', prodReviews)
+	// console.log('product reviews', prodReviews)
 	const userReviews = useSelector((state) =>
 		Object.values(state.reviews.userReviews)
 	);
@@ -30,9 +31,8 @@ const ProductDetails = () => {
 	// console.log('this is product reviews >>>>>', prodReviews)
 
 	useEffect(() => {
-		dispatch(productDetails(1)).then(() => isLoaded(true));
-		dispatch(loadUserReviews(1));
-		dispatch(loadReviews(1));
+		dispatch(productDetails(productId)).then(() => isLoaded(true));
+		dispatch(loadReviews(productId));
 	}, [dispatch]);
 
 	return (
@@ -99,7 +99,9 @@ const ProductDetails = () => {
 										</div>
 										<div>
 											{user && user.id === obj.user_id.id ? (
-												<button> update your review</button>
+												<NavLink to={`/reviews/${obj.id}`} >
+												<button>update your review</button>
+												</NavLink>
 											) : null }
 										</div>
 										</div>);

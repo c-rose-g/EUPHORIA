@@ -21,6 +21,50 @@ class ShoppingCartItem(db.Model):
     return{
       'id':self.id,
       'shopping_cart_id':self.shopping_cart_id,
-      'prod_id':[product.to_dict() for product in self.products_sci],
-      'prod_quantity':self.item_quantity
+      'prod_id':self.prod_id,
+      # 'prod_id':[product.to_dict() for product in self.products_sci],
+      'prod_quantity':self.prod_quantity
       }
+  def add_item(self):
+
+    self.prod_id = self.products_sci.id
+    self.prod_quantity = 1
+    db.session.add(self.prod_id)
+    db.session.add(self.prod_quantity)
+    db.session.commit()
+    return{
+      'id':self.id,
+      'shopping_cart_id':self.shopping_cart_id,
+      'prod_id':self.prod_id,
+      'prod_quantity':self.prod_quantity
+      }
+  def increase_quantity(self):
+    # self.prod_quantity = self.prod_quantity + 1
+    if self.prod_quantity <= 1:
+
+      self.prod_quantity = self.prod_quantity + 1
+      db.session.commit()
+    return{
+      'id':self.id,
+      'shopping_cart_id':self.shopping_cart_id,
+      'prod_quantity':self.prod_quantity
+      }
+  def decrease_quantity(self):
+    if self.prod_quantity > 1:
+      self.prod_quantity = self.prod_quantity -1
+      db.session.commit()
+      return{
+        'id': self.id,
+        'shopping_cart_id': self.shopping_cart_id,
+        'prod_quantity': self.prod_quantity
+          }
+  def remove_quantity(self):
+    if self.prod_quantity == 1:
+      self.prod_quantity = 0
+      db.session.delete(self)
+      db.session.commit()
+      # return{
+      #   'id':self.id,
+      #   'shopping_cart_id': self.shopping_cart_id,
+      #   'prod_quantity': self.prod_quantity
+      #   }

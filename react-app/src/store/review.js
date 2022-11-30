@@ -4,6 +4,7 @@
 // not logged in
 const LOAD_REVIEWS = 'reviews/LOAD'
 // logged in
+const LOAD_ONE_REVIEW = 'reviews/LOAD_ONE_REVIEW'
 const LOAD_USERS_REVIEWS = 'reviews/LOAD_USERS_REVIEWS'
 const CREATE_REVIEW = 'reviews/CREATE'
 const UPDATE_REVIEW = 'reviews/UPDATE'
@@ -26,6 +27,10 @@ const loadUsersReviewsAction = (user) =>({
   user
 })
 
+const loadOneReviewAction = (review) =>({
+  type: LOAD_ONE_REVIEW,
+  review
+})
 const updateReviewAction = (review) =>({
   type:UPDATE_REVIEW,
   review
@@ -52,11 +57,11 @@ export const createReview = (payload) => async dispatch =>{
     return newReview
   }
 }
-// am I using the right url?
+
 export const loadReviews = (prod_id) => async dispatch => {
   // const {productId, review_msg} = payload
-  console.log('is this the right prod id?' , prod_id)
-  const response = await fetch(`/api/reviews/${prod_id}`,{
+  // console.log('is this the right prod id?' , prod_id)
+  const response = await fetch(`/api/products/${prod_id}/reviews`,{
     headers:{
       'Content-Type': 'application/json',
     }
@@ -81,17 +86,34 @@ export const loadUserReviews = (prod_id) => async dispatch =>{
     return reviews
   }
 }
-export const updateReview = (review) => async dispatch =>{
-  const {id, review_msg} = review
-  const response = await fetch(`/api/reviews/${id}`, {
+
+export const loadOneReview = (reviewId) => async dispatch =>{
+  console.log(' review id in review thunk', reviewId)
+  const response = await fetch(`/api/reviews/${reviewId}`,{
+    headers:{
+      'Content-Type': 'application/json',
+    }
+  })
+
+  console.log('reponse from review thunk >>>>>', response)
+  if(response.ok){
+    const oneReview = await response.json()
+    console.log(' one Review if response ok>>>>>>', response)
+    dispatch(loadOneReviewAction(oneReview))
+    return oneReview
+  }
+}
+export const updateReview = (payload) => async dispatch =>{
+  const {reviewId} = payload
+  console.log('payload in update review thunk>>>>', payload)
+  const response = await fetch(`/api/reviews/${reviewId}`, {
+    method:'PUT',
     headers:{
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      review_msg
-    })
+    body: JSON.stringify(payload)
   })
-
+  console.log('response in update review thunk >>>')
   if(response.ok){
     const updatedReview = await response.json()
     dispatch(updateReviewAction(updatedReview))
@@ -99,10 +121,13 @@ export const updateReview = (review) => async dispatch =>{
   }
 }
 
-export const deleteReview = review => async dispatch => {
-  const {id, review_msg} = review
-  const response = await fetch(`/api/reviews/${id}`, {
-    method:'DELETE'
+export const deleteReview = reviewId => async dispatch => {
+
+  const response = await fetch(`/api/reviews/${reviewId}`, {
+    method:'DELETE',
+    headers:{
+      'Content-Type': 'application/json',
+    },
   })
   if (response.ok){
     const deletedReview = await response.json()
@@ -111,14 +136,14 @@ export const deleteReview = review => async dispatch => {
   }
 }
 /************************REDUCER************************** */
-const initialState = {reviews:{}, userReviews:{}}
+const initialState = {reviews:{}, oneReview:{}, userReviews:{}}
 
 export const reviewsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case CREATE_REVIEW:
       newState = {... state, reviews:{}}
-      console.log('action in reviews reducer >>>', action)
+      // console.log('action in reviews reducer >>>', action)
 
       newState.reviews[action.newReview.id] = action.newReview
       // newState = {...state, [action.newReview.id]:action.newReview}
@@ -132,12 +157,17 @@ export const reviewsReducer = (state = initialState, action) => {
       })
       return newState
     }
-
     case LOAD_REVIEWS:{
       newState = {...state, reviews:{}}
       action.reviews.retrieve_prod_reviews.forEach(review => {
         newState.reviews[review.id] = review
       });
+      return newState
+    }
+    case LOAD_ONE_REVIEW:{
+      newState = {...state, oneReview:{}}
+      console.log('action in reviews reducer', action)
+      newState.oneReview[action.review.id] = action.review
       return newState
     }
 

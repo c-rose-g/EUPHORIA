@@ -29,5 +29,6 @@ class Review(db.Model):
 
   def user_review_info_to_dict(self):
     return{
+      'id':self.id,
       'user_id':self.users_r.to_dict(),
       }

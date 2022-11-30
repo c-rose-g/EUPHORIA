@@ -125,6 +125,7 @@
     box-shadow: none;
     appearance: none;
     padding-top: 14px;
+    position: absolute;
 }
 .ln-label-nontransition {
   position: absolute;

@@ -12,13 +12,12 @@ reviews_routes = Blueprint('reviews', __name__)
 
 
 @reviews_routes.route('/all')
-
 def get_reviews():
     reviews = Review.query.all()
     # print('this is review >>>>>', reviews)
     if reviews:
 
-        return {'retrieve_all_reviews':[review.to_dict() for review in reviews]}, 200
+        return {'retrieve_all_reviews': [review.to_dict() for review in reviews]}, 200
     return {
         'errors': "review not found",
         'status code': 404
@@ -35,30 +34,26 @@ def get_review_by_user(prod_id):
 
     if reviews:
 
-        return {'retrieve_user_reviews':[review.user_review_info_to_dict() for review in reviews]}, 200
+        return {'retrieve_user_reviews': [review.user_review_info_to_dict() for review in reviews]}, 200
     return {
         'errors': "user reviews not found",
         'status code': 404
     }, 404
 
-# ****************** GET ALL REVIEWS BY PRODUCT ID ***************************
-# /api/reviews/:productId
 
+# ****************** GET ONE REVIEW BY REVIEW ID ***************************
 
-@reviews_routes.route('/<int:prod_id>')
-# @login_required
-def get_prod_reviews(prod_id):
-    reviews = Review.query.filter_by(prod_id=int(prod_id))
-    # reviews = Review.query.filter_by(prod_id=int(prod_id))
-    if reviews:
+@reviews_routes.route('/<int:review_id>')
+@login_required
+def get_one_review(review_id):
+    review = Review.query.get(review_id)
 
-        return {'retrieve_prod_reviews':[review.to_dict() for review in reviews]}, 200
+    if review:
+        return review.to_dict(), 200
     return {
         'errors': "review not found",
         'status code': 404
     }, 404
-
-
 
 
 # ****************** CREATE A REVIEW ***********************************
@@ -69,9 +64,9 @@ def get_prod_reviews(prod_id):
 @login_required
 def create_review(prod_id):
     form = NewReview()
-    data = form.data
+    # data = form.data
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('data in backend route', data)
+    # print('data in backend route', data)
 
     if form.validate_on_submit():
         review = Review()
@@ -94,22 +89,23 @@ def create_review(prod_id):
 @login_required
 def update_review(review_id):
     review = Review.query.get(review_id)
-    print('ths is review query from backend >>>>>>>>>>>>>>>>>>>>>>>', review)
+
+    # print('ths is review query from backend >>>>>>>>>>>>>>>>>>>>>>>', review, review.data)
     if review:
         form = NewReview()
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             form.populate_obj(review)
+            # print('this is the forms reviews id 1 >>>>>>>', review.id)
             review.user_id = int(current_user.id)
             db.session.commit()
             return review.to_dict()
-
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 400
-
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    return {'message': 'channel not found',
+            'status code': 404}, 404
 
 # ****************** DELETE A REVIEW ***************************
 # /api/reviews/:reviewId
-
 
 
 @reviews_routes.route('/<int:review_id>', methods=["DELETE"])

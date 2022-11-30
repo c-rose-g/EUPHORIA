@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 # from flask_login import login_required, current_user
-from app.models import Product, db
+from app.models import Product, Review, db
 import json
 # from app.forms import New_product
 # from .auth_routes import validation_errors_to_error_messages
@@ -27,9 +27,25 @@ def get_products():
         'status code': 404
     }, 404
 
+# ****************** GET ALL REVIEWS BY PRODUCT ID ***************************
+# /api/reviews/:productId
+
+
+@products_routes.route('/<int:prod_id>/reviews')
+# @login_required
+def get_prod_reviews(prod_id):
+    reviews = Review.query.filter_by(prod_id=int(prod_id))
+    # reviews = Review.query.filter_by(prod_id=int(prod_id))
+    if reviews:
+
+        return {'retrieve_prod_reviews':[review.to_dict() for review in reviews]}, 200
+    return {
+        'errors': "review not found",
+        'status code': 404
+    }, 404
+
 # ****************** GET ALL PRODUCTS BY PRODUCT ID ***************************
 # /api/products
-
 
 @products_routes.route('/<int:prod_id>')
 # @login_required
@@ -54,7 +70,7 @@ def get_one_product(prod_id):
 @products_routes.route('/categories/<prod_category>')
 def get_prod_category(prod_category):
     # filter_by(model column name, <name thingy>)
-    category = Product.query.filter_by(product_category=prod_category).all() 
+    category = Product.query.filter_by(product_category=prod_category).all()
     # print('category >>>>>>.', category)
 
     if category:
