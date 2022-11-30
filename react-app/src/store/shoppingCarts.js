@@ -21,7 +21,7 @@ const loadItemsAction = (items) =>({
   items
 })
 
-const addToShoppingCartAction = (item) => ({
+const addToCartAction = (item) => ({
   type: ADD_TO_SHOPPING_CART,
   item
 })

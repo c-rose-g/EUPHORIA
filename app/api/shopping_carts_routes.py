@@ -82,53 +82,55 @@ def get_user_shopping_cart(user_id):
 # ****************** ADD OR INCREASE TO SHOPPING CART BY USER ID ***************************
 
 
-# @shopping_carts_routes.route('/<int:user_id>/<int:prod_id>', methods=['POST'])
-# @login_required
-# def add_item_to_shopping_cart(user_id, prod_id):
-#     user_cart = ShoppingCart.query.filter_by(user_id=user_id).first()
-#     # user_cart_dict = user_cart.to_dict()
-#     # item_exists = user_cart['prod_items'].find(prod_id = prod_id)
-#     # items_exists = False
-#     # print('user shopping cart items >>>>>>>>>>>>>>>',
-#     #       user_cart.shopping_cart_items_s)
-#     user_cart_list = [user_cart.to_dict()
-#                       for user_cart in user_cart.shopping_cart_items_s]
-#     # print("user cart list >>>>", user_cart_list)
-#     num_of_prod_quantity = False
-#     cart_prod_id = False
-#     for product in user_cart_list:
-#       if product['id'] == prod_id:
-#         # print('product id >>>>>>>>', product['id'])
-#         cart_prod_id = product['id']
+@shopping_carts_routes.route('/<int:prod_id>', methods=['POST'])
+@login_required
+def add_item_to_shopping_cart(user_id, prod_id):
+    if current_user.is_authenticated:
+        user_id = current_user.user_id
+        user_cart = ShoppingCart.query.filter_by(user_id=user_id).first()
+    # user_cart_dict = user_cart.to_dict()
+    # item_exists = user_cart['prod_items'].find(prod_id = prod_id)
+    # items_exists = False
+    # print('user shopping cart items >>>>>>>>>>>>>>>',
+    #       user_cart.shopping_cart_items_s)
+    user_cart_list = [user_cart.to_dict()
+                      for user_cart in user_cart.shopping_cart_items_s]
+    # print("user cart list >>>>", user_cart_list)
+    num_of_prod_quantity = False
+    cart_prod_id = False
+    for product in user_cart_list:
+      if product['id'] == prod_id:
+        # print('product id >>>>>>>>', product['id'])
+        cart_prod_id = product['id']
 
-#         num_of_prod_quantity = product['prod_quantity'] + 1
+        num_of_prod_quantity = product['prod_quantity'] + 1
 
 
-#     # print('item exists >>>>>', user_cart.to_dict())
-#     # shopping_cart_id = ShoppingCartItem.query.find_by(user_cart_dict['shopping_cart_id'] == user_id)
-#     # print('shopping cart id >>>>>>>>', shopping_cart_id)
-#     # item = ShoppingCartItem()
-#     if cart_prod_id:
-#       get_shopping_cart = ShoppingCartItem.query.get(cart_prod_id)
-#       get_shopping_cart.prod_quantity = num_of_prod_quantity
-#       db.session.commit()
+    # print('item exists >>>>>', user_cart.to_dict())
+    # shopping_cart_id = ShoppingCartItem.query.find_by(user_cart_dict['shopping_cart_id'] == user_id)
+    # print('shopping cart id >>>>>>>>', shopping_cart_id)
+    # item = ShoppingCartItem()
+    if cart_prod_id:
+      get_shopping_cart = ShoppingCartItem.query.get(cart_prod_id)
+      get_shopping_cart.prod_quantity = num_of_prod_quantity
+      db.session.commit()
 
-#       return get_shopping_cart.to_dict(),200
-#     #   print('get shopping cart', get_shopping_cart)
-#     #   db.session.commit()
-#     #   return get_shopping_cart, 200
-#     # elif(num_of_prod_quantity == False):
-#     #   item.prod_id = int(prod_id)
-#     #   db.session.add(item)
-#     #   db.session.commit()
-#     #   return item.to_dict()
-#     # prod = user_cart['prod_items']
+      return get_shopping_cart.to_dict(),200
+    #   print('get shopping cart', get_shopping_cart)
+    #   db.session.commit()
+    #   return get_shopping_cart, 200
+    # elif(num_of_prod_quantity == False):
+    #   item.prod_id = int(prod_id)
+    #   db.session.add(item)
+    #   db.session.commit()
+    #   return item.to_dict()
+    # prod = user_cart['prod_items']
 
-#     # print('this is user cart >>>>>>>>',user_cart)
-#     return {
-#     'errors': "shopping carts not found",
-#       'status code': 404
-#     }, 404
+    # print('this is user cart >>>>>>>>',user_cart)
+    return {
+    'errors': "shopping carts not found",
+      'status code': 404
+    }, 404
 
 
 # ****************** UPDATE A SHOPPING CART BY USER ID ***************************
