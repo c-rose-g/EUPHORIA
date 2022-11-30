@@ -1,19 +1,24 @@
 from app.models import db, ShoppingCart, environment, SCHEMA
 
+
 def seed_shopping_carts():
-  cart1 = ShoppingCart(
-    user_id = 1
+    cart1 = ShoppingCart(
+        user_id=1
     )
-  cart2 = ShoppingCart(
-    user_id = 2
+    cart2 = ShoppingCart(
+        user_id=2
     )
-  cart3 = ShoppingCart(
-    user_id = 3
+    cart3 = ShoppingCart(
+        user_id=3
     )
-  db.session.add(cart1)
-  db.session.add(cart2)
-  db.session.add(cart3)
-  db.session.commit()
+    cart4 = ShoppingCart(
+        user_id=4
+    )
+    db.session.add(cart1)
+    db.session.add(cart2)
+    db.session.add(cart3)
+    db.session.add(cart4)
+    db.session.commit()
 
 
 def undo_shopping_carts():

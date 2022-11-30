@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, ShoppingCart, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -68,6 +68,10 @@ def sign_up():
             password=form.data['password']
         )
         db.session.add(user)
+        db.session.commit()
+        cart = ShoppingCart(user_id= user.id)
+        # print('cart', cart.to_dict())
+        db.session.add(cart)
         db.session.commit()
         login_user(user)
         return user.to_dict()
