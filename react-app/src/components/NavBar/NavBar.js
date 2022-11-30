@@ -19,37 +19,9 @@ const NavBar = () => {
 		sessionLinks = (
 			<>
 			<ProfileButton/>
-				{/* <LoginFormModal /> */}
-				{/* <SignupFormModal /> */}
-
 			</>
 		);
 	}
-	// const handleOpenMenu = () =>{
-	// 	setOpenMenu(true)
-
-	// }
-	// const handleCloseMenu = () =>{
-	// 	setOpenMenu(false)
-	// }
-	// 	<li>
-	// 	<NavLink to='/login' exact={true} activeClassName='active'>
-	// 		Login
-	// 	</NavLink>
-	// </li>
-	// 	<li>
-	// 	<NavLink to='/sign-up' exact={true} activeClassName='active'>
-	// 		Sign Up
-	// 	</NavLink>
-	// </li>
-	// <li>
-	// 	<NavLink to='/users' exact={true} activeClassName='active'>
-	// 		Users
-	// 	</NavLink>
-	// </li>
-	// <li>
-	// 	<LogoutButton />
-	// </li>
 	return (
 		<div className='navBar-container'>
 			<nav>
@@ -82,20 +54,6 @@ const NavBar = () => {
 					</div>
 					<div className='nav-search'></div>
 					<div className='acct-buttons'>
-						{/* <button
-							className='font-12'
-							id='user-space-text'
-							onMouseEnter={() => setOpenMenu(true)}
-							onMouseLeave={() => setOpenMenu(false)}
-						>
-							<div className='nav-acct-img'>
-								<img src={user} alt='user-icon' />
-							</div>
-							<div className='nav-sign-text'>
-								<strong>Sign in</strong>
-								<p /> for FREE Shipping 🚚
-							</div>
-						</button> */}
 						{sessionLinks}
 						<div>
 							<NavLink

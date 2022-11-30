@@ -71,14 +71,14 @@ function ProfileButton() {
 					</div>
 					<div>
 
-						<button className='profile-signin' onClick={closeForSignUp}>
+						{signedInUser ? null:(<button className='profile-signin' onClick={closeForSignUp}>
 							Sign Up
-						</button>
+						</button>)}
 					</div>
 					<div>
-					<button className='profile-login' onClick={closeForLogin}>
+					{signedInUser ? null:(<button className='profile-login' onClick={closeForLogin}>
 						Log in
-					</button>
+					</button>)}
 					</div>
 					<div>
 						<button>

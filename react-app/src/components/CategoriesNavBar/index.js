@@ -35,7 +35,6 @@ const CategoriesNavBar = ()=>{
             <div className="category-name font-12" key={name}>
             <NavLink className='remove-underline' to ={`/products/categories/${name}`}>
             {name}
-            {console.log('name in cat nav bar',name)}
             </NavLink>
             </div>
           )
