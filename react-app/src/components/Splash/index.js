@@ -42,17 +42,17 @@ function Splash() {
 	return (
 		<>
 			{isLoaded && (
-				<div>
+				<>
 					<CategoriesNavBar />
 					<div className='splash-page-container'>
-						<div>photo carosel</div>
-						<div className='splash-products-container'>
-							<div className='font-20'><strong>Chosen For You</strong></div>
+						<div></div>
+						<div id='splash-products-container-header-chosen-for-you'>
+							<div className='font-20' style={{'padding-top': '5%'}}><strong>Chosen For You</strong></div>
 						</div>
 						<div className='splash-products-div'>
-							<div className='splash-product-cards-container'>
+							{/* <div className='splash-product-cards-container'> */}
 
-								<button onClick={() => setFirstIdx(0)}>
+								<button id='button-div-left-chosen-for-you' onClick={() => setFirstIdx(0)}>
 									<NavLink to='/'><i className='fa-solid fa-circle-chevron-left'></i></NavLink>
 								</button>
 								<div className='splash-product-card-container'>
@@ -61,7 +61,8 @@ function Splash() {
 											<img className='splash-product-img' src={products[firstIdx].product_photos[0].prod_photo} alt='prod 1' />
 										</div>
 										<div className='lower-half-product-text-div'>
-											{products[firstIdx].product_brand} <p /> {products[firstIdx].product_name}
+											 <b className='font-16'>{products[firstIdx].product_brand}</b>
+											 <p className='font-14'> {products[firstIdx].product_name}</p>
 										</div>
 									</NavLink>
 								</div>
@@ -71,7 +72,8 @@ function Splash() {
 											<img className='splash-product-img' src={products[firstIdx + 1].product_photos[0].prod_photo} alt='prod 2' />
 										</div>
 										<div className='lower-half-product-text-div'>
-											{products[firstIdx + 1].product_brand} <p /> {products[firstIdx + 1].product_name}
+											<b className='font-16'>{products[firstIdx + 1].product_brand}</b>
+											<p className='font-14'> {products[firstIdx + 1].product_name}</p>
 										</div>
 									</NavLink>
 								</div>
@@ -80,7 +82,11 @@ function Splash() {
 										<div className='upper-half-product-card'>
 											<img className='splash-product-img' src={products[firstIdx + 2].product_photos[0].prod_photo} alt='prod 3' />
 										</div>
-										{products[firstIdx + 2].product_brand} <p /> {products[firstIdx + 2].product_name}
+										<div className='lower-half-product-text-div'>
+
+											<b className='font-16'>{products[firstIdx + 2].product_brand}</b>
+											<p className='font-14'> {products[firstIdx + 2].product_name}</p>
+										</div>
 									</NavLink>
 								</div>
 								<div className='splash-product-card-container'>
@@ -88,21 +94,46 @@ function Splash() {
 										<div className='upper-half-product-card'>
 											<img src={products[firstIdx + 3].product_photos[0].prod_photo} className='splash-product-img' alt='prod 4' />
 										</div>
-										<div className='lower-half-product-text-div'> {products[firstIdx + 3].product_brand} <p /> {products[firstIdx + 3].product_name}
+										<div className='lower-half-product-text-div'>
+											<b className='font-16'>{products[firstIdx + 3].product_brand}</b>
+											<p className='font-14'> {products[firstIdx + 3].product_name}</p>
 										</div>
 									</NavLink>
 								</div>
-								<button className='button-div' onClick={() => setFirstIdx(4)}>
+								<div className='splash-product-card-container'>
+									<NavLink className='remove-underline' to={`/products/${firstIdx + 4}`} >
+										<div className='upper-half-product-card'>
+											<img src={products[firstIdx + 4].product_photos[0].prod_photo} className='splash-product-img' alt='prod 4' />
+										</div>
+										<div className='lower-half-product-text-div'>
+											<b className='font-16'>{products[firstIdx + 3].product_brand}</b>
+											<p className='font-14'> {products[firstIdx + 3].product_name}</p>
+										</div>
+									</NavLink>
+								</div>
+								<div className='splash-product-card-container'>
+									<NavLink className='remove-underline' to={`/products/${firstIdx + 4}`} >
+										<div className='upper-half-product-card'>
+											<img src={products[firstIdx + 5].product_photos[0].prod_photo} className='splash-product-img' alt='prod 4' />
+										</div>
+										<div className='lower-half-product-text-div'>
+											<b className='font-16'>{products[firstIdx + 3].product_brand}</b>
+											<p className='font-14'> {products[firstIdx + 3].product_name} </p>
+										</div>
+									</NavLink>
+								</div>
+
+								<button id='button-div-right-chosen-for-you' onClick={() => setFirstIdx(4)}>
 									<i className='fa-solid fa-circle-chevron-right'></i>
 								</button>
 
-							</div>
+							{/* </div> */}
 						</div>
-							<div className='splash-products-container'>
+							<div id='splash-products-container-header-just-dropped'>
 								<div className='font-20'><strong>Just Dropped</strong></div>
 							</div>
 							<div className='splash-products-div'>
-							<button onClick={() => setNextFirstIdx(5)}>
+							<button id='button-div-left-just-dropped' onClick={() => setNextFirstIdx(5)}>
 								<NavLink to='/'><i className='fa-solid fa-circle-chevron-left'></i></NavLink>
 							</button>
 							<div className='splash-product-card-container'>
@@ -111,7 +142,8 @@ function Splash() {
 										<img className='splash-product-img' src={products[nextFirstIdx].product_photos[0].prod_photo} alt='prod 1' />
 									</div>
 									<div className='lower-half-product-text-div'>
-										{products[nextFirstIdx].product_brand} <p /> {products[nextFirstIdx].product_name}
+										<b className='font-16'>{products[nextFirstIdx].product_brand}</b>
+										<p className='font-14'> {products[nextFirstIdx].product_name}</p>
 									</div>
 								</NavLink>
 							</div>
@@ -121,7 +153,8 @@ function Splash() {
 										<img className='splash-product-img' src={products[nextFirstIdx + 1].product_photos[0].prod_photo} alt='prod 2' />
 									</div>
 									<div className='lower-half-product-text-div'>
-										{products[nextFirstIdx + 1].product_brand} <p /> {products[nextFirstIdx + 1].product_name}
+										<b className='font-16'>{products[nextFirstIdx + 1].product_brand}</b>
+										<p className='font-14'> {products[nextFirstIdx + 1].product_name}</p>
 									</div>
 								</NavLink>
 							</div>
@@ -130,7 +163,11 @@ function Splash() {
 									<div className='upper-half-product-card'>
 										<img className='splash-product-img' src={products[nextFirstIdx + 2].product_photos[0].prod_photo} alt='prod 3' />
 									</div>
-									{products[nextFirstIdx + 2].product_brand} <p /> {products[nextFirstIdx + 2].product_name}
+									<div className='lower-half-product-text-div'>
+
+										<b className='font-16'>{products[nextFirstIdx + 2].product_brand}</b>
+										<p className='font-14'> {products[nextFirstIdx + 2].product_name}</p>
+									</div>
 								</NavLink>
 							</div>
 							<div className='splash-product-card-container'>
@@ -138,18 +175,42 @@ function Splash() {
 									<div className='upper-half-product-card'>
 										<img src={products[nextFirstIdx + 3].product_photos[0].prod_photo} className='splash-product-img' alt='prod 4' />
 									</div>
-									<div className='lower-half-product-text-div'> {products[nextFirstIdx + 3].product_brand} <p /> {products[nextFirstIdx + 3].product_name}
+									<div className='lower-half-product-text-div'>
+										<b className='font-16'>{products[nextFirstIdx + 3].product_brand}</b>
+									 	<p className='font-14'> {products[nextFirstIdx + 3].product_name}</p>
 									</div>
 								</NavLink>
 							</div>
-							<button className='' onClick={() => setNextFirstIdx(9)}>
+							<div className='splash-product-card-container'>
+								<NavLink className='remove-underline' to={`/products/${nextFirstIdx + 4}`} >
+									<div className='upper-half-product-card'>
+										<img src={products[nextFirstIdx + 4].product_photos[0].prod_photo} className='splash-product-img' alt='prod 4' />
+									</div>
+									<div className='lower-half-product-text-div'>
+										<b className='font-16'>{products[nextFirstIdx + 3].product_brand}</b>
+										<p className='font-14'> {products[nextFirstIdx + 3].product_name}</p>
+									</div>
+								</NavLink>
+							</div>
+							<div className='splash-product-card-container'>
+								<NavLink className='remove-underline' to={`/products/${nextFirstIdx + 4}`} >
+									<div className='upper-half-product-card'>
+										<img src={products[nextFirstIdx + 5].product_photos[0].prod_photo} className='splash-product-img' alt='prod 4' />
+									</div>
+									<div className='lower-half-product-text-div'>
+										<b className='font-16'>{products[nextFirstIdx + 3].product_brand}</b>
+										<p className='font-14'> {products[nextFirstIdx + 3].product_name} </p>
+									</div>
+								</NavLink>
+							</div>
+							<button id='button-div-right-just-dropped' onClick={() => setNextFirstIdx(9)}>
 								<i className='fa-solid fa-circle-chevron-right'></i>
 							</button>
 
 							</div>
 
 					</div>
-				</div>
+				</>
 			)}
 		</>
 	);
