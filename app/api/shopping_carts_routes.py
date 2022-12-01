@@ -27,7 +27,7 @@ def get_all_shopping_carts():
 
         # print('user_carts >>>>>>>>>>>>', user_carts)
 
-        return {'retrieve_user_carts': user_carts}, 200
+        return {'retrieve_users_carts': user_carts}, 200
         # return 'hello'
     return {
         'errors': "shopping carts not found",

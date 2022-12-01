@@ -23,7 +23,27 @@ def get_all_items():
         'status code': 404
     }, 404
 
-# ****************** ADD ITEM IN A SHOPPING CART ***************************
+# ****************** ADD IN A SHOPPING CART ***************************
+@shopping_cart_items_routes.route('/<int:prod_id>', methods=['POST'])
+@login_required
+def add_to_cart(prod_id):
+  user_cart = ShoppingCart.query.filter_by(user_id=current_user.id).first()
+  new_item = ShoppingCartItem(
+    shopping_cart_id = user_cart.id,
+    prod_id = prod_id,
+    prod_quantity = 1
+    )
+  db.session.add(new_item)
+  db.session.commit()
+  # print('new item to dict ************', new_item.to_dict())
+  # print('user_cart', user_cart.new_item_to_dict())
+  if new_item:
+    return  new_item.to_dict(), 200
+  return {
+    'errors': "shopping cart item was not found",
+      'status code': 404
+    }, 404
+# ****************** INCREASE IN A SHOPPING CART ***************************
 # /api/items/:prodId/
 """
 what we need to do:
@@ -31,56 +51,40 @@ from product details page, user wants to add item in shopping cart, but shopping
 you need the product id from the params, and you search for the shopping cart
 by using get_empty_shopping_cart. do i decorate the function or save it inside?
 """
-@shopping_cart_items_routes.route('/<int:prod_id>', methods=['POST'])
+@shopping_cart_items_routes.route('/<int:prod_id>', methods=['PUT'])
 @login_required
-def add_item(prod_id):
-  if current_user.is_authenticated:
-    user_id = current_user.id
-    user_cart = ShoppingCart.query.filter_by(user_id=user_id).first()
-    user_cart_list = [user_cart.to_dict()
-                      for user_cart in user_cart.shopping_cart_items_s]
+def increase_prod_quantity(prod_id):
 
+    # find shopping cart class for user
+    user_cart = ShoppingCart.query.filter_by(user_id=current_user.id).first()
+    # create list comprehension of shopping cart item in shopping cart class with id, shopping_cart_id, and prod_id, prod_quantity
+    user_cart_list = [user_cart.to_dict() for user_cart in user_cart.shopping_cart_items_s]
+    # save current number of prod quantity
     num_of_prod_quantity = False
-    cart_prod_id = False
+    # save shopping cart id
+    shopping_cart_id = False
+    # loop through user cart comprehension list to grab product id, number of prod quantity
     for product in user_cart_list:
-      if product['id'] == prod_id:
-        cart_prod_id = product['id']
+      # if product id exists in shopping cart item dictionary
+      if product['prod_id'] == prod_id:
+        shopping_cart_id = product['id']
         num_of_prod_quantity = product['prod_quantity'] + 1
 
-    if cart_prod_id:
-      get_shopping_cart = ShoppingCartItem.query.get(cart_prod_id)
-      get_shopping_cart.prod_quantity = num_of_prod_quantity
-      db.session.commit()
+    # add prod id to shopping cart
+    if shopping_cart_id:
+      # return increase_quantity(num_of_prod_quantity)
+      get_shopping_cart = ShoppingCartItem.query.get(shopping_cart_id)
 
+      get_shopping_cart.prod_quantity = num_of_prod_quantity
+      db.session.add(get_shopping_cart)
+      db.session.commit()
+#
       return get_shopping_cart.to_dict(),200
+
     return {
     'errors': "shopping cart item was not found",
       'status code': 404
     }, 404
-#     find_product = Product.query.filter_by(id=prod_id).first()
-#     prod_dict = find_product.to_dict()
-#     print('find product **********', prod_dict)
-#     if current_user.is_authenticated:
-#       user = current_user.to_dict()
-#       user_id = user['id']
-#       find_user_cart = ShoppingCart.query.filter_by(user_id=user_id).first()
-#       print('find user cart *************', find_user_cart)
-#       if find_user_cart == None:
-#         # form = NewShoppingCart(
-#         #   user_id=user_id,
-#         #   )
-#         # db.session.add(form)
-#         # db.session.commit()
-
-
-#         # find_shopping_cart = ShoppingCart.query.filter_by(user_id=user_id).first()
-#         # find_shopping_cart = ShoppingCartItem.query.filter_by(user_id = user_id).first()
-#         print('this works ***********')
-
-#   # find_product = Product.prod_id()
-#     # print('find product', find_user_cart)
-#     return 'hello'
-  # user_cart = ShoppingCartItem.query.find_by(shopping_cart_id)
 
 
 # ****************** DECREASE ITEM QUANTITY OR REMOVE ITEM FROM SHOPPING CART BY USER ID ***************************
@@ -99,7 +103,10 @@ def decrease_item_quantity(shopping_cart_item_id):
       'status code':200
       }, 200
 
-# ****************** UPDATE NUMBER OF ITEMS IN SHOPPING CART BY USER ID ***************************
+# ****************** UPDATE NUMBER OF ITEMS IN SHOPPING CART BY SHOPPING CART ITEM ID ***************************
+
+# ****************** DELETE ITEM IN SHOPPING CART BY SHOPPING CART ITEM ID ***************************
+# @shopping_cart_items_routes.route('/')
 # updating the number of items in a shoppping cart in the shopping cart page
 # /api/items/:prodId/
 # @shopping_cart_items_routes.route('/<int:prod_id>')

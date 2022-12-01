@@ -13,7 +13,7 @@ import ProductCategory from './components/ProductCategory';
 import CreateReviewForm from './components/CreateReviewForm';
 import UpdateReviewForm from './components/UpdateReview';
 import { authenticate } from './store/session';
-
+import CheckoutPage from './components/CheckoutPage/CheckoutPage';
 function App() {
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
@@ -63,6 +63,9 @@ function App() {
 				</ProtectedRoute>
 				<ProtectedRoute path='/reviews/:reviewId' exact={true}>
 					<UpdateReviewForm/>
+				</ProtectedRoute>
+				<ProtectedRoute path='/basket/:userId' exact={true}>
+				<CheckoutPage/>
 				</ProtectedRoute>
 			</Switch>
 			{/* )} */}
