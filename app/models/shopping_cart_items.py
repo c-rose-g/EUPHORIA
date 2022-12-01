@@ -39,12 +39,13 @@ class ShoppingCartItem(db.Model):
       'prod_id':self.prod_id,
       'prod_quantity':self.prod_quantity
       }
-  def increase_quantity(self):
+  def increase_quantity(self, num_of_prod_quantity):
     # self.prod_quantity = self.prod_quantity + 1
 
     if self.prod_quantity <= 1:
 
-      self.prod_quantity = self.prod_quantity + 1
+      num_of_prod_quantity = self.prod_quantity + 1
+      db.session.add(num_of_prod_quantity)
       db.session.commit()
     return{
       'id':self.id,

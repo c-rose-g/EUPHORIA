@@ -12,16 +12,14 @@ const UpdateReviewForm = () => {
 	// console.log('review id 18', reviewId);
 	const history = useHistory();
 	const [loadedProductId, setLoadedProductId] = useState(false);
-	const [review_msg, setReview_msg] = useState('');
 
 	// const userReviews = useSelector(state => state.reviews.userReviews)
 	const currentProd = useSelector((state) => state.products.oneProduct);
-	const prodReview = useSelector((state) =>
-		Object.values(state.reviews.reviews)
-	);
+	const prodReview = useSelector((state) =>Object.values(state.reviews.reviews));
 	const user = useSelector((state) => state.session.user);
 	// console.log('find user >>>>>>>>', findUser)
 	const findUser = prodReview.find((id) => id.user_id.id === user.id);
+	const [review_msg, setReview_msg] = useState(findUser.review_msg);
 	// console.log('find user >>>>', findUser);
 	// console.log('prod reviews >>>', prodReview);
 	// console.log('user reviews', userReviews )
@@ -76,7 +74,7 @@ const UpdateReviewForm = () => {
 									type='text'
 									value={review_msg}
 									onChange={updateReviewMsg}
-									placeholder={findUser.review_msg}
+
 								/>
 								<button type='submit'>update your review</button>
                 <DeleteReviewButton/>

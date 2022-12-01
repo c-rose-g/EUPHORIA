@@ -32,8 +32,8 @@ const CategoriesNavBar = ()=>{
         <div className="categories-map-container">
         {categoriesNames.map((name) =>{
           return(
-            <div className="category-name font-12" key={name}>
-            <NavLink className='remove-underline' to ={`/products/categories/${name}`}>
+            <div className="category-name" key={name}>
+            <NavLink className='remove-underline' style={{color:'white'}} to ={`/products/categories/${name}`}>
             {name}
             </NavLink>
             </div>

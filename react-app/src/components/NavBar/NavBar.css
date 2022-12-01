@@ -1,7 +1,7 @@
-/* .navBar-container {
-  border: 1px solid blue;
-  height: 100vh;
-} */
+.navBar-container {
+  /* border: 1px solid red; */
+  /* height: 100vh; */
+}
 
 /* ******************* DEALS HEADER *********************** */
 .nav-deals {
@@ -17,18 +17,20 @@
 
 .nav-deals-text {
   /* border:1px solid blue; */
-  width: 500px;
+  width: 100%;
   justify-content: center;
 }
 
 .deals-img {
+  /* height: 41px;
+  width: 50px; */
+  width: 418px;
   height: 41px;
-  width: 50px;
 }
 
 /* ********************* NAVBAR **************************** */
 .nav-box {
-  /* border: 1px solid purple; */
+  border: 1px solid purple;
   border-bottom: 1px solid rgb(238, 238, 238);
   ;
   /* display: flex;
@@ -42,8 +44,8 @@
   /* margin-right: -16px; */
   height: 80px;
   gap: 80px;
-  justify-content: space-between;
-  padding-right: 16px;
+  justify-content: center;
+  /* padding-right: 16px; */
 }
 
 .nav-logo {

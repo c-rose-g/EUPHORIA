@@ -1,3 +1,10 @@
+.product-details-page-container{
+
+}
+.product-details-columns-container{
+
+}
+
 .product-details-container{
   display: flex;
   justify-content: space-evenly;
@@ -12,4 +19,32 @@
 }
 .product-details{
 
+}
+
+.product-details-rows-containers{
+
+}
+
+.product-details-row-divider{
+
+}
+
+.product-details-upper-row{
+
+}
+
+.product-details-lower-columns{
+
+}
+
+.product-details-column-left{
+
+}
+
+.product-details-column-mid{
+
+}
+
+product-details-column-right{
+  
 }

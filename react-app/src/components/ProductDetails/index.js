@@ -38,8 +38,8 @@ const ProductDetails = () => {
 	return (
 		<>
 			{loaded && (
-				<>
-					<div className='product-details-page-container'>
+				< div className='product-details-page-container'>
+					<div className='product-details-columns-container'>
 						<CategoriesNavBar />
 						<div className='product-details-container'>
 							<div className='product-details-img'>
@@ -122,7 +122,7 @@ const ProductDetails = () => {
 							</div>
 						</div>
 					</div>
-				</>
+				</div>
 			)}
 		</>
 	);
