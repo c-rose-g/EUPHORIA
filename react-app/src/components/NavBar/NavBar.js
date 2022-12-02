@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-// import LogoutButton from '../auth/LogoutButton';
-// import SignUpModal from '../SignUpModal';
 import ProfileButton from '../ProfileButton/ProfileButton';
+import { Modal } from '../../context/Modal';
+import LoginModal from '../LoginModal';
 import deals_banner from '../../Images/euphoria-splash-deals-banner.png';
-// import user from '../../Images/euphora-sign-in.png';
 import './NavBar.css';
 import { useSelector } from 'react-redux';
 const NavBar = () => {
-	// const [openMenu, setOpenMenu] = useState(false);
+	const [showLoginModal, setShowLoginModal] = useState(false);
 	// const [loaded, isLoaded] = useState(true)
-	const sessionUser = useSelector(state => state.session)
+	const sessionUser = useSelector(state => state.session.user)
 	// console.log('session user', sessionUser)
 	let sessionLinks;
 	if (sessionUser) {
@@ -56,14 +55,20 @@ const NavBar = () => {
 					<div className='acct-buttons'>
 						{sessionLinks}
 						<div>
-							<NavLink
-								className='emoji-button'
-								to=''
-								exact={true}
-								activeClassName='active'
-							>
-								<i className='fa-solid fa-basket-shopping'></i>
-							</NavLink>
+							{sessionUser ? (<NavLink className='emoji-button' to={`/basket/${sessionUser.id}`}>
+							<button>
+							<i className='fa-solid fa-basket-shopping'></i>
+							</button>
+							</NavLink>)
+							:(<button className='emoji-button' onClick={() => setShowLoginModal(true)}><i className='fa-solid fa-basket-shopping'></i></button>)
+							}
+						</div>
+						<div>
+							{showLoginModal && (
+								<Modal onClose={() => setShowLoginModal(false)}>
+									<LoginModal setShowLoginModal={setShowLoginModal} />
+								</Modal>
+							)}
 						</div>
 					</div>
 				</div>

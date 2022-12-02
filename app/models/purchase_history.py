@@ -10,8 +10,6 @@ class PurchaseHistory(db.Model):
         __table_args__ = {'schema': SCHEMA}
   id = db.Column(db.Integer, primary_key=True)
   prod_quantity = db.Column(db.Integer)
-  date_purchased = db.Column(db.Integer)
-
   prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
   user_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('users.id')))
 
@@ -26,7 +24,7 @@ class PurchaseHistory(db.Model):
     return{
       'id':self.id,
       'prod_quantity':self.prod_quantity,
-      'date_purchased':self.date_purchased,
-      'prod_id':[item.to_dict() for item in self.products_ph],
-      'user_id':[user.to_dict() for user in self.users_ph]
+      'date_purchased':self.created_at,
+      'prod_id': self.products_ph.to_dict(),
+      'user_id':self.users_ph.to_dict()
       }

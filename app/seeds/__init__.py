@@ -8,6 +8,7 @@ from .product_categories import seed_product_categories, undo_product_categories
 from .shopping_carts import seed_shopping_carts, undo_shopping_carts
 from .shopping_cart_items import seed_shopping_cart_items, undo_shopping_cart_items
 from app.models.db import db, environment, SCHEMA
+# from .purchase_histories import seed_purchase_histories, undo_purchase_histories
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`

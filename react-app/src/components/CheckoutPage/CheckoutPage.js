@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoriesNavBar from '../CategoriesNavBar';
-const CheckoutPage = () => {
-
+const CheckoutPage = ({setShowLoginModal}) => {
+  
 	return (
   <div className='checkout-page-container'>
     <CategoriesNavBar/>
