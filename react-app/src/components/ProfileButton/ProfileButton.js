@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
-// import * as sessionActions from '../../store/session';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import LoginModal from '../LoginModal';
@@ -11,6 +11,7 @@ import '../NavBar/NavBar.css';
 import { useSelector } from 'react-redux';
 
 function ProfileButton() {
+
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	// const [timeEmoji, setTimeEmoji] = useState('hi')
 	const [showLoginModal, setShowLoginModal] = useState(false);
@@ -42,13 +43,8 @@ function ProfileButton() {
 		setShowLoginModal(true);
 	};
 
-
 	return (
-		<div
-			className='dropdown-container'
-			onMouseEnter={() => setDropMenu(true)}
-			onMouseLeave={() => setDropMenu(false)}
-		>
+		<div className='dropdown-container' onMouseEnter={() => setDropMenu(true)} onMouseLeave={() => setDropMenu(false)}>
 			<button className='font-12' id='user-space-text'>
 				<div className='nav-acct-img'>
 					<img src={dropMenu ? activeUser : user} />
@@ -81,9 +77,9 @@ function ProfileButton() {
 					</button>)}
 					</div>
 					<div>
-						<button>
-							Buy it again
-						</button>
+
+						{signedInUser ? (<NavLink to={`/history/${signedInUser.id}`}>Buy it again</NavLink>):(<button className='profile-login' onClick={closeForLogin}>Buy it again</button>)}
+
 					</div>
 					{signedInUser ? (<div onClick={() => setDropMenu(false)}> <LogoutButton/></div>):null}
 				</div>

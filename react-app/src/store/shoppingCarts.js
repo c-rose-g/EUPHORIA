@@ -44,11 +44,14 @@ const decrementItemAction = (item) => ({
 // shopping cart item - CREATE
 export const addToCart = (payload) => async dispatch =>{
   const {productId} = payload
+  console.log('this is productId in payload in shopping carts thunk', productId)
   const response = await fetch(`/api/items/${productId}`,{
     method:'POST',
     headers:{'Content-Type': 'application/json'},
     body: JSON.stringify(payload)
   })
+
+  console.log('response from shopping cart thunk', response)
   if(response.ok){
     const item = await response.json()
     dispatch(addToCartAction(item))
@@ -153,7 +156,9 @@ export const basketReducer = (state = initialState, action) =>{
 
     case ADD_TO_SHOPPING_CART:
       newState = {...state, userBasket:{}}
-      newState.userBasket[action.item] = action.item
+      console.log(action,'action in shopping cart reducer')
+      newState.userBasket[action.item.id] = action.item
+
       return newState
 
     case INCREASE_ITEM:

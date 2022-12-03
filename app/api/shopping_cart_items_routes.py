@@ -24,6 +24,7 @@ def get_all_items():
     }, 404
 
 # ****************** ADD IN A SHOPPING CART ***************************
+# /api/items/:productId
 @shopping_cart_items_routes.route('/<int:prod_id>', methods=['POST'])
 @login_required
 def add_to_cart(prod_id):
@@ -54,7 +55,6 @@ by using get_empty_shopping_cart. do i decorate the function or save it inside?
 @shopping_cart_items_routes.route('/<int:prod_id>', methods=['PUT'])
 @login_required
 def increase_prod_quantity(prod_id):
-
     # find shopping cart class for user
     user_cart = ShoppingCart.query.filter_by(user_id=current_user.id).first()
     # create list comprehension of shopping cart item in shopping cart class with id, shopping_cart_id, and prod_id, prod_quantity

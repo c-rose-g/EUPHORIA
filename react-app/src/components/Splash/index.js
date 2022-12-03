@@ -47,7 +47,7 @@ function Splash() {
 					<div className='splash-page-container'>
 						<div></div>
 						<div id='splash-products-container-header-chosen-for-you'>
-							<div className='font-20' style={{'padding-top': '5%'}}><strong>Chosen For You</strong></div>
+							<div className='font-20' style={{'paddingTop': '5%'}}><strong>Chosen For You</strong></div>
 						</div>
 						<div className='splash-products-div'>
 							{/* <div className='splash-product-cards-container'> */}

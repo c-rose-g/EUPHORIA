@@ -99,7 +99,7 @@
 }
 
 .emoji-button {
-  /* background-color: purple; */
+  background-color: none;
   font-size: 30px;
   color: black;
 }

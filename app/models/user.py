@@ -31,10 +31,21 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    # def get_basket_id(self):
+    #     basket_list = [basket_id.to_dict() for basket_id in self.shopping_cart_u]
+    #     basket_id = False
+    #     for basket in basket_list:
+    #         if basket:
+    #             basket['id'] = basket_id
+    #     return basket_id
+
     def to_dict(self):
+        # self.id = get_basket_id(self.shopping_cart_u)
         return {
             'id': self.id,
             'first_name':self.first_name,
             'last_name':self.last_name,
-            'email': self.email
+            'email': self.email,
+            # 'basket': [basket_id.to_dict() for basket_id in self.shopping_cart_u]
+            'basket_id':self.id
         }

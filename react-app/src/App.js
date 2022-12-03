@@ -14,6 +14,7 @@ import CreateReviewForm from './components/CreateReviewForm';
 import UpdateReviewForm from './components/UpdateReview';
 import { authenticate } from './store/session';
 import CheckoutPage from './components/CheckoutPage/CheckoutPage';
+import PurchaseHistory from './components/PurchaseHistory/PurchaseHistory';
 function App() {
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
@@ -46,26 +47,29 @@ function App() {
 				<ProtectedRoute path='/users/:userId' exact={true}>
 					<User />
 				</ProtectedRoute>
-        <Route path='/products' exact={true}>
-          <Splash/>
-        </Route>
+				<Route path='/products' exact={true}>
+					<Splash />
+				</Route>
 				<Route path='/products/categories/:prod_category' exact={true}>
-					<ProductCategory/>
+					<ProductCategory />
 				</Route>
 				<Route path='/products/:productId' exact={true}>
-				<ProductDetails />
+					<ProductDetails />
 				</Route>
 				<Route path='/' exact={true}>
 					<Splash />
 				</Route>
 				<ProtectedRoute path='/reviews/:product_id/new' exact={true}>
-				<CreateReviewForm/>
+					<CreateReviewForm />
 				</ProtectedRoute>
 				<ProtectedRoute path='/reviews/:reviewId' exact={true}>
-					<UpdateReviewForm/>
+					<UpdateReviewForm />
 				</ProtectedRoute>
 				<ProtectedRoute path='/basket/:userId' exact={true}>
-				<CheckoutPage/>
+					<CheckoutPage />
+				</ProtectedRoute>
+				<ProtectedRoute path='/history/:userId' exact={true}>
+					<PurchaseHistory />
 				</ProtectedRoute>
 			</Switch>
 			{/* )} */}
