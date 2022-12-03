@@ -65,6 +65,7 @@
   margin: 0 16px;
   justify-content: center;
   width: 90%;
+  height: 270px;
 
   /* width: 1024px; */
 
@@ -113,6 +114,10 @@
 }
 
 .lower-half-product-text-div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  margin-top: 2px;
 
 }
 

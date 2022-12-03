@@ -10,13 +10,13 @@ const PurchaseHistory = () =>{
     const [loaded, setLoaded] = useState(false)
     const {userId} = useParams()
     const dispatch = useDispatch()
-    const user_history = useSelector(state => state.session.PurchaseHistory)
+    const user_history = useSelector(state => state.history.purchaseHistory)
     console.log('user history ********', user_history)
 
     useEffect(() => {
         dispatch(loadPurchaseHistory(userId))
         .then(() => setLoaded(true))
-    })
+    },[dispatch])
     return(
         <>
             {loaded && (
