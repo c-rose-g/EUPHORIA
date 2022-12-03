@@ -8,8 +8,9 @@
   font-family: "helvetica neue",helvetica,arial,sans-serif;
   color:black;
   text-decoration: none;
-
 }
+/* *************************** BLACK FONTS ******************************** */
+
 .font-11{
   font-family: "helvetica neue",helvetica,arial,sans-serif;
   font-size: 11px;
@@ -31,7 +32,6 @@
   text-decoration: none;
   overflow: hidden;
   text-overflow: ellipsis;
-
 }
 
 .font-16{
@@ -39,18 +39,59 @@
   font-size:16px;
   color:black;
   text-decoration: none;
-
 }
 .font-18{
   font-family: "helvetica neue",helvetica,arial,sans-serif;
   font-size:18px;
   color:black;
   text-decoration: none;
-
 }
 .font-20{
   font-family: "helvetica neue",helvetica,arial,sans-serif;
-  font-size:20px;
   color:black;
+  font-size:20px;
+  text-decoration: none;
+}
+
+/* *************************** WHITE FONTS ******************************** */
+.font-11-white{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size: 11px;
+  color:white;
+  text-decoration: none;
+}
+.font-12-white{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size: 12px;
+  color:white;
+  text-decoration: none;
+  /* white-space: pre-line; */
+
+}
+.font-14-white{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size:14px;
+  color:white;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.font-16-white{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size:16px;
+  color: white;
+  text-decoration: none;
+}
+.font-18-white{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  font-size:18px;
+  color:white;
+  text-decoration: none;
+}
+.font-20-white{
+  font-family: "helvetica neue",helvetica,arial,sans-serif;
+  color:white;
+  font-size:20px;
   text-decoration: none;
 }

@@ -55,25 +55,24 @@ def get_all_shopping_carts():
 
 # ****************** GET SHOPPING CART BY USER ID ***************************
 
-
+# /api/basket/userId
 @shopping_carts_routes.route('/<int:user_id>')
 @login_required
 def get_user_shopping_cart(user_id):
-    cart = ShoppingCart.query.filter_by(user_id=user_id)
-    # cart = ShoppingCart.query.get(user_id)
+    cart = ShoppingCart.query.filter_by(user_id=user_id).first()
 
-    # print('cart >>>>>>>>>>>>>>>>>>>>>', cart.to_dict())
+
+    print('cart >>>>>>>>>>>>>>>>>>>>>', cart.to_dict())
     if cart:
-        cart_comps = [cart.shopping_cart_items_s for cart in cart]
-        cart_prods = cart_comps[0]
-        cart_prods = [item.to_dict() for item in cart_prods]
+        cart_prods = {item.id:item.to_dict() for item in cart.shopping_cart_items_s}
+        cart = cart.to_dict()
         # print('cart products>>>>>>>>>>>>', cart_prods)
-        user_cart = [one_cart.to_dict() for one_cart in cart]
-        for user in user_cart:
-            user['prod_items'] = cart_prods
+
+        cart['cart_prod'] =cart_prods
+
         # return 'hello'
-        # return cart.to_dict(),200
-        return {'retrieve_user_cart': user_cart}, 200
+        return cart,200
+
     return {
         'errors': "shopping carts not found",
         'status code': 404

@@ -54,13 +54,10 @@ class ShoppingCartItem(db.Model):
       }
   def decrease_quantity(self):
     if self.prod_quantity > 1:
-      self.prod_quantity = self.prod_quantity -1
+      self.prod_quantity = self.prod_quantity - 1
       db.session.commit()
-      return{
-        'id': self.id,
-        'shopping_cart_id': self.shopping_cart_id,
-        'prod_quantity': self.prod_quantity
-          }
+      return self.to_dict()
+    
   def remove_quantity(self):
     if self.prod_quantity == 1:
       self.prod_quantity = 0

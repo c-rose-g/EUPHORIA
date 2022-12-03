@@ -35,9 +35,10 @@ const increaseItemAction = (item) =>({
   type: INCREASE_ITEM,
   item
 })
-const decrementItemAction = (item) => ({
+const decrementItemAction = (itemId, item) => ({
   type: DECREMENT_ITEM,
-  item
+  item,
+  itemId,
 })
 
 /*********************THUNKS********************** */
@@ -97,6 +98,7 @@ export const loadItems = () => async dispatch =>{
 }
 
 export const increaseItem = (payload) => async dispatch =>{
+  console.log("increase item payload>>>>>>>>>>>>>>>>>", )
   const {productId} = payload
   const response = await fetch(`/api/items/${productId}`,{
     method:'PUT',
@@ -113,20 +115,18 @@ export const increaseItem = (payload) => async dispatch =>{
   }
 }
 
-export const decrementItem = (payload) => async dispatch =>{
-  const {itemId} = payload
+export const decrementItem = (itemId) => async dispatch =>{
 
   const response = await fetch(`/api/items/${itemId}`,{
     method:'DELETE',
     headers:{
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload)
   })
 
   if (response.ok){
     const item = await response.json()
-    dispatch(decrementItemAction(item))
+    dispatch(decrementItemAction(itemId,item))
     return item
   }
 }
@@ -146,9 +146,14 @@ export const basketReducer = (state = initialState, action) =>{
 
     case LOAD_USER_SHOPPING_CART:
       newState = {...state, userBasket:{} }
-      newState.userBasket[action.shoppingCart.retrieve_user_cart.id] = action.shoppingCart
-      // newState.userBasket[action.shoppingCart.retrieve_user_cart.id] = action.shoppingCart
+      // console.log('action in shopping cart reducer', action.shoppingCart)
 
+      // newState.userBasket[action.shoppingCart.user_id] = action.shoppingCart
+      newState.userBasket = action.shoppingCart
+
+      // console.log('new state in reducer >>>>>>>>>>>', newState)
+      // newState.userBasket.id.action.retrieve_user_cart[0]
+      // newState.userBasket[action.shoppingCart.retrieve_user_cart.id] = action.shoppingCart
       return newState
 
     // case LOAD_ALL_ITEMS:
@@ -156,18 +161,28 @@ export const basketReducer = (state = initialState, action) =>{
 
     case ADD_TO_SHOPPING_CART:
       newState = {...state, userBasket:{}}
-      console.log(action,'action in shopping cart reducer')
+      // console.log(action,'action in shopping cart reducer')
       newState.userBasket[action.item.id] = action.item
 
       return newState
 
     case INCREASE_ITEM:
-      newState = {...state, userBasket:{}}
-      newState.userBasket[action.item.id]=action.item
-      return newState
+      // newState = {...state, userBasket:{}}
+      // console.log(action,'action in shopping cart reducer')
+
+      // newState.userBasket[action.item.id]=action.item
+      // return newState
+      return {baskets:{...state.baskets}, userBasket:{...state.userBasket, cart_prod:{...state.userBasket.cart_prod, [action.item.id]:action.item}}}
 
     case DECREMENT_ITEM:
-      newState = {...state}
+      // newState = {...state}
+      if(state.userBasket.cart_prod[action.itemId].prod_quantity > 1){
+        return {baskets:{...state.baskets}, userBasket:{...state.userBasket, cart_prod:{...state.userBasket.cart_prod, [action.item.id]:action.item}}}
+      } else{
+        newState = {...state.userBasket.cart_prod}
+        delete newState[action.itemId]
+        return {baskets:{...state.baskets}, userBasket:{...state.userBasket, cart_prod:newState}}
+      }
 
 
     default:
