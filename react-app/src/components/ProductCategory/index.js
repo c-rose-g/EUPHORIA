@@ -27,33 +27,34 @@ const ProductCategory = () => {
 						<div className='product-cat-products-container'>
 							{products.map((product) => (
 								<div className='products-map' key={product.id}>
-									<div className='product-card-container'>
-                  <NavLink className='remove-underline' to={`/products/${product.id}`}>
 
-										<div className='product-img-card'>
-											<img
-												className='product-img'
-												src={product.product_photos[0].prod_photo}
-											/>
-										</div>
-										<div className='product-text-div'>
-											<p className='font-14' style={{fontWeight: 'bold'}}>
-                      {product.product_brand}
-                      </p>
-                      <p className='font-14'>
-											{product.product_name}
-                      </p>
-                      <p className='font-14' style={{fontWeight: 'bold'}} >
-                        {product.product_price}
-                      </p>
-										</div>
-                  </NavLink>
+									<div className='product-card-container'>
+										<NavLink
+											className='remove-underline'
+											to={`/products/${product.id}`}
+										>
+											<div className='product-img-card'>
+												<img
+													className='product-img'
+													src={product.product_photos[0].prod_photo}
+												/>
+											</div>
+											<div className='product-text-div'>
+												<p className='font-14' style={{ fontWeight: 'bold' }}>
+													{product.product_brand}
+												</p>
+												<p className='font-14'>{product.product_name}</p>
+												<p className='font-14' style={{ fontWeight: 'bold' }}>
+													{product.product_price}
+												</p>
+											</div>
+										</NavLink>
 									</div>
 								</div>
 							))}
 						</div>
 					</div>
-          <Footer/>
+					<Footer />
 				</>
 			)}
 		</>

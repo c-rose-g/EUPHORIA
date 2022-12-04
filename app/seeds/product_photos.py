@@ -25,7 +25,7 @@ def seed_prod_photos():
         prod_color_name='bronze gold',
     )
     photo5 = ProductPhoto(
-        product_id=2,
+        product_id=17,
         prod_photo='https://www.sephora.com/productimages/sku/s2518959-main-Lhero.jpg?pb=allure-2022-bestofbeauty-badge',
         prod_color_name='true mauve',
     )
@@ -36,7 +36,7 @@ def seed_prod_photos():
         prod_color_name='light pink',
     )
     photo7 = ProductPhoto(
-        product_id=3,
+        product_id=18,
         prod_photo='https://www.sephora.com/productimages/sku/s2316230-main-Lhero.jpg',
         prod_color_name='Rosewood',
     )
@@ -62,7 +62,7 @@ def seed_prod_photos():
         product_id=5,
         prod_photo='https://www.sephora.com/productimages/sku/s1985118-av-7-zoom.jpg',
         prod_color_name='none',
-        
+
     )
     photo12 = ProductPhoto(
         product_id=5,

@@ -1,0 +1,16 @@
+.add-button-not-pressed{
+    background-color: #cf112c;
+    border-radius: 9999px;
+    height: 50px;
+    width: 50%;
+}
+
+.add-button-pressed{
+    /* background-color: grey; */
+    border-radius: 9999px;
+    height: 50px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
