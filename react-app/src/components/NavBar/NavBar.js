@@ -26,19 +26,19 @@ const NavBar = () => {
 			<nav>
 				<div className='nav-deals'>
 					<NavLink
-						className='nav-deals-text font-11'
-						to='/'
+						className='nav-deals-text font-14-white'
+						to='/products/categories/skincare'
 						activeClassName='active'
 					>
-						<strong>Free Shipping on all orders above $100</strong> Today Only!{' '}
+						<strong>Don't postpone the holiday cheer.</strong> {' '}
 						<strong>SHOP NOW▸ </strong>
 					</NavLink>
-					<img
+					{/* <img
 						style={{ width: '418px', height: '41px' }}
 						id='deals-img'
 						src={deals_banner}
 						alt='deals banner'
-					/>
+					/> */}
 				</div>
 				<div className='nav-box'>
 					<div>
