@@ -10,7 +10,7 @@ import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import Footer from '../Footer/Footer';
 import './productDetails.css'
-
+ 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
