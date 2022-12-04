@@ -9,6 +9,10 @@
   color:black;
   text-decoration: none;
 }
+.remove-underline{
+  text-decoration: none;
+}
+
 /* *************************** BLACK FONTS ******************************** */
 
 .font-11{
