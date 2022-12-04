@@ -9,8 +9,8 @@ import AddToBasketButton from '../AddToBasketButton';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import Footer from '../Footer/Footer';
-import './ProductDetails.css'
-
+import './productDetails.css'
+ 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
@@ -37,7 +37,7 @@ const ProductDetails = () => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
 	}, [dispatch]);
-	
+
 	let userReview;
 	if(prodReviews){
 		userReview = prodReviews.find((obj) => obj.user_id.id === user.id);

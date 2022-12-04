@@ -69,12 +69,11 @@
   display: flex;
   /* border: 1px solid green; */
   width: 100%;
-  /* grid-gap: 20%; */
-  /* gap: 15%; */
+
   margin-top: 5%;
   flex-direction: row;
 }
-
+ 
 .product-details-img-container{
   /* margin-top:50px; */
   /* border: 1px solid green; */
