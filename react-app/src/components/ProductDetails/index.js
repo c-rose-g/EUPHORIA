@@ -9,7 +9,7 @@ import AddToBasketButton from '../AddToBasketButton';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import Footer from '../Footer/Footer'
-import './ProductDetails.css';
+import './ProductDetails.css'
 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
@@ -30,6 +30,7 @@ const ProductDetails = () => {
 	);
 	// console.log('user reviews', userReviews);
 	const oneProd = useSelector((state) => state.products.oneProduct);
+	console.log('one prod >>>>>>>', oneProd)
 	const [loaded, isLoaded] = useState(false);
 	// const productInfo = Object.values(oneProd);
 	// console.log('this is one product', oneProd);
@@ -45,6 +46,8 @@ const ProductDetails = () => {
 
 	}, [dispatch]);
 
+	// 'color' {oneProd.product_photos[0].prod_color_name
+
 	return (
 		<>
 			{loaded && (
@@ -57,11 +60,15 @@ const ProductDetails = () => {
 									<ProductImageSlider />
 								</div>
 								<div className='product-details-info-container'>
-									<div className='product-details'>
+									<div className='product-details font-16'>
+
 										<div> {oneProd.product_brand} </div>
 										<div>{oneProd.product_name}</div>
 										<div>{oneProd.product_price}</div>
-										<div>{oneProd.product_photos[0].prod_color_name === 'none'? null: 'heloo'}</div>
+										<div>{oneProd.product_photos[0].prod_color_name === 'none'? null:'hello'
+
+										 }</div>
+
 										<div>{user? (<AddToBasketButton productId={productId}/>):(<div><button onClick={() => setShowSignUpModal(true)}>Sign up to add to basket</button></div>)} </div>
 									</div>
 								</div>

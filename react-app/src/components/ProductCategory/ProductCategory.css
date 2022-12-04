@@ -25,7 +25,7 @@
 .product-cat-page-container{
     /* border:1px solid; */
     height: 100%;
-    margin-left: 5%;
+    margin-left: 10%;
     margin-right: 5%;
     margin-top:5%;
     margin-bottom: 9.2%;
@@ -35,15 +35,18 @@
     height: 50px;
     display: flex;
     align-items: center;
-    margin-left:18.5%
+    /* margin-left:18.5% */
 }
 .product-cat-products-container{
     display: flex;
     gap:20px;
-    justify-content: center;
+    /* justify-content: center; */
+    /* border:1px solid red; */
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
 }
 .products-map{
-    /* border:1px solid red; */
     height: 320px;
 }
 .product-card-container{

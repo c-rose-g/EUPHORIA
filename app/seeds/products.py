@@ -413,6 +413,28 @@ def seed_products():
         # product_id='P255506',
         # skuId = '1377159',
     )
+    prod17 = Product(
+        product_name="Soft Pinch Liquid Blush",
+        product_brand='Rare Beauty by Selena Gomez',
+        product_category='makeup',
+        product_price=20.00,
+        product_quantity=100,
+        product_description="A weightless, long-lasting liquid blush that blends and builds beautifully for a soft, healthy flush. Available in matte and dewy finishes.",
+        # remove these before upgrading db
+        # product_id='P97989778',
+        # skuId = '2518959',
+    )
+    prod18 = Product(
+        product_name="Lip Glow Oil",
+        product_brand='Dior',
+        product_category='makeup',
+        product_price=38.00,
+        product_quantity=100,
+        product_description="A nurturing, glossy lip oil that protects and enhances the lips, bringing out their natural color.",
+        # remove these before upgrading db
+        # product_id='P453814',
+        # skuId = '2316172',
+    )
 
     db.session.add(prod1)
     db.session.add(prod2)
@@ -430,8 +452,8 @@ def seed_products():
     db.session.add(prod14)
     db.session.add(prod15)
     db.session.add(prod16)
-    # db.session.add(prod17)
-    # db.session.add(prod18)
+    db.session.add(prod17)
+    db.session.add(prod18)
     # db.session.add(prod19)
     # db.session.add(prod20)
     # db.session.add(prod21)
