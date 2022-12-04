@@ -64,23 +64,44 @@ const UpdateReviewForm = () => {
 				<>
 					<CategoriesNavBar />
 					<div className='review-page-container'>
-						<div>Update Your Review</div>
-						<div className='review-rows-container'>
+						<div className='review-page-header font-24'>Update Your Review</div>
+						<div className='review-columns-container'>
 							<div className='review-product-image-container'>
 								<img src={product_image} />
 							</div>
-							<div className='review-columns-container'>
-								<div className='review-product-info'> product info</div>
-								<form onSubmit={handleUpdateReview}>
-									<label>Update your review</label>
-									<input
-										type='text'
-										value={review_msg}
-										onChange={updateReviewMsg}
-									/>
-									<button type='submit'>update your review</button>
-									<DeleteReviewButton />
-								</form>
+							<div className='review-details-container'>
+								<div className='review-product-details'>
+									<div className='font-16' style={{ fontWeight: 'bold' }}>
+										{currentProd.product_brand}{' '}
+									</div>
+									<div className='font-16'>{currentProd.product_name} </div>
+									<form
+										className='review-form-container'
+										onSubmit={handleUpdateReview}
+									>
+										<label
+											className='review-header font-16'
+											style={{ fontWeight: 'bold' }}
+										>
+											Review
+										</label>
+										<input
+											className='review-input font-14'
+											type='text'
+											value={review_msg}
+											onChange={updateReviewMsg}
+										/>
+										<div className='update-submit-button-container'>
+											<button
+												className='update-submit-button font-16-white'
+												type='submit'
+											>
+												update your review
+											</button>
+											<DeleteReviewButton />
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
