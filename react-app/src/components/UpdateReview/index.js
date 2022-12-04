@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {NavLink, useHistory, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { updateReview } from '../../store/review';
 import { loadOneReview } from '../../store/review';
 import CategoriesNavBar from '../CategoriesNavBar';
 import DeleteReviewButton from '../DeleteReview';
+import '../CreateReviewForm/CreateReview.css';
+
 const UpdateReviewForm = () => {
 	const dispatch = useDispatch();
 	let { reviewId } = useParams();
 	reviewId = +reviewId;
 	// console.log('review id 18', reviewId);
 	const history = useHistory();
-	const [loadedProductId, setLoadedProductId] = useState(false);
+	const [loaded, setLoaded] = useState(false);
 
 	// const userReviews = useSelector(state => state.reviews.userReviews)
 	const currentProd = useSelector((state) => state.products.oneProduct);
-	const prodReview = useSelector((state) =>Object.values(state.reviews.reviews));
+	const prodReview = useSelector((state) =>
+		Object.values(state.reviews.reviews)
+	);
 	const user = useSelector((state) => state.session.user);
 	// console.log('find user >>>>>>>>', findUser)
 	const findUser = prodReview.find((id) => id.user_id.id === user.id);
@@ -28,8 +32,7 @@ const UpdateReviewForm = () => {
 
 	useEffect(() => {
 		// console.log('review id in dispatch', reviewId)
-		dispatch(loadOneReview(reviewId));
-		// .then(() => setLoadedProductId(true))
+		dispatch(loadOneReview(reviewId)).then(() => setLoaded(true));
 	}, [dispatch]);
 	// helper functions
 	const updateReviewMsg = (e) => {
@@ -57,32 +60,32 @@ const UpdateReviewForm = () => {
 	};
 	return (
 		<>
-			{
-				<div className='update-review-page-container'>
-					<div>
-						<CategoriesNavBar />
-					</div>
-					<div className='review-rows-container'>
-						<div className='review-product-image-container'>
-							<img src={product_image} />
+			{loaded && (
+				<>
+					<CategoriesNavBar />
+					<div className='review-page-container'>
+						<div>Update Your Review</div>
+						<div className='review-rows-container'>
+							<div className='review-product-image-container'>
+								<img src={product_image} />
+							</div>
+							<div className='review-columns-container'>
+								<div className='review-product-info'> product info</div>
+								<form onSubmit={handleUpdateReview}>
+									<label>Update your review</label>
+									<input
+										type='text'
+										value={review_msg}
+										onChange={updateReviewMsg}
+									/>
+									<button type='submit'>update your review</button>
+									<DeleteReviewButton />
+								</form>
+							</div>
 						</div>
-						<div className='review-columns-container'>
-							<div className='review-product-info'> product info</div>
-							<form onSubmit={handleUpdateReview}>
-								<label>Update your review</label>
-								<input
-									type='text'
-									value={review_msg}
-									onChange={updateReviewMsg}
-
-								/>
-								<button type='submit'>update your review</button>
-                <DeleteReviewButton/>
-							</form>
-						</div>
 					</div>
-				</div>
-			}
+				</>
+			)}
 		</>
 	);
 };

@@ -16,15 +16,14 @@ const ProductDetails = () => {
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const { productId } = useParams();
 	const user = useSelector((state) => state.session.user);
-	console.log('user >>>>>>>.', user);
+	// console.log('user >>>>>>>.', user);
 
 	const prodReviews = useSelector((state) =>
 		Object.values(state.reviews.reviews)
 	);
-	console.log('product reviews', prodReviews);
+	// console.log('product reviews', prodReviews);
 
-	const userReview = prodReviews.find((obj) => obj.user_id.id === user.id);
-	console.log('user review >>>>>>>>>.', userReview);
+	// console.log('user review >>>>>>>>>.', userReview);
 	const oneProd = useSelector((state) => state.products.oneProduct);
 	const [loaded, isLoaded] = useState(false);
 	// const productInfo = Object.values(oneProd);
@@ -38,7 +37,13 @@ const ProductDetails = () => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
 	}, [dispatch]);
-
+	
+	let userReview;
+	if(prodReviews){
+		userReview = prodReviews.find((obj) => obj.user_id.id === user.id);
+	} else{
+		return null
+	}
 	// 'color' (color {oneProd.product_photos[0].prod_color_name})
 
 	return (
