@@ -22,18 +22,18 @@ def seed_prod_photos():
     photo4 = ProductPhoto(
         product_id=2,
         prod_photo='https://www.sephora.com/productimages/sku/s2362192-main-Lhero.jpg',
-        prod_color_name='bronze gold',
+        prod_color_name='Bronze Gold',
     )
     photo5 = ProductPhoto(
         product_id=17,
         prod_photo='https://www.sephora.com/productimages/sku/s2518959-main-Lhero.jpg?pb=allure-2022-bestofbeauty-badge',
-        prod_color_name='true mauve',
+        prod_color_name='True Mauve',
     )
     # product 3 -
     photo6 = ProductPhoto(
         product_id=3,
         prod_photo='https://www.sephora.com/productimages/sku/s2316172-main-Lhero.jpg',
-        prod_color_name='light pink',
+        prod_color_name='Light Pink',
     )
     photo7 = ProductPhoto(
         product_id=18,

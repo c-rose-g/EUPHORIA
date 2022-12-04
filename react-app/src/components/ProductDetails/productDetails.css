@@ -123,8 +123,6 @@
 
 }
 .product-details-lower-columns{
-  /* border:1px solid pink; */
-  /* border-bottom: 1px solid rgb(238, 238, 238); */
 
   display: flex;
   flex-wrap: wrap;
@@ -137,7 +135,7 @@
   /* border:1px solid blue; */
   /* border-left: 1px solid rgb(238, 238, 238); */
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   width: 15%;
   height: 100px;
   justify-content: center;
@@ -146,12 +144,13 @@
 .product-details-review-button{
   background-color: #cf112c;
   border-radius: 999px;
-  height: 50px
+  height: 50px;
+  width: 150px;
 }
 .product-details-column-mid{
-  /* border:1px solid blue; */
+
   /* border-left: 1px solid rgb(238, 238, 238); */
-  width:79%;
+  width: 89%;
   height: 100px;
   display: flex;
   align-items: center;
@@ -168,15 +167,28 @@
 .product-details-column-right{
   /* border: 1px solid blue; */
   /* height: 30px; */
+  height: 50px;
+  display: flex;
+  align-items: center;
   border-left: 1px solid rgb(238, 238, 238);
-  /* border-right: 1px solid rgb(238, 238, 238); */
-
   width:10%;
+
+}
+.review-name{
+  /* border: 1px solid blue; */
+  height: 100px;
+  width:100%;
+
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
 .reviews-div{
   border-bottom: 1px solid rgb(238, 238, 238);
   width: 100%;
   display: flex;
+  align-items: center;
+
   /* border:1px solid blue; */
 
 }

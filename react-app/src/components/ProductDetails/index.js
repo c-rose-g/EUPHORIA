@@ -9,21 +9,22 @@ import AddToBasketButton from '../AddToBasketButton';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import Footer from '../Footer/Footer';
-import './ProductDetails.css';
-import { useSyncExternalStore } from 'react';
+import './ProductDetails.css'
 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const { productId } = useParams();
 	const user = useSelector((state) => state.session.user);
-	console.log('user >>>>>>>.', user)
+	console.log('user >>>>>>>.', user);
 
-	const prodReviews = useSelector((state) =>Object.values(state.reviews.reviews));
-	console.log('product reviews', prodReviews)
+	const prodReviews = useSelector((state) =>
+		Object.values(state.reviews.reviews)
+	);
+	console.log('product reviews', prodReviews);
 
-	const userReview = prodReviews.find(obj => obj.user_id.id === user.id)
-	console.log('user review >>>>>>>>>.', userReview)
+	const userReview = prodReviews.find((obj) => obj.user_id.id === user.id);
+	console.log('user review >>>>>>>>>.', userReview);
 	const oneProd = useSelector((state) => state.products.oneProduct);
 	const [loaded, isLoaded] = useState(false);
 	// const productInfo = Object.values(oneProd);
@@ -53,17 +54,13 @@ const ProductDetails = () => {
 								</div>
 								<div className='product-details-info-container'>
 									<div className='product-details font-16'>
-										<div className='font-20' style={{fontWeight:'bold'}}> {oneProd.product_brand} </div>
-										<div>{oneProd.product_name}</div>
-										<div>${oneProd.product_price}</div>
+										<div className='font-20' style={{ fontWeight: 'bold' }}>{oneProd.product_brand}</div>
+										<div >{oneProd.product_name}</div>
+										<div style={{ fontWeight: 'bold' }}>${oneProd.product_price}</div>
 										<div>
 											{oneProd.product_photos[0].prod_color_name ===
 											'none' ? null : (
-												<div className=''>
-													{' '}
-													color: {
-														oneProd.product_photos[0].prod_color_name
-													}{' '}
+												<div className=''>{oneProd.product_photos[0].prod_color_name}
 												</div>
 											)}
 										</div>
@@ -91,7 +88,9 @@ const ProductDetails = () => {
 							</div>
 						</div>
 						<div className='product-details-rows-containers'>
-							<div className='font-20 product-details-row-header' >About the product</div>
+							<div className='font-20 product-details-row-header'>
+								About the product
+							</div>
 							<div className='product-details-row-text-div font-14'>
 								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
 								mollitia, molestiae quas vel sint commodi repudiandae
@@ -103,7 +102,9 @@ const ProductDetails = () => {
 								officia aut! Impedit sit sunt quaerat, odit, tenetur error,
 								harum nesciunt ipsum debitis quas aliquid.
 							</div>
-							<div className='font-20 product-details-row-header'>Ingredients</div>
+							<div className='font-20 product-details-row-header'>
+								Ingredients
+							</div>
 
 							<div className='product-details-row-text-div font-14'>
 								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -116,7 +117,9 @@ const ProductDetails = () => {
 								officia aut! Impedit sit sunt quaerat, odit, tenetur error,
 								harum nesciunt ipsum debitis quas aliquid.
 							</div>
-							<div className='font-20 product-details-row-header'>How to use</div>
+							<div className='font-20 product-details-row-header'>
+								How to use
+							</div>
 
 							<div className='product-details-row-text-div font-14'>
 								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
@@ -130,51 +133,48 @@ const ProductDetails = () => {
 								harum nesciunt ipsum debitis quas aliquid.
 							</div>
 
-							<div className='font-20 product-details-row-header'>Ratings and Reviews</div>
+							<div className='font-20 product-details-row-header'>
+								Reviews
+							</div>
 							<div className='reviews-section'>
 								<div className='product-details-upper-row font-18 product-details-row-text-div'>
-
-									{!userReview ? (<NavLink
-										className='remove-underline'
-										to={`/reviews/${productId}/new`}
-									>
-										<button className='product-details-review-button font-16-white'>Write a review</button>
-									</NavLink>):(
-										<>
-											{prodReviews.map(obj =>{
-												return(
-													<div key={obj.id}>
-													<NavLink to={`/reviews/${obj.id}`}><button className='product-details-review-button font-16-white'>update your review</button></NavLink>
-													</div>
-													)
-													})}
-										</>
-																)}
+									{!userReview ? (
+										<NavLink
+											className='remove-underline'
+											to={`/reviews/${productId}/new`}
+										>
+											<button className='product-details-review-button font-16-white'>
+												Write a review
+											</button>
+										</NavLink>
+									) : (
+										<div>
+											<NavLink to={`/reviews/${userReview.id}`}>
+												<button className='product-details-review-button font-16-white'>
+													update your review
+												</button>
+											</NavLink>
+										</div>
+									)}
 								</div>
 								<div className='product-details-lower-columns'>
 									{prodReviews.map((obj) => {
 										return (
-											<div className='reviews-div'>
-												{/* <div className='product-details-column-left'>
-												{user && user.id === obj.user_id.id ? (
-																<NavLink to={`/reviews/${obj.id}`}>
-																	<button className='update-review-button font-16-white'>update your review</button>
-																</NavLink>
-															) : null}
-												</div> */}
+											<div className='reviews-div font-16'>
 												<div
 													className='product-details-column-mid'
 													key={obj.id}
 												>
 													<div className='review-div'>
 														<div>{obj.review_msg}</div>
-
 													</div>
 												</div>
 												<div className='product-details-column-right'>
+												<div className='review-name'>
+
 													{obj.user_id.first_name}
 												</div>
-
+												</div>
 											</div>
 										);
 									})}
