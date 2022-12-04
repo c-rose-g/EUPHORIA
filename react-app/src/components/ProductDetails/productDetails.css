@@ -22,7 +22,8 @@
     /* width:20px */
   }
   .product-details-rows-containers{
-
+    /* height: 100%;
+    width: 100%; */
   }
 
   .product-details-row-divider{
@@ -96,30 +97,86 @@
   gap: 5%;
 }
 
+/* ***************** PRODUCT ABOUT , INGREDIENTS, HOW TO USE ROWS ******************** */
 .product-details-rows-containers{
-
+  height: 100%;
+  width: 100%;
+  margin-top:50px
 }
-
-.product-details-row-divider{
-
+.product-details-row-text-div{
+  border-bottom: 1px solid rgb(238, 238, 238);
+  padding-bottom: 20px;
 }
-
+.product-details-row-header{
+  height: 50px;
+  /* border-bottom: 1px solid rgb(238, 238, 238); */
+  border-top: 1px solid rgb(238, 238, 238);
+  padding-top:20px
+}
 .product-details-upper-row{
-
+  /* border-bottom: 1px solid rgb(238, 238, 238); */
 }
 
+/* *********************** REVIEWS **************************** */
+.reviews-section{
+  /* border:1px solid green; */
+
+}
 .product-details-lower-columns{
+  /* border:1px solid pink; */
+  /* border-bottom: 1px solid rgb(238, 238, 238); */
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* justify-content: center; */
 
 }
 
 .product-details-column-left{
-
+  /* border:1px solid blue; */
+  /* border-left: 1px solid rgb(238, 238, 238); */
+  display: flex;
+  align-items: center;
+  width: 15%;
+  height: 100px;
+  justify-content: center;
 }
 
+.product-details-review-button{
+  background-color: #cf112c;
+  border-radius: 999px;
+  height: 50px
+}
 .product-details-column-mid{
+  /* border:1px solid blue; */
+  /* border-left: 1px solid rgb(238, 238, 238); */
+  width:79%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.review-div{
+  display: flex;
+  flex-direction: row;
+  /* width: 100%; */
 
 }
 
 .product-details-column-right{
+  /* border: 1px solid blue; */
+  /* height: 30px; */
+  border-left: 1px solid rgb(238, 238, 238);
+  /* border-right: 1px solid rgb(238, 238, 238); */
+
+  width:10%;
+}
+.reviews-div{
+  border-bottom: 1px solid rgb(238, 238, 238);
+  width: 100%;
+  display: flex;
+  /* border:1px solid blue; */
 
 }

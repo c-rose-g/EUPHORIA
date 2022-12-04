@@ -136,8 +136,8 @@ export const deleteReview = reviewId => async dispatch => {
   }
 }
 /************************REDUCER************************** */
-const initialState = {reviews:{}, oneReview:{}, userReviews:{}}
-
+const initialState = {reviews:{}, oneReview:{}}
+// userReviews:{}
 export const reviewsReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
@@ -149,14 +149,14 @@ export const reviewsReducer = (state = initialState, action) => {
       // newState = {...state, [action.newReview.id]:action.newReview}
       return newState
 
-    case LOAD_USERS_REVIEWS:{
-      newState= {...state, userReviews:{}}
-      action.user.retrieve_user_reviews.forEach(user =>{
-        // console.log('user in reviews reducer >>>', user)
-        newState.userReviews[user.user_id.id] = user.user_id
-      })
-      return newState
-    }
+    // case LOAD_USERS_REVIEWS:{
+    //   newState= {...state, userReviews:{}}
+    //   action.user.retrieve_user_reviews.forEach(user =>{
+    //     // console.log('user in reviews reducer >>>', user)
+    //     newState.userReviews[user.user_id.id] = user.user_id
+    //   })
+    //   return newState
+    // }
     case LOAD_REVIEWS:{
       newState = {...state, reviews:{}}
       action.reviews.retrieve_prod_reviews.forEach(review => {

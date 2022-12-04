@@ -8,29 +8,23 @@ import CategoriesNavBar from '../CategoriesNavBar';
 import AddToBasketButton from '../AddToBasketButton';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
-import Footer from '../Footer/Footer'
-import './ProductDetails.css'
+import Footer from '../Footer/Footer';
+import './ProductDetails.css';
+import { useSyncExternalStore } from 'react';
 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
-	const [showSignUpModal ,setShowSignUpModal] = useState(false)
-	// const { productId } = useParams();
+	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const { productId } = useParams();
-	console.log('product id in product details', productId)
 	const user = useSelector((state) => state.session.user);
-	// const basketId = useSelector((state) => state.session.user.basket_id)
+	console.log('user >>>>>>>.', user)
 
-	// console.log('this is user >>>>.', basketId)
-	const prodReviews = useSelector((state) =>
-		Object.values(state.reviews.reviews)
-	);
-	// console.log('product reviews', prodReviews)
-	const userReviews = useSelector((state) =>
-		Object.values(state.reviews.userReviews)
-	);
-	// console.log('user reviews', userReviews);
+	const prodReviews = useSelector((state) =>Object.values(state.reviews.reviews));
+	console.log('product reviews', prodReviews)
+
+	const userReview = prodReviews.find(obj => obj.user_id.id === user.id)
+	console.log('user review >>>>>>>>>.', userReview)
 	const oneProd = useSelector((state) => state.products.oneProduct);
-	console.log('one prod >>>>>>>', oneProd)
 	const [loaded, isLoaded] = useState(false);
 	// const productInfo = Object.values(oneProd);
 	// console.log('this is one product', oneProd);
@@ -40,13 +34,11 @@ const ProductDetails = () => {
 	// console.log('this is product reviews >>>>>', prodReviews)
 
 	useEffect(() => {
-		dispatch(productDetails(productId))
-		.then(() => isLoaded(true));
-		dispatch(loadReviews(productId))
-
+		dispatch(productDetails(productId)).then(() => isLoaded(true));
+		dispatch(loadReviews(productId));
 	}, [dispatch]);
 
-	// 'color' {oneProd.product_photos[0].prod_color_name
+	// 'color' (color {oneProd.product_photos[0].prod_color_name})
 
 	return (
 		<>
@@ -61,91 +53,136 @@ const ProductDetails = () => {
 								</div>
 								<div className='product-details-info-container'>
 									<div className='product-details font-16'>
-
-										<div> {oneProd.product_brand} </div>
+										<div className='font-20' style={{fontWeight:'bold'}}> {oneProd.product_brand} </div>
 										<div>{oneProd.product_name}</div>
-										<div>{oneProd.product_price}</div>
-										<div>{oneProd.product_photos[0].prod_color_name === 'none'? null:'hello'
+										<div>${oneProd.product_price}</div>
+										<div>
+											{oneProd.product_photos[0].prod_color_name ===
+											'none' ? null : (
+												<div className=''>
+													{' '}
+													color: {
+														oneProd.product_photos[0].prod_color_name
+													}{' '}
+												</div>
+											)}
+										</div>
 
-										 }</div>
-
-										<div>{user? (<AddToBasketButton productId={productId}/>):(<div><button onClick={() => setShowSignUpModal(true)}>Sign up to add to basket</button></div>)} </div>
+										<div>
+											{user ? (
+												<AddToBasketButton productId={productId} />
+											) : (
+												<div>
+													<button onClick={() => setShowSignUpModal(true)}>
+														Sign up to add to basket
+													</button>
+												</div>
+											)}{' '}
+										</div>
 									</div>
 								</div>
 								<div>
 									{showSignUpModal && (
 										<Modal onClose={() => setShowSignUpModal(false)}>
-										<SignUpModal setShowSignUpModal={setShowSignUpModal} />
+											<SignUpModal setShowSignUpModal={setShowSignUpModal} />
 										</Modal>
 									)}
 								</div>
 							</div>
 						</div>
 						<div className='product-details-rows-containers'>
-							<div className='font-20'> about the product (fetch from api)</div>
-							<div className='product-details-row-divider'>
-								{' '}
-								about the product (fetch from api)
+							<div className='font-20 product-details-row-header' >About the product</div>
+							<div className='product-details-row-text-div font-14'>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+								mollitia, molestiae quas vel sint commodi repudiandae
+								consequuntur voluptatum laborum numquam blanditiis harum
+								quisquam eius sed odit fugiat iusto fuga praesentium optio,
+								eaque rerum! Provident similique accusantium nemo autem.
+								Veritatis obcaecati tenetur iure eius earum ut molestias
+								architecto voluptate aliquam nihil, eveniet aliquid culpa
+								officia aut! Impedit sit sunt quaerat, odit, tenetur error,
+								harum nesciunt ipsum debitis quas aliquid.
 							</div>
-							<div className='font-20'> Ingredients(fetch from api)</div>
+							<div className='font-20 product-details-row-header'>Ingredients</div>
 
-							<div className='product-details-row-divider'>
-								{' '}
-								Ingredients(fetch from api)
+							<div className='product-details-row-text-div font-14'>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+								mollitia, molestiae quas vel sint commodi repudiandae
+								consequuntur voluptatum laborum numquam blanditiis harum
+								quisquam eius sed odit fugiat iusto fuga praesentium optio,
+								eaque rerum! Provident similique accusantium nemo autem.
+								Veritatis obcaecati tenetur iure eius earum ut molestias
+								architecto voluptate aliquam nihil, eveniet aliquid culpa
+								officia aut! Impedit sit sunt quaerat, odit, tenetur error,
+								harum nesciunt ipsum debitis quas aliquid.
 							</div>
-							<div className='font-20'> How to use(fetch from api)</div>
+							<div className='font-20 product-details-row-header'>How to use</div>
 
-							<div className='product-details-row-divider'>
-								{' '}
-								How to use(fetch from api){' '}
+							<div className='product-details-row-text-div font-14'>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+								mollitia, molestiae quas vel sint commodi repudiandae
+								consequuntur voluptatum laborum numquam blanditiis harum
+								quisquam eius sed odit fugiat iusto fuga praesentium optio,
+								eaque rerum! Provident similique accusantium nemo autem.
+								Veritatis obcaecati tenetur iure eius earum ut molestias
+								architecto voluptate aliquam nihil, eveniet aliquid culpa
+								officia aut! Impedit sit sunt quaerat, odit, tenetur error,
+								harum nesciunt ipsum debitis quas aliquid.
 							</div>
-							<div className='font-20'>Ratings and Reviews</div>
 
-							<div className='product-details-row-divider'>
-								<div className='product-details-upper-row'>
-									{' '}
-									ratings number, and ratings bars
-									<NavLink to={`/reviews/${productId}/new`}>
-										Write a review
-									</NavLink>
+							<div className='font-20 product-details-row-header'>Ratings and Reviews</div>
+							<div className='reviews-section'>
+								<div className='product-details-upper-row font-18 product-details-row-text-div'>
+
+									{!userReview ? (<NavLink
+										className='remove-underline'
+										to={`/reviews/${productId}/new`}
+									>
+										<button className='product-details-review-button font-16-white'>Write a review</button>
+									</NavLink>):(
+										<>
+											{prodReviews.map(obj =>{
+												return(
+													<div key={obj.id}>
+													<NavLink to={`/reviews/${obj.id}`}><button className='product-details-review-button font-16-white'>update your review</button></NavLink>
+													</div>
+													)
+													})}
+										</>
+																)}
 								</div>
 								<div className='product-details-lower-columns'>
-									<div className='product-details-column-left'>
-										review_rating{' '}
-									</div>
-									<div className='product-details-column-mid'>
-										{prodReviews.map((obj) => {
-											return (
-												<div key={obj.id}>
-													<div>{obj.review_msg}</div>
-													<div>
-														{user && user.id === obj.user_id.id ? (
-															<NavLink to={`/reviews/${obj.id}`}>
-																<button>update your review</button>
-															</NavLink>
-														) : null}
+									{prodReviews.map((obj) => {
+										return (
+											<div className='reviews-div'>
+												{/* <div className='product-details-column-left'>
+												{user && user.id === obj.user_id.id ? (
+																<NavLink to={`/reviews/${obj.id}`}>
+																	<button className='update-review-button font-16-white'>update your review</button>
+																</NavLink>
+															) : null}
+												</div> */}
+												<div
+													className='product-details-column-mid'
+													key={obj.id}
+												>
+													<div className='review-div'>
+														<div>{obj.review_msg}</div>
+
 													</div>
 												</div>
-											);
-										})}
-									</div>
-									<div className='product-details-column-right'>
-										{userReviews.map((obj) => {
-											<div key={obj.id}>{obj.first_name}</div>;
-										})}
-									</div>
-									{/* <div> */}
+												<div className='product-details-column-right'>
+													{obj.user_id.first_name}
+												</div>
 
-									{/* {prodReviews.map((review) =>
-                  						return(
-                 							  <div key={review.id}> {review_}</div>
-            							    ))} */}
-									{/* </div> */}
+											</div>
+										);
+									})}
 								</div>
 							</div>
 						</div>
 					</div>
-					<Footer/>
+					<Footer />
 				</>
 			)}
 		</>
