@@ -4,6 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { createReview } from '../../store/review';
 import CategoriesNavBar from '../CategoriesNavBar';
 import { productDetails } from '../../store/products';
+import './CreateReview.css';
 const CreateReviewForm = () => {
 	const { product_id } = useParams();
 	console.log('prodId', product_id);
@@ -42,29 +43,40 @@ const CreateReviewForm = () => {
 	return (
 		<>
 			{loaded && (
-				<div className='new-review-page-container'>
-					<div>
-						<CategoriesNavBar />
-					</div>
-					<div className='new-review-rows-container'>
-						<div className='new-review-product-image-container'>
-							<img src={product_image}></img>
+				<>
+					<CategoriesNavBar />
+					<div className='review-page-container'>
+					<div className='review-page-header font-24'> Create a Review</div>
+						<div className='review-columns-container'>
+							<div className='review-product-image-container'>
+								<img src={product_image}></img>
+							</div>
+							<div className='review-details-container'>
+								<div className='review-product-details'>
+									<div className='font-16' style={{fontWeight:'bold'}}>{prodInfo.product_brand}</div>
+									<div className='font-16'>{prodInfo.product_name}</div>
+
+									<form className='review-form-container' onSubmit={newReview}>
+										<label className='review-header font-16' style={{fontWeight:'bold'}}>Review</label>
+										<textarea
+											className='review-input font-14'
+											type='text'
+											value={review_msg}
+											onChange={updateReviewMsg}
+											placeholder='Please write your review here'
+										>Write your review</textarea>
+										<div className='review-submit-button-container'>
+
+										<button className='review-submit-button font-16-white' type='submit'>
+											Submit Review
+										</button>
+										</div>
+									</form>
+								</div>
+							</div>
 						</div>
-						<div className='new-review-columns-container'>
-							<div className='new-review-product-info'>product info</div>
-							<form onSubmit={newReview}>
-								<label>Review</label>
-								<input
-									type='text'
-									value={review_msg}
-									onChange={updateReviewMsg}
-									placeholder='Please write your review here'
-								/>
-								<button type='submit'>Submit Review</button>
-							</form>
-						</div>
 					</div>
-				</div>
+				</>
 			)}
 		</>
 	);
