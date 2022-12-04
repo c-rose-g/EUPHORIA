@@ -105,11 +105,21 @@
 }
 
 /* ********************* DROP DOWN ********************** */
+.dropdown-container {}
+
+.profile-button-onEnter {}
+
+.profile-button-onLeave {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
 .profile-dropdown-signin {
   z-index: 1;
   border-radius: 5px;
   background-color: white;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   padding-top: 3px;
   padding-bottom: 3px;
   position: absolute;
@@ -119,6 +129,79 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 200px;
+  /* transition: all 100s ease-in 0s; */
+  /* transition-property: all; */
+  /* top: 100px; */
+  bottom: 570px;
+    left: 70%;
+  /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
+  box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
+
+}
+
+.profile-img-container {
+
+  display: flex;
+  justify-content: center;
+  width: 60px;
+}
+.img-greetings{
+  /* border:1px solid blue; */
+  display: flex;
+  margin-top:2%;
+
+}
+
+.profile-img {
+  /* height:130% */
+}
+
+.profile-greeting {
+  /* border:1px solid red; */
+  display: flex;
+  width: 75%;
+  overflow:hidden;
+  white-space: pre-line;
+  margin-left:5%
+}
+
+.signin-login-buttons-container{
+  border:1px solid red;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  gap:5px;
+  margin-top:5%;
+}
+.profile-signin {
+  width: 100%;
+  background-color: black;
+  border-radius: 9999px;
+
+}
+
+.profile-login {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 9999px;
+  background-color: white;
+}
+
+.buy-it-again-container{
+  border:1px solid red;
+
+}
+
+.buy-it-again-button{
+
+}
+
+.logout-button-container{
+
+}
+
+.logout-button{
+
 }

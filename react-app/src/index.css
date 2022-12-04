@@ -12,7 +12,10 @@
 .remove-underline{
   text-decoration: none;
 }
-
+[role='button'],button{
+  cursor:pointer;
+  
+}
 /* *************************** BLACK FONTS ******************************** */
 
 .font-11{

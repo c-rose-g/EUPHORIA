@@ -6,6 +6,7 @@ import SignUpModal from '../SignUpModal';
 import LoginModal from '../LoginModal';
 import user from '../../Images/euphora-sign-in.png';
 import activeUser from '../../Images/euphoria-user-active.png';
+import profileButtonUser from '../../Images/euphoria-profile-user-large.png'
 import LogoutButton from '../auth/LogoutButton';
 import '../NavBar/NavBar.css';
 import { useSelector } from 'react-redux';
@@ -16,6 +17,7 @@ function ProfileButton() {
 	// const [timeEmoji, setTimeEmoji] = useState('hi')
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [dropMenu, setDropMenu] = useState(false);
+	const [profileTransition, setProfileTransition] = useState('')
 	const [date, setDate] = useState(new Date());
 	const [hour, setHour] = useState(date.getHours());
 	const [currentTime, setCurrentTime] = useState('hello');
@@ -43,8 +45,16 @@ function ProfileButton() {
 		setShowLoginModal(true);
 	};
 
+	const changeClassName = ()=>{
+		if(dropMenu){
+			setProfileTransition('profile-button-onLeave')
+
+		} else {
+			setProfileTransition('')
+		}
+	}
 	return (
-		<div className='dropdown-container' onMouseEnter={() => setDropMenu(true)} onMouseLeave={() => setDropMenu(false)}>
+		<div className='dropdown-container' onMouseEnter={() => setDropMenu(true)} onMouseLeave={() => setDropMenu(true)}>
 			<button className='font-12' id='user-space-text'>
 				<div className='nav-acct-img'>
 					<img src={dropMenu ? activeUser : user} />
@@ -55,35 +65,39 @@ function ProfileButton() {
 						: 'Sign in for FREE Shipping 🚚'}
 				</div>
 			</button>
-			{dropMenu && (
-				<div className='profile-dropdown-signin'>
-					<div>
-						<img src={activeUser} alt='' />
-					</div>
-					<div>
-						{' '}
-						{currentTime} {signedInUser ? signedInUser.first_name : 'Beautiful'}{' '}
-						💋
-					</div>
-					<div>
+			{dropMenu ? (
+				<div className='profile-dropdown-signin' style={{transition:'all .2s linear 0s'}} >
+				<div className='img-greetings'>
+					<div className='profile-img-container'><img className='profile-img' src={profileButtonUser} alt='' /></div>
+					<div className='profile-greeting font-16'>{currentTime} {signedInUser ? signedInUser.first_name : 'Beautiful'}💋</div>
+				</div>
+				<div className='signin-login-buttons-container'>
+					{signedInUser ? null:(<button className='profile-signin font-16-white' onClick={closeForLogin}>Sign in</button>)}
+					{signedInUser ? null:(<button className='profile-login font-16' onClick={closeForSignUp}>Create Account</button>)}
+				</div>
 
-						{signedInUser ? null:(<button className='profile-signin' onClick={closeForSignUp}>
-							Sign Up
-						</button>)}
-					</div>
-					<div>
-					{signedInUser ? null:(<button className='profile-login' onClick={closeForLogin}>
-						Log in
-					</button>)}
-					</div>
-					<div>
+				<div className='buy-it-again-container'>
+					{signedInUser ? (<NavLink  to={`/history/${signedInUser.id}`}><button className='buy-it-again-button'>Buy it again</button></NavLink>):(<button className='buy-it-again-button' onClick={closeForLogin}>Buy it again</button>)}
+				</div>
 
-						{signedInUser ? (<NavLink to={`/history/${signedInUser.id}`}>Buy it again</NavLink>):(<button className='profile-login' onClick={closeForLogin}>Buy it again</button>)}
+					{signedInUser ? (<div className='logout-button-container' onClick={() => setDropMenu(false)}> <LogoutButton/></div>):null}
+
+				</div>
+			): (<div className='profile-dropdown-signin' style={{visibility:'hidden', opacity:'0', transform:'translateY(8px)'}}>
+					<div className='profile-img-container'>
+						<img className='profile-img' src={activeUser} alt='' />
+					</div>
+					<div className='profile-greeting'>{currentTime} {signedInUser ? signedInUser.first_name : 'Beautiful'}💋</div>
+					<div >
+						{signedInUser ? null:(<button className='profile-login' onClick={closeForLogin}>Sign in</button>)}
+						{signedInUser ? null:(<button className='profile-signin' onClick={closeForSignUp}>Create Account</button>)}
+					</div>
+					<div>
+						{signedInUser ? (<NavLink className='buy-it-again' to={`/history/${signedInUser.id}`}><button>Buy it again</button></NavLink>):(<button className='profile-login' onClick={closeForLogin}>Buy it again</button>)}
 
 					</div>
 					{signedInUser ? (<div onClick={() => setDropMenu(false)}> <LogoutButton/></div>):null}
-				</div>
-			)}
+				</div>)}
 
 			<div>
 				{showSignUpModal && (
