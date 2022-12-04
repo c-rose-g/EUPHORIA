@@ -47,8 +47,9 @@ export const productDetails = (prod_id) => async dispatch =>{
   }
 }
 
-export const productCategories = (prod_category) => async dispatch =>{
-  const response = await fetch(`/api/products/categories/${prod_category}`, {
+export const productCategories = (prodCategory) => async dispatch =>{
+  console.log('product category in products thunk >>>>>>>>>', prodCategory)
+  const response = await fetch(`/api/products/categories/${prodCategory}`, {
     headers:{'Content-Type': 'application/json'}
   })
 
@@ -90,7 +91,7 @@ export const productsReducer = (state = initialState, action) =>{
 
       newState = {... state}
       newState.allProducts = {}
-      console.log('action from the products reducer >>>>>', action.category)
+      console.log('action from the products reducer >>>>>', action.category.retrieve_categories)
       action.category.retrieve_categories.forEach(cat => {
         newState.allProducts[cat.id] = cat
       })
