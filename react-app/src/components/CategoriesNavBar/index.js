@@ -5,8 +5,10 @@ import { productCategories } from "../../store/products";
 import './CategoriesNavBar.css'
 
 const CategoriesNavBar = ()=>{
-  const {cat_name} = useParams()
+  const {prodCategory} = useParams()
+  console.log('cat name in categories nav bar', prodCategory)
   const dispatch = useDispatch()
+  const [loaded, setLoaded] = useState(false)
 	// const [isLoaded, setIsLoaded] = useState(false);
   // const products = useSelector(state => Object.values(state.products.allProducts))
 
@@ -15,20 +17,22 @@ const CategoriesNavBar = ()=>{
   //   productSet.add(product.product_category)
   // })
 
+
   const categoriesNames = ['makeup','skincare','hair','fragrance']
   // console.log('product set >>>>', categoriesNames)
 
 
   useEffect(() =>{
-    if(cat_name){
-      dispatch(productCategories(cat_name))
-    }
-  },[dispatch])
+    // if(cat_name){
+      dispatch(productCategories(prodCategory))
+      .then(() => setLoaded(true))
+    // }
+  },[dispatch, prodCategory])
 
   return(
     <>
 
-      <div className="categories-navbar-container">
+      {loaded && (<div className="categories-navbar-container">
         <div className="categories-map-container">
         {categoriesNames.map((name) =>{
           return(
@@ -41,6 +45,7 @@ const CategoriesNavBar = ()=>{
         })}
         </div>
       </div>
+      )}
 
     </>
   )

@@ -50,7 +50,7 @@ function App() {
 				<Route path='/products' exact={true}>
 					<Splash />
 				</Route>
-				<Route path='/products/categories/:prod_category' exact={true}>
+				<Route path='/products/categories/:prodCategory' exact={true}>
 					<ProductCategory />
 				</Route>
 				<Route path='/products/:productId' exact={true}>

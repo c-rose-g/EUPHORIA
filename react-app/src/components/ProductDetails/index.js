@@ -8,7 +8,8 @@ import CategoriesNavBar from '../CategoriesNavBar';
 import AddToBasketButton from '../AddToBasketButton';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
-import './productDetails.css';
+import Footer from '../Footer/Footer'
+import './ProductDetails.css';
 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const ProductDetails = () => {
 					<div className='product-details-page-container'>
 						<div className='product-details-columns-container'>
 							<div className='product-details-container'>
-								<div className='product-details-img'>
+								<div className='product-details-img-container'>
 									<ProductImageSlider />
 								</div>
 								<div className='product-details-info-container'>
@@ -70,7 +71,7 @@ const ProductDetails = () => {
 										<SignUpModal setShowSignUpModal={setShowSignUpModal} />
 										</Modal>
 									)}
-			</div>
+								</div>
 							</div>
 						</div>
 						<div className='product-details-rows-containers'>
@@ -129,14 +130,15 @@ const ProductDetails = () => {
 									{/* <div> */}
 
 									{/* {prodReviews.map((review) =>
-                  return(
-                   <div key={review.id}> {review_}</div>
-                ))} */}
+                  						return(
+                 							  <div key={review.id}> {review_}</div>
+            							    ))} */}
 									{/* </div> */}
 								</div>
 							</div>
 						</div>
 					</div>
+					<Footer/>
 				</>
 			)}
 		</>

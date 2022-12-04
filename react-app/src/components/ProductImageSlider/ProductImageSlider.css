@@ -36,7 +36,7 @@
   width: 465px;
   height: 465px;
   object-fit: contain;
-  border:1px solid pink;
+  /* border:1px solid pink; */
 }
 
 .slide{
