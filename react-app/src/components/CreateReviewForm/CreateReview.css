@@ -85,4 +85,32 @@
     width:50%;
     background-color: black;
     border-radius: 9999px;
+    gap: 2%;
+}
+
+.review-delete-button{
+    height: 50px;
+    background-color: black;
+    border-radius: 9999px;
+    width:50%
+}
+
+.update-submit-button-container{
+    display: flex;
+    justify-content: center;
+    gap:15%;
+}
+.update-submit-button {
+    height:50px;
+    width:40%;
+    background-color: black;
+    border-radius: 9999px;
+
+}
+
+.update-delete-button{
+    height: 50px;
+    background-color: black;
+    border-radius: 9999px;
+    width:40%
 }
