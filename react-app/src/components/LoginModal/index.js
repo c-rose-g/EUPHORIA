@@ -7,7 +7,7 @@ import SignUpModal from '../SignUpModal';
 
 const LoginModal = ({ setShowLoginModal }) => {
 	const [email, setEmail] = useState('');
-	const [showSignUpFromLogin, setShowSignUpFromLogin] = useState(false)
+	const [showSignUpFromLogin, setShowSignUpFromLogin] = useState(false);
 	// console.log('show sign up from login', showSignUpFromLogin)
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState([]);
@@ -20,47 +20,70 @@ const LoginModal = ({ setShowLoginModal }) => {
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
-
-	const openSignUpModal = () =>{
+	const openSignUpModal = () => {
 		// setShowLoginModal(false)
-		setShowSignUpFromLogin(true)
-	}
-	const closeBothModals = () =>{
-		setShowLoginModal(false)
-		setShowSignUpFromLogin(false)
-	}
+		setShowSignUpFromLogin(true);
+	};
+	const closeBothModals = () => {
+		setShowLoginModal(false);
+		setShowSignUpFromLogin(false);
+	};
 
 	const validateEmail = (email) => {
 		return /\S+@\S+\.\S+/.test(email);
 	};
 
-
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		setRenderErr(true)
-
-		if(!emailErr && !passwordErr){
-			const data = await dispatch(login(email, password));
-			setShowLoginModal(false);
-			if (data) {
-				for (let error of data){
-					if(error.startsWith('email')) setEmailErr('Invalid Email')
-					if(error.startsWith('password')) setPasswordErr('Invalid Password')
-				}
-				setErrors(data);
-				setShowLoginModal(true)
-			}
+		setRenderErr(true);
+		let data;
+		if( !emailErr && !passwordErr){
+		data = await dispatch(login(email, password));
+		// setShowLoginModal(false);
 		};
-	}
+		if (data) {
+			// let err = {};
+			console.log('dataaaaaaa', data);
+			setEmailErr(data)
+			setPasswordErr(data)
+			for (let error of data) {
+				console.log('error', error);
+				if (error.startsWith('Email')) {
+					// err.email = 'Invalid Email';
+					setEmailErr('Invalid Email');
+				}
+				if (error.startsWith('Password')) {
+					// err.password = 'Invalid Password';
+					setPasswordErr('Password was incorrect');
+				}
+				if(error.includes('Email provided not found')){
+					setEmailErr('Email provided not found.')
+				}
+				if(error.includes('No such user exists')){
+					setPasswordErr('No such user exists')
+
+				}
+			}
+
+			// setErrors();
+			setShowLoginModal(true);
+			console.log('errors', errors);
+			// console.log('set email errors', emailErr);
+		}
+		// 	else {
+		// 	setShowLoginModal(false)
+		// }
+	};
 	/********************Use Effect******************* */
 
 	useEffect(() => {
 		//email error handling
-		if (email.trim().length && !validateEmail(email)) {
-			setEmailErr('invalid email')
-		} else if (!email.trim().length) {
+		if (!email.trim().length) {
 			setEmailErr('email is required')
-		} else {
+		} else if (email.trim().length && !validateEmail(email)) {
+			setEmailErr('invalid email')
+		}
+		else {
 			setEmailErr("")
 		}
 		//password error handling
@@ -73,20 +96,19 @@ const LoginModal = ({ setShowLoginModal }) => {
 			setPasswordErr("")
 		}
 	}, [email, password])
-
+	// console.log('password errors',passwordErr)
 	// demo user login
 
 	const log = async (e) => {
-		e.preventDefault()
-		const data = await dispatch(login('demo@aa.io', 'password'))
+		e.preventDefault();
+		const data = await dispatch(login('demo@aa.io', 'password'));
 		setShowLoginModal(false);
 
 		if (data) {
-			setErrors(data);
+			// setErrors(data);
 			setShowLoginModal(true);
-
 		}
-	}
+	};
 
 	const updateEmail = (e) => {
 		setEmail(e.target.value);
@@ -101,80 +123,98 @@ const LoginModal = ({ setShowLoginModal }) => {
 	// }
 	return (
 		<>
-
-		<div className='modal-form-container'>
-			<form className='login-modal-form' onSubmit={handleLogin}>
-
-				<div id='login-title-div'>
-				<h2 className='font-16'>Sign in</h2>
-				</div>
-				<div className='inputs-row-div'>
-				<div>{renderErr && emailErr ?
-							<label className='text renderError font-16' htmlFor="email">
-								Email: {emailErr}</label>
-							:
-							<label className='text noRenderError font-16' htmlFor="email">
-								Email
-							</label>
-						}
+			<div className='modal-form-container'>
+				<form className='login-modal-form' onSubmit={handleLogin}>
+					<div id='login-title-div'>
+						<h2 className='font-16'>Sign in</h2>
+					</div>
+					{/* <div>
+						{errors.map((error, ind) => (
+							<div key={ind}>{error}</div>
+						))}
+					</div> */}
+					<div className='inputs-row-div'>
+						<div>
+							{renderErr && emailErr ? (
+								<label className='text renderError font-16' htmlFor='email'> {emailErr}
+								</label>
+							) : (
+								<label className='text noRenderError font-16' htmlFor='email'>
+									Email
+								</label>
+							)}
 						</div>
-					<input
-						type='text'
-						className='modal-inp-row font-14'
-						onChange={updateEmail}
-						value={email}
-						placeholder='Email'
-					/>
-				</div>
-				<div className='inputs-row-div'>
-				<div>
-							{renderErr && passwordErr?
-								<label className='text renderError font-16' htmlFor="password">
-									Password: {passwordErr}</label>
-								:
-								<label className='text noRenderError font-16' htmlFor="password">
+						<input
+							type='text'
+							className='modal-inp-row font-14'
+							onChange={updateEmail}
+							value={email}
+							placeholder='Email'
+						/>
+					</div>
+					<div className='inputs-row-div'>
+						<div>
+							{renderErr && passwordErr ? (
+								<label className='text renderError font-16' htmlFor='password'>
+									{passwordErr}
+								</label>
+							) : (
+								<label
+									className='text noRenderError font-16'
+									htmlFor='password'
+								>
 									Password
 								</label>
-							}
+							)}
 						</div>
-					<input
-						type='text'
-						className='modal-inp-row font-14'
-						onChange={updatePassword}
-						value={password}
-						placeholder='Password'
-					/>
-				</div>
-				{/* <div style={{border:'1px solid green', height:'20px'}}>
+						<input
+							type='text'
+							className='modal-inp-row font-14'
+							onChange={updatePassword}
+							value={password}
+							placeholder='Password'
+						/>
+					</div>
+					{/* <div style={{border:'1px solid green', height:'20px'}}>
 						{errors.map((error, ind) => (
 							<div className='errors-div' key={ind}>{error}</div>
 						))}
 					</div> */}
-				<div className='join-now-button-div'>
-					<button button id='sign-in-now' className='font-14' type='submit'>Sign in</button>
-					<div>
-						<button
-							onClick={log}
-							id='demo-button'>Demo User</button>
+					<div className='join-now-button-div'>
+						<button button id='sign-in-now' className='font-14' type='submit'>
+							Sign in
+						</button>
+						<div>
+							<button onClick={log} id='demo-button'>
+								Demo User
+							</button>
+						</div>
 					</div>
-				</div>
-				<div className='border-bottom'></div>
-				<div className='join-now-button-div'>
-					<div className='new-sephora-text font-16'><strong>New to sephora?</strong></div>
-					<div>
-					<div id='create-new-account-button' className='font-16' onClick={openSignUpModal}>Create an account</div>
+					<div className='border-bottom'></div>
+					<div className='join-now-button-div'>
+						<div className='new-sephora-text font-16'>
+							<strong>New to sephora?</strong>
+						</div>
+						<div>
+							<div
+								id='create-new-account-button'
+								className='font-16'
+								onClick={openSignUpModal}
+							>
+								Create an account
+							</div>
+						</div>
 					</div>
-				</div>
 
-			<div>
-				{showSignUpFromLogin && (
-					<Modal onClose={closeBothModals}>
-						<SignUpModal setShowSignUpFromLogin={setShowSignUpFromLogin} />
-					</Modal>
-				)}
+					<div>
+						{showSignUpFromLogin && (
+							<Modal onClose={closeBothModals}>
+								<SignUpModal setShowSignUpFromLogin={setShowSignUpFromLogin} />
+							</Modal>
+						)}
+					</div>
+				</form>
 			</div>
-			</form>
-		</div>
 		</>
 	);
 };

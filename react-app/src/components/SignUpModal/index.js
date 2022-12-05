@@ -19,17 +19,22 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 	const [passwordErr, setPasswordErr] = useState('');
 	const [lastNameErr, setLastNameErr] = useState('');
 	const [confirmPasswordErr, setConfirmPasswordErr] = useState('');
+	// const [confirmEmail, setConfirmEmail] = useState('')
 	const [renderErr, setRenderErr] = useState(false);
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
+	// helper functions
+	const validateEmail = (email) => {
+		return /\S+@\S+\.\S+/.test(email);
+	};
 
 	const onSignUp = async (e) => {
 		e.preventDefault();
 		setRenderErr(true);
 
 		let data;
-		if (password === confirmPassword) {
+		if (password === confirmPassword && !confirmPasswordErr && !emailErr && !firstNameErr && !lastNameErr && !passwordErr) {
 			data = await dispatch(
 				signUp({
 					first_name: firstName,
@@ -38,7 +43,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					password: password,
 				})
 			);
-			setSignUpModal(false);
+			// setSignUpModal(false);
 					// setShowSignUpModal(false);
 			// setShowSignUpFromLogin(false);
 
@@ -56,10 +61,10 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 			// setShowSignUpFromLogin(true);
 		}
 	};
-	// helper functions
-	const validateEmail = (email) => {
-		return /\S+@\S+\.\S+/.test(email);
-	};
+	// // helper functions
+	// const validateEmail = (email) => {
+	// 	return /\S+@\S+\.\S+/.test(email);
+	// };
 
 	const updateFirstName = (e) => {
 		setFirstName(e.target.value);
@@ -84,6 +89,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 
 	useEffect(() => {
 		//email error handling
+
 		if (email.trim().length && !validateEmail(email)) {
 			setEmailErr('invalid email');
 		} else if (!email.trim().length) {
