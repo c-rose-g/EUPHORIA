@@ -77,10 +77,16 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 							<b className='basket-title'> My Basket</b>
 						</div>
 						<div className='checkout-basket-container'>
-							{/* <div className='checkout-rows-container'> */}
 							<div className='checkout-columns-container'>
 								<div className='checkout-left-column'>
 									<div className='basket-items-rows'>
+										{!items.length && (
+											<div>
+												<div className='font-20' style={{display:'flex', justifyContent:'center'}} >
+													Please add items to your basket
+												</div>
+											</div>
+										)}
 										{items.map((item) => (
 											<div className='checkout-item' key={item.id}>
 												<div className='checkout-item-left-column'>
@@ -99,7 +105,11 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 														</div>
 
 														<div className='item-price font-16' key={item.id}>
-														<strong>${item.prod_quantity * products[item.prod_id].product_price}</strong>
+															<strong>
+																$
+																{item.prod_quantity *
+																	products[item.prod_id].product_price}
+															</strong>
 														</div>
 													</div>
 													<div className='item-name font-14'>
@@ -112,7 +122,6 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 														>
 															<i className='fa-solid fa-minus item-minus'></i>
 															{/* <i class="fa-solid fa-circle-minus item-minus"></i> */}
-
 														</button>
 														<div className='item-quantity'>
 															{item.prod_quantity}
@@ -122,7 +131,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 															onClick={() => addMore(item.prod_id)}
 														>
 															{/* <i className='fa-solid fa-plus'></i> */}
-															<i class="fa-solid fa-circle-plus item-add"></i>
+															<i class='fa-solid fa-circle-plus item-add'></i>
 														</button>
 													</div>
 												</div>
@@ -135,13 +144,20 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 										basketTotal +=
 											item.prod_quantity * products[item.prod_id].product_price;
 									})}
-									<div className='estimated-total font-18'><strong>Estimated Total:</strong> ${basketTotal}</div>
-									<div></div>
-									<div className='checkout-button-div'>
-										{' '}
-										<button className='checkout-button font-16-white' onClick={logan}>checkout</button>{' '}
+									<div className='estimated-total font-18'>
+										<strong>Estimated Total:</strong> ${basketTotal}
 									</div>
 									<div></div>
+									{items.length ? (<div className='checkout-button-div'>
+
+										<button
+											className='checkout-button font-16-white'
+											onClick={logan}
+										>
+											checkout
+										</button>{' '}
+									</div>): null}
+
 								</div>
 							</div>
 						</div>
