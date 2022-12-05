@@ -25,15 +25,20 @@ const UpdateReviewForm = () => {
 	// console.log('find user >>>>>>>>', findUser)
 	const findUser = prodReview.find((id) => id.user_id.id === user.id);
 
-	const [review_msg, setReview_msg] = useState(findUser.review_msg);
+	const [review_msg, setReview_msg] = useState('');
+
 	const [updatedMsg, setUpdatedMsg] = useState('')
 	// console.log('find user >>>>', findUser);
 	// console.log('prod reviews >>>', prodReview);
 	// console.log('user reviews', userReviews )
 	// console.log('user >>>>', user);
-	// console.log('current product >>>>>>>', currentProd);
+	console.log('current product >>>>>>>', currentProd);
 
-
+	useEffect(()=>{
+		if(findUser){
+			setReview_msg(findUser.review_msg)
+		}
+	},[findUser,currentProd, user])
 	useEffect(() => {
 		// console.log('review id in dispatch', reviewId)
 		dispatch(loadOneReview(reviewId)).then(() => setLoaded(true));

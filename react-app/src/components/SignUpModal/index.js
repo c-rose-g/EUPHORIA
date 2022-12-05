@@ -51,9 +51,10 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 		}
 		if (data) {
 			for (let error of data){
-				if(error.startsWith('Email')) setEmailErr('Email address is already in use')
+				if(error.startsWith('email')) setEmailErr('Email address is already in use')
 			}
 			setErrors(data);
+			console.log('errrross',errors)
 			setSignUpModal(true);
 			console.log('set show sign up modal', signUpModal);
 
@@ -186,7 +187,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					<div>
 						{renderErr && emailErr ? (
 							<label className='text renderError font-16' htmlFor='email'>
-								Email: {emailErr}
+								{emailErr}
 							</label>
 						) : (
 							<label className='text noRenderError font-16' htmlFor='email'>
