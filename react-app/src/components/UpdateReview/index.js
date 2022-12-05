@@ -95,7 +95,7 @@ const UpdateReviewForm = () => {
 						<div className='review-page-header font-24'>Update Your Review</div>
 						<div className='review-columns-container'>
 							<div className='review-product-image-container'>
-								<img src={product_image} />
+								<img style={{width:'80%', height:'80%'}} src={product_image} />
 							</div>
 							<div className='review-details-container'>
 								<div className='review-product-details'>
