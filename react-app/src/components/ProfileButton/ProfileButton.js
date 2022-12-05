@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import LoginModal from '../LoginModal';
+import LogoutButton from '../auth/LogoutButton';
 import user from '../../Images/euphora-sign-in.png';
 import activeUser from '../../Images/euphoria-user-active.png';
 import profileButtonUser from '../../Images/euphoria-profile-user-large.png'
-import LogoutButton from '../auth/LogoutButton';
+import sub from '../../Images/euphoria-subscription.png'
 import '../NavBar/NavBar.css';
-import { useSelector } from 'react-redux';
 
 function ProfileButton() {
 
@@ -77,7 +77,8 @@ function ProfileButton() {
 				</div>
 
 				<div className='buy-it-again-container'>
-					{signedInUser ? (<NavLink  to={`/history/${signedInUser.id}`}><button className='buy-it-again-button'>Buy it again</button></NavLink>):(<button className='buy-it-again-button' onClick={closeForLogin}>Buy it again</button>)}
+				<div><img src={sub}/> </div>
+					{signedInUser ? (<NavLink className='buy-it-again-button-container' to={`/history/${signedInUser.id}`}><button className='buy-it-again-button'><div className='font-16'>Buy it again</div><div className='font-14'> View your online purchases </div></button></NavLink>):(<div className='buy-it-again-button-container'> <button className='buy-it-again-button' onClick={closeForLogin}><div className='font-16'>Buy it again</div><div className='font-12'>View your online purchases</div></button></div>)}
 				</div>
 
 					{signedInUser ? (<div className='logout-button-container' onClick={() => setDropMenu(false)}> <LogoutButton/></div>):null}
