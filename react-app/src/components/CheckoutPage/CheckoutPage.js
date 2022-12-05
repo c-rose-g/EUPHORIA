@@ -58,7 +58,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 
 	const logan = () => {
 		dispatch(addToPurchaseHistory(userId));
-		alert('you just bought this shit, congrats.');
+		alert('Your order has been added to your purchase history.');
 		history.push(`/history/${userId}`);
 		// return(<Redirect to={`/history/${userId}`}/>)
 	};
