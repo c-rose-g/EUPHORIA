@@ -34,7 +34,7 @@ function Splash() {
 
 
 						<div id='splash-products-container-header-chosen-for-you'>
-							<div className='font-20' style={{ paddingTop: '5%' }}>
+							<div className='font-20' style={{ paddingTop: '5%' , marginLeft:'3%'}}>
 								<strong>Chosen For You</strong>
 							</div>
 						</div>
@@ -46,7 +46,7 @@ function Splash() {
 								onClick={() => setFirstIdx(0)}
 							>
 								<NavLink to='/'>
-									<i className='fa-solid fa-circle-chevron-left'></i>
+									<i className='fa-solid fa-circle-chevron-left' style={{fontSize:'30px'}}></i>
 								</NavLink>
 							</button>
 							<div className='splash-product-card-container'>
@@ -187,13 +187,13 @@ function Splash() {
 								id='button-div-right-chosen-for-you'
 								onClick={() => setFirstIdx(6)}
 							>
-								<i className='fa-solid fa-circle-chevron-right'></i>
+								<i className='fa-solid fa-circle-chevron-right' style={{fontSize:'30px'}}></i>
 							</button>
 						</div>
 						</div>
 						<div className='splash-products-carousel'>
 							<div id='splash-products-container-header-just-dropped'>
-								<div className='font-20'>
+								<div className='font-20' style={{marginLeft:'3%'}}>
 									<strong>Just Dropped</strong>
 								</div>
 							</div>
@@ -203,7 +203,7 @@ function Splash() {
 									onClick={() => setNextFirstIdx(6)}
 								>
 									<NavLink to='/'>
-										<i className='fa-solid fa-circle-chevron-left'></i>
+										<i className='fa-solid fa-circle-chevron-left' style={{fontSize:'30px'}}></i>
 									</NavLink>
 								</button>
 								<div className='splash-product-card-container'>
@@ -352,7 +352,7 @@ function Splash() {
 									id='button-div-right-just-dropped'
 									onClick={() => setNextFirstIdx(10)}
 								>
-									<i className='fa-solid fa-circle-chevron-right'></i>
+									<i className='fa-solid fa-circle-chevron-right' style={{fontSize:'30px'}}></i>
 								</button>
 							</div>
 						</div>
