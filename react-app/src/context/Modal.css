@@ -22,7 +22,7 @@
 }
 
 .modal-content {
-
+  box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
