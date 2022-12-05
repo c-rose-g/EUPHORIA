@@ -168,7 +168,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 							)}
 						</div>
 						<input
-							type='text'
+							type='password'
 							className='modal-inp-row font-14'
 							onChange={updatePassword}
 							value={password}

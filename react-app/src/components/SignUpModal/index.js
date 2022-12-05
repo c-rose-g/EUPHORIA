@@ -215,7 +215,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 						)}
 					</div>
 					<input
-						type='text'
+						type='password'
 						className='modal-inp-row font-14'
 						onChange={updatePassword}
 						value={password}
@@ -235,7 +235,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 						)}
 					</div>
 					<input
-						type='text'
+						type='password'
 						className='modal-inp-row font-14'
 						onChange={updateConfirmPassword}
 						value={confirmPassword}
