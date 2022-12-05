@@ -3,13 +3,13 @@ from app.models import db, Category, environment, SCHEMA
 
 def seed_categories():
     cat1 = Category(
-        category_name='makeup')
+        category_name='Makeup')
     cat2 = Category(
-        category_name='skincare')
+        category_name='Skincare')
     cat3 = Category(
-        category_name='hair')
+        category_name='Hair')
     cat4 = Category(
-        category_name='fragrance')
+        category_name='Fragrance')
 
     db.session.add(cat1)
     db.session.add(cat2)

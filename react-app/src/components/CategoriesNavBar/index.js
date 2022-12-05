@@ -18,7 +18,7 @@ const CategoriesNavBar = ()=>{
   // })
 
 
-  const categoriesNames = ['makeup','skincare','hair','fragrance']
+  const categoriesNames = ['Makeup','Skincare','Hair','Fragrance']
   // console.log('product set >>>>', categoriesNames)
 
 
