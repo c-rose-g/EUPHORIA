@@ -34,13 +34,12 @@ const ProductDetails = () => {
 		// let itemCheckTwo = Object.values(userBasket[0]).find(
 		// 	(obj) => obj.prod_id === +productId
 		// );
-		let itemCheckTwo
+		let itemCheckTwo;
 		let prodArray;
-		if (userBasket[0] && userBasket[0][1]){
-			prodArray= Object.values(userBasket[0])
-			console.log("HERE IS PROD ARRAY", prodArray)
-			itemCheckTwo = prodArray.find((obj) => obj.prod_id === +productId)
-
+		if (userBasket[0] && userBasket[0][1]) {
+			prodArray = Object.values(userBasket[0]);
+			console.log('HERE IS PROD ARRAY', prodArray);
+			itemCheckTwo = prodArray.find((obj) => obj.prod_id === +productId);
 		}
 		if (itemCheck) {
 			findProdInBasket = itemCheck;
@@ -67,7 +66,7 @@ const ProductDetails = () => {
 	useEffect(() => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
-		if(user){
+		if (user) {
 			dispatch(loadUserCart(user.id));
 		}
 	}, [dispatch]);
@@ -128,13 +127,17 @@ const ProductDetails = () => {
 										</div>
 
 										<div>
-											{user && !findProdInBasket  (
-												<AddToBasketButton productId={productId} />
-											)}
-											{user && findProdInBasket (<div className='add-button-pressed font-20'>
-													{' '}
-													Item is in your basket
-												</div>)}
+											{user &&
+												!findProdInBasket &&(
+													<AddToBasketButton productId={productId} />
+												)}
+											{user &&
+												findProdInBasket &&(
+													<div className='add-button-pressed font-20'>
+														{' '}
+														Item is in your basket
+													</div>
+												)}
 											{!user && (
 												<div>
 													<button
