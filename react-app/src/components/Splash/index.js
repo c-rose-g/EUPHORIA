@@ -46,7 +46,7 @@ function Splash() {
 								onClick={() => setFirstIdx(0)}
 							>
 								<NavLink to='/'>
-									<i className='fa-solid fa-circle-chevron-left' style={{fontSize:'30px'}}></i>
+									<i className='fa-solid fa-chevron-left slider-left-arrow' style={{fontSize:'30px'}}></i>
 								</NavLink>
 							</button>
 							<div className='splash-product-card-container'>

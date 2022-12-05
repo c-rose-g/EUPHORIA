@@ -155,7 +155,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 					<div>
 						<button
 							onClick={log}
-							id='demo-button'>Demo User 1</button>
+							id='demo-button'>Demo User</button>
 					</div>
 				</div>
 				<div className='border-bottom'></div>

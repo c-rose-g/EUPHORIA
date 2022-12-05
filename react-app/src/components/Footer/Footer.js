@@ -7,7 +7,7 @@ const Footer = () => {
 			<div className='footer-card'>
 				<div className='footer-info-left'>
 					<div className='languages-card' id='languages'>
-						<div className='font-20-white'>Languages Used</div>
+						<div className='font-20-white border-bottom'>Languages Used</div>
 						<div className='language-buttons-div'>
 							<Link
 								className='contact-button'

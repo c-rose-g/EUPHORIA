@@ -46,7 +46,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 		}
 		if (data) {
 			for (let error of data){
-				if(error.startsWith('email')) setEmailErr('Email address is already in use')
+				if(error.startsWith('Email')) setEmailErr('Email address is already in use')
 			}
 			setErrors(data);
 			setSignUpModal(true);

@@ -98,7 +98,7 @@ const ProductDetails = () => {
 												<AddToBasketButton productId={productId} />
 											) : (
 												<div>
-													<button onClick={() => setShowSignUpModal(true)}>
+													<button className='pd-signup font-16-white' onClick={() => setShowLoginModal(true)}>
 														Sign up to add to basket
 													</button>
 												</div>
