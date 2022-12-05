@@ -11,6 +11,7 @@ const CreateReviewForm = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [review_msg, setReview_msg] = useState('');
+	const [reviewErr, setReviewErr] = useState('')
 	const [loaded, setLoaded] = useState(false);
 	const prodInfo = useSelector((state) => state.products.oneProduct);
 	console.log('this is product info >>.', prodInfo);
@@ -32,14 +33,27 @@ const CreateReviewForm = () => {
 
 	const newReview = async (e) => {
 		e.preventDefault();
-		const payload = {
-			product_id,
-			review_msg,
-		};
+		if(!reviewErr){
+			const payload = {
+				product_id,
+				review_msg:review_msg,
+			};
 
-		const data = await dispatch(createReview(payload));
-		history.push(`/products/${product_id}`);
+			const data = await dispatch(createReview(payload));
+			history.push(`/products/${product_id}`);
+		}
 	};
+
+	useEffect(() =>{
+		if(!review_msg.trim().length){
+			setReviewErr('review cannot be empty.')
+		}
+		else if(review_msg.trim().length > 255){
+			setReviewErr('Review must be less than 255 characters')
+		} else{
+			setReviewErr('')
+		}
+	},[review_msg])
 	return (
 		<>
 			{loaded && (
@@ -57,7 +71,18 @@ const CreateReviewForm = () => {
 									<div className='font-16'>{prodInfo.product_name}</div>
 
 									<form className='review-form-container' onSubmit={newReview}>
-										<label className='review-header font-16' style={{fontWeight:'bold'}}>Review</label>
+
+										{reviewErr ?(<label
+											className='review-header font-16'
+											style={{ fontWeight: 'bold' }}
+										>
+											Review: {reviewErr}
+										</label>):(<label
+											className='review-header font-16'
+											style={{ fontWeight: 'bold' }}
+										>
+											Review
+										</label>)}
 										<textarea
 											className='review-input font-14'
 											type='text'
@@ -67,7 +92,7 @@ const CreateReviewForm = () => {
 										>Write your review</textarea>
 										<div className='review-submit-button-container'>
 
-										<button className='review-submit-button font-16-white' type='submit'>
+										<button className='review-submit-button font-16-white' onClick={newReview}>
 											Submit Review
 										</button>
 										</div>

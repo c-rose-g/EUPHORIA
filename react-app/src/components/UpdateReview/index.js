@@ -40,9 +40,10 @@ const UpdateReviewForm = () => {
 	}, [dispatch]);
 	// helper functions
 	const updateReviewMsg = (e) => {
-		if(review_msg.length !== updateReviewMsg.length){
-			setUpdatedMsg(e.target.value);
-		}
+		// if(review_msg.length !== updateReviewMsg.length){
+		// 	setUpdatedMsg(e.target.value);
+		// }
+		setReview_msg(e.target.value)
 	};
 
 	let product_image;
@@ -52,17 +53,16 @@ const UpdateReviewForm = () => {
 
 	const handleUpdateReview = async (e) => {
 		e.preventDefault();
+		if(!reviewErr){
 
-		const payload = {
-			review_msg:updatedMsg,
-			reviewId,
-		};
-		const data = await dispatch(updateReview(payload));
-		history.push(`/products/${currentProd.id}`);
-
-		if(updatedMsg){
-			setReviewErr(updatedMsg)
+			const payload = {
+				review_msg:review_msg,
+				reviewId,
+			};
+			const data = await dispatch(updateReview(payload));
+			history.push(`/products/${currentProd.id}`);
 		}
+
 	};
 
 	useEffect(() =>{
@@ -106,7 +106,7 @@ const UpdateReviewForm = () => {
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}
 										>
-											Review: {renderErr}
+											Review: {reviewErr}
 										</label>):(<label
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}
