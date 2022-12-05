@@ -66,7 +66,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 		//password error handling
 		if (!password.trim().length) {
 			setPasswordErr('password is required')
-		} else if (password.length && password.length < 6) {
+		} else if (password.trim().length && password.length < 6) {
 			setPasswordErr('password must be greater than 6 characters')
 		}
 		else {

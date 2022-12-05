@@ -27,7 +27,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 	const onSignUp = async (e) => {
 		e.preventDefault();
 		setRenderErr(true);
-		console.log('before the dispatch')
+
 		let data;
 		if (password === confirmPassword) {
 			data = await dispatch(
@@ -45,6 +45,9 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 			// console.log('set show sign up modal',signUpModal)
 		}
 		if (data) {
+			for (let error of data){
+				if(error.startsWith('email')) setEmailErr('Email address is already in use')
+			}
 			setErrors(data);
 			setSignUpModal(true);
 			console.log('set show sign up modal', signUpModal);
@@ -109,7 +112,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 		//password error handling
 		if (!password.trim().length) {
 			setPasswordErr('password is required');
-		} else if (password.length.trim() && password.length < 6) {
+		} else if (password.trim().length && password.length < 6) {
 			setPasswordErr('password must be greater than 6 characters');
 		} else {
 			setPasswordErr('');
@@ -234,9 +237,6 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					/>
 				</div>
 
-				<div className='errors-div'>
-					{!!errors.length && <div id='errors'>{errors[0]}</div>}
-				</div>
 				<div className='sign-in-now-buttton-div'>
 					<button id='join-now' className='font-14' type='submit'>
 						Join Now
