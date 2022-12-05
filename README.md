@@ -68,7 +68,7 @@
  * Users can upload profile photos to their user account.
  * Logged in users can upload review photos and include them in their reviews.
  
-<h2 align="center"> Feature Implementation Goals </h2>
+<h2 align="center"> Future Implementation Goals </h2>
 
 - [x] Purchase History
 - [ ] Search bar
