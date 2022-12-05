@@ -67,7 +67,9 @@ const ProductDetails = () => {
 	useEffect(() => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
-		dispatch(loadUserCart(user.id));
+		if(user){
+			dispatch(loadUserCart(user.id));
+		}
 	}, [dispatch]);
 
 	let userReview;
@@ -126,14 +128,13 @@ const ProductDetails = () => {
 										</div>
 
 										<div>
-											{user && !findProdInBasket ? (
+											{user && !findProdInBasket  (
 												<AddToBasketButton productId={productId} />
-											) : (
-												<div className='add-button-pressed font-20'>
+											)}
+											{user && findProdInBasket (<div className='add-button-pressed font-20'>
 													{' '}
 													Item is in your basket
-												</div>
-											)}
+												</div>)}
 											{!user && (
 												<div>
 													<button
