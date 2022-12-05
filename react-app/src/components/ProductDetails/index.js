@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { productDetails } from '../../store/products';
 import { loadReviews, loadUserReviews } from '../../store/review';
 import ProductImageSlider from '../ProductImageSlider';
@@ -8,12 +8,15 @@ import CategoriesNavBar from '../CategoriesNavBar';
 import AddToBasketButton from '../AddToBasketButton';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
+import LoginModal from '../LoginModal';
 import Footer from '../Footer/Footer';
 import './productDetails.css'
- 
+
 const ProductDetails = () => {
 	const dispatch = useDispatch();
+	const history = useHistory()
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
+	const [showLoginModal, setShowLoginModal] =useState(false)
 	const { productId } = useParams();
 	const user = useSelector((state) => state.session.user);
 	// console.log('user >>>>>>>.', user);
@@ -39,13 +42,33 @@ const ProductDetails = () => {
 	}, [dispatch]);
 
 	let userReview;
-	if(prodReviews){
+	if(prodReviews && user){
 		userReview = prodReviews.find((obj) => obj.user_id.id === user.id);
-	} else{
-		return null
 	}
-	// 'color' (color {oneProd.product_photos[0].prod_color_name})
 
+	const openSignUpToCreateReview = () =>{
+
+		if(user){
+			// return(
+			// 	<NavLink to={`/reviews/${productId}/new`}/>
+			// )
+			history.push(`/reviews/${productId}/new`)
+		}
+		else{
+			setShowLoginModal(true)
+		}
+	}
+
+	const openSignUptoUpdateReview = () =>{
+		if(user){
+			// return(
+			// 	<NavLink to={`/reviews/${userReview.id}`}/>
+			// )
+			history.push(`/reviews/${userReview.id}`)
+		}else{
+			setShowLoginModal(true)
+		}
+	}
 	return (
 		<>
 			{loaded && (
@@ -83,13 +106,7 @@ const ProductDetails = () => {
 										</div>
 									</div>
 								</div>
-								<div>
-									{showSignUpModal && (
-										<Modal onClose={() => setShowSignUpModal(false)}>
-											<SignUpModal setShowSignUpModal={setShowSignUpModal} />
-										</Modal>
-									)}
-								</div>
+
 							</div>
 						</div>
 						<div className='product-details-rows-containers'>
@@ -144,21 +161,21 @@ const ProductDetails = () => {
 							<div className='reviews-section'>
 								<div className='product-details-upper-row font-18 product-details-row-text-div'>
 									{!userReview ? (
-										<NavLink
+										<div
 											className='remove-underline'
-											to={`/reviews/${productId}/new`}
+
 										>
-											<button className='product-details-review-button font-16-white'>
+											<button className='product-details-review-button font-16-white' onClick={openSignUpToCreateReview}>
 												Write a review
 											</button>
-										</NavLink>
+										</div>
 									) : (
 										<div>
-											<NavLink to={`/reviews/${userReview.id}`}>
-												<button className='product-details-review-button font-16-white'>
+											<div >
+												<button className='product-details-review-button font-16-white' onClick={openSignUptoUpdateReview}>
 													update your review
 												</button>
-											</NavLink>
+											</div>
 										</div>
 									)}
 								</div>
@@ -185,6 +202,13 @@ const ProductDetails = () => {
 									})}
 								</div>
 							</div>
+						<div>
+									{showLoginModal && (
+										<Modal onClose={() => setShowLoginModal(false)}>
+											<LoginModal setShowLoginModal={setShowLoginModal} />
+										</Modal>
+									)}
+								</div>
 						</div>
 					</div>
 					<Footer />

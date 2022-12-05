@@ -41,7 +41,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 
 		if(!emailErr && !passwordErr){
 			const data = await dispatch(login(email, password));
-			// setShowLoginModal(false);
+			setShowLoginModal(false);
 			if (data) {
 				for (let error of data){
 					if(error.startsWith('email')) setEmailErr('Invalid Email')
@@ -79,9 +79,12 @@ const LoginModal = ({ setShowLoginModal }) => {
 	const log = async (e) => {
 		e.preventDefault()
 		const data = await dispatch(login('demo@aa.io', 'password'))
-		if (data) {
+		setShowLoginModal(false);
 
+		if (data) {
 			setErrors(data);
+			setShowLoginModal(true);
+
 		}
 	}
 
@@ -93,9 +96,9 @@ const LoginModal = ({ setShowLoginModal }) => {
 		setPassword(e.target.value);
 	};
 
-	if (user) {
-		return <Redirect to='/' />;
-	}
+	// if (user) {
+	// 	return null
+	// }
 	return (
 		<>
 
