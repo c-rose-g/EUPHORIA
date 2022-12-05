@@ -6,26 +6,49 @@ import { loadReviews, loadUserReviews } from '../../store/review';
 import ProductImageSlider from '../ProductImageSlider';
 import CategoriesNavBar from '../CategoriesNavBar';
 import AddToBasketButton from '../AddToBasketButton';
+import { loadUserCart } from '../../store/shoppingCarts';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import LoginModal from '../LoginModal';
 import Footer from '../Footer/Footer';
-import './productDetails.css'
+import './productDetails.css';
 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
-	const history = useHistory()
+	const history = useHistory();
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
-	const [showLoginModal, setShowLoginModal] =useState(false)
+	const [showLoginModal, setShowLoginModal] = useState(false);
 	const { productId } = useParams();
-	console.log('product id', productId)
+	console.log('product id', productId);
 	const user = useSelector((state) => state.session.user);
-	// console.log('user >>>>>>>.', user);
-	const userBasket = useSelector(state => Object.values(state.basket.userBasket))
-	console.log('user basket', userBasket)
+	console.log('user >>>>>>>.', user);
+	const userBasket = useSelector((state) =>
+		Object.values(state.basket.userBasket)
+	);
+	console.log('user basket', userBasket);
 
-	const findProdInBasket = userBasket.find(obj => obj.prod_id === +productId)
-	console.log('find product in basket', findProdInBasket)
+	// const findProdInBasket = userBasket.find(obj => obj.prod_id === +productId)
+	let findProdInBasket;
+	if (userBasket) {
+		let itemCheck = userBasket.find((obj) => obj.prod_id === +productId);
+		// let itemCheckTwo = Object.values(userBasket[0]).find(
+		// 	(obj) => obj.prod_id === +productId
+		// );
+		let itemCheckTwo
+		let prodArray;
+		if (userBasket[0] && userBasket[0][1]){
+			prodArray= Object.values(userBasket[0])
+			console.log("HERE IS PROD ARRAY", prodArray)
+			itemCheckTwo = prodArray.find((obj) => obj.prod_id === +productId)
+
+		}
+		if (itemCheck) {
+			findProdInBasket = itemCheck;
+		} else if (itemCheckTwo) {
+			findProdInBasket = itemCheckTwo;
+		}
+	}
+	console.log('find product in basket', findProdInBasket);
 	const prodReviews = useSelector((state) =>
 		Object.values(state.reviews.reviews)
 	);
@@ -44,36 +67,35 @@ const ProductDetails = () => {
 	useEffect(() => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
+		dispatch(loadUserCart(user.id));
 	}, [dispatch]);
 
 	let userReview;
-	if(prodReviews && user){
+	if (prodReviews && user) {
 		userReview = prodReviews.find((obj) => obj.user_id.id === user.id);
 	}
 
-	const openSignUpToCreateReview = () =>{
-
-		if(user){
+	const openSignUpToCreateReview = () => {
+		if (user) {
 			// return(
 			// 	<NavLink to={`/reviews/${productId}/new`}/>
 			// )
-			history.push(`/reviews/${productId}/new`)
+			history.push(`/reviews/${productId}/new`);
+		} else {
+			setShowLoginModal(true);
 		}
-		else{
-			setShowLoginModal(true)
-		}
-	}
+	};
 
-	const openSignUptoUpdateReview = () =>{
-		if(user){
+	const openSignUptoUpdateReview = () => {
+		if (user) {
 			// return(
 			// 	<NavLink to={`/reviews/${userReview.id}`}/>
 			// )
-			history.push(`/reviews/${userReview.id}`)
-		}else{
-			setShowLoginModal(true)
+			history.push(`/reviews/${userReview.id}`);
+		} else {
+			setShowLoginModal(true);
 		}
-	}
+	};
 	return (
 		<>
 			{loaded && (
@@ -87,22 +109,37 @@ const ProductDetails = () => {
 								</div>
 								<div className='product-details-info-container'>
 									<div className='product-details font-16'>
-										<div className='font-20' style={{ fontWeight: 'bold' }}>{oneProd.product_brand}</div>
-										<div >{oneProd.product_name}</div>
-										<div style={{ fontWeight: 'bold' }}>${oneProd.product_price}</div>
+										<div className='font-20' style={{ fontWeight: 'bold' }}>
+											{oneProd.product_brand}
+										</div>
+										<div>{oneProd.product_name}</div>
+										<div style={{ fontWeight: 'bold' }}>
+											${oneProd.product_price}
+										</div>
 										<div>
 											{oneProd.product_photos[0].prod_color_name ===
 											'none' ? null : (
-												<div className=''>{oneProd.product_photos[0].prod_color_name}
+												<div className=''>
+													{oneProd.product_photos[0].prod_color_name}
 												</div>
 											)}
 										</div>
 
 										<div>
-										{user && !findProdInBasket ?(<AddToBasketButton productId={productId} />):(<div className="add-button-pressed font-20"> Item is in your basket</div>)}
+											{user && !findProdInBasket ? (
+												<AddToBasketButton productId={productId} />
+											) : (
+												<div className='add-button-pressed font-20'>
+													{' '}
+													Item is in your basket
+												</div>
+											)}
 											{!user && (
 												<div>
-													<button className='pd-signup font-16-white' onClick={() => setShowLoginModal(true)}>
+													<button
+														className='pd-signup font-16-white'
+														onClick={() => setShowLoginModal(true)}
+													>
 														Sign up to add to basket
 													</button>
 												</div>
@@ -110,7 +147,6 @@ const ProductDetails = () => {
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 						<div className='product-details-rows-containers'>
@@ -159,24 +195,25 @@ const ProductDetails = () => {
 								harum nesciunt ipsum debitis quas aliquid.
 							</div>
 
-							<div className='font-20 product-details-row-header'>
-								Reviews
-							</div>
+							<div className='font-20 product-details-row-header'>Reviews</div>
 							<div className='reviews-section'>
 								<div className='product-details-upper-row font-18 product-details-row-text-div'>
 									{!userReview ? (
-										<div
-											className='remove-underline'
-
-										>
-											<button className='product-details-review-button font-16-white' onClick={openSignUpToCreateReview}>
+										<div className='remove-underline'>
+											<button
+												className='product-details-review-button font-16-white'
+												onClick={openSignUpToCreateReview}
+											>
 												Write a review
 											</button>
 										</div>
 									) : (
 										<div>
-											<div >
-												<button className='product-details-review-button font-16-white' onClick={openSignUptoUpdateReview}>
+											<div>
+												<button
+													className='product-details-review-button font-16-white'
+													onClick={openSignUptoUpdateReview}
+												>
 													update your review
 												</button>
 											</div>
@@ -196,23 +233,22 @@ const ProductDetails = () => {
 													</div>
 												</div>
 												<div className='product-details-column-right'>
-												<div className='review-name'>
-
-													{obj.user_id.first_name}
-												</div>
+													<div className='review-name'>
+														{obj.user_id.first_name}
+													</div>
 												</div>
 											</div>
 										);
 									})}
 								</div>
 							</div>
-						<div>
-									{showLoginModal && (
-										<Modal onClose={() => setShowLoginModal(false)}>
-											<LoginModal setShowLoginModal={setShowLoginModal} />
-										</Modal>
-									)}
-								</div>
+							<div>
+								{showLoginModal && (
+									<Modal onClose={() => setShowLoginModal(false)}>
+										<LoginModal setShowLoginModal={setShowLoginModal} />
+									</Modal>
+								)}
+							</div>
 						</div>
 					</div>
 					<Footer />
