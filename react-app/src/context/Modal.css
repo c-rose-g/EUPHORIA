@@ -17,7 +17,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: #0a0a0b;
+  background-color: #040303;
   opacity: 80%;
 }
 
@@ -26,23 +26,23 @@
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
+
   position: absolute;
   background-color: white;
   border-radius: 10px;
   height: 488px;
   width: 472px;
   object-fit: contain;
-  /* border: 10px solid blue; */
+  border: 1px solid blue;
 }
 
 /* ******************* SIGN UP MODAL *********************** */
 .modal-form-container {
-  /* border: 10px solid blue; */
+ /* border: 1px solid blue; */
   padding: 16px 16px 32px;
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0%;
-
 }
 
 #signup-title-div {
@@ -63,16 +63,17 @@
 } */
 
 .modal-form {
-  /* border: 1px solid black; */
+  border: 1px solid black;
   height: 452px;
 }
 
 .inputs-row-div {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 16px;
+  flex-direction: column;
+  height: 15%;
+  /* margin-bottom: 16px;
   margin-top: 10px;
-  justify-content: space-around;
+  justify-content: space-around; */
   /* border:1px solid green; */
   /* border-color: rgb(238, 238, 238, 238); */
 }
@@ -203,8 +204,6 @@
   display: flex;
   align-items: center;
   flex: 1 1 0%;
-  font-family: inherit;
-  font-size: 14px;
   margin: 1px;
   padding-left: 16px;
   padding-right: 12px;
@@ -238,6 +237,13 @@
   /* border: 1px solid red; */
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap:2%
+}
+.sign-in-now-buttton-div{
+  margin-top:2%;
+  display: flex;
+  justify-content: center;
 }
 #join-now {
   height: 44px;
@@ -255,5 +261,115 @@
   appearance: none;
   color: rgb(255, 255, 255);
   background-color: rgb(0, 0, 0);
+  transition: background-color 0.2s ease 0s;
+}
+.text.renderError {
+  color: rgb(121, 56, 56)
+}
+
+.text.noRenderError {
+  color: black
+}
+.errors-div {
+ color: black;
+}
+/* ***************************** LOGIN MODAL ********************************** */
+.login-modal-form {
+  border: 1px solid black;
+  height: 452px;
+  display: flex;
+  flex-direction: column;
+  gap:5%;
+  margin: 0 2%;
+}
+#login-title-div {
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  min-height: 30px;
+  text-align: center;
+  padding: 16px 37px;
+  display: block;
+}
+
+.login-input-row-div{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  margin-top: 10px;
+  justify-content: space-around;
+}
+
+.inputs-row-submit-div {
+  display: flex;
+  flex-direction: column;
+  /* height: 5%; */
+  /* margin-bottom: 16px;
+  margin-top: 10px;
+  justify-content: space-around; */
+  /* border:1px solid green; */
+  /* border-color: rgb(238, 238, 238, 238); */
+}
+
+#demo-button{
+  height: 44px;
+  width:158px;
+  padding: 0.25em 1.125em;
+  border-width: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border-color: transparent;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 99999px;
+  appearance: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  transition: background-color 0.2s ease 0s;
+}
+#sign-in-now{
+  height: 44px;
+  width:158px;
+  padding: 0.25em 1.125em;
+  border-width: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border-color: transparent;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 99999px;
+  appearance: none;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  transition: background-color 0.2s ease 0s;
+}
+.new-sephora-text{
+  display: flex;
+  align-items: center;
+  /* border:1px solid blue; */
+  height: 100%;
+}
+
+#create-new-account-button{
+  height: 40px;
+  width:140px;
+  padding: 0.25em 1.125em;
+  border-width: 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border: 1px solid black;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 99999px;
+  appearance: none;
+  /* color: rgb(255, 255, 255); */
+  /* background-color: white; */
   transition: background-color 0.2s ease 0s;
 }

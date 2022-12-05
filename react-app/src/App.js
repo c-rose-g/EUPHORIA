@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 // import SignUpForm from './components/auth/SignUpForm';
+import SignUpModal from './components/SignUpModal';
 import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -39,7 +40,7 @@ function App() {
 					<LoginForm />
 				</Route>
 				{/* <Route path='/sign-up' exact={true}>
-					<SignUpForm />
+				<SignUpModal/>
 				</Route> */}
 				<ProtectedRoute path='/users' exact={true}>
 					<UsersList />
@@ -58,6 +59,7 @@ function App() {
 				</Route>
 				<Route path='/' exact={true}>
 					<Splash />
+				{/* <SignUpModal/> */}
 				</Route>
 				<ProtectedRoute path='/reviews/:product_id/new' exact={true}>
 					<CreateReviewForm />

@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import '../../context/Modal.css';
 
-const SignUpModal = ({ setShowSignUpModal }) => {
-	// const [errors, setErrors] = useState([]);
+const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
+	const [errors, setErrors] = useState([]);
+	const [signUpModal, setSignUpModal] = useState(false);
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
-
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [repeatPassword, setRepeatPassword] = useState('');
+	const [confirmPassword, setConfirmPassword] = useState('');
+
+	//error handling useState
+	const [emailErr, setEmailErr] = useState('');
+	const [firstNameErr, setFirstNameErr] = useState('');
+	const [passwordErr, setPasswordErr] = useState('');
+	const [lastNameErr, setLastNameErr] = useState('');
+	const [confirmPasswordErr, setConfirmPasswordErr] = useState('');
+	const [renderErr, setRenderErr] = useState(false);
 	const user = useSelector((state) => state.session.user);
 	const dispatch = useDispatch();
 
-	// useEffect(() => {
-	//   let errors = {}
-	//   if(!firstName){
 
-	//   }
-	// })
 	const onSignUp = async (e) => {
 		e.preventDefault();
-		if (password === repeatPassword) {
-			// console.log('this is first name ', firstName);
-			// console.log('this is last name ', lastName);
-
-			const data = await dispatch(
+		setRenderErr(true);
+		console.log('before the dispatch')
+		let data;
+		if (password === confirmPassword) {
+			data = await dispatch(
 				signUp({
 					first_name: firstName,
 					last_name: lastName,
@@ -35,11 +38,24 @@ const SignUpModal = ({ setShowSignUpModal }) => {
 					password: password,
 				})
 			);
-			setShowSignUpModal(false);
-			// if (data) {
-			// 	setErrors(data);
-			// }
+			setSignUpModal(false);
+					// setShowSignUpModal(false);
+			// setShowSignUpFromLogin(false);
+
+			// console.log('set show sign up modal',signUpModal)
 		}
+		if (data) {
+			setErrors(data);
+			setSignUpModal(true);
+			console.log('set show sign up modal', signUpModal);
+
+			// setShowSignUpModal(true);
+			// setShowSignUpFromLogin(true);
+		}
+	};
+	// helper functions
+	const validateEmail = (email) => {
+		return /\S+@\S+\.\S+/.test(email);
 	};
 
 	const updateFirstName = (e) => {
@@ -57,10 +73,56 @@ const SignUpModal = ({ setShowSignUpModal }) => {
 		setPassword(e.target.value);
 	};
 
-	const updateRepeatPassword = (e) => {
-		setRepeatPassword(e.target.value);
+	const updateConfirmPassword = (e) => {
+		setConfirmPassword(e.target.value);
 	};
 
+	/********************Use Effect******************* */
+
+	useEffect(() => {
+		//email error handling
+		if (email.trim().length && !validateEmail(email)) {
+			setEmailErr('invalid email');
+		} else if (!email.trim().length) {
+			setEmailErr('email is required');
+		} else {
+			setEmailErr('');
+		}
+
+		//firstName error handling
+		if (firstName.trim().length < 4) {
+			setFirstNameErr('first name must be at least 4 characters');
+		} else if (firstName.trim().length > 10) {
+			setFirstNameErr('first name must be less than 10 characters ');
+		} else {
+			setFirstNameErr('');
+		}
+
+		//lastName error handling
+		if (lastName.trim().length < 4) {
+			setLastNameErr('Last name must be at least 4 characters');
+		} else if (lastName.trim().length > 10) {
+			setLastNameErr('Last name must be less than 10 characters ');
+		} else {
+			setLastNameErr('');
+		}
+		//password error handling
+		if (!password.trim().length) {
+			setPasswordErr('password is required');
+		} else if (password.length.trim() && password.length < 6) {
+			setPasswordErr('password must be greater than 6 characters');
+		} else {
+			setPasswordErr('');
+		}
+
+		if (!confirmPassword.trim().length) {
+			setConfirmPasswordErr('Confirm password is required');
+		} else if (password !== confirmPassword) {
+			setConfirmPasswordErr('Passwords must match');
+		} else {
+			setConfirmPasswordErr('');
+		}
+	}, [firstName, lastName, email, password, confirmPassword]);
 	if (user) {
 		return <Redirect to='/' />;
 	}
@@ -72,55 +134,113 @@ const SignUpModal = ({ setShowSignUpModal }) => {
 					<h2 className='font-16'>Create an Account</h2>
 				</div>
 				<div className='inputs-row-div'>
+					<div>
+						{renderErr && firstNameErr ? (
+							<label className='text renderError font-16' htmlFor='firstName'>
+								First Name: {firstNameErr}
+							</label>
+						) : (
+							<label className='text noRenderError font-16' htmlFor='firstName'>
+								First Name
+							</label>
+						)}
+					</div>
 					<input
 						type='text'
-						className='modal-inp-row'
+						className='modal-inp-row font-14'
 						onChange={updateFirstName}
 						value={firstName}
+						placeholder='First name'
 					/>
-					<label className='fn-label-transition font-14'>First Name</label>
-					<div className='label-inp-div'>
-						<input
-							type='text'
-							className='modal-inp-row'
-							onChange={updateLastName}
-							value={lastName}
-							// placeholder={'Last Name'}
-						/>
-						<label className={ firstName? 'ln-label-transition font-14':'ln-label-nontransition font-14'}>Last Name</label>
-					</div>
 				</div>
-				<div className='inputs-columns-div'>
+				<div className='inputs-row-div '>
+					<div>
+						{renderErr && lastNameErr ? (
+							<label className='text renderError font-16' htmlFor='LastName'>
+								Last Name: {lastNameErr}
+							</label>
+						) : (
+							<label className='text noRenderError font-16' htmlFor='LastName'>
+								Last Name
+							</label>
+						)}
+					</div>
 					<input
 						type='text'
-						className='modal-inp'
+						className='modal-inp-row font-14'
+						onChange={updateLastName}
+						value={lastName}
+						placeholder='Last Name'
+					/>
+				</div>
+				<div className='inputs-row-div'>
+					<div>
+						{renderErr && emailErr ? (
+							<label className='text renderError font-16' htmlFor='email'>
+								Email: {emailErr}
+							</label>
+						) : (
+							<label className='text noRenderError font-16' htmlFor='email'>
+								Email
+							</label>
+						)}
+					</div>
+					<input
+						type='text'
+						className='modal-inp-row font-14'
 						onChange={updateEmail}
 						value={email}
+						placeholder='Email address'
 					/>
-					<label className='ea-label-transition font-14'>Email Address</label>
+				</div>
+				<div className='inputs-row-div'>
+					<div>
+						{renderErr && passwordErr ? (
+							<label className='text renderError font-16' htmlFor='password'>
+								Password: {passwordErr}
+							</label>
+						) : (
+							<label className='text noRenderError font-16' htmlFor='password'>
+								Password
+							</label>
+						)}
+					</div>
 					<input
 						type='text'
-						className='modal-inp'
+						className='modal-inp-row font-14'
 						onChange={updatePassword}
 						value={password}
+						placeholder='Password'
 					/>
-					<label className='p-label-transition font-14'>
-						Password (6 to 12 characters)
-					</label>
+				</div>
+				<div className='inputs-row-div'>
+					<div>
+						{renderErr && confirmPasswordErr ? (
+							<label className='text renderError font-16' htmlFor='confirmPassword'>
+								Confirm Password: {confirmPasswordErr}
+							</label>
+						) : (
+							<label className='text noRenderError font-16' htmlFor='confirmPassword'>
+								Confirm Password
+							</label>
+						)}
+					</div>
 					<input
 						type='text'
-						className='modal-inp'
-						onChange={updateRepeatPassword}
-						value={repeatPassword}
+						className='modal-inp-row font-14'
+						onChange={updateConfirmPassword}
+						value={confirmPassword}
+						placeholder='Password'
 					/>
-					<label className='cp-label-transition font-14'>
-						Confirm Password
-					</label>
-					<div className='join-now-button-div'>
-						<button id='join-now' className='font-14' type='submit'>
-							Join Now
-						</button>
-					</div>
+				</div>
+
+				<div className='errors-div'>
+					{!!errors.length && <div id='errors'>{errors[0]}</div>}
+				</div>
+				<div className='sign-in-now-buttton-div'>
+					<button id='join-now' className='font-14' type='submit'>
+						Join Now
+					</button>
 				</div>
 			</form>
 		</div>
