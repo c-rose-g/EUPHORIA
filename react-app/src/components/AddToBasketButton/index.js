@@ -19,10 +19,11 @@ const AddToBasketButton = ({productId, basketId}) =>{
         setPressed(true)
         return <Redirect to={`/products/${productId}`}/>
     }
+    // pressed ? <div className="add-button-pressed font-16"> Item has been added to your basket</div> :
     // add purchase history
     return(
         <div>
-            {pressed ? <div className="add-button-pressed font-16"> Item has been added to your basket</div> :<button className="add-button-not-pressed font-16-white" type='button' onClick={handleAddToCart}>Add to Basket</button>}
+            {<button className="add-button-not-pressed font-16-white" type='button' onClick={handleAddToCart}>Add to Basket</button>}
         </div>
     )
 }

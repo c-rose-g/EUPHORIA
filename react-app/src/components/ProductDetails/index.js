@@ -18,9 +18,14 @@ const ProductDetails = () => {
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const [showLoginModal, setShowLoginModal] =useState(false)
 	const { productId } = useParams();
+	console.log('product id', productId)
 	const user = useSelector((state) => state.session.user);
 	// console.log('user >>>>>>>.', user);
+	const userBasket = useSelector(state => Object.values(state.basket.userBasket))
+	console.log('user basket', userBasket)
 
+	const findProdInBasket = userBasket.find(obj => obj.prod_id === +productId)
+	console.log('find product in basket', findProdInBasket)
 	const prodReviews = useSelector((state) =>
 		Object.values(state.reviews.reviews)
 	);
@@ -94,15 +99,14 @@ const ProductDetails = () => {
 										</div>
 
 										<div>
-											{user ? (
-												<AddToBasketButton productId={productId} />
-											) : (
+										{user && !findProdInBasket ?(<AddToBasketButton productId={productId} />):(<div className="add-button-pressed font-20"> Item is in your basket</div>)}
+											{!user && (
 												<div>
 													<button className='pd-signup font-16-white' onClick={() => setShowLoginModal(true)}>
 														Sign up to add to basket
 													</button>
 												</div>
-											)}{' '}
+											)}
 										</div>
 									</div>
 								</div>
