@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 
 const LoginModal = ({ setShowLoginModal }) => {
 	const [email, setEmail] = useState('');
+	const history = useHistory()
 	const [showSignUpFromLogin, setShowSignUpFromLogin] = useState(false);
 	// console.log('show sign up from login', showSignUpFromLogin)
 	const [password, setPassword] = useState('');
@@ -39,7 +40,9 @@ const LoginModal = ({ setShowLoginModal }) => {
 		let data;
 		if( !emailErr && !passwordErr){
 		data = await dispatch(login(email, password));
+		// history.push('/')
 		// setShowLoginModal(false);
+
 		};
 		if (data) {
 			// let err = {};
@@ -102,6 +105,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 	const log = async (e) => {
 		e.preventDefault();
 		const data = await dispatch(login('demo@aa.io', 'password'));
+		history.push('/')
 		setShowLoginModal(false);
 
 		if (data) {
