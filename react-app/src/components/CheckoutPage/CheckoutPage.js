@@ -13,18 +13,18 @@ import { Redirect, useHistory, useParams } from 'react-router-dom';
 import './CheckoutPage.css';
 
 const CheckoutPage = ({ setShowLoginModal }) => {
-  const history = useHistory()
+	const history = useHistory();
 	const dispatch = useDispatch();
 	const { userId } = useParams();
-  console.log('user id 5', userId)
+	console.log('user id 5', userId);
 	const [loaded, setLoaded] = useState(false);
 	// obj of userbasket
 	const userBasket = useSelector((state) => state.basket.userBasket);
 	const testItems = useSelector((state) => state.basket.userBasket?.cart_prod);
-	const products = useSelector((state) =>state.products.allProducts);
+	const products = useSelector((state) => state.products.allProducts);
 
 	// array of user items
-	const items = userBasket.cart_prod ? Object.values(userBasket.cart_prod):[]
+	const items = userBasket.cart_prod ? Object.values(userBasket.cart_prod) : [];
 	// const = products.rduce((obj, product) => {
 	// 	return { ...obj, [product.id]: product };
 	// }, {});
@@ -52,96 +52,117 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 		await dispatch(increaseItem({ productId: props }));
 	}
 
-  const deleteItem = (props) =>{
-     dispatch(decrementItem(props))
-  }
+	const deleteItem = (props) => {
+		dispatch(decrementItem(props));
+	};
 
-  const logan = () =>{
+	const logan = () => {
+		dispatch(addToPurchaseHistory(userId));
+		alert('you just bought this shit, congrats.');
+		history.push(`/history/${userId}`);
+		// return(<Redirect to={`/history/${userId}`}/>)
+	};
 
-    dispatch(addToPurchaseHistory(userId))
-    alert('you just bought this shit, congrats.')
-    history.push(`/history/${userId}`)
-    // return(<Redirect to={`/history/${userId}`}/>)
+	let basketTotal = 0;
+	// const totalPrice = () =>{
 
-  }
+	// }
 	return (
 		<>
 			{loaded && (
-				<div className='checkout-page-container'>
+				<>
 					<CategoriesNavBar />
-					<div className='font-20'>
-						<b>Basket</b>
-					</div>
-					<div className='checkout-basket-container'>
-						{/* <div className='checkout-rows-container'> */}
-						<div className='checkout-columns-container'>
-							<div className='checkout-left-column'>
-								shopping cart items
-								{items.map((item) => (
-									<div className='checkout-item' key={item.id}>
-										<div className='checkout-item-left-column'>
-											<img
-												className='item-image'
-												src={products[item.prod_id].product_photos[0].prod_photo}
-											/>
-                      {/* {console.log('wtf are you >>>>>>>>', products[item.prod_id].product_photos[0].prod_photo)} */}
-										</div>
-										<div className='checkout-item-right-column'>
-											<div className='brand-price-row'>
-												<div className='item-brand font-16'>
-													{products[item.prod_id].product_brand}
-                          {console.log('item for logan', item)}
-												</div>
-												<div className='item-price font-16'>
-													{products[item.prod_id].product_price}{' '}
+					<div className='checkout-page-container'>
+						<div className='basket-title-container font-20'>
+							<b className='basket-title'> My Basket</b>
+						</div>
+						<div className='checkout-basket-container'>
+							<div className='checkout-columns-container'>
+								<div className='checkout-left-column'>
+									<div className='basket-items-rows'>
+										{!items.length && (
+											<div>
+												<div className='font-20' style={{display:'flex', justifyContent:'center'}} >
+													Please add items to your basket
 												</div>
 											</div>
-											<div className='item-name font-14'>
-												{products[item.prod_id].product_name}
-											</div>
-											<div className='item-change-buttons-container'>
-												<button className='item-minus'
-                        onClick={() => deleteItem(item.id)}
-                        >
-													<i className='fa-solid fa-minus'></i>
-												</button>
-												<div className='item-quantity'>
-													{item.prod_quantity}
+										)}
+										{items.map((item) => (
+											<div className='checkout-item' key={item.id}>
+												<div className='checkout-item-left-column'>
+													<img
+														className='item-image'
+														src={
+															products[item.prod_id].product_photos[0]
+																.prod_photo
+														}
+													/>
 												</div>
-												<button
-													className='item-add'
-													onClick={() => addMore(item.prod_id)}
-												>
-													<i className='fa-solid fa-plus'></i>
-												</button>
-											</div>
-										</div>
-									</div>
-								))}
-							</div>
-							<div className='checkout-right-column'>
-								total and checkout button
-								{/* {items.map(item =>(
-                  {item.price}
-                ))} */}
-                <div>
+												<div className='checkout-item-right-column'>
+													<div className='brand-price-row'>
+														<div className='item-brand font-16'>
+															{products[item.prod_id].product_brand}
+														</div>
 
-                </div>
-                <div> <button onClick={logan}>checkout</button> </div>
-								<div>
-									{/* {items.map(item =>(
-                    <div key={item.id}>
-                      <div className='item-total'>
-                        {item.price}
-                      </div>
-                    </div>
-                  ))} */}
+														<div className='item-price font-16' key={item.id}>
+															<strong>
+																$
+																{item.prod_quantity *
+																	products[item.prod_id].product_price}
+															</strong>
+														</div>
+													</div>
+													<div className='item-name font-14'>
+														{products[item.prod_id].product_name}
+													</div>
+													<div className='item-change-buttons-container'>
+														<button
+															className='item-minus'
+															onClick={() => deleteItem(item.id)}
+														>
+															<i className='fa-solid fa-minus item-minus'></i>
+															{/* <i class="fa-solid fa-circle-minus item-minus"></i> */}
+														</button>
+														<div className='item-quantity'>
+															{item.prod_quantity}
+														</div>
+														<button
+															className='item-add'
+															onClick={() => addMore(item.prod_id)}
+														>
+															{/* <i className='fa-solid fa-plus'></i> */}
+															<i class='fa-solid fa-circle-plus item-add'></i>
+														</button>
+													</div>
+												</div>
+											</div>
+										))}
+									</div>
+								</div>
+								<div className='checkout-right-column'>
+									{items.forEach((item) => {
+										basketTotal +=
+											item.prod_quantity * products[item.prod_id].product_price;
+									})}
+									<div className='estimated-total font-18'>
+										<strong>Estimated Total:</strong> ${basketTotal}
+									</div>
+									<div></div>
+									{items.length ? (<div className='checkout-button-div'>
+
+										<button
+											className='checkout-button font-16-white'
+											onClick={logan}
+										>
+											checkout
+										</button>{' '}
+									</div>): null}
+
 								</div>
 							</div>
 						</div>
-						{/* </div> */}
 					</div>
-				</div>
+				</>
 			)}
 		</>
 	);

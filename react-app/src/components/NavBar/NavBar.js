@@ -55,12 +55,12 @@ const NavBar = () => {
 					<div className='acct-buttons'>
 						{sessionLinks}
 						<div>
-							{sessionUser ? (<NavLink className='emoji-button' to={`/basket/${sessionUser.id}`}>
-							<button>
-							<i className='fa-solid fa-basket-shopping'></i>
+							{sessionUser ? (<NavLink to={`/basket/${sessionUser.id}`}>
+							<button className='emoji-button'>
+							<i className='fa-solid fa-basket-shopping' style={{fontSize:'30px', backgroundColor:'white', color:'black'}}></i>
 							</button>
 							</NavLink>)
-							:(<button className='emoji-button' onClick={() => setShowLoginModal(true)}><i className='fa-solid fa-basket-shopping'></i></button>)
+							:(<button className='emoji-button' onClick={() => setShowLoginModal(true)}><i className='fa-solid fa-basket-shopping' ></i></button>)
 							}
 						</div>
 						<div>
