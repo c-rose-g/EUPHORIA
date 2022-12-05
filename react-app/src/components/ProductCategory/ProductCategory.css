@@ -35,16 +35,19 @@
     height: 50px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid rgb(238, 238, 238);
+
     /* margin-left:18.5% */
 }
 .product-cat-products-container{
     display: flex;
-    gap:20px;
-    /* justify-content: center; */
-    /* border:1px solid red; */
-    width: 100%;
+    gap: 40px;
+    width: 89%;
     height: 100%;
     flex-wrap: wrap;
+    margin-left: 10%;
+    padding-top: 5%;
+    padding-left: 1%;
 }
 .products-map{
     height: 320px;
@@ -68,4 +71,7 @@
     display: flex;
     flex-direction: column;
 
+}
+.product-name-text:hover{
+    text-decoration: underline;
 }

@@ -1,3 +1,30 @@
+@media screen and (max-width:1024px) {
+  .profile-dropdown-signin {
+    z-index: 1;
+    border-radius: 5px;
+    background-color: white;
+    /* border: 1px solid grey; */
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: absolute;
+    font-weight: normal;
+    font-style: normal;
+    font-size: smaller;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 250px;
+    height: 200px;
+    /* transition: all 100s ease-in 0s; */
+    /* transition-property: all; */
+    top: 110px;
+    /* bottom: 250px; */
+    left: 70%;
+    /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
+    box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
+  }
+}
+
 .navBar-container {
   /* border: 1px solid red; */
   /* height: 100vh; */
@@ -30,7 +57,7 @@
 
 /* ********************* NAVBAR **************************** */
 .nav-box {
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   border-bottom: 1px solid rgb(238, 238, 238);
 
   /* display: flex;
@@ -105,11 +132,21 @@
 }
 
 /* ********************* DROP DOWN ********************** */
+.dropdown-container {}
+
+.profile-button-onEnter {}
+
+.profile-button-onLeave {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
 .profile-dropdown-signin {
   z-index: 1;
   border-radius: 5px;
   background-color: white;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   padding-top: 3px;
   padding-bottom: 3px;
   position: absolute;
@@ -119,6 +156,95 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 200px;
-  height: 300px;
+  width: 250px;
+  height: 200px;
+  /* transition: all 100s ease-in 0s; */
+  /* transition-property: all; */
+  /* top: 100px; */
+  bottom: 570px;
+    left: 70%;
+  /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
+  box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
+}
+
+.profile-img-container {
+
+  display: flex;
+  justify-content: center;
+  width: 60px;
+}
+.img-greetings{
+  /* border:1px solid blue; */
+  display: flex;
+  margin-top:2%;
+
+}
+
+.profile-img {
+  /* height:130% */
+}
+
+.profile-greeting {
+  /* border:1px solid red; */
+  display: flex;
+  width: 75%;
+  overflow:hidden;
+  white-space: pre-line;
+  margin-left:5%
+}
+
+.signin-login-buttons-container{
+  /* border:1px solid red; */
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  gap:5px;
+  margin-top:2%;
+  padding-bottom:2%;
+  border-bottom: 1px solid rgb(238, 238, 238);
+
+}
+.profile-signin {
+  width: 100%;
+  background-color: black;
+  border-radius: 9999px;
+
+}
+
+.profile-login {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 9999px;
+  background-color: white;
+}
+
+.buy-it-again-container{
+  /* border:1px solid red; */
+  margin-top:2%;
+  display: flex;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  padding-bottom:2%;
+
+
+  /* width:99%; */
+}
+
+.buy-it-again-button-container{
+  /* border:1px solid blue; */
+  /* display: flex; */
+
+}
+.buy-it-again-button{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: white;
+}
+
+.logout-button-container{
+
+}
+
+.logout-button{
+
 }

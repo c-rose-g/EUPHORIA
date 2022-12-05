@@ -12,7 +12,10 @@
 .remove-underline{
   text-decoration: none;
 }
-
+[role='button'],button{
+  cursor:pointer;
+  
+}
 /* *************************** BLACK FONTS ******************************** */
 
 .font-11{
@@ -33,7 +36,7 @@
   font-family: "helvetica neue",helvetica,arial,sans-serif;
   font-size:14px;
   color:black;
-  text-decoration: none;
+  /* text-decoration: none; */
   overflow: hidden;
   text-overflow: ellipsis;
 }

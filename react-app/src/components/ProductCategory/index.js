@@ -23,7 +23,7 @@ const ProductCategory = () => {
 				<>
 					<CategoriesNavBar />
 					<div className='product-cat-page-container'>
-						<div className='font-20 cat-name'>{prodCategory}</div>
+						<div className='font-20 cat-name'> <strong>{prodCategory}</strong></div>
 						<div className='product-cat-products-container'>
 							{products.map((product) => (
 								<div className='products-map' key={product.id}>
@@ -43,9 +43,9 @@ const ProductCategory = () => {
 												<p className='font-14' style={{ fontWeight: 'bold' }}>
 													{product.product_brand}
 												</p>
-												<p className='font-14'>{product.product_name}</p>
+												<p className='font-14 product-name-text'>{product.product_name}</p>
 												<p className='font-14' style={{ fontWeight: 'bold' }}>
-													{product.product_price}
+													${product.product_price}
 												</p>
 											</div>
 										</NavLink>
