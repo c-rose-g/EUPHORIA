@@ -1,4 +1,4 @@
-@media screen and (max-width:1024px) {
+@media screen and (max-width:1025px) {
   .profile-dropdown-signin {
     z-index: 1;
     border-radius: 5px;
@@ -15,12 +15,8 @@
     text-overflow: ellipsis;
     width: 250px;
     height: 200px;
-    /* transition: all 100s ease-in 0s; */
-    /* transition-property: all; */
     top: 110px;
-    /* bottom: 250px; */
-    left: 70%;
-    /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
+    left: 74%;
     box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
   }
 }
@@ -115,13 +111,16 @@
 #user-space-text {
   display: flex;
   background-color: white;
+  /* border:1px solid black; */
+  align-items: center;
 }
 
 .nav-sign-text {
-  /* border: 1px solid red; */
+
   width: 120px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
 }
 
@@ -132,7 +131,11 @@
 }
 
 /* ********************* DROP DOWN ********************** */
-.dropdown-container {}
+.dropdown-container {
+  height: 100px;
+    display: flex;
+    align-items: center;
+}
 
 .profile-button-onEnter {}
 
@@ -157,18 +160,18 @@
   overflow: hidden;
   text-overflow: ellipsis;
   width: 250px;
-  height: 200px;
+  height: 160px;
   /* transition: all 100s ease-in 0s; */
   /* transition-property: all; */
   /* top: 100px; */
-  bottom: 570px;
-    left: 70%;
+  bottom: 633px;
+  left: 64%;
   /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
   box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
 }
 
 .profile-img-container {
-
+  /* border:1px solid blue; */
   display: flex;
   justify-content: center;
   width: 60px;
@@ -194,15 +197,25 @@
 }
 
 .signin-login-buttons-container{
-  /* border:1px solid red; */
+  /* border:1px solid red;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  gap:5px; */
+  margin-top:2%;
+  padding-bottom:2%;
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.not-signed-button-container{
+  /* border: 1px solid red; */
   height: 30px;
   display: flex;
   justify-content: center;
   gap:5px;
-  margin-top:2%;
-  padding-bottom:2%;
+  margin-top:5%;
+  padding-bottom:5%;
   border-bottom: 1px solid rgb(238, 238, 238);
-
 }
 .profile-signin {
   width: 100%;
@@ -220,18 +233,25 @@
 
 .buy-it-again-container{
   /* border:1px solid red; */
-  margin-top:2%;
+  margin-top:5%;
   display: flex;
-  border-bottom: 1px solid rgb(238, 238, 238);
+  /* border-bottom: 1px solid rgb(238, 238, 238); */
   padding-bottom:2%;
-
 
   /* width:99%; */
 }
 
-.buy-it-again-button-container{
+.buy-it-again-container-signed-in{
   /* border:1px solid blue; */
-  /* display: flex; */
+  display: flex;
+  /* border:1px solid blue; */
+  margin-top:2%;
+  padding-top: 1%;
+  display: flex;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  /* padding-bottom:2%; */
+  /* margin-bottom: 15%; */
+  /* background-color: white; */
 
 }
 .buy-it-again-button{
@@ -239,12 +259,30 @@
   flex-direction: column;
   justify-content: flex-start;
   background-color: white;
+  /* border:1px solid blue */
 }
-
+.buy-it-again-button-signed-in{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: white;
+  margin-bottom: 5%;
+}
 .logout-button-container{
+  height:40px;
+  margin-top:2%;
+  display: flex;
+  justify-content: flex-start;
+  /* border-bottom: 1px solid rgb(238, 238, 238); */
 
 }
 
-.logout-button{
+.no-logout-button-container{
 
+}
+.logout-button{
+  background-color: white;
+  width:100px;
+  text-align: left;
+  /* border:1px solid red; */
 }

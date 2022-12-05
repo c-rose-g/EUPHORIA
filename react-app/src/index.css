@@ -12,9 +12,12 @@
 .remove-underline{
   text-decoration: none;
 }
+.remove-underline:hover{
+  text-decoration: underline;
+}
 [role='button'],button{
   cursor:pointer;
-  
+
 }
 /* *************************** BLACK FONTS ******************************** */
 
