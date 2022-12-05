@@ -63,7 +63,7 @@ const CreateReviewForm = () => {
 					<div className='review-page-header font-24'> Create a Review</div>
 						<div className='review-columns-container'>
 							<div className='review-product-image-container'>
-								<img src={product_image}></img>
+								<img style={{width:'80%', height:'80%'}} src={product_image}></img>
 							</div>
 							<div className='review-details-container'>
 								<div className='review-product-details'>
