@@ -197,7 +197,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 					<div className='border-bottom'></div>
 					<div className='join-now-button-div'>
 						<div className='new-sephora-text font-16'>
-							<strong>New to sephora?</strong>
+							<strong>New to Euphoria?</strong>
 						</div>
 						<div>
 							<div
