@@ -33,7 +33,7 @@
   height: 488px;
   width: 472px;
   object-fit: contain;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 /* ******************* SIGN UP MODAL *********************** */
@@ -63,7 +63,7 @@
 } */
 
 .modal-form {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 452px;
 }
 
@@ -275,7 +275,7 @@
 }
 /* ***************************** LOGIN MODAL ********************************** */
 .login-modal-form {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 452px;
   display: flex;
   flex-direction: column;
