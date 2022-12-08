@@ -11,7 +11,7 @@ const PurchaseHistory = () => {
 	const { userId } = useParams();
 	const dispatch = useDispatch();
 	const user_history = useSelector((state) => state.history.purchaseHistory);
-	console.log('user history ********', user_history);
+
 
 	useEffect(() => {
 		dispatch(loadPurchaseHistory(userId)).then(() => setLoaded(true));
@@ -37,7 +37,7 @@ const PurchaseHistory = () => {
 								<div className='font-20'>
 								Please purchase items to see items in your history.
 								</div>
-								
+
 								</div>)}
 						</div>
 						<div className='purchase-history-rows-wrapper'>

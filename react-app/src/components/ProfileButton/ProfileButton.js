@@ -13,7 +13,6 @@ import '../NavBar/NavBar.css';
 
 function ProfileButton() {
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
-	// const [timeEmoji, setTimeEmoji] = useState('hi')
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [dropMenu, setDropMenu] = useState(false);
 	const [profileTransition, setProfileTransition] = useState('');
@@ -21,11 +20,11 @@ function ProfileButton() {
 	const [hour, setHour] = useState(date.getHours());
 	const [currentTime, setCurrentTime] = useState('hello');
 	const signedInUser = useSelector((state) => state.session.user);
-	// console.log('signed in user >>>', signedInUser);
+
 	useEffect(() => {
 		if (hour < 12) {
 			setCurrentTime(' Good morning,');
-			// setTimeEmoji()
+
 		} else if (hour < 18) {
 			setCurrentTime(' Good afternoon,');
 		} else {
@@ -99,8 +98,6 @@ function ProfileButton() {
 							</button>
 						</div>
 					)}
-					{/* {signedInUser ? ():()} */}
-					{/* <div className='buy-it-again-container'> */}
 
 						{signedInUser ? (
 							<div className='buy-it-again-container-signed-in'>

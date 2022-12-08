@@ -7,14 +7,14 @@ import { productDetails } from '../../store/products';
 import './CreateReview.css';
 const CreateReviewForm = () => {
 	const { product_id } = useParams();
-	console.log('prodId', product_id);
+
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [review_msg, setReview_msg] = useState('');
 	const [reviewErr, setReviewErr] = useState('')
 	const [loaded, setLoaded] = useState(false);
 	const prodInfo = useSelector((state) => state.products.oneProduct);
-	console.log('this is product info >>.', prodInfo);
+
 
 	useEffect(() => {
 		dispatch(productDetails(product_id)).then(() => setLoaded(true));

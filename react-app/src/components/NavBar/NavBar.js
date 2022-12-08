@@ -8,9 +8,8 @@ import './NavBar.css';
 import { useSelector } from 'react-redux';
 const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
-	// const [loaded, isLoaded] = useState(true)
 	const sessionUser = useSelector(state => state.session.user)
-	// console.log('session user', sessionUser)
+
 	let sessionLinks;
 	if (sessionUser) {
 		sessionLinks = <ProfileButton user={sessionUser} />;
@@ -30,15 +29,9 @@ const NavBar = () => {
 						to='/products/categories/skincare'
 						activeClassName='active'
 					>
-						<strong>Don't postpone the holiday cheer.</strong> {' '}
-						<strong>SHOP NOW▸ </strong>
+						<strong>Don't postpone the holiday cheer.</strong> <strong>SHOP NOW▸ </strong>
 					</NavLink>
-					{/* <img
-						style={{ width: '418px', height: '41px' }}
-						id='deals-img'
-						src={deals_banner}
-						alt='deals banner'
-					/> */}
+
 				</div>
 				<div className='nav-box'>
 					<div>

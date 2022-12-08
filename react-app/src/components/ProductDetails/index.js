@@ -19,13 +19,13 @@ const ProductDetails = () => {
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const { productId } = useParams();
-	console.log('product id', productId);
+
 	const user = useSelector((state) => state.session.user);
-	console.log('user >>>>>>>.', user);
+
 	const userBasket = useSelector((state) =>
 		Object.values(state.basket.userBasket)
 	);
-	console.log('user basket', userBasket);
+
 
 	// const findProdInBasket = userBasket.find(obj => obj.prod_id === +productId)
 	let findProdInBasket;
@@ -47,21 +47,16 @@ const ProductDetails = () => {
 			findProdInBasket = itemCheckTwo;
 		}
 	}
-	console.log('find product in basket', findProdInBasket);
+
 	const prodReviews = useSelector((state) =>
 		Object.values(state.reviews.reviews)
 	);
-	// console.log('product reviews', prodReviews);
 
-	// console.log('user review >>>>>>>>>.', userReview);
 	const oneProd = useSelector((state) => state.products.oneProduct);
 	const [loaded, isLoaded] = useState(false);
-	// const productInfo = Object.values(oneProd);
-	// console.log('this is one product', oneProd);
-	// console.log('product info >>>>', productInfo);
+
 	const prodImages = oneProd.product_photos;
-	// console.log('prodImage >>>>>>', prodImages)
-	// console.log('this is product reviews >>>>>', prodReviews)
+
 
 	useEffect(() => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
@@ -78,9 +73,6 @@ const ProductDetails = () => {
 
 	const openSignUpToCreateReview = () => {
 		if (user) {
-			// return(
-			// 	<NavLink to={`/reviews/${productId}/new`}/>
-			// )
 			history.push(`/reviews/${productId}/new`);
 		} else {
 			setShowLoginModal(true);
@@ -89,9 +81,6 @@ const ProductDetails = () => {
 
 	const openSignUptoUpdateReview = () => {
 		if (user) {
-			// return(
-			// 	<NavLink to={`/reviews/${userReview.id}`}/>
-			// )
 			history.push(`/reviews/${userReview.id}`);
 		} else {
 			setShowLoginModal(true);

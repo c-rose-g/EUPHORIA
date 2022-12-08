@@ -73,7 +73,7 @@ export const logout = () => async (dispatch) => {
 export const signUp = (payload) => async (dispatch) => {
 
   const {first_name, last_name, email, password} = payload
-  console.log('payload ', payload)
+
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
     headers: {
@@ -86,14 +86,14 @@ export const signUp = (payload) => async (dispatch) => {
       password,
     }),
   });
-  console.log('response from signup thunk', response)
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    // console.log('this is data from sign up thunk', data)
+
     if (data.errors) {
       return data.errors;
     }

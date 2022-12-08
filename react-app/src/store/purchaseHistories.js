@@ -16,8 +16,7 @@ const loadPurchaseHistoryAction = (purchases) => ({
 /*********************THUNKS********************** */
 
 export const addToPurchaseHistory = (userId) => async (dispatch) => {
-	// console.log('this is the payload in history thunk', userId);
-	// console.log('THIS IS THE ROUTE TO BE HIT :>>>>>>', `/api/history/${userId}`);
+
 	const response = await fetch(`/api/history/${userId}`, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
@@ -30,7 +29,7 @@ export const addToPurchaseHistory = (userId) => async (dispatch) => {
 		return item;
 	}
 };
-// id = purchase history id from the backend route, need to refactor to use actual user id
+
 export const loadPurchaseHistory = (userId) => async (dispatch) => {
 	const response = await fetch(`/api/history/${userId}`, {
 		headers: { 'Content-Type': 'application/json' },
@@ -55,11 +54,9 @@ export const purchaseHistoryReducer = (state = initialState, action) => {
 
 		case LOAD_ITEMS:
 			newState = { ...state, purchaseHistory: {} };
-            // console.log('this is action in purchase history reducer', action.purchases.)
+
 			newState.purchaseHistory = action.purchases.retrieve_user_purchase_history;
-            // action.purchases.retrieve_user_purchase_history.forEach(purchase =>{
-            //     newState.purchaseHistory = action.purchase
-            // })
+
 			return newState;
 		default:
 			return newState;

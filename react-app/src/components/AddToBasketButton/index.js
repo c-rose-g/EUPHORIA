@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { addToCart } from "../../store/shoppingCarts";
 import './BasketButton.css'
 const AddToBasketButton = ({productId, basketId}) =>{
     const dispatch = useDispatch()
     const history = useHistory()
     const [pressed, setPressed] = useState(false)
-    console.log('this is productId >>>>>>>', productId)
+
     const handleAddToCart = async (e) =>{
         e.preventDefault()
         const payload = {
@@ -16,7 +16,7 @@ const AddToBasketButton = ({productId, basketId}) =>{
             basketId
         }
         const data = await dispatch(addToCart(payload))
-        setPressed(true)
+        // setPressed(true)
         return <Redirect to={`/products/${productId}`}/>
     }
     // pressed ? <div className="add-button-pressed font-16"> Item has been added to your basket</div> :

@@ -11,21 +11,10 @@ const ProductImageSlider = () => {
 	const [currentImage, setCurrentImage] = useState(0);
 	const [loaded, isLoaded] = useState(false);
 	const { productId } = useParams();
-	console.log('prodId 1', productId);
 	const oneProd = useSelector((state) => state.products.oneProduct);
-
 	const prodImages = oneProd.product_photos;
-	// let prodImages;
-	// if(prodImages){
-	//   prodImages = oneProd.product_photos
-	// }else{
-	//   null
-	// }
-	console.log('prod images', prodImages);
 	const length = prodImages.length;
-	// const oneProd = useSelector(state => state.products.oneProduct)
-	// console.log('this is one product', oneProd)
-	// console.log('prodImage >>>>>>', prodImages)
+
 	const nextImg = () => {
 		setCurrentImage(currentImage === length - 1 ? 0 : currentImage - 1);
 	};

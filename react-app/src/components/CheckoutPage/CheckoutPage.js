@@ -16,7 +16,6 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const { userId } = useParams();
-	console.log('user id 5', userId);
 	const [loaded, setLoaded] = useState(false);
 	// obj of userbasket
 	const userBasket = useSelector((state) => state.basket.userBasket);
@@ -43,7 +42,6 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 		(async () => {
 			await dispatch(allProducts());
 			await dispatch(loadUserCart(userId));
-			// await dispatch(increaseItem())
 			setLoaded(true);
 		})();
 	}, [dispatch]);
@@ -60,13 +58,10 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 		dispatch(addToPurchaseHistory(userId));
 		alert('Your order has been added to your purchase history.');
 		history.push(`/history/${userId}`);
-		// return(<Redirect to={`/history/${userId}`}/>)
 	};
 
 	let basketTotal = 0;
-	// const totalPrice = () =>{
 
-	// }
 	return (
 		<>
 			{loaded && (
@@ -74,7 +69,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 					<CategoriesNavBar />
 					<div className='checkout-page-container'>
 						<div className='basket-title-container font-20'>
-							<b className='basket-title'> My Basket</b>
+							<b className='basket-title'>My Basket</b>
 						</div>
 						<div className='checkout-basket-container'>
 							<div className='checkout-columns-container'>
@@ -121,7 +116,6 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 															onClick={() => deleteItem(item.id)}
 														>
 															<i className='fa-solid fa-minus item-minus'></i>
-															{/* <i class="fa-solid fa-circle-minus item-minus"></i> */}
 														</button>
 														<div className='item-quantity'>
 															{item.prod_quantity}
@@ -130,7 +124,6 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 															className='item-add'
 															onClick={() => addMore(item.prod_id)}
 														>
-															{/* <i className='fa-solid fa-plus'></i> */}
 															<i class='fa-solid fa-circle-plus item-add'></i>
 														</button>
 													</div>

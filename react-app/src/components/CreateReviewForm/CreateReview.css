@@ -69,13 +69,17 @@
 
 .review-input {
     max-width: 717px;
-    resize: auto;
+    resize: none;
     border:1px solid;
     white-space: none;
     word-wrap: break-word;
     height:100px;
     border-radius: 9px;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+textarea{
+    display: flex;
 
 }
 .review-submit-button-container{

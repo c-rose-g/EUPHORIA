@@ -43,7 +43,7 @@ const deleteReviewAction = (review) =>({
 /*********************THUNKS******************************* */
 export const createReview = (payload) => async dispatch =>{
   const {product_id, review_msg} = payload
-  console.log('payload in thunk >>>>', payload)
+
   const response = await fetch(`/api/reviews/${product_id}/new`, {
     method:'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -52,15 +52,14 @@ export const createReview = (payload) => async dispatch =>{
 
   if(response.ok){
     const newReview = await response.json()
-    console.log('new review response in thunk >>>>', newReview)
+
     dispatch(createReviewAction(newReview))
     return newReview
   }
 }
 
 export const loadReviews = (prod_id) => async dispatch => {
-  // const {productId, review_msg} = payload
-  // console.log('is this the right prod id?' , prod_id)
+
   const response = await fetch(`/api/products/${prod_id}/reviews`,{
     headers:{
       'Content-Type': 'application/json',
@@ -88,14 +87,14 @@ export const loadUserReviews = (prod_id) => async dispatch =>{
 }
 
 export const loadOneReview = (reviewId) => async dispatch =>{
-  console.log(' review id in review thunk', reviewId)
+
   const response = await fetch(`/api/reviews/${reviewId}`,{
     headers:{
       'Content-Type': 'application/json',
     }
   })
 
-  console.log('reponse from review thunk >>>>>', response)
+
   if(response.ok){
     const oneReview = await response.json()
     console.log(' one Review if response ok>>>>>>', response)
@@ -105,7 +104,7 @@ export const loadOneReview = (reviewId) => async dispatch =>{
 }
 export const updateReview = (payload) => async dispatch =>{
   const {reviewId} = payload
-  console.log('payload in update review thunk>>>>', payload)
+
   const response = await fetch(`/api/reviews/${reviewId}`, {
     method:'PUT',
     headers:{
@@ -113,7 +112,7 @@ export const updateReview = (payload) => async dispatch =>{
     },
     body: JSON.stringify(payload)
   })
-  console.log('response in update review thunk >>>')
+
   if(response.ok){
     const updatedReview = await response.json()
     dispatch(updateReviewAction(updatedReview))
@@ -143,10 +142,9 @@ export const reviewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_REVIEW:
       newState = {... state, reviews:{}}
-      // console.log('action in reviews reducer >>>', action)
 
       newState.reviews[action.newReview.id] = action.newReview
-      // newState = {...state, [action.newReview.id]:action.newReview}
+
       return newState
 
     // case LOAD_USERS_REVIEWS:{
@@ -166,7 +164,7 @@ export const reviewsReducer = (state = initialState, action) => {
     }
     case LOAD_ONE_REVIEW:{
       newState = {...state, oneReview:{}}
-      console.log('action in reviews reducer', action)
+
       newState.oneReview[action.review.id] = action.review
       return newState
     }

@@ -12,7 +12,7 @@ const ProductCategory = () => {
 	const products = useSelector((state) =>
 		Object.values(state.products.allProducts)
 	);
-	console.log('products >>>>>', products);
+
 	useEffect(() => {
 		dispatch(productCategories(prodCategory)).then(() => setLoaded(true));
 	}, [dispatch]);

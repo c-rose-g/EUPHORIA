@@ -43,29 +43,19 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					password: password,
 				})
 			);
-			// setSignUpModal(false);
-					// setShowSignUpModal(false);
-			// setShowSignUpFromLogin(false);
 
-			// console.log('set show sign up modal',signUpModal)
 		}
 		if (data) {
 			for (let error of data){
 				if(error.startsWith('email')) setEmailErr('Email address is already in use')
 			}
 			setErrors(data);
-			console.log('errrross',errors)
 			setSignUpModal(true);
-			console.log('set show sign up modal', signUpModal);
 
-			// setShowSignUpModal(true);
-			// setShowSignUpFromLogin(true);
 		}
 	};
-	// // helper functions
-	// const validateEmail = (email) => {
-	// 	return /\S+@\S+\.\S+/.test(email);
-	// };
+	// helper functions
+
 
 	const updateFirstName = (e) => {
 		setFirstName(e.target.value);
@@ -147,7 +137,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					<div>
 						{renderErr && firstNameErr ? (
 							<label className='text renderError font-16' htmlFor='firstName'>
-								First Name: {firstNameErr}
+								{firstNameErr}
 							</label>
 						) : (
 							<label className='text noRenderError font-16' htmlFor='firstName'>
@@ -167,7 +157,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					<div>
 						{renderErr && lastNameErr ? (
 							<label className='text renderError font-16' htmlFor='LastName'>
-								Last Name: {lastNameErr}
+								{lastNameErr}
 							</label>
 						) : (
 							<label className='text noRenderError font-16' htmlFor='LastName'>
