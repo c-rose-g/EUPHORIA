@@ -46,7 +46,7 @@ const CreateReviewForm = () => {
 
 	useEffect(() =>{
 		if(!review_msg.trim().length){
-			setReviewErr('review cannot be empty.')
+			setReviewErr('Review cannot be empty.')
 		}
 		else if(review_msg.trim().length > 255){
 			setReviewErr('Review must be less than 255 characters')
@@ -76,7 +76,7 @@ const CreateReviewForm = () => {
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}
 										>
-											Review: {reviewErr}
+											{reviewErr}
 										</label>):(<label
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}
