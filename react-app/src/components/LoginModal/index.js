@@ -70,18 +70,18 @@ const LoginModal = ({ setShowLoginModal }) => {
 	useEffect(() => {
 		//email error handling
 		if (!email.trim().length) {
-			setEmailErr('email is required')
+			setEmailErr('Email is required')
 		} else if (email.trim().length && !validateEmail(email)) {
-			setEmailErr('invalid email')
+			setEmailErr('Invalid email')
 		}
 		else {
 			setEmailErr("")
 		}
 		//password error handling
 		if (!password.trim().length) {
-			setPasswordErr('password is required')
+			setPasswordErr('Password is required')
 		} else if (password.trim().length && password.length < 6) {
-			setPasswordErr('password must be greater than 6 characters')
+			setPasswordErr('Password must be greater than 6 characters')
 		}
 		else {
 			setPasswordErr("")
