@@ -11,43 +11,34 @@ const UpdateReviewForm = () => {
 	const dispatch = useDispatch();
 	let { reviewId } = useParams();
 	reviewId = +reviewId;
-	// console.log('review id 18', reviewId);
 	const history = useHistory();
 	const [loaded, setLoaded] = useState(false);
-	const [renderErr, setRenderErr] = useState(false);
+	// const [renderErr, setRenderErr] = useState(false);
 	const [reviewErr, setReviewErr] = useState('')
-	// const userReviews = useSelector(state => state.reviews.userReviews)
 	const currentProd = useSelector((state) => state.products.oneProduct);
 	const prodReview = useSelector((state) =>
 		Object.values(state.reviews.reviews)
 	);
 	const user = useSelector((state) => state.session.user);
-	// console.log('find user >>>>>>>>', findUser)
 	const findUser = prodReview.find((id) => id.user_id.id === user.id);
 
 	const [review_msg, setReview_msg] = useState('');
 
-	const [updatedMsg, setUpdatedMsg] = useState('')
-	// console.log('find user >>>>', findUser);
-	// console.log('prod reviews >>>', prodReview);
-	// console.log('user reviews', userReviews )
-	// console.log('user >>>>', user);
-	console.log('current product >>>>>>>', currentProd);
+	// const [updatedMsg, setUpdatedMsg] = useState('')
 
 	useEffect(()=>{
 		if(findUser){
 			setReview_msg(findUser.review_msg)
 		}
 	},[findUser,currentProd, user])
+
 	useEffect(() => {
-		// console.log('review id in dispatch', reviewId)
 		dispatch(loadOneReview(reviewId)).then(() => setLoaded(true));
 	}, [dispatch]);
+
 	// helper functions
 	const updateReviewMsg = (e) => {
-		// if(review_msg.length !== updateReviewMsg.length){
-		// 	setUpdatedMsg(e.target.value);
-		// }
+
 		setReview_msg(e.target.value)
 	};
 
@@ -72,7 +63,7 @@ const UpdateReviewForm = () => {
 
 	useEffect(() =>{
 		if(!review_msg.trim().length){
-			setReviewErr('review cannot be empty.')
+			setReviewErr('Review cannot be empty.')
 		}
 		else if(review_msg.trim().length > 255){
 			setReviewErr('Review must be less than 255 characters')
@@ -111,7 +102,7 @@ const UpdateReviewForm = () => {
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}
 										>
-											Review: {reviewErr}
+											{reviewErr}
 										</label>):(<label
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}

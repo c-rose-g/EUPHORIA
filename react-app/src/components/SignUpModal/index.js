@@ -43,29 +43,19 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					password: password,
 				})
 			);
-			// setSignUpModal(false);
-					// setShowSignUpModal(false);
-			// setShowSignUpFromLogin(false);
 
-			// console.log('set show sign up modal',signUpModal)
 		}
 		if (data) {
 			for (let error of data){
 				if(error.startsWith('email')) setEmailErr('Email address is already in use')
 			}
 			setErrors(data);
-			console.log('errrross',errors)
 			setSignUpModal(true);
-			console.log('set show sign up modal', signUpModal);
 
-			// setShowSignUpModal(true);
-			// setShowSignUpFromLogin(true);
 		}
 	};
-	// // helper functions
-	// const validateEmail = (email) => {
-	// 	return /\S+@\S+\.\S+/.test(email);
-	// };
+	// helper functions
+
 
 	const updateFirstName = (e) => {
 		setFirstName(e.target.value);
@@ -92,18 +82,18 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 		//email error handling
 
 		if (email.trim().length && !validateEmail(email)) {
-			setEmailErr('invalid email');
+			setEmailErr('Invalid email');
 		} else if (!email.trim().length) {
-			setEmailErr('email is required');
+			setEmailErr('Email is required');
 		} else {
 			setEmailErr('');
 		}
 
 		//firstName error handling
 		if (firstName.trim().length < 4) {
-			setFirstNameErr('first name must be at least 4 characters');
+			setFirstNameErr('First name must be at least 4 characters');
 		} else if (firstName.trim().length > 10) {
-			setFirstNameErr('first name must be less than 10 characters ');
+			setFirstNameErr('First name must be less than 10 characters ');
 		} else {
 			setFirstNameErr('');
 		}
@@ -118,9 +108,9 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 		}
 		//password error handling
 		if (!password.trim().length) {
-			setPasswordErr('password is required');
+			setPasswordErr('Password is required');
 		} else if (password.trim().length && password.length < 6) {
-			setPasswordErr('password must be greater than 6 characters');
+			setPasswordErr('Password must be greater than 6 characters');
 		} else {
 			setPasswordErr('');
 		}
@@ -133,6 +123,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 			setConfirmPasswordErr('');
 		}
 	}, [firstName, lastName, email, password, confirmPassword]);
+
 	if (user) {
 		return <Redirect to='/' />;
 	}
@@ -147,7 +138,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					<div>
 						{renderErr && firstNameErr ? (
 							<label className='text renderError font-16' htmlFor='firstName'>
-								First Name: {firstNameErr}
+								{firstNameErr}
 							</label>
 						) : (
 							<label className='text noRenderError font-16' htmlFor='firstName'>
@@ -167,7 +158,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					<div>
 						{renderErr && lastNameErr ? (
 							<label className='text renderError font-16' htmlFor='LastName'>
-								Last Name: {lastNameErr}
+								{lastNameErr}
 							</label>
 						) : (
 							<label className='text noRenderError font-16' htmlFor='LastName'>
@@ -207,7 +198,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					<div>
 						{renderErr && passwordErr ? (
 							<label className='text renderError font-16' htmlFor='password'>
-								Password: {passwordErr}
+								{passwordErr}
 							</label>
 						) : (
 							<label className='text noRenderError font-16' htmlFor='password'>
@@ -227,7 +218,7 @@ const SignUpModal = ({ setShowSignUpModal, setShowSignUpFromLogin }) => {
 					<div>
 						{renderErr && confirmPasswordErr ? (
 							<label className='text renderError font-16' htmlFor='confirmPassword'>
-								Confirm Password: {confirmPasswordErr}
+								{confirmPasswordErr}
 							</label>
 						) : (
 							<label className='text noRenderError font-16' htmlFor='confirmPassword'>

@@ -7,14 +7,14 @@ import { productDetails } from '../../store/products';
 import './CreateReview.css';
 const CreateReviewForm = () => {
 	const { product_id } = useParams();
-	console.log('prodId', product_id);
+
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [review_msg, setReview_msg] = useState('');
 	const [reviewErr, setReviewErr] = useState('')
 	const [loaded, setLoaded] = useState(false);
 	const prodInfo = useSelector((state) => state.products.oneProduct);
-	console.log('this is product info >>.', prodInfo);
+
 
 	useEffect(() => {
 		dispatch(productDetails(product_id)).then(() => setLoaded(true));
@@ -46,7 +46,7 @@ const CreateReviewForm = () => {
 
 	useEffect(() =>{
 		if(!review_msg.trim().length){
-			setReviewErr('review cannot be empty.')
+			setReviewErr('Review cannot be empty.')
 		}
 		else if(review_msg.trim().length > 255){
 			setReviewErr('Review must be less than 255 characters')
@@ -76,7 +76,7 @@ const CreateReviewForm = () => {
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}
 										>
-											Review: {reviewErr}
+											{reviewErr}
 										</label>):(<label
 											className='review-header font-16'
 											style={{ fontWeight: 'bold' }}

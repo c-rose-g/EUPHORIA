@@ -10,16 +10,12 @@ function Splash() {
 	const {productId} = useParams()
 	const [firstIdx, setFirstIdx] = useState(0);
 	const [nextFirstIdx, setNextFirstIdx] = useState(8);
-	console.log('first index change', firstIdx);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const products = useSelector((state) =>
 		Object.values(state.products.allProducts)
 	);
 
-	console.log('products use selector', products);
-
 	useEffect(() => {
-		// setIsLoaded(true);
 		dispatch(allProducts()).then(() => setIsLoaded(true));
 		dispatch(productDetails(productId));
 	}, [dispatch]);
@@ -39,7 +35,6 @@ function Splash() {
 							</div>
 						</div>
 						<div className='splash-products-div'>
-							{/* <div className='splash-product-cards-container'> */}
 
 							<button
 								id='button-div-left-chosen-for-you'

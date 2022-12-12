@@ -45,14 +45,14 @@ const decrementItemAction = (itemId, item) => ({
 // shopping cart item - CREATE
 export const addToCart = (payload) => async dispatch =>{
   const {productId} = payload
-  console.log('this is productId in payload in shopping carts thunk', productId)
+
   const response = await fetch(`/api/items/${productId}`,{
     method:'POST',
     headers:{'Content-Type': 'application/json'},
     body: JSON.stringify(payload)
   })
 
-  console.log('response from shopping cart thunk', response)
+
   if(response.ok){
     const item = await response.json()
     dispatch(addToCartAction(item))
@@ -98,7 +98,7 @@ export const loadItems = () => async dispatch =>{
 }
 
 export const increaseItem = (payload) => async dispatch =>{
-  console.log("increase item payload>>>>>>>>>>>>>>>>>", )
+
   const {productId} = payload
   const response = await fetch(`/api/items/${productId}`,{
     method:'PUT',
@@ -146,14 +146,9 @@ export const basketReducer = (state = initialState, action) =>{
 
     case LOAD_USER_SHOPPING_CART:
       newState = {...state, userBasket:{} }
-      // console.log('action in shopping cart reducer', action.shoppingCart)
 
-      // newState.userBasket[action.shoppingCart.user_id] = action.shoppingCart
       newState.userBasket = action.shoppingCart
 
-      // console.log('new state in reducer >>>>>>>>>>>', newState)
-      // newState.userBasket.id.action.retrieve_user_cart[0]
-      // newState.userBasket[action.shoppingCart.retrieve_user_cart.id] = action.shoppingCart
       return newState
 
     // case LOAD_ALL_ITEMS:
@@ -167,15 +162,11 @@ export const basketReducer = (state = initialState, action) =>{
       return newState
 
     case INCREASE_ITEM:
-      // newState = {...state, userBasket:{}}
-      // console.log(action,'action in shopping cart reducer')
 
-      // newState.userBasket[action.item.id]=action.item
-      // return newState
       return {baskets:{...state.baskets}, userBasket:{...state.userBasket, cart_prod:{...state.userBasket.cart_prod, [action.item.id]:action.item}}}
 
     case DECREMENT_ITEM:
-      // newState = {...state}
+
       if(state.userBasket.cart_prod[action.itemId].prod_quantity > 1){
         return {baskets:{...state.baskets}, userBasket:{...state.userBasket, cart_prod:{...state.userBasket.cart_prod, [action.item.id]:action.item}}}
       } else{

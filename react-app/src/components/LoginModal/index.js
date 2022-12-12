@@ -9,7 +9,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 	const [email, setEmail] = useState('');
 	const history = useHistory()
 	const [showSignUpFromLogin, setShowSignUpFromLogin] = useState(false);
-	// console.log('show sign up from login', showSignUpFromLogin)
+
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState([]);
 
@@ -22,7 +22,6 @@ const LoginModal = ({ setShowLoginModal }) => {
 	const dispatch = useDispatch();
 
 	const openSignUpModal = () => {
-		// setShowLoginModal(false)
 		setShowSignUpFromLogin(true);
 	};
 	const closeBothModals = () => {
@@ -40,23 +39,18 @@ const LoginModal = ({ setShowLoginModal }) => {
 		let data;
 		if( !emailErr && !passwordErr){
 		data = await dispatch(login(email, password));
-		// history.push('/')
-		// setShowLoginModal(false);
 
 		};
 		if (data) {
 			// let err = {};
-			console.log('dataaaaaaa', data);
 			setEmailErr(data)
 			setPasswordErr(data)
 			for (let error of data) {
 				console.log('error', error);
 				if (error.startsWith('Email')) {
-					// err.email = 'Invalid Email';
 					setEmailErr('Invalid Email');
 				}
 				if (error.startsWith('Password')) {
-					// err.password = 'Invalid Password';
 					setPasswordErr('Password was incorrect');
 				}
 				if(error.includes('Email provided not found')){
@@ -68,40 +62,33 @@ const LoginModal = ({ setShowLoginModal }) => {
 				}
 			}
 
-			// setErrors();
 			setShowLoginModal(true);
-			console.log('errors', errors);
-			// console.log('set email errors', emailErr);
 		}
-		// 	else {
-		// 	setShowLoginModal(false)
-		// }
 	};
 	/********************Use Effect******************* */
 
 	useEffect(() => {
 		//email error handling
 		if (!email.trim().length) {
-			setEmailErr('email is required')
+			setEmailErr('Email is required')
 		} else if (email.trim().length && !validateEmail(email)) {
-			setEmailErr('invalid email')
+			setEmailErr('Invalid email')
 		}
 		else {
 			setEmailErr("")
 		}
 		//password error handling
 		if (!password.trim().length) {
-			setPasswordErr('password is required')
+			setPasswordErr('Password is required')
 		} else if (password.trim().length && password.length < 6) {
-			setPasswordErr('password must be greater than 6 characters')
+			setPasswordErr('Password must be greater than 6 characters')
 		}
 		else {
 			setPasswordErr("")
 		}
 	}, [email, password])
-	// console.log('password errors',passwordErr)
-	// demo user login
 
+	// demo user login
 	const log = async (e) => {
 		e.preventDefault();
 		const data = await dispatch(login('demo@aa.io', 'password'));
@@ -109,7 +96,6 @@ const LoginModal = ({ setShowLoginModal }) => {
 		setShowLoginModal(false);
 
 		if (data) {
-			// setErrors(data);
 			setShowLoginModal(true);
 		}
 	};
@@ -122,9 +108,7 @@ const LoginModal = ({ setShowLoginModal }) => {
 		setPassword(e.target.value);
 	};
 
-	// if (user) {
-	// 	return null
-	// }
+
 	return (
 		<>
 			<div className='modal-form-container'>
@@ -132,11 +116,6 @@ const LoginModal = ({ setShowLoginModal }) => {
 					<div id='login-title-div'>
 						<h2 className='font-16'>Sign in</h2>
 					</div>
-					{/* <div>
-						{errors.map((error, ind) => (
-							<div key={ind}>{error}</div>
-						))}
-					</div> */}
 					<div className='inputs-row-div'>
 						<div>
 							{renderErr && emailErr ? (
@@ -179,11 +158,6 @@ const LoginModal = ({ setShowLoginModal }) => {
 							placeholder='Password'
 						/>
 					</div>
-					{/* <div style={{border:'1px solid green', height:'20px'}}>
-						{errors.map((error, ind) => (
-							<div className='errors-div' key={ind}>{error}</div>
-						))}
-					</div> */}
 					<div className='join-now-button-div'>
 						<button button id='sign-in-now' className='font-14' type='submit'>
 							Sign in
