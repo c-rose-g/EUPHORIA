@@ -101,9 +101,8 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 
 														<div className='item-price font-16' key={item.id}>
 															<strong>
-																$
-																{item.prod_quantity *
-																	products[item.prod_id].product_price}
+																$ 
+																{(item.prod_quantity * products[item.prod_id].product_price).toFixed(2)}
 															</strong>
 														</div>
 													</div>
