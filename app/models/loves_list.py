@@ -13,7 +13,7 @@ class Loves_list(db.Model):
 
     # relationships
     # product
-    product_ll = db.relationship('Product', back_populates='loves_list_p', )
+    product_ll = db.relationship('Product', back_populates='loves_list_p')
     # user
     user_ll = db.relationship('User', back_populates='loves_list_u')
 
