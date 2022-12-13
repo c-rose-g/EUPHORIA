@@ -24,7 +24,7 @@ class User(db.Model, UserMixin):
     # reviews
     reviews_u = db.relationship('Review', back_populates='users_r', cascade='all, delete')
     # loves list
-    loves_list_u = db.relationship('Loves_list', back_populates='user_ll', cascade='all, delete')
+    loves_u = db.relationship('Love', back_populates='user_ll', cascade='all, delete')
     @property
     def password(self):
         return self.hashed_password

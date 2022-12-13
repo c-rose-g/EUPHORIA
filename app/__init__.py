@@ -4,17 +4,18 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-
+# models
 from .models import db, User
+# routes
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.products_route import products_routes
-# from api.prod_photos_routes import prod_photos_routes
-
 from .api.reviews_routes import reviews_routes
 from .api.shopping_carts_routes import shopping_carts_routes
 from .api.shopping_cart_items_routes import shopping_cart_items_routes
 from .api.purchase_history_routes import purchase_history_routes
+from .api.loves_routes import loves_routes
+# seeds
 from .seeds import seed_commands
 from .config import Config
 
@@ -41,6 +42,7 @@ app.register_blueprint(products_routes, url_prefix='/api/products')
 app.register_blueprint(shopping_carts_routes, url_prefix='/api/basket')
 app.register_blueprint(shopping_cart_items_routes, url_prefix='/api/items')
 app.register_blueprint(purchase_history_routes, url_prefix='/api/history')
+app.register_blueprint(loves_routes, url_prefix='/api/loves')
 db.init_app(app)
 Migrate(app, db)
 

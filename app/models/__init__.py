@@ -8,4 +8,4 @@ from .purchase_history import PurchaseHistory
 from .review import Review
 from .category import Category
 from .product_category import Product_category
-from .loves_list import Loves_list
+from .love import Love

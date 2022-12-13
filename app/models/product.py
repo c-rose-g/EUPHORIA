@@ -41,8 +41,8 @@ class Product(db.Model):
     # product category
     product_category_p = db.relationship('Product_category', back_populates='product_pc', cascade='all, delete')
     # loves_list
-    loves_list_p = db.relationship('Loves_list', back_populates='product_ll', cascade='all, delete')
-    
+    loves_p = db.relationship('Love', back_populates='product_ll', cascade='all, delete')
+
     def to_dict(self):
         return {
             'id': self.id,

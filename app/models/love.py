@@ -3,8 +3,8 @@ from sqlalchemy.sql import func
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
-class Loves_list(db.Model):
-    __tablename__ = 'loves_lists'
+class Love(db.Model):
+    __tablename__ = 'loves'
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
     id = db.Column(db.Integer, primary_key=True)
@@ -13,9 +13,9 @@ class Loves_list(db.Model):
 
     # relationships
     # product
-    product_ll = db.relationship('Product', back_populates='loves_list_p')
+    product_ll = db.relationship('Product', back_populates='loves_p')
     # user
-    user_ll = db.relationship('User', back_populates='loves_list_u')
+    user_ll = db.relationship('User', back_populates='loves_u')
 
     def to_dict(self):
         return{
