@@ -10,7 +10,8 @@ class Love(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
     user_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('users.id')))
-
+    created_at = db.Column(db.DateTime(), nullable=False,server_default=func.now())
+    updated_at = db.Column(db.DateTime(), nullable=False,onupdate=func.now(), default=func.now())
     # relationships
     # product
     product_ll = db.relationship('Product', back_populates='loves_p')
@@ -20,6 +21,6 @@ class Love(db.Model):
     def to_dict(self):
         return{
             'id': self.id,
-            'prod_id':{'product':[product.to_dict() for product in self.product_ll]},
-            'user_id': self.user_ll
+            'prod_id':self.product_ll.to_dict(),
+            'user_id': self.user_ll.to_dict()
             }
