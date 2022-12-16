@@ -24,13 +24,17 @@ def add_love(prod_id):
     """
     Add a product to a user's loves and returns loves in a dictionary
     """
-    love = Love(
-            user_id = current_user.id,
-            prod_id = prod_id)
-    db.session.add(love)
-    db.session.commit()
-    return love.to_dict()
+    love_in_user = Love.query.filter_by(prod_id = prod_id).first()
 
+    if not love_in_user:
+        love = Love(
+                user_id = current_user.id,
+                prod_id = prod_id)
+        db.session.add(love)
+        db.session.commit()
+        return love.to_dict()
+    else:
+        return {'love':'Love already exists', 'status code': 400},400
 
 @loves_routes.route('/<int:prod_id>', methods=['DELETE'])
 @login_required
@@ -39,24 +43,13 @@ def kill_product_love(prod_id):
     Deletes a product from a user's loves from the product details page
     """
     love = Love.query.filter_by(prod_id=prod_id)
-    # need to find love by user id
-    # love.find()
-    if love:
-        db.session.delete(love)
-        db.session.commit()
-        return {"love": "love successfully deleted", "status code": 302}, 302
+
+    for user in love:
+        if(user.user_id == current_user.id):
+            print('user in love', user.to_dict())
+            db.session.delete(user)
+            db.session.commit()
+            return {"love": "love successfully deleted", "status code": 302}, 302
+
     else:
         return {"love": "love was not found", "status code": 404}, 404
-
-
-# @loves_routes.route('/<int:user_id>', methods=['DELETE'])
-# @login_required
-# def kill_user_love(user_id):
-#     """
-#     Deletes a product from a user's loves page
-#     """
-#     love = Love.query.get(user_id)
-#     if love:
-#         db.session.delete(love)
-#         db.session.commit()
-#         return {"love": "love successfully seleted", "status code": 302}, 302
