@@ -2,14 +2,14 @@
     background-color: #cf112c;
     border-radius: 9999px;
     height: 50px;
-    width: 50%;
+    width:250px;
 }
 
 .add-button-pressed{
     /* background-color: grey; */
     border-radius: 9999px;
     height: 50px;
-    width: 50%;
+    width:250px;
     display: flex;
 
     align-items: center;

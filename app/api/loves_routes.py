@@ -42,6 +42,7 @@ def kill_product_love(prod_id):
     """
     Deletes a product from a user's loves from the product details page
     """
+    # return object of loves for prod_id
     love = Love.query.filter_by(prod_id=prod_id)
 
     for user in love:

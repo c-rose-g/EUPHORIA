@@ -25,7 +25,7 @@
 .product-cat-page-container{
     /* border:1px solid; */
     height: 100%;
-    margin-left: 10%;
+    margin-left: 5%;
     margin-right: 5%;
     margin-top:5%;
     margin-bottom: 9.2%;
@@ -36,7 +36,7 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid rgb(238, 238, 238);
-
+    padding-left: 10%;
     /* margin-left:18.5% */
 }
 .product-cat-products-container{

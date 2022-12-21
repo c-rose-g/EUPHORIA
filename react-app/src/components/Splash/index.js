@@ -41,7 +41,7 @@ function Splash() {
 								onClick={() => setFirstIdx(0)}
 							>
 								<NavLink to='/'>
-									<i className='fa-solid fa-circle-chevron-left' style={{fontSize:'30px'}}></i>
+									<i className='fa-solid fa-circle-chevron-left' style={{fontSize:'30px', color:'black'}}></i>
 								</NavLink>
 							</button>
 							<div className='splash-product-card-container'>
@@ -198,7 +198,7 @@ function Splash() {
 									onClick={() => setNextFirstIdx(6)}
 								>
 									<NavLink to='/'>
-										<i className='fa-solid fa-circle-chevron-left' style={{fontSize:'30px'}}></i>
+										<i className='fa-solid fa-circle-chevron-left' style={{fontSize:'30px', color:'black'}}></i>
 									</NavLink>
 								</button>
 								<div className='splash-product-card-container'>

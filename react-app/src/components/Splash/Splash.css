@@ -59,7 +59,7 @@
 /* *****************************PRODUCT CARDS********************************* */
 .splash-products-carousel{
   margin-top:50px;
-  margin-left: 4%;
+  margin-left: 6%;
   /* border:1px solid green; */
   height: 500px;
 }
@@ -70,12 +70,14 @@
   /* border:1px solid red; */
   width: 90%;
   /* border:1px solid red; */
-  margin-left:1%
+  margin-left:1%;
+  transition: 3s;
 }
 #splash-products-container-header-just-dropped{
   /* border:1px solid red; */
   width: 90%;
-  margin-left:1%
+  margin-left:1%;
+  transition: 3s;
 
 }
 .splash-products-div {
@@ -172,6 +174,7 @@
 
 #button-div-left-chosen-for-you{
   background-color: white;
+  transition: 3s;
   /* position: absolute;
   transform: translateY(-50%);
 
