@@ -11,6 +11,8 @@ import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import LoginModal from '../LoginModal';
 import Footer from '../Footer/Footer';
+import LoveButton from '../LovesButton';
+import { loadLoves } from '../../store/loves';
 import './productDetails.css';
 
 const ProductDetails = () => {
@@ -27,7 +29,7 @@ const ProductDetails = () => {
 	);
 
 
-	// const findProdInBasket = userBasket.find(obj => obj.prod_id === +productId)
+
 	let findProdInBasket;
 	if (userBasket) {
 		let itemCheck = userBasket.find((obj) => obj.prod_id === +productId);
@@ -38,7 +40,7 @@ const ProductDetails = () => {
 		let prodArray;
 		if (userBasket[0] && userBasket[0][1]) {
 			prodArray = Object.values(userBasket[0]);
-			console.log('HERE IS PROD ARRAY', prodArray);
+
 			itemCheckTwo = prodArray.find((obj) => obj.prod_id === +productId);
 		}
 		if (itemCheck) {
@@ -61,6 +63,7 @@ const ProductDetails = () => {
 	useEffect(() => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
+		dispatch(loadLoves(+productId))
 		if (user) {
 			dispatch(loadUserCart(user.id));
 		}
@@ -115,7 +118,8 @@ const ProductDetails = () => {
 											)}
 										</div>
 
-										<div>
+										<div className='product-details-add-buttons'>
+											<LoveButton/>
 											{user &&
 												!findProdInBasket &&(
 													<AddToBasketButton productId={productId} />
@@ -137,6 +141,8 @@ const ProductDetails = () => {
 													</button>
 												</div>
 											)}
+
+
 										</div>
 									</div>
 								</div>

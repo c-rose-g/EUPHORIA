@@ -16,10 +16,15 @@ class User(db.Model, UserMixin):
 
     created_at = db.Column(db.DateTime(), nullable=False,server_default=func.now())
     updated_at = db.Column(db.DateTime(), nullable=False,onupdate=func.now(), default=func.now())
-    # relationships - purchase history, shopping cart items, reviews
+    # relationships
+    # purchase history
     purchase_history_u = db.relationship('PurchaseHistory', back_populates='users_ph', cascade='all, delete')
+    # shopping cart
     shopping_cart_u = db.relationship('ShoppingCart', back_populates='users_s', cascade='all, delete')
+    # reviews
     reviews_u = db.relationship('Review', back_populates='users_r', cascade='all, delete')
+    # loves list
+    loves_u = db.relationship('Love', back_populates='user_ll', cascade='all, delete')
     @property
     def password(self):
         return self.hashed_password

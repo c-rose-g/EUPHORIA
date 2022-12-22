@@ -10,8 +10,9 @@ const PurchaseHistory = () => {
 	const [loaded, setLoaded] = useState(false);
 	const { userId } = useParams();
 	const dispatch = useDispatch();
-	const user_history = useSelector((state) => state.history.purchaseHistory);
-
+	let user_history = useSelector((state) => state.history.purchaseHistory)
+	// user_history = user_history.reverse()
+	console.log('user history', user_history)
 
 	useEffect(() => {
 		dispatch(loadPurchaseHistory(userId)).then(() => setLoaded(true));
@@ -45,6 +46,10 @@ const PurchaseHistory = () => {
 								{user_history.map((order) => {
 									return (
 										<div className='ph-items-rows' key={order.id}>
+										<div className='font-14 date-purchased'>
+
+										{order.date_purchased.slice(0,16)}
+										</div>
 											<div className='ph-item-left-column'>
 												<div className='ph-item-img-container'>
 													<img

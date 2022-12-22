@@ -5,9 +5,11 @@ import { productsReducer } from './products';
 import { reviewsReducer } from './review';
 import { basketReducer } from './shoppingCarts';
 import { purchaseHistoryReducer } from './purchaseHistories';
+import { lovesReducer } from './loves';
 const rootReducer = combineReducers({
   session: sessionReducer,
   products: productsReducer,
+  loves:lovesReducer,
   reviews: reviewsReducer,
   basket: basketReducer,
   history: purchaseHistoryReducer,

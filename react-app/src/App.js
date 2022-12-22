@@ -16,6 +16,7 @@ import UpdateReviewForm from './components/UpdateReview';
 import { authenticate } from './store/session';
 import CheckoutPage from './components/CheckoutPage/CheckoutPage';
 import PurchaseHistory from './components/PurchaseHistory/PurchaseHistory';
+import LoveButton from './components/LovesButton';
 function App() {
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
@@ -56,6 +57,7 @@ function App() {
 				</Route>
 				<Route path='/products/:productId' exact={true}>
 					<ProductDetails />
+
 				</Route>
 				<Route path='/' exact={true}>
 					<Splash />
@@ -73,6 +75,7 @@ function App() {
 				<ProtectedRoute path='/history/:userId' exact={true}>
 					<PurchaseHistory />
 				</ProtectedRoute>
+
 			</Switch>
 			{/* )} */}
 		</BrowserRouter>

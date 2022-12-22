@@ -39,7 +39,7 @@ def seed():
     seed_categories()
     seed_product_categories()
     seed_shopping_carts()
-    # seed_shopping_cart_items()
+    seed_shopping_cart_items()
 
 
 

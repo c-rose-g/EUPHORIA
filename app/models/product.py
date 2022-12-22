@@ -40,8 +40,9 @@ class Product(db.Model):
         'PurchaseHistory', back_populates='products_ph')
     # product category
     product_category_p = db.relationship('Product_category', back_populates='product_pc', cascade='all, delete')
-    # category
-    # category_p = db.relationship('Category', back_populates='product_c', cascade='all, delete')
+    # loves_list
+    loves_p = db.relationship('Love', back_populates='product_ll', cascade='all, delete')
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -55,4 +56,4 @@ class Product(db.Model):
             # 'review_id':[review.to_dict() for review in self.reviews_p]
         }
     def prod_id(self):
-        return self.id 
+        return self.id
