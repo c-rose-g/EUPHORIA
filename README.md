@@ -72,5 +72,5 @@
 
 - [x] Purchase History
 - [ ] Search bar
-- [ ] Likes
+- [x] Likes
 - [ ] AWS
