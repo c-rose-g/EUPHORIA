@@ -7,13 +7,13 @@ import './LovesButton.css';
 const LoveButton = () => {
 	const dispatch = useDispatch();
 	const { productId } = useParams();
-    console.log('product id 7', productId)
+    // console.log('product id 7', productId)
 	const [loved, setLoved] = useState(false);
-    console.log('loved use state', loved)
+    // console.log('loved use state', loved)
 	// const [heartColor, setHeartColor] = useState('heart-color-white')
 	const user = useSelector((state) => state.session.user);
 	const loves = useSelector((state) => Object.values(state.loves));
-    console.log('loves use selector', loves)
+    // console.log('loves use selector', loves)
     useEffect(()=>{
         if (loves) {
             loves.forEach((love) => {
