@@ -17,7 +17,6 @@ const LoveButton = () => {
 	// const [heartColor, setHeartColor] = useState('heart-color-white')
 	const user = useSelector((state) => state.session.user);
 	const loves = useSelector((state) => Object.values(state.loves));
-	let loveJRA ;
 
     useEffect(()=>{
         if (loves) {
@@ -60,7 +59,7 @@ const LoveButton = () => {
     if(!user){
         return null;
     }
-	// console.log('love usestate in general for JSON', loved)
+	console.log('love usestate in general for JSON', loved)
 	return (
 		<div className='love-button-container'>
 			{user && loved && (

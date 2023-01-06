@@ -24,9 +24,11 @@ export const loadLoves = (userId) => async dispatch =>{
         headers:{'Content-Type': 'application/json'}
 
     })
+    console.log('response in load loves', response)
 
     if(response.ok){
         const loves = await response.json()
+        console.log('loves inside load loves thunk', loves)
         dispatch(loadLovesAction(loves))
         return loves
     }
@@ -58,7 +60,7 @@ export const deleteLove = (productId) => async dispatch =>{
         const love = await response.json()
         console.log('response in delete love', love)
         dispatch(deleteLovesAction(love))
-        return love
+        return
     }
 }
 /************************REDUCER************************** */
@@ -69,10 +71,11 @@ export const lovesReducer = (state = initialState, action) =>{
         case LOAD_LOVES:
             // newState = {loves:{... state.loves}}
             newState = {...state}
-
             action.loves.loves.forEach(love => {
                 newState.loves[love.id] = love
             });
+            console.log('newState in load loves', newState)
+            console.log('action in load love', action)
             return newState
 
         case ADD_LOVE:
@@ -82,10 +85,10 @@ export const lovesReducer = (state = initialState, action) =>{
 
         case DELETE_LOVE:
             newState = {...state}
-            console.log('state in deleted love', newState)
             console.log('action in deleted love', action)
 
-            delete newState[action.love]
+            delete newState.loves[action.love.id]
+            console.log('newstate in deleted love', newState)
             return {loves:{...state.loves}}
 
         default:
