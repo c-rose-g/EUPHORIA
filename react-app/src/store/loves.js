@@ -45,14 +45,18 @@ export const addLove = (payload) => async dispatch =>{
         return love
     }
 }
-export const deleteLove = (payload) => async dispatch =>{
-    const {prod_id} = payload
-    const response = await fetch(`/api/loves/${prod_id}`,{
+export const deleteLove = (productId) => async dispatch =>{
+    // const {prod_id} = payload
+    console.log('delete love before response',productId)
+    const response = await fetch(`/api/loves/${productId}`,{
     method:'DELETE',
     headers:{'Content-Type': 'application/json'},
     })
+    console.log('delete love after response', response)
+
     if(response.ok){
         const love = await response.json()
+        console.log('response in delete love', love)
         dispatch(deleteLovesAction(love))
         return love
     }
@@ -77,7 +81,10 @@ export const lovesReducer = (state = initialState, action) =>{
             return newState
 
         case DELETE_LOVE:
-            newState = {...state.loves}
+            newState = {...state}
+            console.log('state in deleted love', newState)
+            console.log('action in deleted love', action)
+
             delete newState[action.love]
             return {loves:{...state.loves}}
 
