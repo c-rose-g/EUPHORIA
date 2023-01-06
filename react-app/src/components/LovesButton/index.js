@@ -13,7 +13,7 @@ const LoveButton = () => {
 	// const [heartColor, setHeartColor] = useState('heart-color-white')
 	const user = useSelector((state) => state.session.user);
 	const loves = useSelector((state) => Object.values(state.loves));
-    // console.log('loves use selector', loves)
+
     useEffect(()=>{
         if (loves) {
             loves.forEach((love) => {
