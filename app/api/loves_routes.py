@@ -36,6 +36,25 @@ def add_love(prod_id):
     else:
         return {'love':'Love already exists', 'status code': 400},400
 
+# loves/<love_id>/delete
+@loves_routes.route('/<int:id>/delete', methods=['DELETE'])
+@login_required
+def kill_love_from_loves(id):
+    """
+    Deletes a product from a user's loves from the loves page
+    """
+    love = Love.query.get(id)
+    # print('THIS IS LOVE >>>>>>>>>>>>>>>>>>>>>>>',love)
+    if love:
+        db.session.delete(love)
+        db.session.commit()
+        return {"love": "love successfully deleted", "status code": 200}, 200
+
+    else:
+        return {"love": "love was not deleted", "status code": 404}, 404
+
+
+
 @loves_routes.route('/<int:prod_id>', methods=['DELETE'])
 @login_required
 def kill_product_love(prod_id):
@@ -43,14 +62,14 @@ def kill_product_love(prod_id):
     Deletes a product from a user's loves from the product details page
     """
     # return object of loves for prod_id
-    love = Love.query.filter_by(prod_id=prod_id)
+    love_query = Love.query.filter_by(prod_id=prod_id)
 
-    for user in love:
-        if(user.user_id == current_user.id):
-            print('user in love', user.to_dict())
-            db.session.delete(user)
+    for love in love_query:
+        if(love.user_id == current_user.id):
+            # print('user in love', love.to_dict())
+            db.session.delete(love)
             db.session.commit()
-            return {"love": "love successfully deleted", "status code": 302}, 302
+            return {"love": "love successfully deleted", "status code": 200}, 200
 
     else:
         return {"love": "love was not found", "status code": 404}, 404
