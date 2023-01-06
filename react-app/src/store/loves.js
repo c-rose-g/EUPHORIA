@@ -70,6 +70,7 @@ export const lovesReducer = (state = initialState, action) =>{
     switch (action.type) {
         case LOAD_LOVES:
             // newState = {loves:{... state.loves}}
+            // delete love reducer works, load loves isn't updating with delete love
             newState = {...state}
             action.loves.loves.forEach(love => {
                 newState.loves[love.id] = love
