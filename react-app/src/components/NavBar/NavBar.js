@@ -5,9 +5,12 @@ import ProfileButton from '../ProfileButton/ProfileButton';
 import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
 import LovesPage from '../LovesPage';
+import {TiGroupOutline, TiGroup} from 'react-icons/ti'
 import './NavBar.css';
+
 const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
+	const [commIcon, setCommIcon] = useState(false)
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
@@ -36,6 +39,15 @@ const NavBar = () => {
 						</NavLink>
 					</div>
 					<div className='nav-search'></div>
+					<div
+					className='nav-community-container'
+					onMouseEnter={() => setCommIcon(true)}
+					onMouseLeave={() => setCommIcon(false)}
+					>
+					<NavLink to={'https://community.sephora.com/'} className='font-16 remove-underline' >
+					{/* <i className ={commIcon ? 'fa-solid fa-users-line' : 'fa-regular fa-users-between-lines'}/> */}
+					{commIcon ? <TiGroup /> : <TiGroupOutline />} Community </NavLink>
+					</div>
 					<div className='acct-buttons'>
 						{sessionLinks}
 						<div>
