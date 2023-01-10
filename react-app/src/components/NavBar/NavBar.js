@@ -23,16 +23,7 @@ const NavBar = () => {
 	return (
 		<div className='navBar-container'>
 			<nav>
-				<div className='nav-deals'>
-					<NavLink
-						className='nav-deals-text font-14-white'
-						to='/products/categories/skincare'
-						activeClassName='active'
-					>
-						<strong>Don't postpone the holiday cheer.</strong>{' '}
-						<strong>SHOP NOW▸ </strong>
-					</NavLink>
-				</div>
+
 				<div className='nav-box'>
 					<div>
 						<NavLink
@@ -48,14 +39,25 @@ const NavBar = () => {
 					<div className='acct-buttons'>
 						{sessionLinks}
 						<div>
-							{sessionUser && (
+							{sessionUser ? (
 								<NavLink to={`/loves/${sessionUser.id}`}>
 									<i
 										className="fa-solid fa-heart"
 										style={{color:'black', fontSize: '30px' }}
 									></i>
 								</NavLink>
-							)}
+							) : (<button
+									// className= 'fa-solid fa-heart'
+									onClick={() => setShowLoginModal(true)}
+									style={{backgroundColor:'white', width:'30%'}}
+								>
+									<i className= 'fa-solid fa-heart'
+									style={{color:'black', fontSize: '30px', backgroundColor:'white' }}
+
+									></i>
+								</button>)
+
+							}
 						</div>
 						<div>
 							{sessionUser ? (
