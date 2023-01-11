@@ -54,7 +54,7 @@ function ProfileButton() {
 		<div
 			className='dropdown-container'
 			onMouseEnter={() => setDropMenu(true)}
-			onMouseLeave={() => setDropMenu(true)}
+			onMouseLeave={() => setDropMenu(false)}
 		>
 			<button className='font-14' id='user-space-text'>
 				<div className='nav-acct-img'>

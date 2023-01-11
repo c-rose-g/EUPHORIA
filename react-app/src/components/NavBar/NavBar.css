@@ -86,15 +86,24 @@
 /* *********************** COMMUNITY *********************** */
 
 .react-icons{
-  height:30px;
-  width:30px;
-  /* border:1px solid black */
+  height:32px;
+  /* align-items: center; */
+  width:32px;
+  border:1px solid green;
+
 }
 .nav-community-container{
-  border-right: 1px solid grey;
-  width: 10%;
+  border:1px solid black;
+  /* border-right: 1px solid grey; */
+  width: 150px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.community-icons-container{
+  border:1px solid blue;
+  width:min-content;
+
 }
 /* *********************** USER **********************/
 .acct-buttons {

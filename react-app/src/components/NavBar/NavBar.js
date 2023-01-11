@@ -5,12 +5,12 @@ import ProfileButton from '../ProfileButton/ProfileButton';
 import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
 import LovesPage from '../LovesPage';
-import {TiGroupOutline, TiGroup} from 'react-icons/ti'
+import { TiGroupOutline, TiGroup } from 'react-icons/ti';
 import './NavBar.css';
 
 const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
-	const [commIcon, setCommIcon] = useState(false)
+	const [commIcon, setCommIcon] = useState(false);
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
@@ -26,7 +26,6 @@ const NavBar = () => {
 	return (
 		<div className='navBar-container'>
 			<nav>
-
 				<div className='nav-box'>
 					<div>
 						<NavLink
@@ -40,13 +39,22 @@ const NavBar = () => {
 					</div>
 					<div className='nav-search'></div>
 					<div
-					className='nav-community-container'
-					onMouseEnter={() => setCommIcon(true)}
-					onMouseLeave={() => setCommIcon(false)}
+						className='nav-community-container '
+						onMouseEnter={() => setCommIcon(true)}
+						onMouseLeave={() => setCommIcon(false)}
 					>
-					<NavLink to={'https://community.sephora.com/'} className='font-16 remove-underline' >
-					{/* <i className ={commIcon ? 'fa-solid fa-users-line' : 'fa-regular fa-users-between-lines'}/> */}
-					{commIcon ? <TiGroup /> : <TiGroupOutline />} Community </NavLink>
+
+						<NavLink
+							to={'https://community.sephora.com/'}
+							className='remove-underline'
+						>
+
+					<div className='community-icons-container'>
+							{commIcon ? <TiGroup /> : <TiGroupOutline />}
+
+					</div>
+							<div className='community-text-container font-14'> Community </div>
+						</NavLink>
 					</div>
 					<div className='acct-buttons'>
 						{sessionLinks}
@@ -54,22 +62,26 @@ const NavBar = () => {
 							{sessionUser ? (
 								<NavLink to={`/loves/${sessionUser.id}`}>
 									<i
-										className="fa-solid fa-heart"
-										style={{color:'black', fontSize: '30px' }}
+										className='fa-solid fa-heart'
+										style={{ color: 'black', fontSize: '30px' }}
 									></i>
 								</NavLink>
-							) : (<button
+							) : (
+								<button
 									// className= 'fa-solid fa-heart'
 									onClick={() => setShowLoginModal(true)}
-									style={{backgroundColor:'white', width:'30%'}}
+									style={{ backgroundColor: 'white', width: '30%' }}
 								>
-									<i className= 'fa-solid fa-heart'
-									style={{color:'black', fontSize: '30px', backgroundColor:'white' }}
-
+									<i
+										className='fa-solid fa-heart'
+										style={{
+											color: 'black',
+											fontSize: '30px',
+											backgroundColor: 'white',
+										}}
 									></i>
-								</button>)
-
-							}
+								</button>
+							)}
 						</div>
 						<div>
 							{sessionUser ? (
