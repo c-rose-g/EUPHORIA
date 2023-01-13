@@ -64,7 +64,7 @@ const ProductDetails = () => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
 		if (user) {
-			dispatch(loadLoves(user.id))
+			// dispatch(loadLoves(user.id))
 			dispatch(loadUserCart(user.id));
 		}
 	}, [dispatch]);
@@ -119,7 +119,7 @@ const ProductDetails = () => {
 										</div>
 
 										<div className='product-details-add-buttons'>
-											<LoveButton/>
+											{/* <LoveButton/> */}
 											{user &&
 												!findProdInBasket &&(
 													<AddToBasketButton productId={productId} />

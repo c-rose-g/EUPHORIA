@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connectAdvanced, useDispatch, useSelector, useStore } from 'react-redux';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
-import { addLove, deleteLove } from '../../store/loves';
+import {loadLoves, addLove, deleteLove } from '../../store/loves';
 import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
 import './LovesButton.css';
@@ -18,17 +18,23 @@ const LoveButton = () => {
 	const user = useSelector((state) => state.session.user);
 	const loves = useSelector((state) => Object.values(state.loves));
 
+	// not sure what this useEffect does
     useEffect(()=>{
         if (loves) {
+			console.log('loves in useEffect,',loves)
             loves.forEach((love) => {
                 if (love.prod_id?.id === +productId) {
                     setLoved(true);
-
                 }
             });
         }
     },[loves])
 
+	useEffect(() => {
+		if(user){
+			dispatch(loadLoves(user.id))
+		}
+	}, [dispatch])
 
 	const addLoved = async (e) => {
 		e.preventDefault();
@@ -41,6 +47,7 @@ const LoveButton = () => {
 
 			setLoved(true)
 			const data = await dispatch(addLove(payload));
+			dispatch(loadLoves(user.id))
 			// console.log('love usestate should be true',loved )
 		// }
 
@@ -52,6 +59,7 @@ const LoveButton = () => {
 			// console.log('what is the usestate here before removing it',loved)
 			setLoved(false)
 			const data = await dispatch(deleteLove(productId));
+			dispatch(loadLoves(user.id));
 		// }
 
 		// console.log('love usestate should be false', loved)

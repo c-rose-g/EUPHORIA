@@ -24,3 +24,9 @@ class Love(db.Model):
             'prod_id':self.product_ll.to_dict(),
             'user_id': self.user_ll.to_dict()
             }
+
+    # def love_to_dict(self):
+    #     return{
+    #         'id': self.id,
+    #         'prod_id': [(prod_id,prod_id.to_dict()) for prod_id in product_ll.to_dict()]
+    #         }
