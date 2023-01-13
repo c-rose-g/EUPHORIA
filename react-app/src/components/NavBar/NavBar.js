@@ -45,7 +45,8 @@ const NavBar = () => {
 					>
 								{commIcon ? <TiGroup /> : <TiGroupOutline />}
 						<NavLink
-							to={'https://community.sephora.com/'}
+							to={{pathname:'https://community.sephora.com/'}}
+							target='_blank'
 							className='font-14'
 							style={{textDecoration:'none'}}
 						>
