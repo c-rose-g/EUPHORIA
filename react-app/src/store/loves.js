@@ -20,11 +20,12 @@ const deleteLovesAction = (love) => ({
 })
 /*********************THUNKS********************** */
 export const loadLoves = (userId) => async dispatch =>{
+    console.log('thunk hit in load loves')
     const response = await fetch(`/api/loves/${userId}`,{
         headers:{'Content-Type': 'application/json'}
 
     })
-    console.log('response in load loves', response)
+    // console.log('response in load loves', response)
 
     if(response.ok){
         const loves = await response.json()
@@ -35,21 +36,24 @@ export const loadLoves = (userId) => async dispatch =>{
 }
 export const addLove = (payload) => async dispatch =>{
     const {prod_id} = payload
+    console.log('add love thunk BEING HIT')
     const response = await fetch(`/api/loves/${prod_id}`,{
     method:'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
     })
-
+    console.log('add love is hit before response', response)
     if (response.ok){
         const love = await response.json()
         dispatch(addLovesAction(love))
+        // dispatch(loadLoves(love.user_id.id))
+        console.log('love in the add love thunk response', love)
         return love
     }
 }
 export const deleteLove = (productId) => async dispatch =>{
     // const {prod_id} = payload
-    console.log('delete love before response',productId)
+    // console.log('delete love before response',productId)
     const response = await fetch(`/api/loves/${productId}`,{
     method:'DELETE',
     headers:{'Content-Type': 'application/json'},
@@ -58,8 +62,9 @@ export const deleteLove = (productId) => async dispatch =>{
 
     if(response.ok){
         const love = await response.json()
-        console.log('response in delete love', love)
+        // console.log('response in delete love', love)
         dispatch(deleteLovesAction(love))
+        // dispatch(loadLoves(user.id))
         return
     }
 }
@@ -74,9 +79,11 @@ export const lovesReducer = (state = initialState, action) =>{
             newState = {...state}
             action.loves.loves.forEach(love => {
                 newState.loves[love.id] = love
+                // console.log('love inside for each', love)
             });
-            console.log('newState in load loves', newState)
-            console.log('action in load love', action)
+            // console.log('action in load love', action.loves)
+            // console.log('newState in load loves', newState)
+            // newState.loves.loves = action.loves
             return newState
 
         case ADD_LOVE:
@@ -86,11 +93,12 @@ export const lovesReducer = (state = initialState, action) =>{
 
         case DELETE_LOVE:
             newState = {...state}
-            console.log('action in deleted love', action)
+            // console.log('action in deleted love', action)
 
             delete newState.loves[action.love.id]
-            console.log('newstate in deleted love', newState)
-            return {loves:{...state.loves}}
+            // console.log('newstate in deleted love', newState)
+            return {loves:{...state}}
+            // return newState
 
         default:
             return state;

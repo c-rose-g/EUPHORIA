@@ -1,9 +1,9 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, session
 from flask_login import login_required, current_user
-from app.models import Love, db
+from app.models import Love, User, db
 from app.forms import newLovesForm
 import json
-
+from sqlalchemy import select
 loves_routes = Blueprint('loves', __name__)
 
 
@@ -14,9 +14,38 @@ def get_love(user_id):
     Query for user's loves by user id and returns loves in a dictionary
     """
     loves_query = Love.query.filter_by(user_id = int(user_id))
-    loves = [love.to_dict() for love in loves_query]
+    # loves_query = db.session.query(Love).join(User).filter(User.id == Love.user_id).filter(User.id == current_user.id)
 
+    # loves_query = db.session.query(Love).join(User).filter(Love.user_id == User.id).all()\
+    # loves_query = db.session.query(select(Love).join(User, User.id))
+
+    print('loves query >>>>>>>>>', loves_query)
+
+    # loves = {}
+    loves = [love.to_dict() for love in loves_query]
+    # print('loves >>>>>>>>', loves)
+    # for loveys in db.session.query(Love).join(User).filter(Love.user_id == User.id).filter(User.id == current_user.id):
+    #     # return (loveys.to_dict())
+    #     # current = loveys.to_dict()
+    #     key = loveys.to_dict()['id']
+    #     loves[key]=loveys.to_dict()
+    #     # val = loveys.to_dict()['prod_id']
+    #     print(loves)
+        # print ('loveys >>>>>>>>>>>>>',loveys.to_dict()['prod_id'])
+        # return (loveys.to_dict())
+
+    # print('loves >>>>>>>>>>>>>>>>>>>>', loves)
     return {'loves':loves}
+    # return "happy"
+    # return loves
+
+
+@loves_routes.route('product/<int:prod_id>')
+@login_required
+def get_prod_love(prod_id):
+    """
+    Query for loves by prod id and returns loves in a dictionary
+    """
 
 @loves_routes.route('/<int:prod_id>',methods=['POST'])
 @login_required
@@ -32,6 +61,7 @@ def add_love(prod_id):
                 prod_id = prod_id)
         db.session.add(love)
         db.session.commit()
+        print('love in post >>>>>>>>>>>>>>>>>>', love)
         return love.to_dict()
     else:
         return {'love':'Love already exists', 'status code': 400},400
