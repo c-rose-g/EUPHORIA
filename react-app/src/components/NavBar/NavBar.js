@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ProfileButton from '../ProfileButton/ProfileButton';
 import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
-import deals_banner from '../../Images/euphoria-splash-deals-banner.png';
+import LovesPage from '../LovesPage';
+import { TiGroupOutline, TiGroup } from 'react-icons/ti';
 import './NavBar.css';
-import { useSelector } from 'react-redux';
+
 const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
-	const sessionUser = useSelector(state => state.session.user)
+	const [commIcon, setCommIcon] = useState(false);
+	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
 	if (sessionUser) {
@@ -16,23 +19,13 @@ const NavBar = () => {
 	} else {
 		sessionLinks = (
 			<>
-			<ProfileButton/>
+				<ProfileButton />
 			</>
 		);
 	}
 	return (
 		<div className='navBar-container'>
 			<nav>
-				<div className='nav-deals'>
-					<NavLink
-						className='nav-deals-text font-14-white'
-						to='/products/categories/skincare'
-						activeClassName='active'
-					>
-						<strong>Don't postpone the holiday cheer.</strong> <strong>SHOP NOW▸ </strong>
-					</NavLink>
-
-				</div>
 				<div className='nav-box'>
 					<div>
 						<NavLink
@@ -45,16 +38,75 @@ const NavBar = () => {
 						</NavLink>
 					</div>
 					<div className='nav-search'></div>
+					<div
+						className='nav-community-container '
+						onMouseEnter={() => setCommIcon(true)}
+						onMouseLeave={() => setCommIcon(false)}
+					>
+								{commIcon ? <TiGroup /> : <TiGroupOutline />}
+						<NavLink
+							to={'https://community.sephora.com/'}
+							className='font-14'
+							style={{textDecoration:'none'}}
+						>
+							{/* <span className='community-icons-container'> */}
+							{/* <button className='community-icons-text-container'> */}
+							{/* </span> */}
+							<div className='community-text font-14'>
+								Community
+							{/* </button> */}
+							</div>
+						</NavLink>
+					</div>
 					<div className='acct-buttons'>
 						{sessionLinks}
 						<div>
-							{sessionUser ? (<NavLink to={`/basket/${sessionUser.id}`}>
-							<button className='emoji-button'>
-							<i className='fa-solid fa-basket-shopping' style={{fontSize:'30px', backgroundColor:'white', color:'black'}}></i>
-							</button>
-							</NavLink>)
-							:(<button className='emoji-button' onClick={() => setShowLoginModal(true)}><i className='fa-solid fa-basket-shopping' ></i></button>)
-							}
+							{sessionUser ? (
+								<NavLink to={`/loves/${sessionUser.id}`}>
+									<i
+										className='fa-solid fa-heart'
+										style={{ color: 'black', fontSize: '30px' }}
+									></i>
+								</NavLink>
+							) : (
+								<button
+									// className= 'fa-solid fa-heart'
+									onClick={() => setShowLoginModal(true)}
+									style={{ backgroundColor: 'white', width: '30%' }}
+								>
+									<i
+										className='fa-solid fa-heart'
+										style={{
+											color: 'black',
+											fontSize: '30px',
+											backgroundColor: 'white',
+										}}
+									></i>
+								</button>
+							)}
+						</div>
+						<div>
+							{sessionUser ? (
+								<NavLink to={`/basket/${sessionUser.id}`}>
+									<button className='emoji-button'>
+										<i
+											className='fa-solid fa-basket-shopping'
+											style={{
+												fontSize: '30px',
+												backgroundColor: 'white',
+												color: 'black',
+											}}
+										></i>
+									</button>
+								</NavLink>
+							) : (
+								<button
+									className='emoji-button'
+									onClick={() => setShowLoginModal(true)}
+								>
+									<i className='fa-solid fa-basket-shopping'></i>
+								</button>
+							)}
 						</div>
 						<div>
 							{showLoginModal && (

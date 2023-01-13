@@ -63,8 +63,8 @@ const ProductDetails = () => {
 	useEffect(() => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
-		dispatch(loadLoves(+productId))
 		if (user) {
+			dispatch(loadLoves(user.id))
 			dispatch(loadUserCart(user.id));
 		}
 	}, [dispatch]);
