@@ -43,17 +43,19 @@ const NavBar = () => {
 						onMouseEnter={() => setCommIcon(true)}
 						onMouseLeave={() => setCommIcon(false)}
 					>
-
+								{commIcon ? <TiGroup /> : <TiGroupOutline />}
 						<NavLink
 							to={'https://community.sephora.com/'}
-							className='remove-underline'
+							className='font-14'
+							style={{textDecoration:'none'}}
 						>
-
-					<div className='community-icons-container'>
-							{commIcon ? <TiGroup /> : <TiGroupOutline />}
-
-					</div>
-							<div className='community-text-container font-14'> Community </div>
+							{/* <span className='community-icons-container'> */}
+							{/* <button className='community-icons-text-container'> */}
+							{/* </span> */}
+							<div className='community-text font-14'>
+								Community
+							{/* </button> */}
+							</div>
 						</NavLink>
 					</div>
 					<div className='acct-buttons'>
