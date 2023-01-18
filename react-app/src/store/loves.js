@@ -70,8 +70,10 @@ export const deleteLove = (productId) => async dispatch =>{
 }
 /************************REDUCER************************** */
 const initialState = {loves:{}}
+// either start w/ empty inital state or just spread loves in delete_love
 export const lovesReducer = (state = initialState, action) =>{
     let newState;
+    let liked;
     switch (action.type) {
         case LOAD_LOVES:
             // newState = {loves:{... state.loves}}
@@ -88,17 +90,17 @@ export const lovesReducer = (state = initialState, action) =>{
 
         case ADD_LOVE:
             newState = {...state}
+            // console.log('this is the liked prod', action)
             newState.loves[action.love.id] = action.love
             return newState
 
         case DELETE_LOVE:
-            newState = {...state}
+            newState = {loves:{...state.loves}}
             // console.log('action in deleted love', action)
-
-            delete newState.loves[action.love.id]
+            delete newState.loves[action.love.love]
             // console.log('newstate in deleted love', newState)
-            return {loves:{...state}}
-            // return newState
+            // return {loves:{...state}}
+            return newState
 
         default:
             return state;

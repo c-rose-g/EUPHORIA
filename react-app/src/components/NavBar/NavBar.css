@@ -206,13 +206,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 300px;
+  width: 375px;
   height: 260px;
   /* transition: all 100s ease-in 0s; */
   /* transition-property: all; */
   top: 77px;
   /* bottom: 633px; */
-  left: 70%;
+  left: 54.5%;
   /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
   box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
 }
@@ -241,7 +241,8 @@
   width: 75%;
   overflow: hidden;
   white-space: pre-line;
-  margin-left: 5%
+  margin-left: 5%;
+  align-items: center;
 }
 
 .signin-login-buttons-container {

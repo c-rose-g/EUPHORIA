@@ -61,7 +61,7 @@ const NavBar = () => {
 					</div>
 					<div className='acct-buttons'>
 						{sessionLinks}
-						{/* <div>
+						<div>
 							{sessionUser ? (
 								<NavLink to={`/loves/${sessionUser.id}`}>
 									<i
@@ -85,7 +85,7 @@ const NavBar = () => {
 									></i>
 								</button>
 							)}
-						</div> */}
+						</div>
 						<div>
 							{sessionUser ? (
 								<NavLink to={`/basket/${sessionUser.id}`}>

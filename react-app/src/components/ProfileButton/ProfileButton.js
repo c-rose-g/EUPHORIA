@@ -111,7 +111,7 @@ function ProfileButton() {
 									type='button'
 								>
 									<div className='font-16 remove-underline'>Buy it again</div>
-									<div className='font-14' type='button'>View your online purchases</div>
+									<div className='font-12' type='button' style={{color:'grey'}}>Reorder from your online purchases</div>
 								</button>
 							</NavLink>
 							</div>
@@ -123,7 +123,7 @@ function ProfileButton() {
 									onClick={closeForLogin}
 								>
 									<div className='font-16'>Buy it again</div>
-									<div className='font-12'>View your online purchases</div>
+									<div className='font-12' style={{color:'grey'}}>Reorder from your online purchases</div>
 								</button>
 							</div>)}
 

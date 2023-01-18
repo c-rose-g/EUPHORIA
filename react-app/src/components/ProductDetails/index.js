@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory, useParams } from 'react-router-dom';
+import {  useHistory, useParams } from 'react-router-dom';
 import { productDetails } from '../../store/products';
 import { loadReviews, loadUserReviews } from '../../store/review';
 import ProductImageSlider from '../ProductImageSlider';
@@ -8,17 +8,14 @@ import CategoriesNavBar from '../CategoriesNavBar';
 import AddToBasketButton from '../AddToBasketButton';
 import { loadUserCart } from '../../store/shoppingCarts';
 import { Modal } from '../../context/Modal';
-import SignUpModal from '../SignUpModal';
 import LoginModal from '../LoginModal';
 import Footer from '../Footer/Footer';
 import LoveButton from '../LovesButton';
-import { loadLoves } from '../../store/loves';
 import './productDetails.css';
 
 const ProductDetails = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
-	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const { productId } = useParams();
 
@@ -64,7 +61,6 @@ const ProductDetails = () => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
 		dispatch(loadReviews(productId));
 		if (user) {
-			// dispatch(loadLoves(user.id))
 			dispatch(loadUserCart(user.id));
 		}
 	}, [dispatch]);
@@ -119,7 +115,7 @@ const ProductDetails = () => {
 										</div>
 
 										<div className='product-details-add-buttons'>
-											{/* <LoveButton/> */}
+											<LoveButton/>
 											{user &&
 												!findProdInBasket &&(
 													<AddToBasketButton productId={productId} />
