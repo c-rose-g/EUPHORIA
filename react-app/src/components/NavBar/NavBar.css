@@ -86,16 +86,20 @@
   margin-right: 1.5em;
 }
 
+.navbar-hearts{
+  color: black;
+}
 /* *********************** COMMUNITY *********************** */
 
 .nav-community-container {
-
   border-right: 1px solid grey;
-  width: 125px;
+  width: 110px;
   display: inline-flex;
   align-items: center;
+  grid-gap: 5%;
   gap: 5%;
-  padding: 0 16px;
+  padding: 0px 10px;
+  margin-right: 4px;
 }
 
 .community-icons-text-container {
@@ -133,7 +137,7 @@
   /* grid-gap: 26px; */
   /* gap: 10px;
  */
-  gap: 1em;
+  /* gap: 1em; */
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -206,8 +210,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 375px;
-  height: 260px;
+  /* width: 375px; */
+  width: 300px;
+  height: 215px;
   /* transition: all 100s ease-in 0s; */
   /* transition-property: all; */
   top: 77px;
@@ -262,9 +267,12 @@
   display: flex;
   justify-content: center;
   gap: 5px;
-  margin-top: 5%;
-  padding-bottom: 5%;
+  margin-top: 3%;
+  padding-bottom: 3%;
   border-bottom: 1px solid rgb(238, 238, 238);
+  /* width: 85%; */
+  width: 274px;
+  margin-left: 2%;
 }
 
 .profile-signin {
@@ -283,11 +291,11 @@
 
 .buy-it-again-container {
   /* border:1px solid red; */
-  margin-top: 5%;
+  margin-top: 3%;
   display: flex;
   /* border-bottom: 1px solid rgb(238, 238, 238); */
   padding-bottom: 2%;
-
+  margin-left: 2%;
   /* width:99%; */
 }
 
@@ -321,11 +329,41 @@
   margin-bottom: 5%;
 }
 
+.loves-container{
+  /* border: 1px solid blue; */
+  display: flex;
+  align-items: center;
+  margin-top: 2%;
+  padding-top: 1%;
+  /* border-bottom: 1px solid rgb(238, 238, 238); */
+  margin-left: 2%;
+}
+#loves-img-container{
+  color:blue;
+  /* border: 1px solid green; */
+  width: 35px;
+
+}
+
+.loves-div{
+  /* border: 1px solid red; */
+  margin-left: 1%;
+}
+
+.loves-div :hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.loves-button{
+  border:1px solid green;
+}
 .logout-button-container {
-  height: 40px;
+  height: 25px;
   margin-top: 2%;
   display: flex;
   justify-content: flex-start;
+  border-top: 1px solid rgb(238, 238, 238);
   /* border-bottom: 1px solid rgb(238, 238, 238); */
 
 }
