@@ -4,6 +4,7 @@ lp-container {
   flex-direction: column;
   margin: 0 25%;
   padding-top: 4%;
+  height: 100vh;
 }
 
 .lp-title-container{
@@ -32,13 +33,22 @@ lp-rows-wrapper {
   flex-direction: row;
 }
 
-lp-rows-wrapper-no-love {
+.lp-rows-wrapper-no-love {
   display: flex;
-  background-color: rgb(223, 222, 223);
+  /* background-color: rgb(223, 222, 223); */
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  margin-top: 3%;
+  text-align: center;
 }
-
+.lp-no-love-text{
+  display: flex;
+  /* float: right; */
+  flex-direction: column;
+  margin-top: 1%;
+  /* border: 1px solid green; */
+}
 lp-left-column {
   width: 100%;
   padding-top: 4%;
