@@ -77,15 +77,17 @@ const NavBar = () => {
 									// className= 'fa-solid fa-heart'
 									onClick={() => setShowLoginModal(true)}
 									style={{ backgroundColor: 'white', width: '30%' }}
+									onMouseEnter={() => setHeartIcon(true)} onMouseLeave={() => setHeartIcon(false)}
 								>
-									<i
+								{heartIcon ? <BsSuitHeartFill/> : <BsSuitHeart/>}
+									{/* <i
 										className='fa-solid fa-heart'
 										style={{
 											color: 'black',
 											fontSize: '30px',
 											backgroundColor: 'white',
 										}}
-									></i>
+									></i> */}
 								</button>
 							)}
 						</div>
