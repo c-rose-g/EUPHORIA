@@ -11,7 +11,7 @@ const LovesPage = () => {
 	const user = useSelector((state) => state.session.user);
 	const userloves = useSelector((state) => Object.values(state.loves.loves));
 	// console.log('user loves', userloves);
-
+ 
 	if (user) {
 	}
 	useEffect(() => {
