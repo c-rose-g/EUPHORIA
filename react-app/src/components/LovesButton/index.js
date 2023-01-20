@@ -6,9 +6,9 @@ import { loadLoves, addLove, deleteLove } from '../../store/loves';
 // import LoginModal from '../LoginModal';
 import './LovesButton.css';
 
-const LoveButton = () => {
+const LoveButton = ({productId}) => {
 	const dispatch = useDispatch();
-	const { productId } = useParams();
+	// const { productId } = useParams();
 	// usestates
 	const [loved, setLoved] = useState(false);
 	const [showLoginModal, setShowLoginModal] = useState(false);
