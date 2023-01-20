@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import CategoriesNavBar from '../CategoriesNavBar';
 import LoveButton from '../LovesButton';
 import { loadLoves } from '../../store/loves';
@@ -16,16 +16,16 @@ const LovesPage = () => {
 	}
 	useEffect(() => {
 		dispatch(loadLoves(user.id)).then(() => setLoaded(true));
-	});
+	}, [dispatch]);
 	return (
 		<>
 			{loaded && (
 				<>
 					<CategoriesNavBar />
 					<div className='lp-container'>
-						<div className='basket-title-container'>
-							<div className='basket-title font-24'>
-								<strong>Loves</strong>
+						<div className='lp-title-container'>
+							<div className='lp-title font-32'>
+                            Loves
 							</div>
 						</div>
 						<div className='lp-rows-wrapper'>
@@ -42,11 +42,11 @@ const LovesPage = () => {
 												</div>
 											</div>
 											<div className='lp-item-mid-column'>
-												<div className='brand-price-row'>
+												<div className='lp-brand-price-row'>
 													<div className='item-brand font-16'>
-														{product.prod_id.product_brand}
+														<strong>{product.prod_id.product_brand}</strong>
 													</div>
-													<div className='item-price font-16'>
+													<div className='lp-item-price font-16'>
 														{product.prod_id.product_price}
 													</div>
 												</div>
@@ -54,18 +54,21 @@ const LovesPage = () => {
 												<div className='lp-item-row font-14'>
 													{product.prod_id.product_name}
 												</div>
+											</div>
+											<div className='lp-right-column'>
 												<NavLink
-													to={`products/${product.prod_id.id}`}
+													to={`/products/${product.prod_id.id}`}
 													className='remove-underline'
+                                                    style={{textDecoration:'none'}}
 												>
 													<div className='lp-buy-it-container'>
-														<button className='lp-buy-it font-16-white'>
-															add to basket button
+														<button className='lp-buy-it font-16-white' style={{textDecoration:'none'}}>
+															View Product
 														</button>
 													</div>
 												</NavLink>
 												<div className='love-button-container'>
-													<LoveButton />
+													<LoveButton productId={product.prod_id.id}/>
 												</div>
 											</div>
 										</div>
