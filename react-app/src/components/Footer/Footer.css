@@ -6,6 +6,10 @@
     justify-content: center;
     margin-top: 59px;
     margin-bottom: 0;
+    position:relative;
+    /* left:0px; */
+    bottom:0px;
+    width:100%
 }
 
 .footer-card {
