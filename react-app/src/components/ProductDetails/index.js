@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {  useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { productDetails } from '../../store/products';
 import { loadReviews, loadUserReviews } from '../../store/review';
 import ProductImageSlider from '../ProductImageSlider';
@@ -24,8 +24,6 @@ const ProductDetails = () => {
 	const userBasket = useSelector((state) =>
 		Object.values(state.basket.userBasket)
 	);
-
-
 
 	let findProdInBasket;
 	if (userBasket) {
@@ -55,7 +53,6 @@ const ProductDetails = () => {
 	const [loaded, isLoaded] = useState(false);
 
 	const prodImages = oneProd.product_photos;
-
 
 	useEffect(() => {
 		dispatch(productDetails(productId)).then(() => isLoaded(true));
@@ -115,18 +112,15 @@ const ProductDetails = () => {
 										</div>
 
 										<div className='product-details-add-buttons'>
-											<LoveButton/>
-											{user &&
-												!findProdInBasket &&(
-													<AddToBasketButton productId={productId} />
-												)}
-											{user &&
-												findProdInBasket &&(
-													<div className='add-button-pressed font-20'>
-														{' '}
-														Item is in your basket
-													</div>
-												)}
+											<LoveButton productId={productId} />
+											{user && !findProdInBasket && (
+												<AddToBasketButton productId={productId} />
+											)}
+											{user && findProdInBasket && (
+												<div className='add-button-pressed font-20'>
+													<button className='add-button-pressed font-20-white'>Item is in your basket</button>
+												</div>
+											)}
 											{!user && (
 												<div>
 													<button
@@ -137,8 +131,6 @@ const ProductDetails = () => {
 													</button>
 												</div>
 											)}
-
-
 										</div>
 									</div>
 								</div>
