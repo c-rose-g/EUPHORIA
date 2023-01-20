@@ -14,15 +14,16 @@ def get_love(user_id):
     Query for user's loves by user id and returns loves in a dictionary
     """
     loves_query = Love.query.filter_by(user_id = int(user_id))
+    # print('loves query >>>>>>>>>', loves_query)
+    loves = [love.to_dict() for love in loves_query]
+    return {'loves':loves}
     # loves_query = db.session.query(Love).join(User).filter(User.id == Love.user_id).filter(User.id == current_user.id)
 
     # loves_query = db.session.query(Love).join(User).filter(Love.user_id == User.id).all()\
     # loves_query = db.session.query(select(Love).join(User, User.id))
 
-    print('loves query >>>>>>>>>', loves_query)
 
     # loves = {}
-    loves = [love.to_dict() for love in loves_query]
     # print('loves >>>>>>>>', loves)
     # for loveys in db.session.query(Love).join(User).filter(Love.user_id == User.id).filter(User.id == current_user.id):
     #     # return (loveys.to_dict())
@@ -35,7 +36,6 @@ def get_love(user_id):
         # return (loveys.to_dict())
 
     # print('loves >>>>>>>>>>>>>>>>>>>>', loves)
-    return {'loves':loves}
     # return "happy"
     # return loves
 
@@ -99,7 +99,7 @@ def kill_product_love(prod_id):
             # print('user in love', love.to_dict())
             db.session.delete(love)
             db.session.commit()
-            return {"love": "love successfully deleted", "status code": 200}, 200
+            return {"love": love.id, 'message':'logan', "status code": 200}, 200
 
     else:
         return {"love": "love was not found", "status code": 404}, 404

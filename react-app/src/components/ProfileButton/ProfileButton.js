@@ -9,6 +9,8 @@ import user from '../../Images/euphora-sign-in.png';
 import activeUser from '../../Images/euphoria-user-active.png';
 import profileButtonUser from '../../Images/euphoria-profile-user-large.png';
 import sub from '../../Images/euphoria-subscription.png';
+import LovesPage from '../LovesPage';
+import { BsSuitHeart } from 'react-icons/bs';
 import '../NavBar/NavBar.css';
 
 function ProfileButton() {
@@ -23,12 +25,11 @@ function ProfileButton() {
 
 	useEffect(() => {
 		if (hour < 12) {
-			setCurrentTime(' Good morning,');
-
+			setCurrentTime('Good morning, ');
 		} else if (hour < 18) {
-			setCurrentTime(' Good afternoon,');
+			setCurrentTime('Good afternoon, ');
 		} else {
-			setCurrentTime(' Good evening,');
+			setCurrentTime('Good evening, ');
 		}
 	}, [hour]);
 
@@ -63,7 +64,7 @@ function ProfileButton() {
 				<div className='nav-sign-text'>
 					{signedInUser
 						? 'Hi, ' + signedInUser.first_name
-						: ('Sign in to shop EUPHORIA')}
+						: 'Sign in to shop EUPHORIA'}
 				</div>
 			</button>
 			{dropMenu ? (
@@ -76,8 +77,8 @@ function ProfileButton() {
 							<img className='profile-img' src={profileButtonUser} alt='' />
 						</div>
 						<div className='profile-greeting font-16'>
-							{currentTime}{' '}
-							{signedInUser ? signedInUser.first_name : 'Beautiful'}💋
+							{currentTime}
+							{signedInUser ? signedInUser.first_name : 'Beautiful'} 💋
 						</div>
 					</div>
 					{signedInUser ? (
@@ -99,40 +100,82 @@ function ProfileButton() {
 						</div>
 					)}
 
-						{signedInUser ? (
+					{signedInUser ? (
+						<>
 							<div className='buy-it-again-container-signed-in'>
-							<div><img src={sub} /></div>
-							<NavLink
-								className=' remove-underline'
-								to={`/history/${signedInUser.id}`}
-							>
-								<button
-									className='buy-it-again-button-signed-in remove-underline'
-									type='button'
+								<div>
+									<img src={sub} />
+								</div>
+								<NavLink
+									className=' remove-underline'
+									to={`/history/${signedInUser.id}`}
 								>
-									<div className='font-16 remove-underline'>Buy it again</div>
-									<div className='font-14' type='button'>View your online purchases</div>
-								</button>
-							</NavLink>
+									<button
+										className='buy-it-again-button-signed-in remove-underline'
+										type='button'
+									>
+										<div className='font-16 remove-underline'>Buy it again</div>
+										<div
+											className='font-12'
+											type='button'
+											style={{ color: 'grey' }}
+										>
+											Reorder from your online purchases
+										</div>
+									</button>
+								</NavLink>
 							</div>
+							<div className='loves-container'>
+								<div id='loves-img-container' style={{ color: '#545454' }}>
+									<BsSuitHeart />
+								</div>
 
-							):(<div className='buy-it-again-container'>
-							<div><img src={sub} /></div>
-								<button
-									className='buy-it-again-button remove-underline'
-									onClick={closeForLogin}
+								<NavLink
+									to={`/loves/${signedInUser.id}`}
+									className='remove-underline'
 								>
-									<div className='font-16'>Buy it again</div>
-									<div className='font-12'>View your online purchases</div>
-								</button>
-							</div>)}
+									<div className='loves-div font-16'>Loves</div>{' '}
+									<div className='font-12' style={{ color: 'grey' }}>
+										View saved products
+									</div>
+								</NavLink>
+							</div>
+						</>
+					) : (
+						<>
+						<div className='buy-it-again-container'>
+							<div>
+								<img src={sub} />
+							</div>
+							<button
+								className='buy-it-again-button remove-underline'
+								onClick={closeForLogin}
+							>
+								<div className='font-16'>Buy it again</div>
+								<div className='font-12' style={{ color: 'grey' }}>
+									Reorder from your online purchases
+								</div>
+							</button>
+						</div>
+						<div className='loves-container'>
+								<div id='loves-img-container' style={{ color: '#545454' }}>
+									<BsSuitHeart />
+								</div>
+								<div className='loves-div' onClick={closeForLogin} type='button' >
+
+									<div className='font-16'>Loves</div><div className='font-12' style={{ color: 'grey' }}>
+										View saved products
+									</div>
+								</div>
+							</div>
+						</>
+					)}
 
 					{signedInUser ? (
 						<div
 							className='logout-button-container'
 							onClick={() => setDropMenu(false)}
 						>
-							{' '}
 							<LogoutButton />
 						</div>
 					) : (

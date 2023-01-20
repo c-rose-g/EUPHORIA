@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <ModalProvider>
-    <IconContext.Provider value={{color:'black', className:'react-icons'}}>
+    <IconContext.Provider value={{className:'react-icons',id:'loves-img-container'}}>
         <App />
     </IconContext.Provider>
     </ModalProvider>

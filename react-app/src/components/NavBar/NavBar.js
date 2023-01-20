@@ -6,11 +6,13 @@ import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
 import LovesPage from '../LovesPage';
 import { TiGroupOutline, TiGroup } from 'react-icons/ti';
+import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import './NavBar.css';
 
 const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [commIcon, setCommIcon] = useState(false);
+	const [heartIcon, setHeartIcon] = useState(false)
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
@@ -43,49 +45,52 @@ const NavBar = () => {
 						onMouseEnter={() => setCommIcon(true)}
 						onMouseLeave={() => setCommIcon(false)}
 					>
-								{commIcon ? <TiGroup /> : <TiGroupOutline />}
+						{commIcon ? <TiGroup /> : <TiGroupOutline />}
 						<NavLink
-							to={{pathname:'https://community.sephora.com/'}}
+							to={{ pathname: 'https://community.sephora.com/' }}
 							target='_blank'
 							className='font-14'
-							style={{textDecoration:'none'}}
+							style={{ textDecoration: 'none' }}
 						>
 							{/* <span className='community-icons-container'> */}
 							{/* <button className='community-icons-text-container'> */}
 							{/* </span> */}
 							<div className='community-text font-14'>
 								Community
-							{/* </button> */}
+								{/* </button> */}
 							</div>
 						</NavLink>
 					</div>
 					<div className='acct-buttons'>
 						{sessionLinks}
-						{/* <div>
+						<div style={{marginRight: "10px"}}>
 							{sessionUser ? (
-								<NavLink to={`/loves/${sessionUser.id}`}>
-									<i
+								<NavLink className='navbar-hearts' to={`/loves/${sessionUser.id}`} onMouseEnter={() => setHeartIcon(true)} onMouseLeave={() => setHeartIcon(false)}>
+									{/* <i
 										className='fa-solid fa-heart'
 										style={{ color: 'black', fontSize: '30px' }}
-									></i>
+									></i> */}
+									{heartIcon ? <BsSuitHeartFill/> : <BsSuitHeart/>}
 								</NavLink>
 							) : (
 								<button
 									// className= 'fa-solid fa-heart'
 									onClick={() => setShowLoginModal(true)}
 									style={{ backgroundColor: 'white', width: '30%' }}
+									onMouseEnter={() => setHeartIcon(true)} onMouseLeave={() => setHeartIcon(false)}
 								>
-									<i
+								{heartIcon ? <BsSuitHeartFill/> : <BsSuitHeart/>}
+									{/* <i
 										className='fa-solid fa-heart'
 										style={{
 											color: 'black',
 											fontSize: '30px',
 											backgroundColor: 'white',
 										}}
-									></i>
+									></i> */}
 								</button>
 							)}
-						</div> */}
+						</div>
 						<div>
 							{sessionUser ? (
 								<NavLink to={`/basket/${sessionUser.id}`}>

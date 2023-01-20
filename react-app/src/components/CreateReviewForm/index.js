@@ -5,6 +5,7 @@ import { createReview } from '../../store/review';
 import CategoriesNavBar from '../CategoriesNavBar';
 import { productDetails } from '../../store/products';
 import './CreateReview.css';
+
 const CreateReviewForm = () => {
 	const { product_id } = useParams();
 

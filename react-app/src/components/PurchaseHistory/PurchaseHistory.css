@@ -4,8 +4,8 @@
     display: flex;
     flex-direction: column;
     margin: 0 25%;
-    /* border:1px solid blue; */
     padding-top:4%;
+    /* border:1px solid blue; */
 }
 
 .purchase-history-rows-wrapper{
@@ -14,8 +14,8 @@
     /* border: 1px solid red; */
 }
 .purchase-history-rows-wrapper-no-history{
-    display: flex;
     /* flex-direction: column; */
+    display: flex;
     background-color: rgb(223, 222, 223);
     justify-content: center;
     align-items: center;
@@ -27,37 +27,37 @@
 
 } */
 .ph-left-column{
-    width: 100%;
     /* border: 1px solid red; */
 
     /* padding: 12px; */
+    width: 100%;
     padding-top: 4%;
     padding-left: 1%;
     padding-right: 1%;
     padding-bottom: 1%;
+    background-color: rgb(223, 222, 223);
+    height:10%
     /* margin-top: 12px; */
     /* margin-bottom: 24px; */
-    background-color: rgb(223, 222, 223);
     /* width:50px */
-    height:10%
 }
 .ph-left-column-no-history{
-    width: 50%;
     /* border: 1px solid red; */
+    /* padding: 12px; */
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap:20%;
-    /* padding: 12px; */
     padding-top: 4%;
     padding-left: 1%;
     padding-right: 1%;
     padding-bottom: 1%;
     margin-top: 4%;
-    /* margin-bottom: 24px; */
     background-color: white;
-    /* width:50px */
     height:500px;
+    /* margin-bottom: 24px; */
+    /* width:50px */
 }
 
 .purchase-history-item-row{
@@ -92,8 +92,8 @@
 .ph-items-rows{
     /* border: 1px solid red; */
     /* gap:20%; */
-    display: flex;
     /* flex-direction: column; */
+    display: flex;
     background-color: white;
     height: 5%;
     padding-top: 2%;
@@ -113,8 +113,8 @@
     /* width: 100%; */
     width: 70%;
     padding-left: 25%;
-    /* height:100%; */
     display: flex;
+    /* height:100%; */
     /* justify-content: center; */
 }
 .ph-item-img{
@@ -125,12 +125,11 @@
 .ph-item-mid-column{
     width: 75%;
     display: flex;
-
     flex-direction: column;
     padding-left:5%;
-    /* margin-left:5%; */
     gap:10%;
     justify-content: center;
+    /* margin-left:5%; */
 }
 
 .ph-item-brand{

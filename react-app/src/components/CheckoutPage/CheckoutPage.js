@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CategoriesNavBar from '../CategoriesNavBar';
 import {
-	loadItems,
 	loadUserCart,
 	increaseItem,
 	decrementItem,
@@ -9,7 +8,7 @@ import {
 import { addToPurchaseHistory } from '../../store/purchaseHistories';
 import { allProducts } from '../../store/products';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import './CheckoutPage.css';
 
 const CheckoutPage = ({ setShowLoginModal }) => {
@@ -19,7 +18,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 	const [loaded, setLoaded] = useState(false);
 	// obj of userbasket
 	const userBasket = useSelector((state) => state.basket.userBasket);
-	const testItems = useSelector((state) => state.basket.userBasket?.cart_prod);
+	// const testItems = useSelector((state) => state.basket.userBasket?.cart_prod);
 	const products = useSelector((state) => state.products.allProducts);
 
 	// array of user items
@@ -77,7 +76,10 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 									<div className='basket-items-rows'>
 										{!items.length && (
 											<div>
-												<div className='font-20' style={{display:'flex', justifyContent:'center'}} >
+												<div
+													className='font-20'
+													style={{ display: 'flex', justifyContent: 'center' }}
+												>
 													Please add items to your basket
 												</div>
 											</div>
@@ -101,8 +103,11 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 
 														<div className='item-price font-16' key={item.id}>
 															<strong>
-																$ 
-																{(item.prod_quantity * products[item.prod_id].product_price).toFixed(2)}
+																$
+																{(
+																	item.prod_quantity *
+																	products[item.prod_id].product_price
+																).toFixed(2)}
 															</strong>
 														</div>
 													</div>
@@ -140,16 +145,16 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 										<strong>Estimated Total:</strong> ${basketTotal}
 									</div>
 									<div></div>
-									{items.length ? (<div className='checkout-button-div'>
-
-										<button
-											className='checkout-button font-16-white'
-											onClick={logan}
-										>
-											checkout
-										</button>{' '}
-									</div>): null}
-
+									{items.length ? (
+										<div className='checkout-button-div'>
+											<button
+												className='checkout-button font-16-white'
+												onClick={logan}
+											>
+												checkout
+											</button>
+										</div>
+									) : null}
 								</div>
 							</div>
 						</div>
