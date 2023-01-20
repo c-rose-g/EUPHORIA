@@ -4,6 +4,8 @@ import { NavLink, Redirect } from 'react-router-dom';
 import CategoriesNavBar from '../CategoriesNavBar';
 import LoveButton from '../LovesButton';
 import { loadLoves } from '../../store/loves';
+import noLove from '../../Images/euphoria-noLove.png';
+import Footer from '../Footer/Footer';
 import './LovesPage.css';
 const LovesPage = () => {
 	const dispatch = useDispatch();
@@ -11,7 +13,7 @@ const LovesPage = () => {
 	const user = useSelector((state) => state.session.user);
 	const userloves = useSelector((state) => Object.values(state.loves.loves));
 	// console.log('user loves', userloves);
- 
+
 	if (user) {
 	}
 	useEffect(() => {
@@ -24,10 +26,23 @@ const LovesPage = () => {
 					<CategoriesNavBar />
 					<div className='lp-container'>
 						<div className='lp-title-container'>
-							<div className='lp-title font-32'>
-                            Loves
-							</div>
+							<div className='lp-title font-32'>Loves</div>
 						</div>
+						{!userloves.length && (
+							<div className='lp-rows-wrapper-no-love'>
+								<div className='ph-items-first'>
+									<img src={noLove}></img>
+								</div>
+								<div className='lp-no-love-text font-14'>
+									<strong>
+										You haven't added any product to your Loves list.
+									</strong>{' '}
+									<br />
+									Collect all your favorite and must-try products by <br />{' '}
+									clicking on the ♡ while you shop.
+								</div>
+							</div>
+						)}
 						<div className='lp-rows-wrapper'>
 							<div className='lp-left-column'>
 								{userloves.map((product) => (
@@ -59,16 +74,19 @@ const LovesPage = () => {
 												<NavLink
 													to={`/products/${product.prod_id.id}`}
 													className='remove-underline'
-                                                    style={{textDecoration:'none'}}
+													style={{ textDecoration: 'none' }}
 												>
 													<div className='lp-buy-it-container'>
-														<button className='lp-buy-it font-16-white' style={{textDecoration:'none'}}>
+														<button
+															className='lp-buy-it font-16-white'
+															style={{ textDecoration: 'none' }}
+														>
 															View Product
 														</button>
 													</div>
 												</NavLink>
 												<div className='love-button-container'>
-													<LoveButton productId={product.prod_id.id}/>
+													<LoveButton productId={product.prod_id.id} />
 												</div>
 											</div>
 										</div>
@@ -79,6 +97,7 @@ const LovesPage = () => {
 					</div>
 				</>
 			)}
+					<Footer/>
 		</>
 	);
 };
