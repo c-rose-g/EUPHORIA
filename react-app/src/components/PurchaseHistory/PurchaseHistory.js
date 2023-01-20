@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import CategoriesNavBar from '../CategoriesNavBar';
 import { loadPurchaseHistory } from '../../store/purchaseHistories';
-import noHistory from '../../Images/purchaseHistory_euphoria.png'
+import noHistory from '../../Images/purchaseHistory_euphoria.png';
 import './PurchaseHistory.css';
 
 const PurchaseHistory = () => {
 	const [loaded, setLoaded] = useState(false);
 	const { userId } = useParams();
 	const dispatch = useDispatch();
-	let user_history = useSelector((state) => state.history.purchaseHistory)
-	// user_history = user_history.reverse()
-	console.log('user history', user_history)
+	let userHistory = useSelector((state) => state.history.purchaseHistory);
+	// userHistory = userHistory.reverse()
+	// console.log('user history', userHistory)
 
 	useEffect(() => {
 		dispatch(loadPurchaseHistory(userId)).then(() => setLoaded(true));
@@ -29,27 +29,25 @@ const PurchaseHistory = () => {
 							</div>
 						</div>
 						<div className='purchase-history-rows-wrapper-no-history'>
-
-								{!user_history.length && (<div className='ph-left-column-no-history'>
-								<div className='ph-items-first'>
-
-								<img src={noHistory}/>
+							{!userHistory.length && (
+								<div className='ph-left-column-no-history'>
+									<div className='ph-items-first'>
+										<img src={noHistory} />
+									</div>
+									<div className='font-20'>
+										Please purchase items to see items in your history.
+									</div>
 								</div>
-								<div className='font-20'>
-								Please purchase items to see items in your history.
-								</div>
-
-								</div>)}
+							)}
 						</div>
 						<div className='purchase-history-rows-wrapper'>
 							<div className='ph-left-column'>
-								{user_history.map((order) => {
+								{userHistory.map((order) => {
 									return (
 										<div className='ph-items-rows' key={order.id}>
-										<div className='font-14 date-purchased'>
-
-										{order.date_purchased.slice(0,16)}
-										</div>
+											<div className='font-14 date-purchased'>
+												{order.date_purchased.slice(0, 16)}
+											</div>
 											<div className='ph-item-left-column'>
 												<div className='ph-item-img-container'>
 													<img
