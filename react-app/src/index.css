@@ -68,6 +68,20 @@
   font-size:24px;
   text-decoration: none;
 }
+
+.font-26{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color:black;
+  font-size:26px;
+  text-decoration: none;
+}
+
+.font-32{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color:black;
+  font-size:32px;
+  text-decoration: none;
+}
 /* *************************** WHITE FONTS ******************************** */
 .font-11-white{
   font-family: "helvetica neue",helvetica,arial,sans-serif;
@@ -108,5 +122,12 @@
   font-family: "helvetica neue",helvetica,arial,sans-serif;
   color:white;
   font-size:20px;
+  text-decoration: none;
+}
+
+.font-26-white{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color:white;
+  font-size:26px;
   text-decoration: none;
 }
