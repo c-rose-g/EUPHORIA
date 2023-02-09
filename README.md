@@ -10,6 +10,13 @@
 
 <h2 align="center"> This is a Sephora clone, an ecommerce site.</h2>
 
+<h2 align="center"> Getting Started </h2>
+
+* Download and unzip the clone file.
+* Use the command npm start in the react-app directory and pipenv flask run in the root directory to run both servers/
+* Browser should automatically open at localhost:3000 to the Splash page.
+
+
 <h2 align="center"> Tech Stack </h2>
 
 <div align="center">
