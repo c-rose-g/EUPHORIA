@@ -1,12 +1,22 @@
 import React, {useState, useSelector} from 'react'
 import { useDispatch } from 'react-redux';
 
+
 const LovesDropDown = () => {
   const dispatch = useDispatch()
   const loves = useSelector(state => state.loves.loves)
+  const [dropdown, setDropdown] = useState()
   
+
   return(
-    <h1> this is the loves drop down menu</h1>
+    <>
+    <div className='loves-dd-border' >
+      <div className='loves-dd-map'>
+
+      </div>
+
+    </div>
+    </>
   )
 };
 
