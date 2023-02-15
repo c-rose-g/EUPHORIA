@@ -9,8 +9,6 @@ products_routes = Blueprint('products', __name__)
 
 # ****************** GET ALL PRODUCTS ***************************
 # /api/products
-
-
 @products_routes.route('/allProducts')
 # @login_required
 def get_products():
@@ -81,3 +79,7 @@ def get_prod_category(prod_category):
         'errors': 'category not found',
         'status code': 404
     }, 404
+
+# ****************** Pagination ***************************
+
+
