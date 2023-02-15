@@ -81,7 +81,8 @@
 }
 
 .nav-search {
-  width: 358px;
+  /* width: 358px; */
+  width: 300px;
   /* border: 1px solid black; */
   margin-right: 1.5em;
 }
@@ -132,7 +133,9 @@
 .acct-buttons {
   /* height: 80px; */
   display: flex;
-  width: 219px;
+  width: 250px;
+  /* width: 350px; */
+
   /* border: 1px solid blue; */
   /* grid-gap: 26px; */
   /* gap: 10px;
@@ -163,7 +166,8 @@
 }
 
 .nav-sign-text {
-  width: 85px;
+  /* width: 85px; */
+  width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
