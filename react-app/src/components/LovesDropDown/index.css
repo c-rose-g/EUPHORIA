@@ -1,10 +1,50 @@
-.loves-dropdown-container{
+.loves-dropdown-container {
   width: 100px;
-  height: 300px;
-  border: 1px solid black;
-  background-color: white;
+  /* height: 50px; */
+  /* border: 1px solid green; */
+  /* background-color: white; */
+  /* border: 1px solid green; */
+  height: 100px;
+  display: flex;
+  align-items: center;
 }
 
-.loves-dd-map{
+.loves-dropdown-button {
+  /* border: 1px solid blue; */
+  background-color: white;
 
+  /* height: 50px; */
+  width: 50%;
+}
+
+.loves-dropdown-heart{
+  /* border: 1px solid blue; */
+}
+.loves-dropdown-page{
+  z-index: 1;
+    border-radius: 5px;
+    background-color: white;
+    /* border: 1px solid grey; */
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: absolute;
+    font-weight: normal;
+    font-style: normal;
+    font-size: smaller;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* width: 375px; */
+    width: 300px;
+    height: 215px;
+    /* transition: all 100s ease-in 0s; */
+    /* transition-property: all; */
+    top: 77px;
+    /* bottom: 633px; */
+    left: 57.5%;
+    /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
+    box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
+}
+.loves-dropdown-list {
+  /* border: 1px blue */
 }

@@ -44,13 +44,7 @@ function ProfileButton() {
 		setShowLoginModal(true);
 	};
 
-	const changeClassName = () => {
-		if (dropMenu) {
-			setProfileTransition('profile-button-onLeave');
-		} else {
-			setProfileTransition('');
-		}
-	};
+	
 	return (
 		<div
 			className='dropdown-container'

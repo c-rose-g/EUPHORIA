@@ -76,7 +76,9 @@ const NavBar = () => {
 										onMouseEnter={() => setHeartIcon(true)}
 										onMouseLeave={() => setHeartIcon(false)}
 									>
+									<div className='navbar-heart-dropdown-container'>
 									<LovesDropDown/>
+									</div>
 										{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
 									</NavLink>
 								</>

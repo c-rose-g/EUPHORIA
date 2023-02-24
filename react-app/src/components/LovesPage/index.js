@@ -97,7 +97,7 @@ const LovesPage = () => {
 					</div>
 				</>
 			)}
-					<Footer/>
+			<Footer />
 		</>
 	);
 };
