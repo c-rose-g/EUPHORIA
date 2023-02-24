@@ -7,13 +7,13 @@ import LoginModal from '../LoginModal';
 import LovesPage from '../LovesPage';
 import LovesDropDown from '../LovesDropDown';
 import { TiGroupOutline, TiGroup } from 'react-icons/ti';
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
 import './NavBar.css';
 
 const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [commIcon, setCommIcon] = useState(false);
-	const [heartIcon, setHeartIcon] = useState(false)
+	const [heartIcon, setHeartIcon] = useState(false);
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
@@ -65,23 +65,30 @@ const NavBar = () => {
 					</div>
 					<div className='acct-buttons'>
 						{sessionLinks}
-						<div style={{marginRight: "10px"}}>
+						<div style={{ marginRight: '10px' }}>
 							{sessionUser ? (
-								<NavLink className='navbar-hearts' to={`/loves/${sessionUser.id}`} onMouseEnter={() => setHeartIcon(true)} onMouseLeave={() => setHeartIcon(false)}>
+								<NavLink
+									className='navbar-hearts'
+									to={`/loves/${sessionUser.id}`}
+									onMouseEnter={() => setHeartIcon(true)}
+									onMouseLeave={() => setHeartIcon(false)}
+								>
+									{LovesDropDown}
 									{/* <i
 										className='fa-solid fa-heart'
 										style={{ color: 'black', fontSize: '30px' }}
 									></i> */}
-									{heartIcon ? <BsSuitHeartFill/> : <BsSuitHeart/>}
+									{heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />}
 								</NavLink>
 							) : (
 								<button
 									// className= 'fa-solid fa-heart'
 									onClick={() => setShowLoginModal(true)}
 									style={{ backgroundColor: 'white', width: '30%' }}
-									onMouseEnter={() => setHeartIcon(true)} onMouseLeave={() => setHeartIcon(false)}
+									onMouseEnter={() => setHeartIcon(true)}
+									onMouseLeave={() => setHeartIcon(false)}
 								>
-								{heartIcon ? <BsSuitHeartFill/> : <BsSuitHeart/>}
+									{heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />}
 									{/* <i
 										className='fa-solid fa-heart'
 										style={{

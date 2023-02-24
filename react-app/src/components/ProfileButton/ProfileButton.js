@@ -143,27 +143,31 @@ function ProfileButton() {
 						</>
 					) : (
 						<>
-						<div className='buy-it-again-container'>
-							<div>
-								<img src={sub} />
-							</div>
-							<button
-								className='buy-it-again-button remove-underline'
-								onClick={closeForLogin}
-							>
-								<div className='font-16'>Buy it again</div>
-								<div className='font-12' style={{ color: 'grey' }}>
-									Reorder from your online purchases
+							<div className='buy-it-again-container'>
+								<div>
+									<img src={sub} />
 								</div>
-							</button>
-						</div>
-						<div className='loves-container'>
+								<button
+									className='buy-it-again-button remove-underline'
+									onClick={closeForLogin}
+								>
+									<div className='font-16'>Buy it again</div>
+									<div className='font-12' style={{ color: 'grey' }}>
+										Reorder from your online purchases
+									</div>
+								</button>
+							</div>
+							<div className='loves-container'>
 								<div id='loves-img-container' style={{ color: '#545454' }}>
 									<BsSuitHeart />
 								</div>
-								<div className='loves-div' onClick={closeForLogin} type='button' >
-
-									<div className='font-16'>Loves</div><div className='font-12' style={{ color: 'grey' }}>
+								<div
+									className='loves-div'
+									onClick={closeForLogin}
+									type='button'
+								>
+									<div className='font-16'>Loves</div>
+									<div className='font-12' style={{ color: 'grey' }}>
 										View saved products
 									</div>
 								</div>
