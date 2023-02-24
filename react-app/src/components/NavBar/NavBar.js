@@ -67,7 +67,7 @@ const NavBar = () => {
 						{/* {sessionLinks} */}
 						<ProfileButton />
 						{/* <LovesDropDown/> */}
-						<div style={{ marginRight: '10px' }}>
+						<div className='heart-dropdown-container'>
 							{sessionUser ? (
 								<>
 									<NavLink
@@ -76,9 +76,9 @@ const NavBar = () => {
 										onMouseEnter={() => setHeartIcon(true)}
 										onMouseLeave={() => setHeartIcon(false)}
 									>
-									<div className='navbar-heart-dropdown-container'>
+									{/* <div> */}
 									<LovesDropDown/>
-									</div>
+									{/* </div> */}
 										{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
 									</NavLink>
 								</>
@@ -89,13 +89,15 @@ const NavBar = () => {
 									onMouseEnter={() => setHeartIcon(true)}
 									onMouseLeave={() => setHeartIcon(false)}
 								>
-									{heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />}
+									<LovesDropDown/>
+
+									{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
 								</button>
 							)}
 						</div>
-						<div>
+						<div className='basket-dropdown-container'>
 							{sessionUser ? (
-								<NavLink to={`/basket/${sessionUser.id}`}>
+								<NavLink to={`/basket/${sessionUser.id}`} >
 									<button className='emoji-button'>
 										<i
 											className='fa-solid fa-basket-shopping'
