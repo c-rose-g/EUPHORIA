@@ -17,13 +17,19 @@ const NavBar = () => {
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
+	// NOTE is the bottom part correct?
 	if (sessionUser) {
-		sessionLinks = <ProfileButton user={sessionUser} />;
+		sessionLinks = (
+			<>
+				<ProfileButton user={sessionUser} />
+				<LovesDropDown user={sessionUser} />
+			</>
+		);
 	} else {
 		sessionLinks = (
 			<>
 				<ProfileButton />
-				{/* <LovesDropDown /> */}
+				<LovesDropDown />
 			</>
 		);
 	}
@@ -54,49 +60,34 @@ const NavBar = () => {
 							className='font-14'
 							style={{ textDecoration: 'none' }}
 						>
-							{/* <span className='community-icons-container'> */}
-							{/* <button className='community-icons-text-container'> */}
-							{/* </span> */}
-							<div className='community-text font-14'>
-								Community
-								{/* </button> */}
-							</div>
+							<div className='community-text font-14'>Community</div>
 						</NavLink>
 					</div>
 					<div className='acct-buttons'>
-						{sessionLinks}
+						{/* {sessionLinks} */}
+						<ProfileButton />
+						{/* <LovesDropDown/> */}
 						<div style={{ marginRight: '10px' }}>
 							{sessionUser ? (
-								<NavLink
-									className='navbar-hearts'
-									to={`/loves/${sessionUser.id}`}
-									onMouseEnter={() => setHeartIcon(true)}
-									onMouseLeave={() => setHeartIcon(false)}
-								>
-									{LovesDropDown}
-									{/* <i
-										className='fa-solid fa-heart'
-										style={{ color: 'black', fontSize: '30px' }}
-									></i> */}
-									{heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />}
-								</NavLink>
+								<>
+									<NavLink
+										className='navbar-hearts'
+										to={`/loves/${sessionUser.id}`}
+										onMouseEnter={() => setHeartIcon(true)}
+										onMouseLeave={() => setHeartIcon(false)}
+									>
+									<LovesDropDown/>
+										{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
+									</NavLink>
+								</>
 							) : (
 								<button
-									// className= 'fa-solid fa-heart'
 									onClick={() => setShowLoginModal(true)}
 									style={{ backgroundColor: 'white', width: '30%' }}
 									onMouseEnter={() => setHeartIcon(true)}
 									onMouseLeave={() => setHeartIcon(false)}
 								>
 									{heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />}
-									{/* <i
-										className='fa-solid fa-heart'
-										style={{
-											color: 'black',
-											fontSize: '30px',
-											backgroundColor: 'white',
-										}}
-									></i> */}
 								</button>
 							)}
 						</div>

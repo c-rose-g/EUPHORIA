@@ -57,7 +57,7 @@ function ProfileButton() {
 			onMouseEnter={() => setDropMenu(true)}
 			onMouseLeave={() => setDropMenu(false)}
 		>
-			<button className='font-14' id='user-space-text'>
+			<button className ='font-14' id='user-space-text'>
 				<div className='nav-acct-img'>
 					<img src={dropMenu ? activeUser : user} />
 				</div>
