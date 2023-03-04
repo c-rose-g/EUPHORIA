@@ -87,9 +87,25 @@
   margin-right: 1.5em;
 }
 
-.navbar-hearts{
-  color: black;
+.navbar-hearts {
+  /* color: black; */
+  /* border: 1px solid red; */
+  /* height: 50%;
+  width: 10%; */
 }
+
+/* ********* HEARTS ******* */
+.heart-dropdown-container {
+  /* border: 1px solid orange; */
+  /* height: 44%; */
+  /* width: 13%; */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  /* width: 20%; */
+
+}
+
 /* *********************** COMMUNITY *********************** */
 
 .nav-community-container {
@@ -133,10 +149,13 @@
 .acct-buttons {
   /* height: 80px; */
   display: flex;
-  width: 250px;
-  /* width: 350px; */
+  /* width: 275px; */
+  /* width: 280px; */
+  /* border: 1px solid green; */
+  /* width: 290px; */
+  width: 16%;
 
-  /* border: 1px solid blue; */
+  /* border: 1px s/lid blue; */
   /* grid-gap: 26px; */
   /* gap: 10px;
  */
@@ -157,7 +176,7 @@
   object-fit: cover;
 }
 
-#user-space-text {
+#-text {
   display: flex;
   background-color: white;
   /* border:1px solid black; */
@@ -179,6 +198,14 @@
 
 }
 
+/* *********** BASKET ******* */
+.basket-dropdown-container {
+  /* border: 1px solid blue; */
+  /* padding-left: 2%; */
+  /* padding-left: 8%; */
+  width: 18%;
+}
+
 .emoji-button {
   background-color: white;
   font-size: 30px;
@@ -186,10 +213,13 @@
 }
 
 /* ********************* DROP DOWN ********************** */
-.dropdown-container {
+.profile-dropdown-container {
   height: 100px;
   display: flex;
+
   align-items: center;
+
+  width: 51%;
 }
 
 .profile-button-onEnter {}
@@ -333,7 +363,7 @@
   margin-bottom: 5%;
 }
 
-.loves-container{
+.loves-container {
   /* border: 1px solid blue; */
   display: flex;
   align-items: center;
@@ -342,26 +372,28 @@
   /* border-bottom: 1px solid rgb(238, 238, 238); */
   margin-left: 2%;
 }
-#loves-img-container{
-  color:blue;
+
+#loves-img-container {
+  color: blue;
   /* border: 1px solid green; */
   width: 35px;
 
 }
 
-.loves-div{
+.loves-div {
   /* border: 1px solid red; */
   margin-left: 1%;
 }
 
-.loves-div :hover{
+.loves-div :hover {
   text-decoration: underline;
   cursor: pointer;
 }
 
-.loves-button{
-  border:1px solid green;
+.loves-button {
+  border: 1px solid green;
 }
+
 .logout-button-container {
   height: 25px;
   margin-top: 2%;

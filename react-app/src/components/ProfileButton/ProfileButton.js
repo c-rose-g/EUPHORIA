@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Modal } from '../../context/Modal';
-import SignUpModal from '../SignUpModal';
-import LoginModal from '../LoginModal';
+
 import LogoutButton from '../auth/LogoutButton';
 import user from '../../Images/euphora-sign-in.png';
 import activeUser from '../../Images/euphoria-user-active.png';
 import profileButtonUser from '../../Images/euphoria-profile-user-large.png';
 import sub from '../../Images/euphoria-subscription.png';
-import LovesPage from '../LovesPage';
+
 import { BsSuitHeart } from 'react-icons/bs';
 import '../NavBar/NavBar.css';
 
@@ -17,7 +15,7 @@ function ProfileButton() {
 	const [showSignUpModal, setShowSignUpModal] = useState(false);
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [dropMenu, setDropMenu] = useState(false);
-	const [profileTransition, setProfileTransition] = useState('');
+
 	const [date, setDate] = useState(new Date());
 	const [hour, setHour] = useState(date.getHours());
 	const [currentTime, setCurrentTime] = useState('hello');
@@ -44,21 +42,17 @@ function ProfileButton() {
 		setShowLoginModal(true);
 	};
 
-	const changeClassName = () => {
-		if (dropMenu) {
-			setProfileTransition('profile-button-onLeave');
-		} else {
-			setProfileTransition('');
-		}
-	};
 	return (
 		<div
-			className='dropdown-container'
+			className='profile-dropdown-container'
 			onMouseEnter={() => setDropMenu(true)}
 			onMouseLeave={() => setDropMenu(false)}
 		>
-			<button className='font-14' id='user-space-text'>
-				<div className='nav-acct-img'>
+			<button className='font-14' style={{backgroundColor: 'white', display:'flex'}}>
+				<div
+					className='nav-acct-img'
+					style={{ transition: 'all .2s linear 0s' }}
+				>
 					<img src={dropMenu ? activeUser : user} />
 				</div>
 				<div className='nav-sign-text'>
@@ -67,10 +61,10 @@ function ProfileButton() {
 						: 'Sign in to shop EUPHORIA'}
 				</div>
 			</button>
-			{dropMenu ? (
+			{dropMenu && (
 				<div
 					className='profile-dropdown-signin'
-					style={{ transition: 'all .2s linear 0s' }}
+					style={{ transition: 'all .8s linear 0s' }}
 				>
 					<div className='img-greetings'>
 						<div className='profile-img-container'>
@@ -143,27 +137,31 @@ function ProfileButton() {
 						</>
 					) : (
 						<>
-						<div className='buy-it-again-container'>
-							<div>
-								<img src={sub} />
-							</div>
-							<button
-								className='buy-it-again-button remove-underline'
-								onClick={closeForLogin}
-							>
-								<div className='font-16'>Buy it again</div>
-								<div className='font-12' style={{ color: 'grey' }}>
-									Reorder from your online purchases
+							<div className='buy-it-again-container'>
+								<div>
+									<img src={sub} />
 								</div>
-							</button>
-						</div>
-						<div className='loves-container'>
+								<button
+									className='buy-it-again-button remove-underline'
+									onClick={closeForLogin}
+								>
+									<div className='font-16'>Buy it again</div>
+									<div className='font-12' style={{ color: 'grey' }}>
+										Reorder from your online purchases
+									</div>
+								</button>
+							</div>
+							<div className='loves-container'>
 								<div id='loves-img-container' style={{ color: '#545454' }}>
 									<BsSuitHeart />
 								</div>
-								<div className='loves-div' onClick={closeForLogin} type='button' >
-
-									<div className='font-16'>Loves</div><div className='font-12' style={{ color: 'grey' }}>
+								<div
+									className='loves-div'
+									onClick={closeForLogin}
+									type='button'
+								>
+									<div className='font-16'>Loves</div>
+									<div className='font-12' style={{ color: 'grey' }}>
 										View saved products
 									</div>
 								</div>
@@ -182,7 +180,8 @@ function ProfileButton() {
 						<div className='no-logout-button-container'></div>
 					)}
 				</div>
-			) : (
+			)}
+			{/* ) : (
 				<div
 					className='profile-dropdown-signin'
 					style={{
@@ -247,6 +246,7 @@ function ProfileButton() {
 					</Modal>
 				)}
 			</div>
+		*/}
 		</div>
 	);
 }

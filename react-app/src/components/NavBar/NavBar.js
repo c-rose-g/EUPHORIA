@@ -7,23 +7,29 @@ import LoginModal from '../LoginModal';
 import LovesPage from '../LovesPage';
 import LovesDropDown from '../LovesDropDown';
 import { TiGroupOutline, TiGroup } from 'react-icons/ti';
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
 import './NavBar.css';
 
 const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [commIcon, setCommIcon] = useState(false);
-	const [heartIcon, setHeartIcon] = useState(false)
+	const [heartIcon, setHeartIcon] = useState(false);
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let sessionLinks;
+	// NOTE is the bottom part correct?
 	if (sessionUser) {
-		sessionLinks = <ProfileButton user={sessionUser} />;
+		sessionLinks = (
+			<>
+				<ProfileButton user={sessionUser} />
+				<LovesDropDown user={sessionUser} />
+			</>
+		);
 	} else {
 		sessionLinks = (
 			<>
 				<ProfileButton />
-				{/* <LovesDropDown /> */}
+				<LovesDropDown />
 			</>
 		);
 	}
@@ -54,48 +60,44 @@ const NavBar = () => {
 							className='font-14'
 							style={{ textDecoration: 'none' }}
 						>
-							{/* <span className='community-icons-container'> */}
-							{/* <button className='community-icons-text-container'> */}
-							{/* </span> */}
-							<div className='community-text font-14'>
-								Community
-								{/* </button> */}
-							</div>
+							<div className='community-text font-14'>Community</div>
 						</NavLink>
 					</div>
 					<div className='acct-buttons'>
-						{sessionLinks}
-						<div style={{marginRight: "10px"}}>
+						{/* {sessionLinks} */}
+						<ProfileButton />
+						{/* <LovesDropDown/> */}
+						<div className='heart-dropdown-container'>
 							{sessionUser ? (
-								<NavLink className='navbar-hearts' to={`/loves/${sessionUser.id}`} onMouseEnter={() => setHeartIcon(true)} onMouseLeave={() => setHeartIcon(false)}>
-									{/* <i
-										className='fa-solid fa-heart'
-										style={{ color: 'black', fontSize: '30px' }}
-									></i> */}
-									{heartIcon ? <BsSuitHeartFill/> : <BsSuitHeart/>}
-								</NavLink>
+								<>
+									<NavLink
+										className='navbar-hearts'
+										to={`/loves/${sessionUser.id}`}
+										onMouseEnter={() => setHeartIcon(true)}
+										onMouseLeave={() => setHeartIcon(false)}
+									>
+									{/* <div> */}
+									<LovesDropDown/>
+									{/* </div> */}
+										{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
+									</NavLink>
+								</>
 							) : (
 								<button
-									// className= 'fa-solid fa-heart'
 									onClick={() => setShowLoginModal(true)}
 									style={{ backgroundColor: 'white', width: '30%' }}
-									onMouseEnter={() => setHeartIcon(true)} onMouseLeave={() => setHeartIcon(false)}
+									onMouseEnter={() => setHeartIcon(true)}
+									onMouseLeave={() => setHeartIcon(false)}
 								>
-								{heartIcon ? <BsSuitHeartFill/> : <BsSuitHeart/>}
-									{/* <i
-										className='fa-solid fa-heart'
-										style={{
-											color: 'black',
-											fontSize: '30px',
-											backgroundColor: 'white',
-										}}
-									></i> */}
+									<LovesDropDown/>
+
+									{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
 								</button>
 							)}
 						</div>
-						<div>
+						<div className='basket-dropdown-container'>
 							{sessionUser ? (
-								<NavLink to={`/basket/${sessionUser.id}`}>
+								<NavLink to={`/basket/${sessionUser.id}`} >
 									<button className='emoji-button'>
 										<i
 											className='fa-solid fa-basket-shopping'
