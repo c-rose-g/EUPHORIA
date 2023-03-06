@@ -4,11 +4,10 @@ from sqlalchemy import ForeignKey
 
 class ShoppingCartItem(db.Model):
   __tablename__ = 'shopping_cart_items'
-  if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+
   id = db.Column(db.Integer, primary_key=True)
-  shopping_cart_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('shopping_carts.id')))
-  prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
+  shopping_cart_id = db.Column(db.Integer, db.ForeignKey('shopping_carts.id'))
+  prod_id = db.Column(db.Integer, db.ForeignKey('products.id'))
   prod_quantity = db.Column(db.Integer)
 
   created_at = db.Column(db.DateTime(), nullable=False,server_default=func.now())
@@ -57,7 +56,7 @@ class ShoppingCartItem(db.Model):
       self.prod_quantity = self.prod_quantity - 1
       db.session.commit()
       return self.to_dict()
-    
+
   def remove_quantity(self):
     if self.prod_quantity == 1:
       self.prod_quantity = 0
