@@ -78,6 +78,6 @@
 <h2 align="center"> Future Implementation Goals </h2>
 
 - [x] Purchase History
-- [ ] Search bar
+- [x] Search bar
 - [x] Likes
 - [ ] AWS
