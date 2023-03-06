@@ -102,6 +102,8 @@
   display: flex;
   justify-content: left;
   align-items: center;
+  /* padding-bottom: 10%; */
+  /* margin-top: 10%; */
   /* width: 20%; */
 
 }
