@@ -13,8 +13,7 @@ from sqlalchemy.orm import relationship
 
 class Product(db.Model):
     __tablename__ = 'products'
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+    
     id = db.Column(db.Integer, primary_key=True)
     product_name = db.Column(db.String(255))
     product_brand = db.Column(db.String(255))

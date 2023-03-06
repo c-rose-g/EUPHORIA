@@ -4,13 +4,12 @@ from sqlalchemy import ForeignKey
 
 class Review(db.Model):
   __tablename__ = 'reviews'
-  if environment == 'production':
-    __table_args__ = {'schema':SCHEMA}
+
   id = db.Column(db.Integer, primary_key=True)
   review_msg = db.Column(db.String(255), nullable=False)
 
-  prod_id = db.Column(ForeignKey(add_prefix_for_prod('products.id')))
-  user_id = db.Column(ForeignKey(add_prefix_for_prod('users.id')))
+  prod_id = db.Column(db.ForeignKey('products.id'))
+  user_id = db.Column(db.ForeignKey('users.id'))
 
   created_at = db.Column(db.DateTime(), nullable=False, server_default=func.now())
   updated_at = db.Column(db.DateTime(), nullable=False, onupdate=func.now(), default=func.now())

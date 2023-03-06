@@ -6,12 +6,11 @@ from sqlalchemy import ForeignKey
 # is table name plural or singular or whatever?
 class PurchaseHistory(db.Model):
   __tablename__ = 'purchase_history'
-  if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+  
   id = db.Column(db.Integer, primary_key=True)
   prod_quantity = db.Column(db.Integer)
-  prod_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
-  user_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('users.id')))
+  prod_id = db.Column(db.Integer, db.ForeignKey('products.id'))
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
   created_at = db.Column(db.DateTime(), nullable=False,server_default=func.now())
   updated_at = db.Column(db.DateTime(), nullable=False,onupdate=func.now(), default=func.now())

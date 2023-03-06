@@ -4,10 +4,9 @@ from sqlalchemy import ForeignKey
 # REVIEW connect to product model
 class ProductPhoto(db.Model):
   __tablename__ = 'product_photos'
-  if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+  
   id = db.Column(db.Integer, primary_key=True)
-  product_id = db.Column(db.Integer, ForeignKey(add_prefix_for_prod('products.id')))
+  product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
   prod_photo = db.Column(db.String)
   prod_color_name = db.Column(db.String)
   # prod_color_photo = db.Column(db.String)
