@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import LogoutButton from '../auth/LogoutButton';
 import user from '../../Images/euphora-sign-in.png';
 import activeUser from '../../Images/euphoria-user-active.png';
