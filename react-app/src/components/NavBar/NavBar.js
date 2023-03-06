@@ -66,7 +66,7 @@ const NavBar = () => {
 					<div className='acct-buttons'>
 						{/* {sessionLinks} */}
 						<ProfileButton />
-						{/* <LovesDropDown/> */}
+
 						<div className='heart-dropdown-container'>
 							{sessionUser ? (
 								<>
@@ -76,10 +76,9 @@ const NavBar = () => {
 										onMouseEnter={() => setHeartIcon(true)}
 										onMouseLeave={() => setHeartIcon(false)}
 									>
-									{/* <div> */}
+
 									<LovesDropDown/>
-									{/* </div> */}
-										{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
+
 									</NavLink>
 								</>
 							) : (
@@ -91,7 +90,6 @@ const NavBar = () => {
 								>
 									<LovesDropDown/>
 
-									{/* {heartIcon ? <BsSuitHeartFill /> : <BsSuitHeart />} */}
 								</button>
 							)}
 						</div>

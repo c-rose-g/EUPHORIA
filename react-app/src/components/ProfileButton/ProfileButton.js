@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Modal } from '../../context/Modal';
+import SignUpModal from '../SignUpModal';
+import LoginModal from '../LoginModal';
 import LogoutButton from '../auth/LogoutButton';
 import user from '../../Images/euphora-sign-in.png';
 import activeUser from '../../Images/euphoria-user-active.png';
@@ -60,7 +63,7 @@ function ProfileButton() {
 						: 'Sign in to shop EUPHORIA'}
 				</div>
 			</button>
-			{dropMenu && (
+			{dropMenu ? (
 				<div
 					className='profile-dropdown-signin'
 					style={{ transition: 'all .8s linear 0s' }}
@@ -179,8 +182,8 @@ function ProfileButton() {
 						<div className='no-logout-button-container'></div>
 					)}
 				</div>
-			)}
-			{/* ) : (
+
+			) : (
 				<div
 					className='profile-dropdown-signin'
 					style={{
@@ -245,7 +248,7 @@ function ProfileButton() {
 					</Modal>
 				)}
 			</div>
-		*/}
+
 		</div>
 	);
 }
