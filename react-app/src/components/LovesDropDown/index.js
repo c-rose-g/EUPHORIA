@@ -46,7 +46,7 @@ const LovesDropDown = () => {
 					{signedInUser ? (
 						<>
 							<div className='loves-dropdown-title font-20'>
-							Recently Loved <NavLink to={`/loves/${signedInUser.id}`}>View all</NavLink>
+							Recently Loved <NavLink className='font-20 remove-underline' to={`/loves/${signedInUser.id}`}>View all</NavLink>
 							</div>
 							{userLoves.length ? (<div className='loves-dropdown-list-container'>
 								{userLoves.map(love => (

@@ -26,7 +26,7 @@
   /* padding-left: 5%;
   padding-right: 5%;
   padding-bottom: 5%; */
-  padding: 16px 16px 24px;
+  padding: 10px 16px 10px;
   justify-content: space-between;
   align-items: center;
   display: flex;
@@ -64,7 +64,7 @@
   left: 57.5%;
   /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
   box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .loves-dropdown-shop-now {
