@@ -32,7 +32,7 @@ const LovesDropDown = () => {
 		<div
 			className='loves-dropdown-container'
 			onMouseOver={() => setDropdown(true)}
-			onMouseLeave={() => setDropdown(true)}
+			onMouseLeave={() => setDropdown(false)}
 		>
 			<button className='loves-dropdown-button'>
 				{dropdown ? <BsSuitHeartFill /> : <BsSuitHeart />}
