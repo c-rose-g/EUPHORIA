@@ -6,6 +6,7 @@ import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
 import LovesPage from '../LovesPage';
 import LovesDropDown from '../LovesDropDown';
+import SearchBar from '../SearchBar';
 import { TiGroupOutline, TiGroup } from 'react-icons/ti';
 import { BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
 import './NavBar.css';
@@ -47,7 +48,9 @@ const NavBar = () => {
 							EUPHORIA
 						</NavLink>
 					</div>
-					<div className='nav-search'></div>
+					<div className='nav-search'>
+						<SearchBar/>
+					</div>
 					<div
 						className='nav-community-container '
 						onMouseEnter={() => setCommIcon(true)}
