@@ -192,7 +192,7 @@ function ProfileButton() {
 						transform: 'translateY(8px)',
 					}}
 				>
-					<div className='profile-img-container'>
+					{/* <div className='profile-img-container'>
 						<img className='profile-img' src={activeUser} alt='' />
 					</div>
 					<div className='profile-greeting'>
@@ -230,7 +230,7 @@ function ProfileButton() {
 							{' '}
 							<LogoutButton />
 						</div>
-					) : null}
+					) : null} */}
 				</div>
 			)}
 
