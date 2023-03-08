@@ -103,7 +103,7 @@ const LovesDropDown = () => {
 					)}
 				</div>
 			)}
-			{/* <div>
+			<div>
 				{showSignUpModal && (
 					<Modal onClose={() => setShowSignUpModal(false)}>
 						<SignUpModal setShowSignUpModal={setShowSignUpModal} />
@@ -116,7 +116,7 @@ const LovesDropDown = () => {
 						<LoginModal setShowLoginModal={setShowLoginModal} />
 					</Modal>
 				)}
-			</div> */}
+			</div>
 		</div>
 	);
 };
