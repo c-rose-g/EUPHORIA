@@ -40,8 +40,7 @@
     margin-top: 5px;
 }
 .results-dropdown{
-
-   z-index: 1;
+  z-index: 1;
   border-radius: 5px;
   background-color: white;
   /* border: 1px solid grey; */
@@ -70,6 +69,10 @@
   overflow-wrap: break-word;
   white-space: pre-wrap;
 }
-.bx{
-  size: 20px
+.search-icon{
+  border: none;
+  width:1px;
+  height:1px;
+  background-color: #f6f6f8;
+
 }

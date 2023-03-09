@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import './SearchBar.css';
 import {BiSearchAlt} from 'react-icons/bi'
 const SearchBar = () => {
@@ -33,14 +34,17 @@ const SearchBar = () => {
 						placeholder='Search'
 					/>
 					<button type='submit'>
-          <div class='bx bx-search-alt' style={{size:'20px', backgroundColor:'transparent'}}></div>
+          {/* <div class='bx bx-search-alt' style={{size:'20px', backgroundColor:'transparent'}}></div> */}
+          <div className='search-icon'>
+          <box-icon name='search-alt' size='sm' border='none' pull='left' color='black'/>
+          </div>
            </button>
 					{searchQuery.length ? (
 						<div className='results-dropdown'>
 							{results.map((product) => (
 								<div className='result-name font-12' key={product.id} value={product.id}>
-									{/* <NavLink to={`products/`}></NavLink> */}
-									{product.product_name}
+									<NavLink to={`products/${product.id}`}> {product.product_name}</NavLink>
+
 								</div>
 							))}
 						</div>
