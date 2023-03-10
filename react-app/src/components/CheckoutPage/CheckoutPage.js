@@ -31,7 +31,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 	// console.log('logan >>>>>>', logan);
 	// console.log('product photo 0 >>>>>>>>>>>>>>', logan[1].product_photos[0].prod_photo)
 
-	let total = 0;
+	// let total = 0;
 
 	// items?.forEach((item) => {
 	// 	total += logan[item.prod_id].product_price * item.prod_quantity;
