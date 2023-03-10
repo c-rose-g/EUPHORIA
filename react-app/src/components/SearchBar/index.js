@@ -26,9 +26,13 @@ const SearchBar = () => {
   const handleKeyPress = (e) =>{
     if(e.keyCode === 'Enter'){
       handleSearchQuery()
+
     }
   }
-  
+  const handleResultClick = () => {
+    setDropDown(false);
+    setSearchQuery('')
+  };
 	return (
 		<form  className='search-bar-container' onSubmit={handleSearchQuery}>
 			<div>
@@ -43,8 +47,10 @@ const SearchBar = () => {
 
 					/>
 
-					{searchQuery.length ? (
-						<div className='results-dropdown'
+					{dropdown && searchQuery.length ? (
+						<div
+            className='results-dropdown'
+            // className={`results-dropdown ${dropdown ? 'show' : ''}`}
 
             >
 							{results.map((product) => (
@@ -52,7 +58,7 @@ const SearchBar = () => {
 									className='result-name font-12'
 									key={product.id}
 									value={product.id}
-
+                  onClick={handleResultClick}
 								>
 									<NavLink to={`products/${product.id}`}>
 										{product.product_name}
@@ -61,7 +67,7 @@ const SearchBar = () => {
 							))}
 						</div>
 					) : (
-						<div></div>
+						null
 					)}
 				</div>
 			</div>
