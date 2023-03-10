@@ -23,20 +23,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 
 	// array of user items
 	const items = userBasket.cart_prod ? Object.values(userBasket.cart_prod) : [];
-	// const = products.rduce((obj, product) => {
-	// 	return { ...obj, [product.id]: product };
-	// }, {});
-	// console.log('user basket ? >>>>>>>', userBasket);
-	// console.log('items in basket', items);
-	// console.log('logan >>>>>>', logan);
-	// console.log('product photo 0 >>>>>>>>>>>>>>', logan[1].product_photos[0].prod_photo)
 
-	// let total = 0;
-
-	// items?.forEach((item) => {
-	// 	total += logan[item.prod_id].product_price * item.prod_quantity;
-	// });
-	// console.log('total basket price>>>>>>>>>>>', total);
 	useEffect(() => {
 		(async () => {
 			await dispatch(allProducts());
@@ -53,7 +40,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 		dispatch(decrementItem(props));
 	};
 
-	const logan = () => {
+	const handleCheckout = () => {
 		dispatch(addToPurchaseHistory(userId));
 		alert('Your order has been added to your purchase history.');
 		history.push(`/history/${userId}`);
@@ -149,7 +136,7 @@ const CheckoutPage = ({ setShowLoginModal }) => {
 										<div className='checkout-button-div'>
 											<button
 												className='checkout-button font-16-white'
-												onClick={logan}
+												onClick={handleCheckout}
 											>
 												checkout
 											</button>
