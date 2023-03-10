@@ -6,8 +6,6 @@ const SearchBar = () => {
 	const [searchQuery, setSearchQuery] = useState('');
 	const [results, setResults] = useState([]);
   const [dropdown, setDropDown] = useState(false)
-	console.log('search query', searchQuery);
-	console.log('results', results);
 
 	const handleSearchQuery = async (e) => {
 		e.preventDefault();
@@ -50,8 +48,6 @@ const SearchBar = () => {
 					{dropdown && searchQuery.length ? (
 						<div
             className='results-dropdown'
-            // className={`results-dropdown ${dropdown ? 'show' : ''}`}
-
             >
 							{results.map((product) => (
 								<div
