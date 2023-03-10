@@ -6,9 +6,7 @@ const SearchBar = () => {
 	const [searchQuery, setSearchQuery] = useState('');
 	const [results, setResults] = useState([]);
 	const [noResults, setNoResults] = useState(false);
-	console.log('search query', searchQuery);
-	console.log('results', results);
-	console.log('no results', noResults)
+
 	const [dropdown, setDropDown] = useState(false);
 
 	const handleSearchQuery = async (e) => {
