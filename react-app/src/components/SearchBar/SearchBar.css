@@ -1,0 +1,82 @@
+.search-bar-container {
+  background-color: #f6f6f8;
+  border-radius: 9999px;
+  width: 250px;
+}
+/* .search-input {
+  width: 221px;
+  border-radius: 9999px;
+  z-index: 2;
+  font-size: 15px;
+  background-color: transparent;
+  border-width: 0px;
+  box-shadow: none;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+} */
+
+input.search-input {
+  z-index: 2;
+  font-size: 15px;
+  background-color: transparent;
+  /* border-width: 0px; */
+  box-shadow: none;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+  width: 251px;
+  border-radius: 9999px;
+  padding: 9px 4px 9px 40px;
+}
+
+@keyframes wipe-in-left {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:wipe:left"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-left both;
+}
+/* input[type="search"]{
+  border: 1px;
+  border-width: 1px;
+  font-size: 15px;
+  color: black;
+  border-radius: 9999px;
+  background: transparent;
+  text-align: left;
+} */
+
+.search-bar-form {
+  position: relative;
+}
+
+.results-dropdown {
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  /* height: 90px; */
+  width: 248px;
+  /* overflow-y: auto; */
+  top: 39px;
+  left: 3px;
+  box-shadow: rgb(255 255 255) 0px 0px 1px 5px, rgb(0 0 0) 0px 0px 2px 4px;
+  border-radius: 5px;
+  padding-top: 3px;
+  white-space: wrap;
+}
+.no-results-found{
+  padding-bottom: 50px;
+}
+.result.name {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+result-name:hover{
+  background-color: grey;
+  color: white;
+}
+.search-icon {
+  border: none;
+}

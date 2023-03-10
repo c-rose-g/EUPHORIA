@@ -81,10 +81,10 @@
 }
 
 .nav-search {
-  /* width: 358px; */
-  width: 300px;
-  /* border: 1px solid black; */
-  margin-right: 1.5em;
+  /* width: 300px; */
+  width: 265px;
+
+  /* margin-right: 1.5em; */
 }
 
 .navbar-hearts {
@@ -155,7 +155,7 @@
   /* width: 280px; */
   /* border: 1px solid green; */
   /* width: 290px; */
-  width: 16%;
+  /* width: 16%; */
 
   /* border: 1px s/lid blue; */
   /* grid-gap: 26px; */
@@ -163,7 +163,13 @@
  */
   /* gap: 1em; */
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.nav-acct-button{
+  background-color: white;
+  display: flex;
   align-items: center;
 }
 
@@ -218,10 +224,7 @@
 .profile-dropdown-container {
   height: 100px;
   display: flex;
-
   align-items: center;
-
-  width: 51%;
 }
 
 .profile-button-onEnter {}

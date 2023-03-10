@@ -80,6 +80,20 @@ def get_prod_category(prod_category):
         'status code': 404
     }, 404
 
-# ****************** Pagination ***************************
+# ****************** Search Bar ***************************
+# Search products by category, brand or name
+@products_routes.route('/search')
+def search_products():
+    search_query = request.args.get('query')
 
+    products = Product.query.filter((Product.product_category.ilike(f'%{search_query}%')) |
+                                    (Product.product_brand.ilike(f'%{search_query}%')) |
+                                    (Product.product_name.ilike(f'%{search_query}%'))).all()
 
+    if products:
+        product = [product.to_dict() for product in products]
+        return json.dumps({'retrieve_products': product}), 200
+    return {
+        'errors': "product not found",
+        'status code': 404
+    }, 404

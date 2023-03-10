@@ -5,7 +5,6 @@ import { addToCart } from '../../store/shoppingCarts';
 import './BasketButton.css';
 const AddToBasketButton = ({ productId, basketId }) => {
 	const dispatch = useDispatch();
-	// const [pressed, setPressed] = useState(false)
 
 	const handleAddToCart = async (e) => {
 		e.preventDefault();
@@ -14,12 +13,11 @@ const AddToBasketButton = ({ productId, basketId }) => {
 			prod_quantity: 1,
 			basketId,
 		};
-		const data = await dispatch(addToCart(payload));
-		// setPressed(true)
+
+		await dispatch(addToCart(payload));
 		return <Redirect to={`/products/${productId}`} />;
 	};
-	// pressed ? <div className="add-button-pressed font-16"> Item has been added to your basket</div> :
-	// add purchase history
+
 	return (
 		<div>
 			{

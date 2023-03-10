@@ -1,5 +1,5 @@
 .loves-dropdown-container {
-  width: 45px;
+  width: min-content;
   height: 75px;
   /* border: 1px solid green; */
   /* background-color: white; */
@@ -9,7 +9,9 @@
   align-items: center;
 
 }
-
+.loves-dropdown-button-container{
+  display: flex;
+}
 .loves-dropdown-button {
   /* border: 1px solid blue; */
   background-color: white;
