@@ -73,9 +73,8 @@ input.search-input {
   overflow-wrap: break-word;
   white-space: pre-wrap;
 }
-result-name:hover{
-  background-color: grey;
-  color: white;
+.result-name:hover{
+  background-color: #f6f6f8;
 }
 .search-icon {
   border: none;
