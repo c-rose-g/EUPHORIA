@@ -13,7 +13,6 @@ shopping_cart_items_routes = Blueprint('items', __name__)
 @login_required
 def get_all_items():
     items = ShoppingCartItem.query.all()
-    print('items >>>>>>>>', items)
 
     if items:
         #   all_items = [item.to_dict() for item in items]

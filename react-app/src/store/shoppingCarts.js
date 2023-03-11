@@ -155,12 +155,11 @@ export const basketReducer = (state = initialState, action) =>{
     //   newState = { ...state}
 
     case ADD_TO_SHOPPING_CART:
-      newState = {...state, userBasket:{}}
+      // newState = {...state, userBasket:{}}
       // console.log(action,'action in shopping cart reducer')
-      newState.userBasket[action.item.id] = action.item
-
-      return newState
-
+      // newState.userBasket[action.item.id] = action.item
+      // return newState
+      return {...state, userBasket: {...state.userBasket, cart_prod: {...state.userBasket.cart_prod, [action.item.id]: action.item}}};
     case INCREASE_ITEM:
 
       return {baskets:{...state.baskets}, userBasket:{...state.userBasket, cart_prod:{...state.userBasket.cart_prod, [action.item.id]:action.item}}}

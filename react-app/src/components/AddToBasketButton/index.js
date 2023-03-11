@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { addToCart } from '../../store/shoppingCarts';
 import './BasketButton.css';
+
 const AddToBasketButton = ({ productId, basketId }) => {
 	const dispatch = useDispatch();
 

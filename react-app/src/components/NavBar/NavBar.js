@@ -1,39 +1,24 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from '../ProfileButton/ProfileButton';
 import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
-import LovesPage from '../LovesPage';
 import LovesDropDown from '../LovesDropDown';
 import SearchBar from '../SearchBar';
+import BasketCount from '../BasketCount';
 import { TiGroupOutline, TiGroup } from 'react-icons/ti';
-import { BsSuitHeart, BsSuitHeartFill } from 'react-icons/bs';
 import './NavBar.css';
 
 const NavBar = () => {
+	const dispatch = useDispatch();
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [commIcon, setCommIcon] = useState(false);
 	const [heartIcon, setHeartIcon] = useState(false);
 	const sessionUser = useSelector((state) => state.session.user);
 
-	let sessionLinks;
-	// NOTE is the bottom part correct?
-	if (sessionUser) {
-		sessionLinks = (
-			<>
-				<ProfileButton user={sessionUser} />
-				<LovesDropDown user={sessionUser} />
-			</>
-		);
-	} else {
-		sessionLinks = (
-			<>
-				<ProfileButton />
-				<LovesDropDown />
-			</>
-		);
-	}
+	let data;
+
 	return (
 		<div className='navBar-container'>
 			<nav>
@@ -49,7 +34,7 @@ const NavBar = () => {
 						</NavLink>
 					</div>
 					<div className='nav-search'>
-						<SearchBar/>
+						<SearchBar />
 					</div>
 					<div
 						className='nav-community-container '
@@ -67,7 +52,6 @@ const NavBar = () => {
 						</NavLink>
 					</div>
 					<div className='acct-buttons'>
-						{/* {sessionLinks} */}
 						<ProfileButton />
 
 						<div className='heart-dropdown-container'>
@@ -79,9 +63,7 @@ const NavBar = () => {
 										onMouseEnter={() => setHeartIcon(true)}
 										onMouseLeave={() => setHeartIcon(false)}
 									>
-
-									<LovesDropDown/>
-
+										<LovesDropDown />
 									</NavLink>
 								</>
 							) : (
@@ -91,25 +73,27 @@ const NavBar = () => {
 									onMouseEnter={() => setHeartIcon(true)}
 									onMouseLeave={() => setHeartIcon(false)}
 								>
-									<LovesDropDown/>
-
+									<LovesDropDown />
 								</button>
 							)}
 						</div>
 						<div className='basket-dropdown-container'>
 							{sessionUser ? (
-								<NavLink to={`/basket/${sessionUser.id}`} >
-									<button className='emoji-button'>
-										<i
-											className='fa-solid fa-basket-shopping'
-											style={{
-												fontSize: '30px',
-												backgroundColor: 'white',
-												color: 'black',
-											}}
-										></i>
-									</button>
-								</NavLink>
+								<>
+									<BasketCount />
+									<NavLink to={`/basket/${sessionUser.id}`}>
+										<button className='emoji-button'>
+											<i
+												className='fa-solid fa-basket-shopping'
+												style={{
+													fontSize: '30px',
+													backgroundColor: 'white',
+													color: 'black',
+												}}
+											></i>
+										</button>
+									</NavLink>
+								</>
 							) : (
 								<button
 									className='emoji-button'
