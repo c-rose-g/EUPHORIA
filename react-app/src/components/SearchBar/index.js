@@ -7,8 +7,7 @@ const SearchBar = () => {
 	const [results, setResults] = useState([]);
 	const [noResults, setNoResults] = useState(false);
 	const [dropdown, setDropDown] = useState(false);
-	// console.log('results', results.length)
-	// console.log('no results', noResults)
+
 	const handleSearchQuery = async (e) => {
 		e.preventDefault();
 
@@ -54,26 +53,6 @@ const SearchBar = () => {
 
 					{dropdown && searchQuery.length ? (
 						<div className='results-dropdown'>
-						{/* {noResults ? (
-                <div className='font-14' style={{paddingBottom: '2px' }}>
-                  No results found
-                </div>
-              ) : results.length ? (
-                <div className='font-14' style={{ color: '#a1a1a1', paddingBottom: '2px' }}>
-                  Previous Searches
-                </div>
-              ) : null}
-              {results.map((product) => (
-                <div key={product.id} value={product.id} onClick={handleResultClick}>
-                  <NavLink to={`products/${product.id}`} className='result-name remove-underline font-12'>
-                    {product.product_name}
-                  </NavLink>
-                </div>
-              ))}
-            </div>
-          ) : null} */}
-
-
 							{results.length > 0 && !noResults && (
 								<div
 									className='font-14'
@@ -104,24 +83,6 @@ const SearchBar = () => {
 							)}
 						</div>
 					) : null}
-
-					{/* {
-								results.map((product) => (
-								<div
-									key={product.id}
-									value={product.id}
-                  onClick={handleResultClick}
-								>
-									<NavLink to={`products/${product.id}`} className='result-name remove-underline font-12'>
-										{product.product_name}
-									</NavLink>
-								</div>
-							))
-							}
-						</div>
-					) : (
-						null
-					)} */}
 				</div>
 			</div>
 		</form>
