@@ -5,6 +5,7 @@ import ProfileButton from '../ProfileButton/ProfileButton';
 import { Modal } from '../../context/Modal';
 import LoginModal from '../LoginModal';
 import LovesDropDown from '../LovesDropDown';
+import CheckoutDropDown from '../CheckOutDropDown';
 import SearchBar from '../SearchBar';
 import BasketCount from '../BasketCount';
 import { TiGroupOutline, TiGroup } from 'react-icons/ti';
@@ -93,6 +94,7 @@ const NavBar = () => {
 											></i>
 										</button>
 									</NavLink>
+									<CheckoutDropDown />
 								</>
 							) : (
 								<button
