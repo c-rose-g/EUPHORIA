@@ -9,9 +9,14 @@
   z-index: 1;
   background-color: white;
   top: 78px;
-  right: 473px;
+  /* right: 473px; */
+  right: 398px;
 }
-
+.not-signedin-basket{
+  height:200px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 6px;
+  width: 300px;
+}
 .checkout-dropdown-page {
   width: 300px;
   height: 400px;
@@ -42,6 +47,13 @@
   width: 100%;
   max-height: 294px;
   overflow-y: scroll;
+  /* padding: 5%; */
+}
+.nocheckout-content {
+  /* border: 1px solid red; */
+  width: 100%;
+  max-height: 294px;
+  /* overflow-y: scroll; */
   /* padding: 5%; */
 }
 
@@ -141,7 +153,10 @@
 
 }
 
-.checkout-button-container {}
+.checkout-button-container {
+  display: flex;
+  justify-content: center;
+}
 
 .checkout-title {}
 
