@@ -42,12 +42,12 @@ const LovesDropDown = () => {
 				{dropdown ? (
 					<div
 						className='loves-dropdown-page'
-						style={{ transition: 'all .8s linear 0s' }}
+						style={{ transition: 'all .1s linear 0s' }}
 					>
 						{signedInUser ? (
 							<>
 								<div className='loves-dropdown-title font-20'>
-									Recently Loved{' '}
+									Recently Loved
 									<NavLink
 										className='font-20 remove-underline'
 										to={`/loves/${signedInUser.id}`}
@@ -138,6 +138,7 @@ const LovesDropDown = () => {
 							visibility: 'hidden',
 							opacity: '0',
 							transform: 'translateY(8px)',
+							transition: 'all 0.1s ease 0s;'
 						}}
 					></div>
 				)}
