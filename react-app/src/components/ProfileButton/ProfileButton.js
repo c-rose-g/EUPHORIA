@@ -65,7 +65,7 @@ function ProfileButton() {
 			{dropMenu ? (
 				<div
 					className='profile-dropdown-signin'
-					style={{ transition: 'all .8s linear 0s' }}
+					style={{ transition: 'all .1s linear 0s' }}
 				>
 					<div className='img-greetings'>
 						<div className='profile-img-container'>
@@ -189,6 +189,7 @@ function ProfileButton() {
 						visibility: 'hidden',
 						opacity: '0',
 						transform: 'translateY(8px)',
+						transition: 'all 0.1s ease 0s;'
 					}}
 				>
 					{/* <div className='profile-img-container'>

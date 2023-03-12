@@ -61,7 +61,7 @@ const NavBar = () => {
 							{sessionUser ? (
 								<>
 									<NavLink
-										className='navbar-hearts'
+										// className='navbar-hearts'
 										to={`/loves/${sessionUser.id}`}
 										onMouseEnter={() => setHeartIcon(true)}
 										onMouseLeave={() => setHeartIcon(false)}
@@ -88,7 +88,6 @@ const NavBar = () => {
 										onMouseEnter={() => setColoredBasket(true)}
 										onMouseLeave={() => setColoredBasket(false)}
 										>
-
 									<CheckoutDropDown />
 									</NavLink>
 								</>
@@ -99,7 +98,7 @@ const NavBar = () => {
 									onMouseEnter={() => setColoredBasket(true)}
 									onMouseLeave={() => setColoredBasket(false)}
 								>
-								<CheckoutDropDown />
+								<CheckoutDropDown/>
 								</button>
 							)}
 						</div>

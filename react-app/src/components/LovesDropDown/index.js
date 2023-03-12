@@ -33,11 +33,11 @@ const LovesDropDown = () => {
 			onMouseOver={() => setDropdown(true)}
 			onMouseLeave={() => setDropdown(false)}
 		>
-		<div className='loves-dropdown-button-container'>
-			<button className='loves-dropdown-button'>
-				{dropdown ? <BsSuitHeartFill /> : <BsSuitHeart />}
-			</button>
-		</div>
+			<div className='loves-dropdown-button-container'>
+				<button className='loves-dropdown-button'>
+					{dropdown ? (<BsSuitHeartFill />) : (<BsSuitHeart />)}
+				</button>
+			</div>
 			<div className='loves-dropdown-page-container'>
 				{dropdown ? (
 					<div
@@ -138,7 +138,7 @@ const LovesDropDown = () => {
 							visibility: 'hidden',
 							opacity: '0',
 							transform: 'translateY(8px)',
-							transition: 'all 0.1s ease 0s;'
+							transition: 'all 0.1s ease 0s;',
 						}}
 					></div>
 				)}
