@@ -93,10 +93,11 @@ const NavBar = () => {
 								</>
 							) : (
 								<button
-									className='emoji-button'
+									// className='emoji-button'
 									onClick={() => setShowLoginModal(true)}
 									onMouseEnter={() => setColoredBasket(true)}
 									onMouseLeave={() => setColoredBasket(false)}
+									style={{backgroundColor:'transparent'}}
 								>
 								<CheckoutDropDown/>
 								</button>

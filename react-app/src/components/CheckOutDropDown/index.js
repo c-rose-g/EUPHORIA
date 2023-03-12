@@ -4,6 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { allProducts } from '../../store/products';
 import { loadUserCart } from '../../store/shoppingCarts';
 import { RiShoppingBasketLine, RiShoppingBasketFill } from 'react-icons/ri';
+import { Modal } from '../../context/Modal';
+import SignUpModal from '../SignUpModal';
+import LoginModal from '../LoginModal';
 import './index.css';
 import 'remixicon/fonts/remixicon.css';
 
@@ -44,6 +47,8 @@ const CheckoutDropDown = () => {
 	};
 
 	return (
+    <>
+
 		<div
 			className='checkout-dropdown-container'
 			onMouseEnter={() => setDropdown(true)}
@@ -57,11 +62,11 @@ const CheckoutDropDown = () => {
 			<div className='checkout-dropdown'>
 				{dropdown ? (
 					<div
-						className='checkout-dropdown-page'
+						// className='checkout-dropdown-page'
 						style={{ transition: 'all .1s linear 0s' }}
 					>
 						{user ? (
-							<>
+							<div className='checkout-dropdown-page'>
 								<div className='checkout-title'>
 									<div className='font-20'>Basket</div>
 									<div>
@@ -144,15 +149,35 @@ const CheckoutDropDown = () => {
 								)}
 								{/* </div> */}
 								<div className='checkout-button-container'></div>
-							</>
+							</div>
 						) : (
-							<>
+							<div className='not-signedin-basket'>
 								<div className='checkout-title'>
 									<div className='font-20'>Basket</div>
+
 								</div>
-								<div className='checkout-content'></div>
-								<div className='checkout-button-container'></div>
-							</>
+								<div className='nocheckout-content'>
+                <div className='font-14' style={{margin:'10%', overflowWrap:'break-word', whiteSpace:'pre-wrap',fontWeight:'bold', overflow:'none'}}>
+                  Sign in to see items you may have added previously.
+										</div>
+                </div>
+								<div className='checkout-button-container'>
+                <div className='not-signed-button-container'>
+									<button
+										className='profile-signin font-16-white'
+										onClick={closeForLogin}
+									>
+										Sign in
+									</button>
+									<button
+										className='profile-login font-16'
+										onClick={closeForSignUp}
+									>
+										Create Account
+									</button>
+								</div>
+                </div>
+							</div>
 						)}
 					</div>
 				) : (
@@ -167,7 +192,23 @@ const CheckoutDropDown = () => {
 					></div>
 				)}
 			</div>
+    <div>
+				{showSignUpModal && (
+					<Modal onClose={() => setShowSignUpModal(false)}>
+						<SignUpModal setShowSignUpModal={setShowSignUpModal} />
+					</Modal>
+				)}
+			</div>
+			<div>
+				{showLoginModal && (
+					<Modal onClose={() => setShowLoginModal(false)}>
+						<LoginModal setShowLoginModal={setShowLoginModal} />
+					</Modal>
+				)}
+			</div>
 		</div>
+    </>
+
 	);
 };
 export default CheckoutDropDown;

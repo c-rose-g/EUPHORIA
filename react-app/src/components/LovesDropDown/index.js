@@ -150,6 +150,7 @@ const LovesDropDown = () => {
 						<SignUpModal setShowSignUpModal={setShowSignUpModal} />
 					</Modal>
 				)}
+				
 			</div>
 			<div>
 				{showLoginModal && (
