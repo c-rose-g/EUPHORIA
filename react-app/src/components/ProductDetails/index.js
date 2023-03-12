@@ -20,29 +20,15 @@ const ProductDetails = () => {
 	const { productId } = useParams();
 
 	const user = useSelector((state) => state.session.user);
-
-	const userBasket = useSelector((state) =>
-		Object.values(state.basket.userBasket)
-	);
+	const userBasket = useSelector((state) => state.basket.userBasket)
+	const items = userBasket.cart_prod ? Object.values(userBasket.cart_prod) : []
 
 	let findProdInBasket;
-	if (userBasket) {
-		let itemCheck = userBasket.find((obj) => obj.prod_id === +productId);
-		// let itemCheckTwo = Object.values(userBasket[0]).find(
-		// 	(obj) => obj.prod_id === +productId
-		// );
-		let itemCheckTwo;
-		let prodArray;
-		if (userBasket[0] && userBasket[0][1]) {
-			prodArray = Object.values(userBasket[0]);
-
-			itemCheckTwo = prodArray.find((obj) => obj.prod_id === +productId);
-		}
-		if (itemCheck) {
-			findProdInBasket = itemCheck;
-		} else if (itemCheckTwo) {
-			findProdInBasket = itemCheckTwo;
-		}
+	let itemCheck;
+	if(items){
+		// finds item product id to match product id in params
+		itemCheck = items.find(obj => obj.prod_id === +productId)
+		findProdInBasket = itemCheck
 	}
 
 	const prodReviews = useSelector((state) =>
