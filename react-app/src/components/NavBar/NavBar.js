@@ -9,6 +9,7 @@ import CheckoutDropDown from '../CheckOutDropDown';
 import SearchBar from '../SearchBar';
 import BasketCount from '../BasketCount';
 import { TiGroupOutline, TiGroup } from 'react-icons/ti';
+import {BsBasket2, BsBasket2Fill} from 'react-icons/bs'
 import './NavBar.css';
 
 const NavBar = () => {
@@ -16,6 +17,7 @@ const NavBar = () => {
 	const [showLoginModal, setShowLoginModal] = useState(false);
 	const [commIcon, setCommIcon] = useState(false);
 	const [heartIcon, setHeartIcon] = useState(false);
+	const [coloredBasket, setColoredBasket] = useState(false)
 	const sessionUser = useSelector((state) => state.session.user);
 
 	let data;
@@ -82,26 +84,22 @@ const NavBar = () => {
 							{sessionUser ? (
 								<>
 									<BasketCount />
-									<NavLink to={`/basket/${sessionUser.id}`}>
-										<button className='emoji-button'>
-											<i
-												className='fa-solid fa-basket-shopping'
-												style={{
-													fontSize: '30px',
-													backgroundColor: 'white',
-													color: 'black',
-												}}
-											></i>
-										</button>
-									</NavLink>
+									<NavLink to={`/basket/${sessionUser.id}`}
+										onMouseEnter={() => setColoredBasket(true)}
+										onMouseLeave={() => setColoredBasket(false)}
+										>
+
 									<CheckoutDropDown />
+									</NavLink>
 								</>
 							) : (
 								<button
 									className='emoji-button'
 									onClick={() => setShowLoginModal(true)}
+									onMouseEnter={() => setColoredBasket(true)}
+									onMouseLeave={() => setColoredBasket(false)}
 								>
-									<i className='fa-solid fa-basket-shopping'></i>
+								<CheckoutDropDown />
 								</button>
 							)}
 						</div>
