@@ -171,6 +171,7 @@
   background-color: white;
   display: flex;
   align-items: center;
+  width: 144px;
 }
 
 .nav-acct-img {
@@ -257,8 +258,9 @@
   top: 77px;
   /* bottom: 633px; */
   left: 54.5%;
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 6px;
   /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
-  box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
+  /* box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px; */
 }
 
 .profile-img-container {
