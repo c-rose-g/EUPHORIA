@@ -8,7 +8,6 @@ import { Modal } from '../../context/Modal';
 import SignUpModal from '../SignUpModal';
 import LoginModal from '../LoginModal';
 import './index.css';
-import 'remixicon/fonts/remixicon.css';
 
 const CheckoutDropDown = () => {
 	const dispatch = useDispatch();
