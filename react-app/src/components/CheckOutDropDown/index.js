@@ -23,8 +23,6 @@ const CheckoutDropDown = () => {
 		: [];
 	let basketTotal = 0;
 
-	console.log('basket items', basketItems);
-	console.log('products', products);
 	useEffect(() => {
 		if (user) {
 			async function fetchUserCart() {
@@ -51,7 +49,7 @@ const CheckoutDropDown = () => {
 		<div
 			className='checkout-dropdown-container'
 			onMouseEnter={() => setDropdown(true)}
-			onMouseLeave={() => setDropdown(false)}
+			onMouseLeave={() => setDropdown(true)}
 		>
 			<div className='checkout-basket-button-container'>
 				<div className='checkout-basket-img'>

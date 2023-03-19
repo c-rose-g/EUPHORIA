@@ -1,3 +1,22 @@
+
+@media screen and(max-width:1571px) {
+
+  .checkout-dropdown{
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    top: 78px;
+    right: 395px;
+  }
+
+  .not-signedin-basket{
+    height:200px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 0px 6px;
+    width: 300px;
+  }
+
+  
+}
 .checkout-dropdown-container {
   width: 44px;
   height: 63px;
