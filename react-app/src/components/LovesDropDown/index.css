@@ -1,3 +1,23 @@
+@media screen and(max-width:1025px){
+  .loves-dropdown-page{
+    z-index: 1;
+    border-radius: 5px;
+    background-color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: absolute;
+    width: 300px;
+    height: 210px;
+    max-height: 220px;
+    top: 77px;
+    left: 860px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 0px 6px;
+    /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
+    /* box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px; */
+    overflow-y: auto;
+  }
+}
+
 .loves-dropdown-container {
   width: min-content;
   height: 75px;

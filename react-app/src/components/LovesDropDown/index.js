@@ -31,7 +31,7 @@ const LovesDropDown = () => {
 		<div
 			className='loves-dropdown-container'
 			onMouseOver={() => setDropdown(true)}
-			onMouseLeave={() => setDropdown(false)}
+			onMouseLeave={() => setDropdown(true)}
 		>
 			<div className='loves-dropdown-button-container'>
 				<button className='loves-dropdown-button'>
@@ -150,7 +150,7 @@ const LovesDropDown = () => {
 						<SignUpModal setShowSignUpModal={setShowSignUpModal} />
 					</Modal>
 				)}
-				
+
 			</div>
 			<div>
 				{showLoginModal && (

@@ -49,7 +49,7 @@ const CheckoutDropDown = () => {
 		<div
 			className='checkout-dropdown-container'
 			onMouseEnter={() => setDropdown(true)}
-			onMouseLeave={() => setDropdown(true)}
+			onMouseLeave={() => setDropdown(false)}
 		>
 			<div className='checkout-basket-button-container'>
 				<div className='checkout-basket-img'>
