@@ -1,37 +1,40 @@
-@media screen and(max-width:1025px){
-  .loves-dropdown-page{
-    z-index: 1;
-    border-radius: 5px;
-    background-color: white;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    position: absolute;
-    width: 300px;
-    height: 210px;
-    max-height: 220px;
-    top: 77px;
-    left: 860px;
-    box-shadow: rgb(0 0 0 / 20%) 0px 0px 6px;
-    /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
-    /* box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px; */
-    overflow-y: auto;
+@media screen and (max-width:1571px) {
+
+  .loves-dropdown-container {
+    width: min-content;
+    height: 75px;
+    /* background-color: white; */
+    /* height: 100px; */
+    display: flex;
+    align-items: center;
   }
+  .loves-dropdown-page-container {
+    /* border:10px solid blue; */
+  }
+
+  .loves-dropdown-page {
+    right: 500px;
+  }
+}
+
+/* NON @MEDIA */
+.loves-dropdown-page-container {
+  right: 100px;
 }
 
 .loves-dropdown-container {
   width: min-content;
   height: 75px;
-  /* border: 1px solid green; */
-  /* background-color: white; */
-  /* border: 1px solid green; */
-  /* height: 100px; */
+
   display: flex;
   align-items: center;
 
 }
-.loves-dropdown-button-container{
+
+.loves-dropdown-button-container {
   display: flex;
 }
+
 .loves-dropdown-button {
   /* border: 1px solid blue; */
   background-color: white;
@@ -66,12 +69,6 @@
   padding-top: 3px;
   padding-bottom: 3px;
   position: absolute;
-  /* font-weight: normal;
-  font-style: normal;
-  font-size: smaller;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
   width: 300px;
   height: 210px;
   max-height: 220px;
@@ -79,8 +76,6 @@
   top: 77px;
   left: 954px;
   box-shadow: rgb(0 0 0 / 20%) 0px 0px 6px;
-  /* box-shadow: rgb(255 255 255) 0px 0px 0px 4px, rgb(0 0 0) 0px 0px 0px 5px; */
-  /* box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px; */
   overflow-y: auto;
 }
 
@@ -100,7 +95,7 @@
 }
 
 .love-row-container {
-  /* border: 1px solid green; */
+
   grid-template-columns: auto 1fr 88px;
   align-items: flex-start;
   display: grid;
