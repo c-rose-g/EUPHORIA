@@ -1,9 +1,7 @@
-@media screen and (max-width:1025px) {
+
+@media screen and (max-width:1571px) {
   .profile-dropdown-signin {
-    z-index: 1;
-    border-radius: 5px;
-    background-color: white;
-    /* border: 1px solid grey; */
+    /* z-index: 1;
     padding-top: 3px;
     padding-bottom: 3px;
     position: absolute;
@@ -17,10 +15,26 @@
     height: 200px;
     top: 110px;
     left: 63%;
-    box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px;
+    box-shadow: rgb(255 255 255) 0px 0px 2px 6px, rgb(0 0 0) 0px 0px 2px 5px; */
   }
+
+  /* #bigger-screen.heart-dropdown-container{
+    display: none;
+  }
+
+  #smaller-screen.heart-dropdown-container{
+    display: block;
+  } */
 }
 
+/* ******************* NON MEDIA *********************** */
+/* #smaller-screen.heart-dropdown-container{
+  display: none;
+}
+
+#bigger-screen.heart-dropdown-container{
+  display: block;
+} */
 .navBar-container {
   /* border: 1px solid red; */
   /* height: 100vh; */
