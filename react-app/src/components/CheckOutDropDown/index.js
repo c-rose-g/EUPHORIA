@@ -23,8 +23,6 @@ const CheckoutDropDown = () => {
 		: [];
 	let basketTotal = 0;
 
-	console.log('basket items', basketItems);
-	console.log('products', products);
 	useEffect(() => {
 		if (user) {
 			async function fetchUserCart() {
