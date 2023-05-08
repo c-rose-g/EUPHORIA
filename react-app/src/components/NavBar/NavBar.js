@@ -57,29 +57,7 @@ const NavBar = () => {
 					<div className='acct-buttons'>
 						<ProfileButton />
 
-						{/* <div className='heart-dropdown-container' id='bigger-screen'>
-							{sessionUser ? (
-								<>
-									<NavLink
-										// className='navbar-hearts'
-										to={`/loves/${sessionUser.id}`}
-										onMouseEnter={() => setHeartIcon(true)}
-										onMouseLeave={() => setHeartIcon(false)}
-									>
-										<LovesDropDown />
-									</NavLink>
-								</>
-							) : (
-								<button
-									onClick={() => setShowLoginModal(true)}
-									style={{ backgroundColor: 'white', width: '30%' }}
-									onMouseEnter={() => setHeartIcon(true)}
-									onMouseLeave={() => setHeartIcon(false)}
-								>
-									<LovesDropDown />
-								</button>
-							)}
-						</div> */}
+
 						<div className='heart-dropdown-container' >
 							{sessionUser ? (
 								<>
