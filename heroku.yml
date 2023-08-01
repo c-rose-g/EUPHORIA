@@ -1,0 +1,11 @@
+build:
+  docker:
+    web: Dockerfile
+
+run:
+  web: bundle exec puma -C config/puma.rb
+env:
+  SECRET_KEY: ${SECRET_KEY}
+addons:
+  plan: heroku-postgresql
+  as: DATABASE
