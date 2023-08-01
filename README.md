@@ -1,9 +1,11 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/97000116/205624479-1d53937e-e123-4df5-ae7a-0bcfb3ab4e29.png" />
 </p>
+
 <h1 align="center">
 
 [Euphoria](https://euphori-a.herokuapp.com/)
+
 
 </h1>
 
@@ -43,7 +45,7 @@
 
 <h2 align="center"> MVP Core Features </h2>
 
-
+ 
 ## Feature #1: Reviews
 ![Screenshot 2022-12-05 at 3 35 53 AM](https://user-images.githubusercontent.com/97000116/205627764-270e653b-654f-447f-b707-ea6d49bd8620.png)
  * Logged in users can add reviews on products.
@@ -58,23 +60,23 @@
  * Logged in users can see the products they have placed in their basket.
  * Logged in users can update the quantity of the products in basket.
  * Logged in users can delete unwanted products from their basket.
-
+ 
 ## Feature #3: Purchase History
 ![Screenshot 2022-12-05 at 3 45 05 AM](https://user-images.githubusercontent.com/97000116/205629591-b400423b-ff1e-4f7b-a986-bfd43586b09e.png)
  * Logged in users can see their past purchase orders in their "Buy it again" purchase history.
  * Logged in users can click to the product details page for each of the products they have purchased in their "Buy it again" purchase history.
-
+ 
 ## Feature #4: Likes
  * Logged in users can add a like on a product in which they are interested, and save it in to their likes page.
  * Logged in users can remove a like from a product they were previously interested in, either from their likes page or from the product details page.
 
 ## Feature #5: Search bar
  * Users can search for products available in Euphoria through a search bar that is found at top-middle part of the page.
-
+ 
 ## Feature #6: AWS
  * Users can upload profile photos to their user account.
  * Logged in users can upload review photos and include them in their reviews.
-
+ 
 <h2 align="center"> Future Implementation Goals </h2>
 
 - [x] Purchase History
