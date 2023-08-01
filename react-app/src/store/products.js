@@ -43,7 +43,7 @@ export const productDetails = (prod_id) => async dispatch =>{
 }
 
 export const productCategories = (prodCategory) => async dispatch =>{
-  console.log('product category in products thunk >>>>>>>>>', prodCategory)
+  // console.log('product category in products thunk >>>>>>>>>', prodCategory)
   const response = await fetch(`/api/products/categories/${prodCategory}`, {
     headers:{'Content-Type': 'application/json'}
   })
