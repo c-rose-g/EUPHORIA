@@ -1,3 +1,24 @@
+/* CSS rules for your mobile phones */
+/* CSS rules for your mobile phones */
+
+
+@media all and (max-device-width: 480px) {
+  .basket-count-number {
+    display: flex;
+    right: 110px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9999px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    background-color: rgb(207, 17, 44);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    /* top: 17px; */
+  }
+}
+
 .basket-count-container {}
 
 .basket-count-number {

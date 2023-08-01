@@ -5,7 +5,7 @@ from sqlalchemy.sql import func, exists
 from sqlalchemy.orm import column_property
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
-    
+
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(10), nullable=False)
     last_name = db.Column(db.String(10), nullable=False)

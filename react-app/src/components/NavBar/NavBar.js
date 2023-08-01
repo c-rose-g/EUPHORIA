@@ -93,7 +93,6 @@ const NavBar = () => {
 								</>
 							) : (
 								<button
-									// className='emoji-button'
 									onClick={() => setShowLoginModal(true)}
 									onMouseEnter={() => setColoredBasket(true)}
 									onMouseLeave={() => setColoredBasket(false)}
