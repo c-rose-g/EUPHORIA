@@ -1,148 +1,83 @@
-# Flask React Project
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/97000116/205624479-1d53937e-e123-4df5-ae7a-0bcfb3ab4e29.png" />
+</p>
+<h1 align="center">
 
-This is the starter for the Flask React project.
+[Euphoria](https://euphori-a.herokuapp.com/)
 
-## Getting started
-1. Clone this repository (only this branch)
-
-2. Install dependencies
-
-      ```bash
-      pipenv install -r requirements.txt
-      ```
-
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-
-4. Make sure the SQLite3 database connection URL is in the **.env** file
-
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
-
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
-
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+</h1>
 
 
-## Deployment through Render.com
+<h2 align="center"> This is a Sephora clone, an ecommerce site.</h2>
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+<h2 align="center"> Getting Started </h2>
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+* Download and unzip the clone file.
+* Use the command npm start in the react-app directory and pipenv flask run in the root directory to run both servers.
+* Browser should automatically open at localhost:3000 to the Splash page.
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+<h2 align="center"> Tech Stack </h2>
 
-### Part A: Configure the Start and Build Commands
+<div align="center">
 
-Start by giving your application a name.
+[<img src="https://user-images.githubusercontent.com/105324675/190725431-5033a82c-51ff-4a9a-b9ff-48ad606a2a5e.svg" width="75" height="75">](https://www.javascript.com/) [<img src="https://user-images.githubusercontent.com/105324675/190726531-63e5fa0c-5e9a-4e12-a4df-ac578bdfefb3.svg" width="75" height="75">](https://whatwg.org/) [<img src="https://user-images.githubusercontent.com/105324675/190727242-21af03e1-b793-4257-bdc5-14996fb8da63.svg" width="75" height="75">](https://www.css3.com/) [<img src="https://user-images.githubusercontent.com/105324675/190727472-da7d5a51-ef2e-4f71-b90c-333debd2d147.svg" width="75" height="75">](https://reactjs.org/) [<img src="https://user-images.githubusercontent.com/105324675/190727697-f61e28b7-1597-4be0-9dc4-dbc443790f86.svg" width="75" height="75">](https://redux.js.org/) [<img src="https://user-images.githubusercontent.com/105324675/190729715-5aeed1a2-0914-413e-ac4b-de23aa7ed802.svg" width="75" height="75">](https://nodejs.org/en) [<img src="https://user-images.githubusercontent.com/105324675/190729918-773ddf18-90d3-4d52-aa81-c02731d413bf.svg" width="75" height="75">](https://www.npmjs.com/)
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
+</div>
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
+<h2 align="center"> Database </h2>
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
+<div align="center">
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
+[<img src="https://user-images.githubusercontent.com/105324675/190727354-8f322958-5b34-4c96-b052-358d06d0d9ef.svg" width="75" height="75">](https://www.postgresql.org/) [<img src="https://user-images.githubusercontent.com/105324675/190739700-864f937c-4e43-48ea-9216-00edb49d301d.svg" width="75" height="75">](https://sequelize.org/)
 
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
+</div>
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+<h2 align="center"> Highlights </h2>
 
-Now, add your start command in the Start field:
 
-```shell
-# start script
-gunicorn app:app
-```
+![euphoria-splash](https://user-images.githubusercontent.com/97000116/205626409-2a705bad-4b29-4b8d-a3c2-9ae1a2b8b2bd.png)
 
-_If you are using websockets, use the following start command instead for increased performance:_
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+![Screenshot 2022-12-05 at 3 24 26 AM](https://user-images.githubusercontent.com/97000116/205626663-764d93d9-7a10-4a6f-b8b4-8e7faa03cba0.png)
 
-### Part B: Add the Environment Variables
+<h2 align="center"> MVP Core Features </h2>
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+## Feature #1: Reviews
+![Screenshot 2022-12-05 at 3 35 53 AM](https://user-images.githubusercontent.com/97000116/205627764-270e653b-654f-447f-b707-ea6d49bd8620.png)
+ * Logged in users can add reviews on products.
+ * Users can see the reviews they have left on products in the product details page.
+ * Logged in users can update reviews they have left in the product details page.
+ * Logged in users can delete reviews they have previously left in the product details page.
 
-Add the following keys and values in the Render GUI form:
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+## Feature #2: Checkout Page
+![Screenshot 2022-12-05 at 3 33 25 AM](https://user-images.githubusercontent.com/97000116/205627392-099f1c1e-052e-40e9-8cc0-1a80bdc7c2cf.png)
+ * Logged in users can add products into their basket.
+ * Logged in users can see the products they have placed in their basket.
+ * Logged in users can update the quantity of the products in basket.
+ * Logged in users can delete unwanted products from their basket.
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+## Feature #3: Purchase History
+![Screenshot 2022-12-05 at 3 45 05 AM](https://user-images.githubusercontent.com/97000116/205629591-b400423b-ff1e-4f7b-a986-bfd43586b09e.png)
+ * Logged in users can see their past purchase orders in their "Buy it again" purchase history.
+ * Logged in users can click to the product details page for each of the products they have purchased in their "Buy it again" purchase history.
 
-Add the following keys and values:
+## Feature #4: Likes
+ * Logged in users can add a like on a product in which they are interested, and save it in to their likes page.
+ * Logged in users can remove a like from a product they were previously interested in, either from their likes page or from the product details page.
 
-- DATABASE_URL (copy value from Internal Database URL field)
+## Feature #5: Search bar
+ * Users can search for products available in Euphoria through a search bar that is found at top-middle part of the page.
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
+## Feature #6: AWS
+ * Users can upload profile photos to their user account.
+ * Logged in users can upload review photos and include them in their reviews.
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
+<h2 align="center"> Future Implementation Goals </h2>
 
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+- [x] Purchase History
+- [x] Search bar
+- [x] Likes
+- [ ] AWS
