@@ -1,9 +1,11 @@
 <p align="center">
   <img src="https://user-images.githubusercontent.com/97000116/205624479-1d53937e-e123-4df5-ae7a-0bcfb3ab4e29.png" />
 </p>
-<h1 align="center"> 
 
-[Euphoria](https://euphoria-uj4p.onrender.com)
+<h1 align="center">
+
+[Euphoria](https://euphori-a.herokuapp.com/)
+
 
 </h1>
 
